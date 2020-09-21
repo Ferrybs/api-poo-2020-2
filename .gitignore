@@ -1,8 +1,8 @@
 # comentarios
 
 #ignorar arquivos de config da IDE e do gradle
-build
-.idea
-.gradle/
-out/
+*build
+*.idea
+*.gradle/
+*out/
 
