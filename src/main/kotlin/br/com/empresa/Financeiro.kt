@@ -4,7 +4,7 @@ import br.com.empresa.financeiro.pessoa.Pessoa
 import br.com.empresa.financeiro.conta.Conta
 
 
-class Finaneiro
+class Financeiro
 {
     private var contas = mutableListOf<Conta>()
     fun cConta(conta: Conta?): String
