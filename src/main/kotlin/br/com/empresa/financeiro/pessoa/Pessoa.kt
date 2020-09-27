@@ -12,7 +12,7 @@ class Pessoa (
     @Expose
     var nascimentoPessoa: Date? = null,
     @Expose
-    var enderecoCliente: Endereco? = null
+    var enderecoPessoa: Endereco? = null
 ){
     fun verificaPessoa() : Boolean {
         val nulo = listOf(
@@ -21,7 +21,7 @@ class Pessoa (
         nascimentoPessoa
         ).any{it == null}
 
-        val endereco = enderecoCliente?.verificaEndereco()
+        val endereco = enderecoPessoa?.verificaEndereco()
 
         if (endereco != null){
             return true
