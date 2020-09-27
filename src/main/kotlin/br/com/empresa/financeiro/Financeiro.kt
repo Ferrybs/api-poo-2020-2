@@ -3,6 +3,7 @@ package br.com.empresa
 import br.com.empresa.financeiro.cartao.Cartao
 import br.com.empresa.financeiro.pessoa.Pessoa
 import br.com.empresa.financeiro.conta.Conta
+import br.com.empresa.financeiro.endereco.Endereco
 import br.com.empresa.financeiro.transacao.Transacao
 import com.google.gson.annotations.Expose
 
@@ -53,10 +54,8 @@ class Financeiro {
             } else {
                 val documento = pessoa.documentoPessoa
                 val nome = pessoa.nomePessoa
-                val endereco = pessoa.enderecoPessoa
                 if (documento != null) return contas.first { Conta -> Conta.rContaPessoa()?.documentoPessoa == documento }
                 if (nome != null) return contas.first { Conta -> Conta.rContaPessoa()?.nomePessoa == nome }
-                if (endereco != null) return contas.first { Contas -> Contas.rContaPessoa()?.enderecoPessoa == endereco }
             }
         }
         return null
@@ -67,6 +66,12 @@ class Financeiro {
             return contas.first { Conta -> Conta.rContaCartao() == cartao }
         }
         return null
+    }
+
+    fun rConta(endereco: Endereco?): Conta?{
+
+        if (endereco != null &&  endereco.verificaEndereco())
+            return contas.first { Contas -> Contas.rContaPessoa()?.enderecoPessoa == endereco }
     }
     /*
     *   UPDATE
