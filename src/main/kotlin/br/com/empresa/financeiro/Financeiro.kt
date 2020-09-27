@@ -10,21 +10,20 @@ class Financeiro {
     private var contas = mutableListOf<Conta>()
     fun cConta(conta: Conta?): String {
         if (conta != null && conta.verificaConta()) {
-            conta.cConta()
             contas.add(conta)
             return "VALIDO"
         }
         return "INVÁLIDO"
     }
 
-    fun rConta(pessoa: Pessoa?) {
+    fun rConta(pessoa: Pessoa?): Conta {
         if (pessoa != null) {
             if (pessoa.verificaPessoa()) {
                 return contas.first { Conta -> Conta.pessoaConta == pessoa }
             } else {
-                val documento = documentoPessoa
-                val nome = nomePessoa
-                val endereco = enderecoPessoa
+                val documento = pessoa.documentoPessoa
+                val nome = pessoa.nomePessoa
+                val endereco = pessoa.enderecoPessoa
                 if (documento != null) return contas.first { Conta -> Conta.pessoaConta.documentoPessoa == documento }
                 if (nome != null) return contas.first { Conta -> Conta.pessoaConta.nomePessoa == nome }
                 if (endereco != null) return contas.first { Contas -> Contas.pessoaConta.enderecoPessoa == endereco }
@@ -32,7 +31,7 @@ class Financeiro {
         }
     }
 
-    fun cTransacao(lista: List<Any>?): Str{
+    fun cTransacao(lista: List<Any>?): String{
 
         if(lista !=null && lista.isNotEmpty()){
 
@@ -44,6 +43,7 @@ class Financeiro {
                 val conta: Conta
                 if(conta.verificaConta()){
                     conta.contaCartao?.cTransacao(transacao)
+                    return "VALIDA"
                 }
 
             }
