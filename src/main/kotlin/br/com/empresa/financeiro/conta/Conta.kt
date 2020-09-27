@@ -2,11 +2,16 @@ package br.com.empresa.financeiro.conta
 
 import br.com.empresa.financeiro.cartao.Cartao
 import br.com.empresa.financeiro.pessoa.Pessoa
+import com.google.gson.annotations.Expose
 
 data class Conta(
+        @Expose
         var idConta: String? = null,
+        @Expose
         private var pessoaConta: Pessoa? = null,
+        @Expose
         private var limiteConta: Double? = null,
+        @Expose
         private var cartaoConta: Cartao? = null
 ){
 

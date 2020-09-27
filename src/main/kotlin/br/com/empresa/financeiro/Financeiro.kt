@@ -4,9 +4,11 @@ import br.com.empresa.financeiro.cartao.Cartao
 import br.com.empresa.financeiro.pessoa.Pessoa
 import br.com.empresa.financeiro.conta.Conta
 import br.com.empresa.financeiro.transacao.Transacao
+import com.google.gson.annotations.Expose
 
 
 class Financeiro {
+    @Expose
     private var contas = mutableListOf<Conta>()
 
     /*
@@ -41,6 +43,9 @@ class Financeiro {
     /*
     *   READ
     * */
+    fun rConta(): MutableList<Conta> {
+        return contas
+    }
     fun rConta(pessoa: Pessoa?): Conta? {
         if (pessoa != null) {
             if (pessoa.verificaPessoa()) {
