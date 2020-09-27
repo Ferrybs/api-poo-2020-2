@@ -12,7 +12,7 @@ open class Transacao(
     @Expose
     var localTransacao: String? = null,
 ) {
-    fun vTransacao(): Boolean{
+    fun verificaTransacao(): Boolean{
         val nulo = listOf(
             idTransacao,
             dataTransacao,

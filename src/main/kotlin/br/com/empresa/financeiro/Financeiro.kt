@@ -1,13 +1,16 @@
 package br.com.empresa
 
+import br.com.empresa.financeiro.cartao.Cartao
 import br.com.empresa.financeiro.pessoa.Pessoa
 import br.com.empresa.financeiro.conta.Conta
+import br.com.empresa.financeiro.transacao.Transacao
 
 
 class Financeiro {
     private var contas = mutableListOf<Conta>()
     fun cConta(conta: Conta?): String {
-        if (conta != null && conta.validaConta()) {
+        if (conta != null && conta.verificaConta()) {
+            conta.cConta()
             contas.add(conta)
             return "VALIDO"
         }
@@ -29,7 +32,22 @@ class Financeiro {
         }
     }
 
-    fun cTransacao(lista: Any?){
-        val verificaLista()
+    fun cTransacao(lista: List<Any>?){
+
+        if(lista !=null && lista.isNotEmpty()){
+
+            if (lista[0] is Cartao && lista[1] is Transacao){
+                val cartao = lista[0] as Cartao
+                val transacao = lista[1] as Transacao
+
+                // pessquisa conta com esse cartao
+                val conta: Conta
+                if(conta.verificaConta()){
+                    conta.contaCartao?.cTransacao(transacao)
+                }
+
+            }
+        }
+
     }
 }
