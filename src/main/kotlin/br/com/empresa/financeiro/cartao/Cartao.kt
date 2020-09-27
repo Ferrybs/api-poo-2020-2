@@ -22,6 +22,14 @@ data class Cartao(
     private var transacaoCartao = mutableListOf<Transacao>()
 
 
+    fun cTransacao(transacao: Transacao?){
+
+        if(transacao != null && transacao.verificaTransacao()){
+            transacaoCartao.add(transacao)
+        }
+
+
+    }
     fun verificaCartao(): Boolean {
         val nulo = listOf(
             nomeCartao,
