@@ -10,7 +10,7 @@ class Pessoa (
     @Expose
     var nomePessoa: String? = null,
     @Expose
-    var nascimentoPessoa: Date? = null,
+    var nascimentoPessoa: String? = null,
     @Expose
     var enderecoPessoa: Endereco? = null
 ){
