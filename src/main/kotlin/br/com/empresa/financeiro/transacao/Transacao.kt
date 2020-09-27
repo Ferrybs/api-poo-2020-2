@@ -1,4 +1,25 @@
 package br.com.empresa.financeiro.transacao
 
-class Transacao {
+import com.google.gson.annotations.Expose
+
+open class Transacao(
+    @Expose
+    var idTransacao: String?= null,
+    @Expose
+    var dataTransacao: String? = null,
+    @Expose
+    var valorTransacao: Double? = null,
+    @Expose
+    var localTransacao: String? = null,
+) {
+    fun vTransacao(): Boolean{
+        val nulo = listOf(
+            idTransacao,
+            dataTransacao,
+            valorTransacao,
+            localTransacao
+        ).any { it == null }
+
+        return !nulo
+    }
 }
