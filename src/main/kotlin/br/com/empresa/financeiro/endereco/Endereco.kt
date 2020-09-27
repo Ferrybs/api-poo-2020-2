@@ -17,18 +17,14 @@ open class Endereco(
     var estadoEndereco: String? = null
 ) {
 
-    fun verificaEndereco():Boolean{
+    fun verificaEndereco(): Boolean {
         val nulo = listOf(
             ruaEndereco,
             numeroEndereco,
             cepEndereco,
             cidadeEndereco,
             estadoEndereco
-        ).any{it == null}
-        return false
+        ).any { it == null }
+        return nulo != null
     }
-    else{
-        return true
-    }
-
 }
