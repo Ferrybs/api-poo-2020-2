@@ -59,7 +59,7 @@ class Financeiro {
     fun rConta(cartao: Cartao?): Conta? {
 
         if(cartao != null && cartao.verificaCartao()){
-            return contas.first { Conta -> Conta.contaCartao == cartao }
+            return contas.first { Conta -> Conta.rContaCartao() == cartao }
         }
         return null
     }
