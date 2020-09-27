@@ -3,7 +3,7 @@ package br.com.empresa.financeiro.conta
 import br.com.empresa.financeiro.cartao.CartaoTransacao
 import br.com.empresa.financeiro.pessoa.Pessoa
 
-class Conta(
+data class Conta(
         var idConta: String? = null,
         var pessoaConta: Pessoa? = null,
         var limiteConta: Double? = null
