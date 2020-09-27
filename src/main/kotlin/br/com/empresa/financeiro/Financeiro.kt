@@ -16,7 +16,7 @@ class Financeiro {
         return "INVÁLIDO"
     }
 
-    fun rConta(pessoa: Pessoa?): Conta {
+    fun rConta(pessoa: Pessoa?): Conta? {
         if (pessoa != null) {
             if (pessoa.verificaPessoa()) {
                 return contas.first { Conta -> Conta.pessoaConta == pessoa }
@@ -29,6 +29,7 @@ class Financeiro {
                 if (endereco != null) return contas.first { Contas -> Contas.pessoaConta.enderecoPessoa == endereco }
             }
         }
+        return null
     }
 
     fun cTransacao(lista: List<Any>?): String{
@@ -45,7 +46,6 @@ class Financeiro {
                     conta.contaCartao?.cTransacao(transacao)
                     return "VALIDA"
                 }
-
             }
         }
 
