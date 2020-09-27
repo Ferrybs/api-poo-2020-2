@@ -32,7 +32,7 @@ class Financeiro {
         }
     }
 
-    fun cTransacao(lista: List<Any>?){
+    fun cTransacao(lista: List<Any>?): Str{
 
         if(lista !=null && lista.isNotEmpty()){
 

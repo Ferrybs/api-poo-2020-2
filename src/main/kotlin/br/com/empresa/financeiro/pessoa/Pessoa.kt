@@ -6,13 +6,13 @@ import java.util.*
 
 class Pessoa (
     @Expose
-    var documentoPessoa: String? = "null",
+    var documentoPessoa: String? = null,
     @Expose
-    var nomePessoa: String? = "null",
+    var nomePessoa: String? = null,
     @Expose
-    var nascimentoPessoa: Date? = "null",
+    var nascimentoPessoa: Date? = null,
     @Expose
-    var enderecoCliente: Endereco? = "null"
+    var enderecoCliente: Endereco? = null
 ){
     fun verificaPessoa() : Boolean {
         val nulo = listOf(
