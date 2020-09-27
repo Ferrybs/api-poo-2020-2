@@ -25,6 +25,7 @@ open class Endereco(
             cidadeEndereco,
             estadoEndereco
         ).any { it == null }
-        return nulo != null
+
+        return !nulo
     }
 }
