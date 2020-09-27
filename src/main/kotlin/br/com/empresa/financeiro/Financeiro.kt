@@ -48,14 +48,16 @@ class Financeiro {
         return contas
     }
     fun rConta(pessoa: Pessoa?): Conta? {
-        if (pessoa != null) {
-            if (pessoa.verificaPessoa()) {
-                return contas.first { Conta -> Conta.rContaPessoa() == pessoa }
-            } else {
-                val documento = pessoa.documentoPessoa
-                val nome = pessoa.nomePessoa
-                if (documento != null) return contas.first { Conta -> Conta.rContaPessoa()?.documentoPessoa == documento }
-                if (nome != null) return contas.first { Conta -> Conta.rContaPessoa()?.nomePessoa == nome }
+        if(verificaFinanceiro()) {
+            if (pessoa != null) {
+                if (pessoa.verificaPessoa()) {
+                    return contas.first { Conta -> Conta.rContaPessoa() == pessoa }
+                } else {
+                    val documento = pessoa.documentoPessoa
+                    val nome = pessoa.nomePessoa
+                    if (documento != null) return contas.first { Conta -> Conta.rContaPessoa()?.documentoPessoa == documento }
+                    if (nome != null) return contas.first { Conta -> Conta.rContaPessoa()?.nomePessoa == nome }
+                }
             }
         }
         return null
@@ -78,6 +80,8 @@ class Financeiro {
     /*
     *   UPDATE
     * */
-
+    fun verificaFinanceiro(): Boolean {
+        return contas.isEmpty()
+    }
 
 }

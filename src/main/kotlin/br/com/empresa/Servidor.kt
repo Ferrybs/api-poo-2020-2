@@ -45,7 +45,6 @@ fun main() {
             get("/$REST_INICIO/conta/busca/pessoa") {
                 val busca = call.receive<Pessoa>()
                 val res = financeiro.rConta(busca)
-                call.respond("ENTREI")
                 if (res != null){
                     call.respond(res)
                 }
