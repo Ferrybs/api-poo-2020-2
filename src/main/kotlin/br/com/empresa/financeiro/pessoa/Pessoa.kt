@@ -12,8 +12,11 @@ class Pessoa (
     @Expose
     var nascimentoPessoa: String? = null,
     @Expose
-    var enderecoPessoa: Endereco? = null
+    private var enderecoPessoa: Endereco? = null
 ){
+    fun rEndereco(): Endereco? {
+        return enderecoPessoa
+    }
     fun verificaPessoa() : Boolean {
         val nulo = listOf(
         documentoPessoa,

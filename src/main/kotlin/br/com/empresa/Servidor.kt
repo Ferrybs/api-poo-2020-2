@@ -2,6 +2,7 @@ package br.com.empresa
 
 import br.com.empresa.financeiro.cartao.Cartao
 import br.com.empresa.financeiro.conta.Conta
+import br.com.empresa.financeiro.pessoa.Pessoa
 import io.ktor.application.*
 import io.ktor.features.*
 import io.ktor.gson.*
@@ -24,17 +25,25 @@ fun main() {
                 }
             }
             //POST
-            post("/financeiro"){
+            post("/financeiro/criarConta"){
                 val nova = call.receive<Conta>()
                 financeiro.cConta(nova)
                 call.respond("Exito!")
+            }
+            post("/financeiro/buscarConta"){
+                val busca = call.receive<Pessoa>()
+                val res = financeiro.rConta(busca)
+                if (res != null){
+                    call.respond(res)
+                }
+
             }
 
             // GET
             get("/") {
                 call.respondText("<h1>Servidor base pronto!</h1>", ContentType.Text.Html)
             }
-            get("/financeiro") {
+            get("/financeiro/contas") {
                 val contas = financeiro.rConta()
                 if(contas.isNotEmpty()) call.respond(contas)
 
