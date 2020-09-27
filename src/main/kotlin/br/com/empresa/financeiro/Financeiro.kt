@@ -59,23 +59,26 @@ class Financeiro {
                     if (nome != null) return contas.first { Conta -> Conta.rContaPessoa()?.nomePessoa == nome }
                 }
             }
+
         }
         return null
     }
     fun rConta(cartao: Cartao?): Conta? {
-
-        if(cartao != null && cartao.verificaCartao()){
-            return contas.first { Conta -> Conta.rContaCartao() == cartao }
+        if (verificaFinanceiro()) {
+            if (cartao != null && cartao.verificaCartao()) {
+                return contas.first { Conta -> Conta.rContaCartao() == cartao }
+            }
+            return null
         }
-        return null
     }
 
     fun rConta(endereco: Endereco?): Conta? {
+        if (verificaFinanceiro()) {
+            if (endereco != null && endereco.verificaEndereco())
+                return contas.first { Contas -> Contas.rContaPessoa()?.rEndereco() == endereco }
 
-        if (endereco != null &&  endereco.verificaEndereco())
-            return contas.first { Contas -> Contas.rContaPessoa()?.rEndereco() == endereco }
-
-        return null
+            return null
+        }
     }
     /*
     *   UPDATE
