@@ -68,10 +68,12 @@ class Financeiro {
         return null
     }
 
-    fun rConta(endereco: Endereco?): Conta?{
+    fun rConta(endereco: Endereco?): Conta? {
 
         if (endereco != null &&  endereco.verificaEndereco())
-            return contas.first { Contas -> Contas.rContaPessoa()?.enderecoPessoa == endereco }
+            return contas.first { Contas -> Contas.rContaPessoa()?.rEndereco() == endereco }
+
+        return null
     }
     /*
     *   UPDATE

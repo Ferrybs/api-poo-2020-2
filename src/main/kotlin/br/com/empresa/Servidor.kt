@@ -31,11 +31,22 @@ fun main() {
                 call.respond("Exito!")
             }
             post("/financeiro/buscarConta"){
-                val busca = call.receive<Pessoa>()
-                val res = financeiro.rConta(busca)
-                if (res != null){
+                val busca = call.receive<Any>()
+                var res: Any? = null
+                when (busca) {
+                    is Pessoa -> {
+                        res = financeiro.rConta(busca)
+                    }
+                    is Cartao -> {
+                        res = financeiro.rConta(busca)
+                    }
+                }
+                if(res != null){
                     call.respond(res)
                 }
+                else
+                    call.respond("Erro!")
+
 
             }
 
