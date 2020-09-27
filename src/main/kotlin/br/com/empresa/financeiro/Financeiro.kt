@@ -16,7 +16,7 @@ class Financeiro {
         return "INVÁLIDO"
     }
 
-    fun rConta(pessoa: Pessoa?): Conta {
+    fun rConta(pessoa: Pessoa?): Conta? {
         if (pessoa != null) {
             if (pessoa.verificaPessoa()) {
                 return contas.first { Conta -> Conta.pessoaConta == pessoa }
@@ -24,11 +24,12 @@ class Financeiro {
                 val documento = pessoa.documentoPessoa
                 val nome = pessoa.nomePessoa
                 val endereco = pessoa.enderecoPessoa
-                if (documento != null) return contas.first { Conta -> Conta.pessoaConta.documentoPessoa == documento }
-                if (nome != null) return contas.first { Conta -> Conta.pessoaConta.nomePessoa == nome }
-                if (endereco != null) return contas.first { Contas -> Contas.pessoaConta.enderecoPessoa == endereco }
+                if (documento != null) return contas.first { Conta -> Conta.pessoaConta?.documentoPessoa == documento }
+                if (nome != null) return contas.first { Conta -> Conta.pessoaConta?.nomePessoa == nome }
+                if (endereco != null) return contas.first { Contas -> Contas.pessoaConta?.enderecoPessoa == endereco }
             }
         }
+        return null
     }
 
     fun cTransacao(lista: List<Any>?): String{
@@ -45,7 +46,6 @@ class Financeiro {
                     conta.contaCartao?.cTransacao(transacao)
                     return "VALIDA"
                 }
-
             }
         }
 
