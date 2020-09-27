@@ -1,5 +1,6 @@
 package br.com.empresa
 
+import br.com.empresa.financeiro.cartao.Cartao
 import io.ktor.application.*
 import io.ktor.features.*
 import io.ktor.gson.*
@@ -8,6 +9,8 @@ import io.ktor.response.*
 import io.ktor.routing.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
+
+val cartao = Cartao().cCartao("Felipe Araujo")
 
 
 fun main() {
@@ -21,6 +24,7 @@ fun main() {
             }
 
             get("/") {
+                //pronto
                 call.respondText("<h1>Servidor base pronto!</h1>", ContentType.Text.Html)
             }
         }

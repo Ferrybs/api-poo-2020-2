@@ -9,7 +9,9 @@ import br.com.empresa.financeiro.transacao.Transacao
 class Financeiro {
     private var contas = mutableListOf<Conta>()
 
-    // CREATE
+    /*
+    *   CREATE
+    * */
     fun cConta(conta: Conta?): String {
         if (conta != null && conta.verificaConta()) {
             contas.add(conta)
@@ -36,7 +38,9 @@ class Financeiro {
         }
         return "INVALIDO"
     }
-    // READ
+    /*
+    *   READ
+    * */
     fun rConta(pessoa: Pessoa?): Conta? {
         if (pessoa != null) {
             if (pessoa.verificaPessoa()) {
@@ -52,7 +56,16 @@ class Financeiro {
         }
         return null
     }
-    // UPDATE
+    fun rConta(cartao: Cartao?): Conta? {
+
+        if(cartao != null && cartao.verificaCartao()){
+            return contas.first { Conta -> Conta.contaCartao == cartao }
+        }
+        return null
+    }
+    /*
+    *   UPDATE
+    * */
 
 
 }

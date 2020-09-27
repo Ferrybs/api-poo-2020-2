@@ -5,9 +5,9 @@ import br.com.empresa.financeiro.pessoa.Pessoa
 
 data class Conta(
         var idConta: String? = null,
-        var pessoaConta: Pessoa? = null,
-        var limiteConta: Double? = null,
-        var contaCartao: Cartao? = null
+        private var pessoaConta: Pessoa? = null,
+        private var limiteConta: Double? = null,
+        private var contaCartao: Cartao? = null
 ){
 
     // criando os metodos da classe
