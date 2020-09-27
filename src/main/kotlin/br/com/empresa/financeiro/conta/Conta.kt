@@ -11,14 +11,14 @@ data class Conta(
 ){
 
     // criando os metodos da classe
-    fun vConta(): Boolean{
+    fun verificaConta(): Boolean{
         val nulo = listOf(
             idConta,
             limiteConta,
         ).any { it == null }
 
-        val pessoa = pessoaConta?.vPessoa()
-        val cartao = contaCartao?.vCartao()
+        val pessoa = pessoaConta?.verificaPessoa()
+        val cartao = contaCartao?.verificaCartao()
 
         if (pessoa != null && cartao != null){
             if(cartao && pessoa){

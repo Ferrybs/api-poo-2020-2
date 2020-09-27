@@ -22,7 +22,7 @@ data class Cartao(
     private var transacaoCartao = mutableListOf<Transacao>()
 
 
-    fun vCartao(): Boolean {
+    fun verificaCartao(): Boolean {
         val nulo = listOf(
             nomeCartao,
             numeroCartao,
