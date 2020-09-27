@@ -8,7 +8,6 @@ class Financeiro {
     private var contas = mutableListOf<Conta>()
     fun cConta(conta: Conta?): String {
         if (conta != null && conta.validaConta()) {
-            conta.cConta()
             contas.add(conta)
             return "VALIDO"
         }
