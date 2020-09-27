@@ -29,8 +29,8 @@ class Financeiro {
                 val transacao = lista[1] as Transacao
 
                 // pessquisa conta com esse cartao
-                val conta: Conta
-                if(conta.verificaConta()){
+                val conta = rConta(cartao)
+                if(conta != null && conta.verificaConta()){
                     conta.rContaCartao()?.cTransacao(transacao)
                     return "VALIDA"
                 }
@@ -44,14 +44,14 @@ class Financeiro {
     fun rConta(pessoa: Pessoa?): Conta? {
         if (pessoa != null) {
             if (pessoa.verificaPessoa()) {
-                return contas.first { Conta -> Conta.pessoaConta == pessoa }
+                return contas.first { Conta -> Conta.rContaPessoa() == pessoa }
             } else {
                 val documento = pessoa.documentoPessoa
                 val nome = pessoa.nomePessoa
                 val endereco = pessoa.enderecoPessoa
                 if (documento != null) return contas.first { Conta -> Conta.rContaPessoa()?.documentoPessoa == documento }
                 if (nome != null) return contas.first { Conta -> Conta.rContaPessoa()?.nomePessoa == nome }
-                if (endereco != null) return contas.first {Conta -> Conta.rContaPessoa()?.enderecoPessoa == endereco}
+                if (endereco != null) return contas.first { Contas -> Contas.rContaPessoa()?.enderecoPessoa == endereco }
             }
         }
         return null
@@ -59,7 +59,7 @@ class Financeiro {
     fun rConta(cartao: Cartao?): Conta? {
 
         if(cartao != null && cartao.verificaCartao()){
-            return contas.first { Conta -> Conta.contaCartao == cartao }
+            return contas.first { Conta -> Conta.rContaCartao() == cartao }
         }
         return null
     }
