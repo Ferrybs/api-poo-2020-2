@@ -48,25 +48,22 @@ fun main() {
                 if (res != null){
                     call.respond(res)
                 }
-                else
-                {
-                    call.respondText("Nenhuma conta encontrada")
-                }
-            }
-            get("/$REST_INICIO/conta/busca/endereco") {
-                val busca = call.receive<Endereco>()
-                val res = financeiro.rConta(busca)
 
+                call.respondText("Nenhuma conta encontrada")
+
+            }
+            get("/$REST_INICIO/conta/busca/cartao") {
+                val busca = call.receive<Cartao>()
+                val res = financeiro.rConta(busca)
                 if (res != null){
                     call.respond(res)
                 }
-                else
-                {
-                    call.respondText("Nenhuma conta encontrada")
-                }
+
+                call.respondText("Nenhuma conta encontrada")
+
             }
             get("/$REST_INICIO/conta/busca/endereco") {
-                val busca = call.receive<Cartao>()
+                val busca = call.receive<Endereco>()
                 val res = financeiro.rConta(busca)
                 if (res != null){
                     call.respond(res)
