@@ -3,9 +3,7 @@ package br.com.empresa
 import br.com.empresa.financeiro.cartao.Cartao
 import br.com.empresa.financeiro.cartao.CartaoTransacao
 import br.com.empresa.financeiro.conta.Conta
-import br.com.empresa.financeiro.endereco.Endereco
 import br.com.empresa.financeiro.pessoa.Pessoa
-import br.com.empresa.financeiro.transacao.Transacao
 import io.ktor.application.*
 import io.ktor.features.*
 import io.ktor.gson.*
@@ -30,14 +28,14 @@ fun main() {
             }
             //POST
             post("$REST_INICIO/conta/criar"){
-                val nova = call.receive<Conta>()
+                val nova = call.receiveOrNull<Conta>()
                 val res = financeiro.cConta(nova)
                 call.respond(res)
             }
             post("$REST_INICIO/conta/cartao/transacao/criar"){
-                val cartaoTransacao = call.receive<CartaoTransacao>()
+                val cartaoTransacao = call.receiveOrNull<CartaoTransacao>()
 
-                if (cartaoTransacao.verificaCartaoTransacao())
+                if (cartaoTransacao != null && cartaoTransacao.verificaCartaoTransacao())
                 {
                     val cartao = cartaoTransacao.cartao
                     val transacao = cartaoTransacao.transacao
@@ -52,12 +50,22 @@ fun main() {
             }
             get("/$REST_INICIO/conta/busca/todas") {
                 val contas = financeiro.rConta()
-                if(contas.isNotEmpty()) call.respond(contas)
+                if(contas != null && contas.isNotEmpty()) call.respond(contas)
 
                 call.respondText("Nenhuma conta encontrada")
             }
+            get("/$REST_INICIO/conta/busca/conta") {
+                val busca = call.receiveOrNull<Conta>()
+                if (busca != null){
+                    val res = financeiro.rConta(busca)
+                    if(res != null){
+                        call.respond(res)
+                    }
+                }
+                call.respondText("Nenhuma conta encontrada")
+            }
             get("/$REST_INICIO/conta/busca/pessoa") {
-                val busca = call.receive<Pessoa>()
+                val busca = call.receiveOrNull<Pessoa>()
                 val res = financeiro.rConta(busca)
                 if (res != null){
                     call.respond(res)
@@ -68,21 +76,8 @@ fun main() {
 
 
             }
-            get("/$REST_INICIO/conta/busca/pessoa/endereco") {
-                val busca = call.receive<Endereco>()
-                //call.respond("${busca.verificaEndereco()}")
-                val res = financeiro.rConta(busca)
-                //call.respond("${res?.javaClass?.name}")
-                if (res!= null){
-                    call.respond(res)
-                }
-                else {
-                    call.respondText("Nenhuma conta encontrada")
-                }
-
-            }
             get("/$REST_INICIO/conta/busca/cartao") {
-                val busca = call.receive<Cartao>()
+                val busca = call.receiveOrNull<Cartao>()
                 //call.respond("${busca.javaClass.name} e ${busca.verificaCartao()}")
                 val res = financeiro.rConta(busca)
                 if (res != null){
@@ -90,16 +85,25 @@ fun main() {
                 }
                 call.respondText("Nenhuma conta encontrada")
             }
-            get("/$REST_INICIO/conta/atualizar/pessoa") {
-                val att = call.receive<Cartao>()
-                val res = financeiro.rConta(att)
-                if (res != null){
+            get("/$REST_INICIO/conta/busca/cartao/transacao") {
+                val busca = call.receiveOrNull<CartaoTransacao>()
+                if(busca != null){
+                    val cartao = busca.cartao
+                    val transacao = busca.transacao
+                    if (transacao == null){
+                        val res = financeiro.rTransacao(cartao)
+                        if (res !=null && res.isNotEmpty() ){
+                            call.respond(res)
+                        }
+                    }
+                    val res = financeiro.rTransacao(cartao,transacao)
+                    if (res !=null){
+                        call.respond(res)
+                    }
 
                 }
-                call.respondText("Nenhuma conta encontrada")
-
+                call.respondText("Nenhuma transacao encontrada")
             }
-
         }
     }.start(wait = true)
 

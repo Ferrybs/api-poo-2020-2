@@ -1,6 +1,7 @@
 package br.com.empresa
 
 import br.com.empresa.financeiro.cartao.Cartao
+import br.com.empresa.financeiro.cartao.CartaoTransacao
 import br.com.empresa.financeiro.pessoa.Pessoa
 import br.com.empresa.financeiro.conta.Conta
 import br.com.empresa.financeiro.endereco.Endereco
@@ -42,8 +43,9 @@ class Financeiro {
     /*
     *   READ
     * */
-    fun rConta(): MutableList<Conta> {
-        return contas
+    fun rConta(): MutableList<Conta>? {
+        if (verificaFinanceiro()) return contas
+        return null
     }
     fun rConta(pessoa: Pessoa?): Conta? {
         if(verificaFinanceiro()) {
@@ -67,16 +69,43 @@ class Financeiro {
             }
         }
         return null
-
     }
-
-    fun rConta(endereco: Endereco?): Conta? {
-        if(verificaFinanceiro()) {
-            if (endereco != null && endereco.verificaEndereco())
-                return contas.first { Contas -> Contas.rContaPessoa()?.rEndereco()?.ruaEndereco == endereco.ruaEndereco }
+    fun rConta(conta: Conta?): Conta? {
+        if (verificaFinanceiro()) {
+            if (conta?.idConta != null) {
+                return contas.first { Conta -> Conta.idConta == conta.idConta }
+            }
         }
         return null
     }
+    fun rTransacao(cartao: Cartao?): MutableList<Transacao>? {
+        if (verificaFinanceiro()){
+            if (cartao != null && cartao.verificaCartao()){
+
+                val cartaoConta = rConta(cartao)?.rContaCartao()
+
+                if (cartaoConta != null && cartaoConta.verificaCartao()){
+                    return cartaoConta.rTransacao()
+                }
+            }
+            }
+        return null
+        }
+    fun rTransacao(cartao: Cartao?, transacao: Transacao?): Transacao? {
+        if (verificaFinanceiro()){
+            if (cartao != null && cartao.verificaCartao()){
+                val cartaoConta = rConta(cartao)?.rContaCartao()
+
+                if (cartaoConta != null && cartaoConta.verificaCartao()){
+
+                    return cartaoConta.rTransacao(transacao)
+                }
+            }
+        }
+        return null
+    }
+
+
     /*
     *   UPDATE
     * */
@@ -91,11 +120,6 @@ class Financeiro {
             }
         }
         return "INVALIDO"
-    }
-
-    fun uEdereco(endereco: Endereco?){
-        if(endereco != null){
-        }
     }
     fun verificaFinanceiro(): Boolean {
         return contas.isNotEmpty()

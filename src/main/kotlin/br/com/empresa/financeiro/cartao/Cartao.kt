@@ -2,7 +2,6 @@ package br.com.empresa.financeiro.cartao
 
 import br.com.empresa.financeiro.transacao.Transacao
 import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
 
 data class Cartao(
     @Expose
@@ -25,7 +24,16 @@ data class Cartao(
         if(transacao != null && transacao.verificaTransacao()){
             transacaoCartao.add(transacao)
         }
+    }
+    fun rTransacao(): MutableList<Transacao> {
+            return transacaoCartao
 
+    }
+    fun rTransacao(transacao: Transacao?): Transacao? {
+        if (transacao?.idTransacao != null)
+        return transacaoCartao.first { Transacao -> Transacao.idTransacao == transacao.idTransacao }
+
+        return null
 
     }
     fun verificaCartao(): Boolean {

@@ -24,6 +24,7 @@ class Pessoa (
             if(pessoa.nomePessoa != null) nomePessoa = pessoa.nomePessoa
             if(pessoa.documentoPessoa != null) documentoPessoa = pessoa.documentoPessoa
             if(pessoa.nascimentoPessoa != null) nascimentoPessoa = pessoa.nascimentoPessoa
+            if(pessoa.enderecoPessoa != null) enderecoPessoa?.uEdereco(pessoa.enderecoPessoa)
         }
 
     }
@@ -36,7 +37,7 @@ class Pessoa (
 
         val endereco = enderecoPessoa?.verificaEndereco()
 
-        if (endereco != null){
+        if (!nulo && endereco != null){
             return true
         }
         return false

@@ -12,12 +12,6 @@ open class Transacao(
     @Expose
     var localTransacao: String? = null,
 ) {
-    fun uTrasancao(transacao: Transacao?){
-        if(transacao != null)
-        {
-            if (transacao.idTransacao != null) idTransacao = transacao.idTransacao
-        }
-    }
     fun verificaTransacao(): Boolean{
         val nulo = listOf(
             idTransacao,

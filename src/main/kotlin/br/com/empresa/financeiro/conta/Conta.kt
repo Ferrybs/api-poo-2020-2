@@ -36,7 +36,7 @@ data class Conta(
         val pessoa = pessoaConta?.verificaPessoa()
         val cartao = cartaoConta?.verificaCartao()
 
-        if (pessoa != null && cartao != null){
+        if (!nulo && pessoa != null && cartao != null){
             if(cartao && pessoa){
                 return true
             }
