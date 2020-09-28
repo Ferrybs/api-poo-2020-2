@@ -73,13 +73,30 @@ class Financeiro {
     fun rConta(endereco: Endereco?): Conta? {
         if(verificaFinanceiro()) {
             if (endereco != null && endereco.verificaEndereco())
-                return contas.first { Contas -> Contas.rContaPessoa()?.rEndereco() == endereco }
+                return contas.first { Contas -> Contas.rContaPessoa()?.rEndereco()?.ruaEndereco == endereco.ruaEndereco }
         }
         return null
     }
     /*
     *   UPDATE
     * */
+    fun uPessoa(pessoa: Pessoa?): String {
+        if (pessoa != null){
+            val busca = rConta(pessoa)
+            if (busca != null)
+            {
+                val buscaCliente = busca.rContaPessoa()
+                pessoa.uPessoa(pessoa)
+                return "SUCESSO"
+            }
+        }
+        return "INVALIDO"
+    }
+
+    fun uEdereco(endereco: Endereco?){
+        if(endereco != null){
+        }
+    }
     fun verificaFinanceiro(): Boolean {
         return contas.isNotEmpty()
     }

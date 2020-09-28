@@ -28,4 +28,14 @@ open class Endereco(
 
         return !nulo
     }
+    fun uEdereco(endereco: Endereco?){
+        if(endereco != null){
+            if (endereco.ruaEndereco!= null) ruaEndereco = endereco.ruaEndereco
+            if (endereco.numeroEndereco!= null) numeroEndereco = endereco.numeroEndereco
+            if (endereco.complementoEndereco!= null) complementoEndereco = endereco.complementoEndereco
+            if (endereco.cepEndereco!= null) cepEndereco = endereco.cepEndereco
+            if (endereco.cidadeEndereco!= null) cidadeEndereco = endereco.cidadeEndereco
+            if (endereco.estadoEndereco!= null) estadoEndereco = endereco.estadoEndereco
+        }
+    }
 }

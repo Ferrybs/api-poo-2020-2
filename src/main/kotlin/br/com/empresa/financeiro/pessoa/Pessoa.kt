@@ -17,6 +17,16 @@ class Pessoa (
     fun rEndereco(): Endereco? {
         return enderecoPessoa
     }
+
+    fun uPessoa(pessoa: Pessoa?){
+
+        if (pessoa!= null){
+            if(pessoa.nomePessoa != null) nomePessoa = pessoa.nomePessoa
+            if(pessoa.documentoPessoa != null) documentoPessoa = pessoa.documentoPessoa
+            if(pessoa.nascimentoPessoa != null) nascimentoPessoa = pessoa.nascimentoPessoa
+        }
+
+    }
     fun verificaPessoa() : Boolean {
         val nulo = listOf(
         documentoPessoa,

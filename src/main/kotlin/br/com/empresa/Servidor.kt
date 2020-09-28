@@ -62,7 +62,23 @@ fun main() {
                 if (res != null){
                     call.respond(res)
                 }
-                call.respondText("Nenhuma conta encontrada")
+                else{
+                    call.respondText("Nenhuma conta encontrada")
+                }
+
+
+            }
+            get("/$REST_INICIO/conta/busca/pessoa/endereco") {
+                val busca = call.receive<Endereco>()
+                //call.respond("${busca.verificaEndereco()}")
+                val res = financeiro.rConta(busca)
+                //call.respond("${res?.javaClass?.name}")
+                if (res!= null){
+                    call.respond(res)
+                }
+                else {
+                    call.respondText("Nenhuma conta encontrada")
+                }
 
             }
             get("/$REST_INICIO/conta/busca/cartao") {
@@ -71,6 +87,14 @@ fun main() {
                 val res = financeiro.rConta(busca)
                 if (res != null){
                     call.respond(res)
+                }
+                call.respondText("Nenhuma conta encontrada")
+            }
+            get("/$REST_INICIO/conta/atualizar/pessoa") {
+                val att = call.receive<Cartao>()
+                val res = financeiro.rConta(att)
+                if (res != null){
+
                 }
                 call.respondText("Nenhuma conta encontrada")
 
