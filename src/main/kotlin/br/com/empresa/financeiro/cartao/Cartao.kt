@@ -17,8 +17,6 @@ data class Cartao(
     var sinceCartao: String? = null
 ) {
 
-    @SerializedName("transacaoCartao")
-    @Expose(serialize = false, deserialize = false)
     private var transacaoCartao = mutableListOf<Transacao>()
 
 

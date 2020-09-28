@@ -1,9 +1,11 @@
 package br.com.empresa
 
 import br.com.empresa.financeiro.cartao.Cartao
+import br.com.empresa.financeiro.cartao.CartaoTransacao
 import br.com.empresa.financeiro.conta.Conta
 import br.com.empresa.financeiro.endereco.Endereco
 import br.com.empresa.financeiro.pessoa.Pessoa
+import br.com.empresa.financeiro.transacao.Transacao
 import io.ktor.application.*
 import io.ktor.features.*
 import io.ktor.gson.*
@@ -13,6 +15,7 @@ import io.ktor.response.*
 import io.ktor.routing.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
+
 const val REST_INICIO = "/financeiro"
 val financeiro = Financeiro()
 
@@ -26,15 +29,26 @@ fun main() {
                 }
             }
             //POST
-            post("/financeiro/conta/criar"){
+            post("$REST_INICIO/conta/criar"){
                 val nova = call.receive<Conta>()
-                financeiro.cConta(nova)
-                call.respond("Exito!")
+                val res = financeiro.cConta(nova)
+                call.respond(res)
+            }
+            post("$REST_INICIO/conta/cartao/transacao/criar"){
+                val cartaoTransacao = call.receive<CartaoTransacao>()
+
+                if (cartaoTransacao.verificaCartaoTransacao())
+                {
+                    val cartao = cartaoTransacao.cartao
+                    val transacao = cartaoTransacao.transacao
+                    call.respond(financeiro.cTransacao(cartao,transacao))
+                }
+                call.respond("INVALIDO")
             }
 
             // GET
-            get("/$REST_INICIO") {
-                call.respondText("<h1>Servidor base pronto!</h1>", ContentType.Text.Html)
+            get("/") {
+                call.respondText("<h1>Bem Vindo(a)!</h1>", ContentType.Text.Html)
             }
             get("/$REST_INICIO/conta/busca/todas") {
                 val contas = financeiro.rConta()
@@ -48,31 +62,20 @@ fun main() {
                 if (res != null){
                     call.respond(res)
                 }
-
                 call.respondText("Nenhuma conta encontrada")
 
             }
             get("/$REST_INICIO/conta/busca/cartao") {
                 val busca = call.receive<Cartao>()
+                //call.respond("${busca.javaClass.name} e ${busca.verificaCartao()}")
                 val res = financeiro.rConta(busca)
                 if (res != null){
                     call.respond(res)
                 }
-
                 call.respondText("Nenhuma conta encontrada")
 
             }
-            get("/$REST_INICIO/conta/busca/endereco") {
-                val busca = call.receive<Endereco>()
-                val res = financeiro.rConta(busca)
-                if (res != null){
-                    call.respond(res)
-                }
-                else
-                {
-                    call.respondText("Nenhuma conta encontrada")
-                }
-            }
+
         }
     }.start(wait = true)
 

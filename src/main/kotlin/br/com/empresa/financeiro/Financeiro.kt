@@ -23,23 +23,21 @@ class Financeiro {
         return "INVÁLIDO"
     }
 
-    fun cTransacao(lista: List<Any>?): String{
+    fun cTransacao(cartao: Cartao?,transacao: Transacao?): String{
+        if (verificaFinanceiro()){
 
-        if(lista !=null && lista.isNotEmpty()){
+            if(cartao != null && transacao != null){
 
-            if (lista[0] is Cartao && lista[1] is Transacao){
-                val cartao = lista[0] as Cartao
-                val transacao = lista[1] as Transacao
-
-                // pessquisa conta com esse cartao
-                val conta = rConta(cartao)
-                if(conta != null && conta.verificaConta()){
-                    conta.rContaCartao()?.cTransacao(transacao)
-                    return "VALIDA"
+                if(cartao.verificaCartao() && transacao.verificaTransacao()){
+                    val conta = rConta(cartao)
+                    if(conta != null && conta.verificaConta()) {
+                        conta.rContaCartao()?.cTransacao(transacao)
+                        return "VALIDA"
+                }
                 }
             }
         }
-        return "INVALIDO"
+            return "INVALIDO"
     }
     /*
     *   READ
