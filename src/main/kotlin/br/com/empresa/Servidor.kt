@@ -25,9 +25,9 @@ suspend inline fun <reified T> ApplicationCall.safeReceive(): T? {
         return Gson().fromJson(json, T::class.java)
     }
     finally {
+    }
+    }
 
-    }
-    }
 
 
 
@@ -72,6 +72,17 @@ fun main() {
                 if (busca != null){
                     val res = financeiro.rConta(busca)
                     if(res != null){
+                        call.respond(res)
+                    }
+                }
+                call.respondText("Nenhuma conta encontrada")
+            }
+            get("$REST_INICIO/buscar/conta/{idConta}") {
+                val busca = call.parameters["idConta"]
+                if (busca != null) {
+                    val conta = Conta(busca)
+                    val res = financeiro.rConta(conta)
+                    if (res != null) {
                         call.respond(res)
                     }
                 }
