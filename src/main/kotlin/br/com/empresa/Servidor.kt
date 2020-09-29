@@ -20,12 +20,14 @@ val financeiro = Financeiro()
 
 suspend inline fun <reified T> ApplicationCall.safeReceive(): T? {
     val json = this.receiveOrNull<String>()
-    if(json !=null && json.length > 7)
-    {
+    try {
         return Gson().fromJson(json, T::class.java)
     }
-    return null
-}
+    finally {
+
+    }
+    }
+
 
 
 fun main() {

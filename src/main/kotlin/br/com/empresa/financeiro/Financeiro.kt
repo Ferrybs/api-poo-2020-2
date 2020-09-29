@@ -53,7 +53,8 @@ class Financeiro {
                 } else {
                     val documento = pessoa.documentoPessoa
                     val nome = pessoa.nomePessoa
-                    if (documento != null) return contas.first { Conta -> Conta.rContaPessoa()?.documentoPessoa == documento }
+                    if (documento != null) return contas.first {
+                            Conta -> Conta.rContaPessoa()?.documentoPessoa == documento }
                     if (nome != null) return contas.first { Conta -> Conta.rContaPessoa()?.nomePessoa == nome }
                 }
             }
@@ -71,7 +72,10 @@ class Financeiro {
     fun rConta(conta: Conta?): Conta? {
         if (verificaFinanceiro()) {
             if (conta?.idConta != null) {
-                return contas.first { Conta -> Conta.idConta == conta.idConta }
+                val busca =  contas.filter { Conta -> Conta.idConta == conta.idConta }
+                if (busca.isNotEmpty()){
+                    return busca.first()
+                }
             }
         }
         return null
