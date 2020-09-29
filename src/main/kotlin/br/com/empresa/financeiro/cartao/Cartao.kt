@@ -48,6 +48,16 @@ data class Cartao(
             if (cartao.sinceCartao !=null) sinceCartao = cartao.sinceCartao
         }
     }
+    fun dTransacao(transacao: Transacao?):String{
+        if (transacao?.idTransacao != null){
+            val busca = rTransacao(transacao)
+            if (busca != null){
+                transacaoCartao.remove(busca)
+                return  "SUCESSO"
+            }
+        }
+        return  "FRACASSO"
+    }
     fun verificaCartao(): Boolean {
         val nulo = listOf(
             nomeCartao,

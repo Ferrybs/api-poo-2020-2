@@ -61,13 +61,13 @@ fun main() {
             get("/") {
                 call.respondText("<h1>Bem Vindo(a)!</h1>", ContentType.Text.Html)
             }
-            get("$REST_INICIO/busca/todas-contas") {
+            get("$REST_INICIO/buscar/todas-contas") {
                 val contas = financeiro.rConta()
                 if(contas != null && contas.isNotEmpty()) call.respond(contas)
 
                 call.respondText("Nenhuma conta encontrada")
             }
-            get("$REST_INICIO/busca/conta") {
+            get("$REST_INICIO/buscar/conta") {
                 val busca = call.receiveOrNull<Conta>()
                 if (busca != null){
                     val res = financeiro.rConta(busca)
@@ -77,7 +77,7 @@ fun main() {
                 }
                 call.respondText("Nenhuma conta encontrada")
             }
-            get("$REST_INICIO/busca/pessoa") {
+            get("$REST_INICIO/buscar/pessoa") {
                 val busca = call.receiveOrNull<Pessoa>()
                 val res = financeiro.rConta(busca)
                 if (res != null){
@@ -87,7 +87,7 @@ fun main() {
                     call.respondText("Nenhuma conta encontrada")
                 }
             }
-            get("$REST_INICIO/busca/cartao") {
+            get("$REST_INICIO/buscar/cartao") {
                 val busca = call.receiveOrNull<Cartao>()
                 //call.respond("${busca.javaClass.name} e ${busca.verificaCartao()}")
                 val res = financeiro.rConta(busca)
@@ -96,7 +96,7 @@ fun main() {
                 }
                 call.respondText("Nenhuma conta encontrada")
             }
-            get("$REST_INICIO/busca/transacao") {
+            get("$REST_INICIO/buscar/transacao") {
                 val busca = call.receiveOrNull<CartaoTransacao>()
                 if(busca != null){
                     val cartao = busca.cartao
@@ -143,7 +143,23 @@ fun main() {
                 }
                 call.respond("FRACASSO")
             }
+            //DELETE
+            delete("$REST_INICIO/deletar/conta"){
+                val conta = call.receiveOrNull<Conta>()
+                if (conta != null){
+                    call.respond(financeiro.dConta(conta))
+                }
+                call.respond("FRACASSO")
+            }
+            delete("$REST_INICIO/deletar/transacao"){
+                val cartaoTransacao = call.receiveOrNull<CartaoTransacao>()
+                if (cartaoTransacao != null){
+                    call.respond(financeiro.dTransacao(cartaoTransacao))
+                }
+                call.respond("FRACASSO")
+            }
         }
+
     }.start(wait = true)
 
 }

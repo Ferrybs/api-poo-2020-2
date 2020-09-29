@@ -185,7 +185,37 @@ class Financeiro {
         }
         return "FRACASSO"
     }
+    /*
+    *   DELETE
+    * */
+    fun dConta(conta: Conta?):String{
+        if (verificaFinanceiro()){
+            if (conta?.idConta != null){
+                val busca = rConta(conta)
+                if (busca!=null){
+                    contas.remove(busca)
+                    return "SUCESSO"
+                }
+            }
 
+        }
+        return "FRACASSO"
+    }
+    fun dTransacao(cartaoTransacao: CartaoTransacao?): String{
+        if (cartaoTransacao !=null){
+            val cartao = cartaoTransacao.cartao
+            val transacao = cartaoTransacao.transacao
+            if (cartao?.verificaCartao() != null){
+                val busca = rConta(cartao)?.rContaCartao()
+                if (busca?.verificaCartao() !=null){
+
+                    return busca.dTransacao(transacao)
+                }
+
+            }
+        }
+        return "FRACASSO"
+    }
     private fun verificaFinanceiro(): Boolean {
         return contas.isNotEmpty()
     }
