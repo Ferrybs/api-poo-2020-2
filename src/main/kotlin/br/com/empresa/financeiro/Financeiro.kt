@@ -49,13 +49,23 @@ class Financeiro {
         if(verificaFinanceiro()) {
             if (pessoa != null) {
                 if (pessoa.verificaPessoa()) {
-                    return contas.first { Conta -> Conta.rContaPessoa() == pessoa }
+                    val busca = contas.filter{ Conta -> Conta.rContaPessoa() == pessoa }
+                    if (busca.isNotEmpty()) return busca.first()
+
                 } else {
                     val documento = pessoa.documentoPessoa
                     val nome = pessoa.nomePessoa
-                    if (documento != null) return contas.first {
-                            Conta -> Conta.rContaPessoa()?.documentoPessoa == documento }
-                    if (nome != null) return contas.first { Conta -> Conta.rContaPessoa()?.nomePessoa == nome }
+
+                    if (documento != null){
+                        val busca = contas.filter {
+                                Conta -> Conta.rContaPessoa()?.documentoPessoa == documento }
+                        if (busca.isNotEmpty()) return busca.first()
+                    }
+                    if (nome != null){
+                        val busca = contas.filter { Conta -> Conta.rContaPessoa()?.nomePessoa == nome }
+                        if (busca.isNotEmpty()) return busca.first()
+                    }
+
                 }
             }
         }
@@ -64,7 +74,8 @@ class Financeiro {
     fun rConta(cartao: Cartao?): Conta? {
         if (verificaFinanceiro()) {
             if (cartao != null && cartao.verificaCartao()) {
-                return contas.first { Conta -> Conta.rContaCartao() == cartao }
+                val busca = contas.filter { Conta -> Conta.rContaCartao() == cartao }
+                if (busca.isNotEmpty()) return busca.first()
             }
         }
         return null

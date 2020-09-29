@@ -1,5 +1,4 @@
 package br.com.empresa.financeiro.cartao
-
 import br.com.empresa.financeiro.transacao.Transacao
 import com.google.gson.annotations.Expose
 
