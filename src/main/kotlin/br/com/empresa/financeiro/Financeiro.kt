@@ -1,10 +1,8 @@
 package br.com.empresa
 
 import br.com.empresa.financeiro.cartao.Cartao
-import br.com.empresa.financeiro.cartao.CartaoTransacao
 import br.com.empresa.financeiro.pessoa.Pessoa
 import br.com.empresa.financeiro.conta.Conta
-import br.com.empresa.financeiro.endereco.Endereco
 import br.com.empresa.financeiro.transacao.Transacao
 import com.google.gson.annotations.Expose
 
@@ -19,9 +17,9 @@ class Financeiro {
     fun cConta(conta: Conta?): String {
         if (conta != null && conta.verificaConta()) {
             contas.add(conta)
-            return "VALIDO"
+            return "SUCESSO"
         }
-        return "INVÁLIDO"
+        return "FRACASSO"
     }
 
     fun cTransacao(cartao: Cartao?,transacao: Transacao?): String{
@@ -33,12 +31,12 @@ class Financeiro {
                     val conta = rConta(cartao)
                     if(conta != null && conta.verificaConta()) {
                         conta.rContaCartao()?.cTransacao(transacao)
-                        return "VALIDA"
+                        return "SUCESSO"
                 }
                 }
             }
         }
-            return "INVALIDO"
+            return "FRACASSO"
     }
     /*
     *   READ
@@ -109,18 +107,32 @@ class Financeiro {
     /*
     *   UPDATE
     * */
-    fun uPessoa(pessoa: Pessoa?): String {
-        if (pessoa != null){
-            val busca = rConta(pessoa)
-            if (busca != null)
-            {
-                val buscaCliente = busca.rContaPessoa()
-                pessoa.uPessoa(pessoa)
+    fun uConta(lista: Array<Conta>): String{
+        if (verificaFinanceiro() && lista.size == 2){
+
+            val busca = rConta(lista[0])
+            if (busca!=null){
+                busca.uConta(lista[1])
                 return "SUCESSO"
             }
         }
-        return "INVALIDO"
+        return "FRACASSO"
     }
+    fun uPessoa(conta: Conta?): String {
+        if(verificaFinanceiro()){
+        if (conta != null){
+            val busca = rConta(conta)
+            if (busca != null)
+            {
+                val buscaCliente = busca.rContaPessoa()
+                buscaCliente?.uPessoa(conta.rContaPessoa())
+                return "SUCESSO"
+            }
+        }
+        }
+        return "FRACASSO"
+    }
+
     fun verificaFinanceiro(): Boolean {
         return contas.isNotEmpty()
     }

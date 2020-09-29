@@ -20,13 +20,14 @@ data class Conta(
     fun rContaPessoa(): Pessoa? {
         return pessoaConta
     }
-    fun rContaLimite(): Double? {
-        return limiteConta
-    }
     fun rContaCartao(): Cartao? {
         return cartaoConta
     }
 
+    fun uConta(conta: Conta?){
+        if(conta?.idConta != null) idConta = conta.idConta
+        if(conta?.limiteConta != null) limiteConta = conta.limiteConta
+    }
     fun verificaConta(): Boolean{
         val nulo = listOf(
             idConta,

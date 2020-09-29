@@ -2,7 +2,6 @@ package br.com.empresa.financeiro.pessoa
 
 import br.com.empresa.financeiro.endereco.Endereco
 import com.google.gson.annotations.Expose
-import java.util.*
 
 class Pessoa (
     @Expose
@@ -14,10 +13,6 @@ class Pessoa (
     @Expose
     private var enderecoPessoa: Endereco? = null
 ){
-    fun rEndereco(): Endereco? {
-        return enderecoPessoa
-    }
-
     fun uPessoa(pessoa: Pessoa?){
 
         if (pessoa!= null){
