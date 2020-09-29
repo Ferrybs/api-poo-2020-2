@@ -1,5 +1,6 @@
 package br.com.empresa
 
+import br.com.empresa.financeiro.Financeiro
 import br.com.empresa.financeiro.cartao.Cartao
 import br.com.empresa.financeiro.cartao.CartaoTransacao
 import br.com.empresa.financeiro.conta.Conta
@@ -56,20 +57,6 @@ fun main() {
                 }
                 call.respond("FRACASSO")
             }
-            post("$REST_INICIO/atualizar/pessoa"){
-                val conta = call.receiveOrNull<Conta>()
-                if (conta != null){
-                    call.respond(financeiro.uPessoa(conta))
-                }
-            }
-            post("$REST_INICIO/atualizar/conta"){
-                val lista = call.safeReceive<Array<Conta>>()
-                if (lista != null && lista.isNotEmpty()){
-                    call.respond(financeiro.uConta(lista))
-                }
-                call.respond("FRACASSO")
-            }
-
             // GET
             get("/") {
                 call.respondText("<h1>Bem Vindo(a)!</h1>", ContentType.Text.Html)
@@ -99,8 +86,6 @@ fun main() {
                 else{
                     call.respondText("Nenhuma conta encontrada")
                 }
-
-
             }
             get("$REST_INICIO/busca/cartao") {
                 val busca = call.receiveOrNull<Cartao>()
@@ -126,9 +111,37 @@ fun main() {
                     if (res !=null){
                         call.respond(res)
                     }
-
                 }
                 call.respondText("Nenhuma transacao encontrada")
+            }
+            // PUT
+            put("$REST_INICIO/atualizar/pessoa"){
+                val conta = call.receiveOrNull<Conta>()
+                if (conta != null){
+                    call.respond(financeiro.uPessoa(conta))
+                }
+            }
+            // ###EM FAZE DE TESTES NAO FUNCIONA 100%###
+            put("$REST_INICIO/atualizar/conta"){
+                val lista = call.safeReceive<Array<Conta>>()
+                if (lista != null && lista.isNotEmpty()){
+                    call.respond(financeiro.uConta(lista))
+                }
+                call.respond("FRACASSO")
+            }
+            put("$REST_INICIO/atualizar/cartao"){
+                val conta = call.receiveOrNull<Conta>()
+                if (conta != null){
+                    call.respond(financeiro.uCartao(conta))
+                }
+                call.respond("FRACASSO")
+            }
+            put("$REST_INICIO/atualizar/transacao"){
+                val cartaoTransacao = call.receiveOrNull<CartaoTransacao>()
+                if (cartaoTransacao != null){
+                    call.respond(financeiro.uTransacao(cartaoTransacao))
+                }
+                call.respond("FRACASSO")
             }
         }
     }.start(wait = true)

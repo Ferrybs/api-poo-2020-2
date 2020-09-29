@@ -1,6 +1,7 @@
-package br.com.empresa
+package br.com.empresa.financeiro
 
 import br.com.empresa.financeiro.cartao.Cartao
+import br.com.empresa.financeiro.cartao.CartaoTransacao
 import br.com.empresa.financeiro.pessoa.Pessoa
 import br.com.empresa.financeiro.conta.Conta
 import br.com.empresa.financeiro.transacao.Transacao
@@ -48,25 +49,18 @@ class Financeiro {
     fun rConta(pessoa: Pessoa?): Conta? {
         if(verificaFinanceiro()) {
             if (pessoa != null) {
-                if (pessoa.verificaPessoa()) {
-                    val busca = contas.filter{ Conta -> Conta.rContaPessoa() == pessoa }
+                val documento = pessoa.documentoPessoa
+                val nome = pessoa.nomePessoa
+                if (documento != null){
+                    val busca = contas.filter {
+                            Conta -> Conta.rContaPessoa()?.documentoPessoa == documento }
                     if (busca.isNotEmpty()) return busca.first()
-
-                } else {
-                    val documento = pessoa.documentoPessoa
-                    val nome = pessoa.nomePessoa
-
-                    if (documento != null){
-                        val busca = contas.filter {
-                                Conta -> Conta.rContaPessoa()?.documentoPessoa == documento }
-                        if (busca.isNotEmpty()) return busca.first()
-                    }
-                    if (nome != null){
-                        val busca = contas.filter { Conta -> Conta.rContaPessoa()?.nomePessoa == nome }
-                        if (busca.isNotEmpty()) return busca.first()
-                    }
-
                 }
+                if (nome != null){
+                    val busca = contas.filter { Conta -> Conta.rContaPessoa()?.nomePessoa == nome }
+                    if (busca.isNotEmpty()) return busca.first()
+                }
+
             }
         }
         return null
@@ -147,8 +141,52 @@ class Financeiro {
         }
         return "FRACASSO"
     }
+    fun uCartao(conta: Conta?): String{
+        if (verificaFinanceiro()) {
+            if (conta != null) {
+                var busca = rConta(conta)
+                if (busca != null) {
+                    val cartao = conta.rContaCartao()
+                    val cartaoConta = busca.rContaCartao()
+                    cartaoConta?.uCartao(cartao)
+                    return "SUCESSO"
+                } else {
+                    busca = rConta(conta.rContaPessoa())
+                    if (busca != null) {
+                        val cartao = conta.rContaCartao()
+                        val cartaoConta = busca.rContaCartao()
+                        cartaoConta?.uCartao(cartao)
+                        return "SUCESSO"
+                    }
+                }
 
-    fun verificaFinanceiro(): Boolean {
+
+            }
+        }
+        return "FRACASSO"
+    }
+    fun uTransacao(cartaoTransacao: CartaoTransacao?): String{
+
+        if(verificaFinanceiro()){
+            if(cartaoTransacao!=null){
+                val cartao = cartaoTransacao.cartao
+                val transacao = cartaoTransacao.transacao
+                if(cartao != null && cartao.verificaCartao()){
+                    val conta = rConta(cartao)
+                    if (conta != null){
+                        val buscaTransacao = conta.rContaCartao()?.rTransacao(transacao)
+                            if (buscaTransacao !=null){
+                                buscaTransacao.uTransacao(transacao)
+                                return "SUCESSO"
+                            }
+                    }
+                }
+            }
+        }
+        return "FRACASSO"
+    }
+
+    private fun verificaFinanceiro(): Boolean {
         return contas.isNotEmpty()
     }
 

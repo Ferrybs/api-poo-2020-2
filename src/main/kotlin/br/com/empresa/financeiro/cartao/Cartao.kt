@@ -30,11 +30,23 @@ data class Cartao(
 
     }
     fun rTransacao(transacao: Transacao?): Transacao? {
-        if (transacao?.idTransacao != null)
-        return transacaoCartao.first { Transacao -> Transacao.idTransacao == transacao.idTransacao }
+        if (transacao?.idTransacao != null){
+            val busca = transacaoCartao.filter {
+                    Transacao -> Transacao.idTransacao == transacao.idTransacao }
+            if (busca.isNotEmpty()) return busca.first()
+        }
 
         return null
 
+    }
+    fun uCartao(cartao: Cartao?){
+        if (cartao!=null){
+            if (cartao.nomeCartao !=null) nomeCartao = cartao.nomeCartao
+            if (cartao.numeroCartao !=null) numeroCartao = cartao.numeroCartao
+            if (cartao.cidCartao !=null) cidCartao = cartao.cidCartao
+            if (cartao.valCartao !=null) valCartao = cartao.valCartao
+            if (cartao.sinceCartao !=null) sinceCartao = cartao.sinceCartao
+        }
     }
     fun verificaCartao(): Boolean {
         val nulo = listOf(
