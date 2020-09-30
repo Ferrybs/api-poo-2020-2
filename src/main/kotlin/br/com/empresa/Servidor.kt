@@ -49,13 +49,9 @@ fun main() {
             }
             post("$REST_INICIO/criar/transacao"){
                 val cartaoTransacao = call.receiveOrNull<CartaoTransacao>()
-                if (cartaoTransacao != null && cartaoTransacao.verificaCartaoTransacao())
-                {
-                    val cartao = cartaoTransacao.cartao
-                    val transacao = cartaoTransacao.transacao
-                    call.respond(financeiro.cTransacao(cartao,transacao))
-                }
-                call.respond("FRACASSO")
+
+                call.respond(financeiro.cTransacao(cartaoTransacao))
+
             }
             // GET
             get("/") {

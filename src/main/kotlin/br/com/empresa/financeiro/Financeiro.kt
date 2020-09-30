@@ -28,11 +28,17 @@ class Financeiro {
         return "FRACASSO"
     }
 
-    fun cTransacao(cartao: Cartao?,transacao: Transacao?): String{
+    fun cTransacao(cartaoTransacao: CartaoTransacao?): String{
         if (verificaFinanceiro()){
-            if(cartao != null && transacao != null && cartao.verificaCartao() && transacao.verificaTransacao()) {
+
+            val cartao = cartaoTransacao?.cartao
+            val transacao = cartaoTransacao?.transacao
+
+            if(cartao?.verificaCartao() != null && transacao?.verificaTransacao() != null) {
+
                 val conta = rConta(cartao)
-                if(conta != null && conta.verificaConta()) {
+
+                if(conta?.verificaConta() != null) {
                     conta.rContaCartao()?.cTransacao(transacao)
                     return "SUCESSO"
             }
