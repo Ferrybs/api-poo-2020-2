@@ -25,18 +25,25 @@ data class Cartao(
             transacaoCartao.add(transacao)
         }
     }
-    fun rTransacao(): MutableList<Transacao> {
+    private fun rTransacao(): MutableList<Transacao>? {
+        if (transacaoCartao.isNotEmpty())
             return transacaoCartao
 
-    }
-    fun rTransacao(transacao: Transacao?): Transacao? {
-        if (transacao?.idTransacao != null){
-             return transacaoCartao.find {
-                    Transacao -> Transacao.idTransacao == transacao.idTransacao }
+        return null
 
+    }
+    fun rTransacao(transacao: Transacao?): MutableList<Transacao>? {
+        if (transacao?.idTransacao != null){
+             val res = transacaoCartao.find {
+                     Transacao -> Transacao.idTransacao == transacao.idTransacao }
+            if (res !=null) return mutableListOf(res)
+
+            return null
         }
 
-        return null
+        return rTransacao()
+
+
 
     }
     fun uCartao(cartao: Cartao?){
@@ -52,7 +59,7 @@ data class Cartao(
         if (transacao?.idTransacao != null){
             val busca = rTransacao(transacao)
             if (busca != null){
-                transacaoCartao.remove(busca)
+                transacaoCartao.remove(busca[0])
                 return  "SUCESSO"
             }
         }

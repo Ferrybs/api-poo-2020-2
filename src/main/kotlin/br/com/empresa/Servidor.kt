@@ -103,19 +103,10 @@ fun main() {
             }
             get("$REST_INICIO/buscar/transacao") {
                 val busca = call.receiveOrNull<CartaoTransacao>()
-                if(busca != null){
-                    val cartao = busca.cartao
-                    val transacao = busca.transacao
-                    if (transacao == null){
-                        val res = financeiro.rTransacao(cartao)
-                        if (res !=null && res.isNotEmpty() ){
-                            call.respond(res)
-                        }
-                    }
-                    val res = financeiro.rTransacao(cartao,transacao)
-                    if (res !=null){
-                        call.respond(res)
-                    }
+
+                val res = financeiro.rTransacao(busca)
+                if (res?.isNotEmpty() != null){
+                    call.respond(res)
                 }
                 call.respondText("Nenhuma transacao encontrada")
             }
