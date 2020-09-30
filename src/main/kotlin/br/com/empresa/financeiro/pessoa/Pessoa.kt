@@ -30,9 +30,9 @@ class Pessoa (
         nascimentoPessoa
         ).any{it == null}
 
-        val endereco = enderecoPessoa?.verificaEndereco()
+        val endereco = enderecoPessoa
 
-        if (!nulo && endereco != null){
+        if (!nulo && endereco != null && endereco.verificaEndereco()){
             return true
         }
         return false
