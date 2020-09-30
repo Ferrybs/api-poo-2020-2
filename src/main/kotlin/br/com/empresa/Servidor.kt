@@ -16,6 +16,7 @@ import io.ktor.routing.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import io.ktor.utils.io.errors.*
+import java.lang.reflect.Modifier
 
 const val REST_INICIO = "/financeiro"
 val financeiro = Financeiro()
@@ -38,7 +39,10 @@ fun main() {
         routing {
             install(ContentNegotiation) {
                 gson {
-                    setPrettyPrinting()
+                    setPrettyPrinting().excludeFieldsWithModifiers(
+                        Modifier.STATIC,
+                        Modifier.TRANSIENT,
+                        Modifier.VOLATILE)
                 }
             }
             //POST
@@ -114,6 +118,7 @@ fun main() {
                 if (conta != null){
                     call.respond(financeiro.uPessoa(conta))
                 }
+                call.respond("FRACASSO")
             }
             // ###EM FAZE DE TESTES NAO FUNCIONA 100%###
             put("$REST_INICIO/atualizar/conta"){

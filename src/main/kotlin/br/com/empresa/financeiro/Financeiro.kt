@@ -59,8 +59,7 @@ class Financeiro {
                 val documento = pessoa.documentoPessoa
                 val nome = pessoa.nomePessoa
                 if (documento != null){
-                    return contas.find {
-                            Conta -> Conta.rContaPessoa()?.documentoPessoa == documento }
+                    return contas.find { Conta -> Conta.rContaPessoa()?.documentoPessoa == documento }
                 }
                 if (nome != null){
                     return contas.find { Conta -> Conta.rContaPessoa()?.nomePessoa == nome }
@@ -155,7 +154,7 @@ class Financeiro {
         if(verificaFinanceiro() && cartaoTransacao!=null) {
             val cartao = cartaoTransacao.cartao
             val transacao = cartaoTransacao.transacao
-            if(cartao != null && cartao.verificaCartao()){
+            if(cartao != null && cartao.verificaCartao() && transacao != null){
                 val conta = rConta(cartao)
                 if (conta != null){
                     val buscaTransacao = conta.rContaCartao()?.rTransacao(transacao)

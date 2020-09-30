@@ -15,7 +15,7 @@ data class Cartao(
     @Expose
     var sinceCartao: String? = null
 ) {
-
+    @Expose(serialize = false,deserialize = false)
     private var transacaoCartao = mutableListOf<Transacao>()
 
 
