@@ -52,13 +52,12 @@ class Financeiro {
                 val documento = pessoa.documentoPessoa
                 val nome = pessoa.nomePessoa
                 if (documento != null){
-                    val busca = contas.filter {
+                    return contas.find {
                             Conta -> Conta.rContaPessoa()?.documentoPessoa == documento }
-                    if (busca.isNotEmpty()) return busca.first()
                 }
                 if (nome != null){
-                    val busca = contas.filter { Conta -> Conta.rContaPessoa()?.nomePessoa == nome }
-                    if (busca.isNotEmpty()) return busca.first()
+                    return contas.find { Conta -> Conta.rContaPessoa()?.nomePessoa == nome }
+
                 }
 
             }
@@ -68,8 +67,7 @@ class Financeiro {
     fun rConta(cartao: Cartao?): Conta? {
         if (verificaFinanceiro()) {
             if (cartao != null && cartao.verificaCartao()) {
-                val busca = contas.filter { Conta -> Conta.rContaCartao() == cartao }
-                if (busca.isNotEmpty()) return busca.first()
+                return contas.find { Conta -> Conta.rContaCartao() == cartao }
             }
         }
         return null
@@ -77,36 +75,30 @@ class Financeiro {
     fun rConta(conta: Conta?): Conta? {
         if (verificaFinanceiro()) {
             if (conta?.idConta != null) {
-                val busca =  contas.filter { Conta -> Conta.idConta == conta.idConta }
-                if (busca.isNotEmpty()){
-                    return busca.first()
-                }
+                return contas.find { Conta -> Conta.idConta == conta.idConta }
             }
         }
         return null
     }
     fun rTransacao(cartao: Cartao?): MutableList<Transacao>? {
-        if (verificaFinanceiro()){
-            if (cartao != null && cartao.verificaCartao()){
+        if (verificaFinanceiro() && cartao != null && cartao.verificaCartao()) {
 
-                val cartaoConta = rConta(cartao)?.rContaCartao()
+            val cartaoConta = rConta(cartao)?.rContaCartao()
 
-                if (cartaoConta != null && cartaoConta.verificaCartao()){
-                    return cartaoConta.rTransacao()
-                }
+            if (cartaoConta != null && cartaoConta.verificaCartao()){
+                return cartaoConta.rTransacao()
             }
-            }
+        }
         return null
         }
     fun rTransacao(cartao: Cartao?, transacao: Transacao?): Transacao? {
-        if (verificaFinanceiro()){
-            if (cartao != null && cartao.verificaCartao()){
-                val cartaoConta = rConta(cartao)?.rContaCartao()
+        if (verificaFinanceiro() && cartao != null && cartao.verificaCartao()) {
 
-                if (cartaoConta != null && cartaoConta.verificaCartao()){
+            val cartaoConta = rConta(cartao)?.rContaCartao()
 
-                    return cartaoConta.rTransacao(transacao)
-                }
+            if (cartaoConta != null && cartaoConta.verificaCartao()){
+
+                return cartaoConta.rTransacao(transacao)
             }
         }
         return null
@@ -128,8 +120,7 @@ class Financeiro {
         return "FRACASSO"
     }
     fun uPessoa(conta: Conta?): String {
-        if(verificaFinanceiro()){
-        if (conta != null){
+        if(verificaFinanceiro() && conta != null) {
             val busca = rConta(conta)
             if (busca != null)
             {
@@ -138,48 +129,43 @@ class Financeiro {
                 return "SUCESSO"
             }
         }
-        }
         return "FRACASSO"
     }
     fun uCartao(conta: Conta?): String{
-        if (verificaFinanceiro()) {
-            if (conta != null) {
-                var busca = rConta(conta)
+        if (verificaFinanceiro() && conta != null) {
+            var busca = rConta(conta)
+            if (busca != null) {
+                val cartao = conta.rContaCartao()
+                val cartaoConta = busca.rContaCartao()
+                cartaoConta?.uCartao(cartao)
+                return "SUCESSO"
+            } else {
+                busca = rConta(conta.rContaPessoa())
                 if (busca != null) {
                     val cartao = conta.rContaCartao()
                     val cartaoConta = busca.rContaCartao()
                     cartaoConta?.uCartao(cartao)
                     return "SUCESSO"
-                } else {
-                    busca = rConta(conta.rContaPessoa())
-                    if (busca != null) {
-                        val cartao = conta.rContaCartao()
-                        val cartaoConta = busca.rContaCartao()
-                        cartaoConta?.uCartao(cartao)
-                        return "SUCESSO"
-                    }
                 }
-
-
             }
+
+
         }
         return "FRACASSO"
     }
     fun uTransacao(cartaoTransacao: CartaoTransacao?): String{
 
-        if(verificaFinanceiro()){
-            if(cartaoTransacao!=null){
-                val cartao = cartaoTransacao.cartao
-                val transacao = cartaoTransacao.transacao
-                if(cartao != null && cartao.verificaCartao()){
-                    val conta = rConta(cartao)
-                    if (conta != null){
-                        val buscaTransacao = conta.rContaCartao()?.rTransacao(transacao)
-                            if (buscaTransacao !=null){
-                                buscaTransacao.uTransacao(transacao)
-                                return "SUCESSO"
-                            }
-                    }
+        if(verificaFinanceiro() && cartaoTransacao!=null) {
+            val cartao = cartaoTransacao.cartao
+            val transacao = cartaoTransacao.transacao
+            if(cartao != null && cartao.verificaCartao()){
+                val conta = rConta(cartao)
+                if (conta != null){
+                    val buscaTransacao = conta.rContaCartao()?.rTransacao(transacao)
+                        if (buscaTransacao !=null){
+                            buscaTransacao.uTransacao(transacao)
+                            return "SUCESSO"
+                        }
                 }
             }
         }
@@ -189,20 +175,17 @@ class Financeiro {
     *   DELETE
     * */
     fun dConta(conta: Conta?):String{
-        if (verificaFinanceiro()){
-            if (conta?.idConta != null){
-                val busca = rConta(conta)
-                if (busca!=null){
-                    contas.remove(busca)
-                    return "SUCESSO"
-                }
+        if (verificaFinanceiro() && conta?.idConta != null) {
+            val busca = rConta(conta)
+            if (busca!=null){
+                contas.remove(busca)
+                return "SUCESSO"
             }
-
         }
         return "FRACASSO"
     }
     fun dTransacao(cartaoTransacao: CartaoTransacao?): String{
-        if (cartaoTransacao !=null){
+        if (verificaFinanceiro() && cartaoTransacao !=null){
             val cartao = cartaoTransacao.cartao
             val transacao = cartaoTransacao.transacao
             if (cartao?.verificaCartao() != null){

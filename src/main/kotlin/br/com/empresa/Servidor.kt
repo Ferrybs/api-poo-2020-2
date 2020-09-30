@@ -15,25 +15,26 @@ import io.ktor.response.*
 import io.ktor.routing.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
+import io.ktor.utils.io.errors.*
 
 const val REST_INICIO = "/financeiro"
 val financeiro = Financeiro()
 
 suspend inline fun <reified T> ApplicationCall.safeReceive(): T? {
     val json = this.receiveOrNull<String>()
-    try {
-        return Gson().fromJson(json, T::class.java)
+    return try {
+        Gson().fromJson(json, T::class.java)
+    }catch (e: IOException){
+        null
     }
-    finally {
-    }
-    }
+}
 
 
 
 
 fun main() {
 
-    embeddedServer(Netty, 8080) {
+    embeddedServer(Netty, 8080  ) {
         routing {
             install(ContentNegotiation) {
                 gson {

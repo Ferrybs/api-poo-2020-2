@@ -31,9 +31,9 @@ data class Cartao(
     }
     fun rTransacao(transacao: Transacao?): Transacao? {
         if (transacao?.idTransacao != null){
-            val busca = transacaoCartao.filter {
+             return transacaoCartao.find {
                     Transacao -> Transacao.idTransacao == transacao.idTransacao }
-            if (busca.isNotEmpty()) return busca.first()
+
         }
 
         return null
