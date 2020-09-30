@@ -16,6 +16,11 @@ class Financeiro {
     *   CREATE
     * */
     fun cConta(conta: Conta?): String {
+        /*
+        Verifica que a conta passada por parametro nao esta nula
+        e verifica se a conta tem todos o atributos preenchidos
+        retorna SUCESSO se for criada e FRACASSO caso contrario
+         */
         if (conta != null && conta.verificaConta()) {
             contas.add(conta)
             return "SUCESSO"
@@ -25,16 +30,12 @@ class Financeiro {
 
     fun cTransacao(cartao: Cartao?,transacao: Transacao?): String{
         if (verificaFinanceiro()){
-
-            if(cartao != null && transacao != null){
-
-                if(cartao.verificaCartao() && transacao.verificaTransacao()){
-                    val conta = rConta(cartao)
-                    if(conta != null && conta.verificaConta()) {
-                        conta.rContaCartao()?.cTransacao(transacao)
-                        return "SUCESSO"
-                }
-                }
+            if(cartao != null && transacao != null && cartao.verificaCartao() && transacao.verificaTransacao()) {
+                val conta = rConta(cartao)
+                if(conta != null && conta.verificaConta()) {
+                    conta.rContaCartao()?.cTransacao(transacao)
+                    return "SUCESSO"
+            }
             }
         }
             return "FRACASSO"

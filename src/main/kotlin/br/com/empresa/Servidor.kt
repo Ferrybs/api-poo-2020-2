@@ -44,12 +44,11 @@ fun main() {
             //POST
             post("$REST_INICIO/criar/conta"){
                 val nova = call.receiveOrNull<Conta>()
-                val res = financeiro.cConta(nova)
-                call.respond(res)
+                call.respond(financeiro.cConta(nova))
+
             }
             post("$REST_INICIO/criar/transacao"){
                 val cartaoTransacao = call.receiveOrNull<CartaoTransacao>()
-
                 if (cartaoTransacao != null && cartaoTransacao.verificaCartaoTransacao())
                 {
                     val cartao = cartaoTransacao.cartao
