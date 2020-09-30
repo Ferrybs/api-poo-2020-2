@@ -59,17 +59,15 @@ fun main() {
             }
             get("$REST_INICIO/buscar/todas-contas") {
                 val contas = financeiro.rConta()
-                if(contas != null && contas.isNotEmpty()) call.respond(contas)
+                if(contas?.isNotEmpty() != null) call.respond(contas)
 
                 call.respondText("Nenhuma conta encontrada")
             }
             get("$REST_INICIO/buscar/conta") {
                 val busca = call.receiveOrNull<Conta>()
-                if (busca != null){
-                    val res = financeiro.rConta(busca)
-                    if(res != null){
+                val res = financeiro.rConta(busca)
+                if(res != null){
                         call.respond(res)
-                    }
                 }
                 call.respondText("Nenhuma conta encontrada")
             }
