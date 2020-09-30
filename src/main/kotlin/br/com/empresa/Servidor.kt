@@ -94,7 +94,6 @@ fun main() {
             }
             get("$REST_INICIO/buscar/cartao") {
                 val busca = call.receiveOrNull<Cartao>()
-                //call.respond("${busca.javaClass.name} e ${busca.verificaCartao()}")
                 val res = financeiro.rConta(busca)
                 if (res != null){
                     call.respond(res)
@@ -103,7 +102,6 @@ fun main() {
             }
             get("$REST_INICIO/buscar/transacao") {
                 val busca = call.receiveOrNull<CartaoTransacao>()
-
                 val res = financeiro.rTransacao(busca)
                 if (res?.isNotEmpty() != null){
                     call.respond(res)
@@ -120,7 +118,7 @@ fun main() {
             // ###EM FAZE DE TESTES NAO FUNCIONA 100%###
             put("$REST_INICIO/atualizar/conta"){
                 val lista = call.safeReceive<Array<Conta>>()
-                if (lista != null && lista.isNotEmpty()){
+                if (lista?.isNotEmpty() !=null){
                     call.respond(financeiro.uConta(lista))
                 }
                 call.respond("FRACASSO")
