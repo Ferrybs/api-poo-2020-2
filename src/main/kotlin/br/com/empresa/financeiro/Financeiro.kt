@@ -34,7 +34,7 @@ class Financeiro {
             val cartao = cartaoTransacao?.cartao
             val transacao = cartaoTransacao?.transacao
 
-            if(cartao?.verificaCartao() != null && transacao?.verificaTransacao() != null) {
+            if(cartao?.verificaCartao() != null && transacao != null && transacao.verificaTransacao()) {
 
                 val conta = rConta(cartao)
 
