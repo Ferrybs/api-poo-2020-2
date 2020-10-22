@@ -9,8 +9,8 @@ import com.sfinancial.route.routes
 import io.ktor.server.engine.*
 
 abstract class NettyEnv(
-        var authInterface: AuthInterface,
-        val dbInterface: DBInterface
+        private var authInterface: AuthInterface,
+        private val dbInterface: DBInterface
 ){
     val env = applicationEngineEnvironment {
         module {
@@ -23,5 +23,8 @@ abstract class NettyEnv(
             host = "0.0.0.0"
             port = 8080
         }
+    }
+    fun getDbInterface(): DBInterface {
+        return dbInterface
     }
 }

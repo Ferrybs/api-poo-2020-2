@@ -12,14 +12,14 @@ class NettyServer(
         dbInterface: DBInterface
 ) : ServerInterface, NettyEnv(authInterface,dbInterface) {
 
-    val server = embeddedServer(Netty, env)
+    private val server = embeddedServer(Netty, env)
 
     override fun start() {
         this.server.start(wait = true)
     }
 
     override fun rDatabase(): DBInterface {
-        return dbInterface
+        return getDbInterface()
     }
 
 

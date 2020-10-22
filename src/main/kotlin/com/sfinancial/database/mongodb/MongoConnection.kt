@@ -4,7 +4,7 @@ import com.mongodb.client.MongoDatabase
 
 open class MongoConnection(
         connectionString: String,
-        val databaseName: String
+        private val databaseName: String
 ): Mongodb(connectionString){
     fun connect(): MongoDatabase {
         return client.getDatabase(databaseName)
