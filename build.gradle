@@ -38,6 +38,10 @@ dependencies {
     implementation 'org.litote.kmongo:kmongo-coroutine:4.1.2'
     implementation 'org.litote.kmongo:kmongo-rxjava2:4.1.2'
 
+    // https://mvnrepository.com/artifact/org.mindrot/jbcrypt
+    compile group: 'org.mindrot', name: 'jbcrypt', version: '0.4'
+    implementation 'org.mindrot.jbcrypt:jbcrypt:0.4'
+
     testImplementation group: 'org.amshove.kluent', name: 'kluent', version: '1.38'
     testImplementation "io.ktor:ktor-server-test-host:1.4.0"
 }

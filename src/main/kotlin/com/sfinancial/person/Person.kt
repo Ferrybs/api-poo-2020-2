@@ -3,14 +3,10 @@ package com.sfinancial.person
 import com.sfinancial.Address.Address
 
 open class Person(
-        private var name: String? = null,
-        private var lastName: String? =null,
-        private var birth: String? = null,
-        private var document: String? =null,
-        private var address: Address? = null,
+        private var name: String,
+        private var lastName: String,
+        private var birth: String,
+        private var document: String,
+        private var address: Address
 ): PersonInterface{
-    override fun getDocument(): String? {
-        return document
-    }
-
 }

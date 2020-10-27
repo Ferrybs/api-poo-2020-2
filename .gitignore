@@ -3,3 +3,6 @@
 *./gradle
 *./idea
 *ConnectionString.txt
+*databaseName.txt
+*secret.txt
+*secretHashid.txt

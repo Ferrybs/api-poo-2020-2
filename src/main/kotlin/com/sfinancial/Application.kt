@@ -1,19 +1,18 @@
 package com.sfinancial
 
-import com.sfinancial.auth.AuthJwt
-import com.sfinancial.database.mongodb.MongoManagement
+import com.sfinancial.server.netty.NettyConfig
+import com.sfinancial.server.netty.NettyFactory
 import com.sfinancial.server.netty.NettyServer
-import java.io.File
 
 
 fun main(){
-    val connectionString = File("ConnectionString.txt").readLines()[0]
-    val databaseName = "apiPoo2020"
-    val secret = "M3U-D3US-vazei-a-senha-do-banco-de-dados-123456"
-    val issuer = "com.sfinancial"
-    val authJwt = AuthJwt(secret,issuer)
-    val database =  MongoManagement(connectionString,databaseName)
-    val server = NettyServer(authJwt,database)
-    val sfinancial= Sfinancial(server)
+    val nettyConfig = NettyConfig()
+    var server: NettyServer
+    try {
+        server = NettyFactory(nettyConfig).connect()
+    }catch (e: Exception){
+        throw e
+    }
+    val sfinancial = Sfinancial(server)
     sfinancial.startServer()
 }

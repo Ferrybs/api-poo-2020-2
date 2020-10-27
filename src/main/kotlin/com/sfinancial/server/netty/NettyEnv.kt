@@ -9,22 +9,40 @@ import com.sfinancial.route.routes
 import io.ktor.server.engine.*
 
 abstract class NettyEnv(
-        private var authInterface: AuthInterface,
+        private val authInterface: AuthInterface,
         private val dbInterface: DBInterface
 ){
-    val env = applicationEngineEnvironment {
-        module {
-            moduleStatusPages()
-            moduleJwt(authInterface)
-            moduleGson()
-            routes(dbInterface,authInterface)
+    fun getEnv(): ApplicationEngineEnvironment {
+        try {
+            return applicationEngineEnvironment {
+                module {
+                    //querendo mudar para moduleList mas n consegui implementar - Felipe Araujo
+                    moduleStatusPages()
+                    moduleJwt(getAuthInterface())
+                    moduleGson()
+                    routes(getDbInterface(),getAuthInterface())
+                }
+                connector {
+                    host = "0.0.0.0"
+                    port = 8080
+                }
+            }
+        }catch (e: Exception){
+            throw e
         }
-        connector {
-            host = "0.0.0.0"
-            port = 8080
+    }
+    private fun getAuthInterface(): AuthInterface{
+        try {
+            return authInterface
+        }catch (e: Exception){
+            throw e
         }
     }
     fun getDbInterface(): DBInterface {
-        return dbInterface
+        try {
+            return dbInterface
+        }catch (e: Exception){
+            throw e
+        }
     }
 }

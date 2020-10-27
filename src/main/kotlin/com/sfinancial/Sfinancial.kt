@@ -1,12 +1,17 @@
 package com.sfinancial
 
 import com.sfinancial.server.ServerInterface
+import java.lang.Exception
 
 internal data class Sfinancial(
-        private val server: ServerInterface,
+        private val server: ServerInterface
 ){
     fun startServer() {
-        server.start()
+        try {
+            server.start()
+        }catch (e: Exception){
+            throw e
+        }
     }
 
 }
