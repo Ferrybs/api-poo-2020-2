@@ -2,6 +2,7 @@
 
 *.gradle
 *.idea
+*.build
 *ConnectionString.txt
 *databaseName.txt
 secretJwt.txt
