@@ -1,7 +1,7 @@
 #comentarios
 
-*./gradle
-*./idea
+*.gradle
+*.idea
 *ConnectionString.txt
 *databaseName.txt
 secretJwt.txt
