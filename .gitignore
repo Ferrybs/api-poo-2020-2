@@ -5,5 +5,5 @@
 *.build
 *ConnectionString.txt
 *databaseName.txt
-secretJwt.txt
+*secretJwt.txt
 *secretHashid.txt
