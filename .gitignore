@@ -3,7 +3,7 @@
 *.gradle
 *.idea
 *.build
-*ConnectionString.txt
-*databaseName.txt
-*secretJwt.txt
-*secretHashid.txt
+ConnectionString.txt
+databaseName.txt
+secretJwt.txt
+secretHashid.txt
