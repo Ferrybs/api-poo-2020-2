@@ -23,9 +23,9 @@ class NettyConfig {
             throw e
         }
     }
-    fun getSecret():String{
+    fun getSecretJwt():String{
         try {
-            return File("secret.txt").readLines()[0]
+            return File("secretJwt.txt").readLines()[0]
         }catch (e: FileNotFoundException){
             throw FileNotFound("Arquivo nao encontrado!")
         }catch (e: Exception){

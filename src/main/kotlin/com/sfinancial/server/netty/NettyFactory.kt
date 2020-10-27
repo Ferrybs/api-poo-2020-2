@@ -1,8 +1,6 @@
 package com.sfinancial.server.netty
 
 import com.sfinancial.auth.AuthJwt
-import com.sfinancial.database.DBInterface
-import com.sfinancial.database.mongodb.MongoConnection
 import com.sfinancial.database.mongodb.MongoManagement
 
 class NettyFactory(
@@ -29,7 +27,7 @@ class NettyFactory(
     }
     private fun getJwt(): AuthJwt {
         try {
-            val secret = nettyConfig.getSecret()
+            val secret = nettyConfig.getSecretJwt()
             val issuer = nettyConfig.getIssuer()
             return AuthJwt(secret,issuer)
         }catch (e: Exception){

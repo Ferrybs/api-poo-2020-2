@@ -4,5 +4,5 @@
 *./idea
 *ConnectionString.txt
 *databaseName.txt
-*secret.txt
+secretJwt.txt
 *secretHashid.txt
