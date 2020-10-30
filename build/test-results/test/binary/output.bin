@@ -1,0 +1,1 @@
+Ÿ19:25:01.768 [Test worker] INFO org.mongodb.driver.cluster - Cluster created with settings {hosts=[127.0.0.1:27017], srvHost=database.hwxyu.gcp.mongodb.net, mode=MULTIPLE, requiredClusterType=REPLICA_SET, serverSelectionTimeout='30000 ms', requiredReplicaSetName='atlas-kqytp0-shard-0'}

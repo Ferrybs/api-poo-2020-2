@@ -16,7 +16,7 @@ class NettyConfig {
     }
     fun getDatabaseName(): String{
         try {
-            return File("databseName.txt").readLines()[0]
+            return File("databaseName.txt").readLines()[0]
         }catch (e: FileNotFoundException){
             throw FileNotFound("Arquivo nao encontrado!")
         }catch (e: Exception){

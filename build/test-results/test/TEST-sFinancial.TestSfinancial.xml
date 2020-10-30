@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="sFinancial.TestSfinancial" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-28T22:25:01" hostname="flpe" time="0.377">
+  <properties/>
+  <testcase name="testSfinancial" classname="sFinancial.TestSfinancial" time="0.377"/>
+  <system-out><![CDATA[19:25:01.768 [Test worker] INFO org.mongodb.driver.cluster - Cluster created with settings {hosts=[127.0.0.1:27017], srvHost=database.hwxyu.gcp.mongodb.net, mode=MULTIPLE, requiredClusterType=REPLICA_SET, serverSelectionTimeout='30000 ms', requiredReplicaSetName='atlas-kqytp0-shard-0'}
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
