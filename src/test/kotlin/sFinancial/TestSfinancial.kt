@@ -7,7 +7,7 @@ class TestSfinancial {
 
     @Test
     fun testSfinancial(){
-        TestMongo().testDBconnection()
+        TestMongo().testConnection()
     }
 
 }

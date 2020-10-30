@@ -1,13 +1,14 @@
 package com.sfinancial
 
+import com.google.gson.Gson
 import com.sfinancial.database.mongodb.MongoManagement
-import com.sfinancial.server.netty.NettyConfig
-import org.litote.kmongo.json
-import org.litote.kmongo.util.idValue
 
 fun main(){
     val cString = NettyConfig().getConnectionString()
     val dbname = NettyConfig().getDatabaseName()
     val database = MongoManagement(cString,dbname)
-    println(database.connect())
+    Thread.sleep(3000)
+    val status = database.client.clusterDescription.shortDescription
+    val gson = Gson()
+    println(status.slice((status.length-9)..status.length))
 }

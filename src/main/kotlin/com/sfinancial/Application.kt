@@ -1,6 +1,5 @@
 package com.sfinancial
 
-import com.sfinancial.server.netty.NettyConfig
 import com.sfinancial.server.netty.NettyFactory
 import com.sfinancial.server.netty.NettyServer
 
