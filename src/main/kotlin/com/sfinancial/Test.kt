@@ -1,6 +1,7 @@
 package com.sfinancial
 
 import com.google.gson.Gson
+import com.sfinancial.config.nettyconfig.NettyConfig
 import com.sfinancial.database.mongodb.MongoManagement
 
 fun main(){

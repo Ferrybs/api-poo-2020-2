@@ -1,4 +1,4 @@
-package com.sfinancial.server.netty
+package com.sfinancial.config.nettyconfig
 
 import com.sfinancial.notification.exception.FileNotFound
 import java.io.File
