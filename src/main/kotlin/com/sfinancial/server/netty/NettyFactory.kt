@@ -1,6 +1,7 @@
 package com.sfinancial.server.netty
 
 import com.sfinancial.auth.AuthJwt
+import com.sfinancial.config.nettyconfig.NettyConfig
 import com.sfinancial.database.mongodb.MongoManagement
 
 class NettyFactory(
