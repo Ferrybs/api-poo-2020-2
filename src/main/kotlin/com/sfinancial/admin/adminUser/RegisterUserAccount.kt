@@ -6,7 +6,6 @@ class RegisterUserAccount(
         private val accountInterface: AccountInterface
 ) {
     fun register(){
-
     }
 
 }

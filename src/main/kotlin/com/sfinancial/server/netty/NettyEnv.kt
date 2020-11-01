@@ -1,6 +1,7 @@
 package com.sfinancial.server.netty
 
 import com.sfinancial.auth.AuthInterface
+import com.sfinancial.config.nettyconfig.ConfigNettyInterface
 import com.sfinancial.database.DBInterface
 import com.sfinancial.feature.authJwt.moduleJwt
 import com.sfinancial.feature.gson.moduleGson
@@ -10,7 +11,8 @@ import io.ktor.server.engine.*
 
 abstract class NettyEnv(
         private val authInterface: AuthInterface,
-        private val dbInterface: DBInterface
+        private val dbInterface: DBInterface,
+        private val configNettyInterface: ConfigNettyInterface
 ){
     fun getEnv(): ApplicationEngineEnvironment {
         try {
@@ -23,13 +25,34 @@ abstract class NettyEnv(
                     routes(getDbInterface(),getAuthInterface())
                 }
                 connector {
-                    host = "0.0.0.0"
-                    port = 8080
+                    host = getHost()
+                    port = getPort()
                 }
             }
         }catch (e: Exception){
             throw e
         }
+    }
+    private fun getHost():String{
+        var host: String = "0.0.0.0"
+        try {
+            host = configNettyInterface.getHost()
+        }catch (e: Exception){
+            println("error detecting host opening at: $host")
+        }finally {
+            return host
+        }
+    }
+    private fun getPort(): Int{
+        var port: Int = 8080
+        try {
+            port = configNettyInterface.getPort()
+        }catch (e: Exception){
+            println("error detecting port opening at: $port")
+        }finally {
+            return port
+        }
+        
     }
     private fun getAuthInterface(): AuthInterface{
         try {
