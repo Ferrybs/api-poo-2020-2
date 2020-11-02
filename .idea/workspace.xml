@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d7ba38ae-1f59-40ed-9818-2e93a2d08c9a" name="Default Changelist" comment="verfica finaceiro">
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/permission/userpermission/UserPermission.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/permission/userpermission/UserPermission.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/route/routeAuth/AuthRegister.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/route/routeAuth/AuthRegister.kt" afterDir="false" />
+    </list>
+    <list id="c9781802-89d0-4548-ac91-6b34e577bde4" name="Revert &quot;passasndo parametro e so isso&quot;" comment="Revert &quot;passasndo parametro e so isso&quot;&#10;&#10;This reverts commit a62f3f9f" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin File" />
+        <option value="Kotlin Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.2.1\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1i3axuHGwgtzZreQFgOlC9g1WRM" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
+    <property name="settings.editor.selected.configurable" value="reference.idesettings.debugger.capture" />
+    <property name="show.unlinked.gradle.project.popup" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="ServidorKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <module name="api-poo-2020-2.main" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" value="br.com.empresa.ServidorKt" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Kotlin.ServidorKt" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d7ba38ae-1f59-40ed-9818-2e93a2d08c9a" name="Default Changelist" comment="" />
+      <created>1601138980339</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1601138980339</updated>
+    </task>
+    <task id="LOCAL-00001" summary="fianneiro com algumas funcoes">
+      <created>1601211057922</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1601211057922</updated>
+    </task>
+    <task id="LOCAL-00002" summary="verifica">
+      <created>1601211356052</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1601211356052</updated>
+    </task>
+    <task id="LOCAL-00003" summary="teste">
+      <created>1601212269327</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1601212269327</updated>
+    </task>
+    <task id="LOCAL-00004" summary="apagando conta.cConta()">
+      <created>1601212540159</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1601212540159</updated>
+    </task>
+    <task id="LOCAL-00005" summary="passasndo parametro e so isso">
+      <created>1601217455041</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1601217455041</updated>
+    </task>
+    <task id="LOCAL-00006" summary="parametro que faltou">
+      <created>1601217517573</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1601217517573</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Revert &quot;passasndo parametro e so isso&quot;&#10;&#10;This reverts commit a62f3f9f">
+      <created>1601218121540</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1601218121540</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Revert &quot;passasndo parametro e so isso&quot;&#10;&#10;This reverts commit a62f3f9f">
+      <created>1601222108072</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1601222108072</updated>
+    </task>
+    <task id="LOCAL-00009" summary="verfica finaceiro">
+      <created>1601230277201</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1601230277201</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fianneiro com algumas funcoes" />
+    <MESSAGE value="verifica" />
+    <MESSAGE value="teste" />
+    <MESSAGE value="apagando conta.cConta()" />
+    <MESSAGE value="passasndo parametro e so isso" />
+    <MESSAGE value="parametro que faltou" />
+    <MESSAGE value="Revert &quot;passasndo parametro e so isso&quot;&#10;&#10;This reverts commit a62f3f9f" />
+    <MESSAGE value="verfica finaceiro" />
+    <option name="LAST_COMMIT_MESSAGE" value="verfica finaceiro" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="529" y="116" key="CommitChangelistDialog2" timestamp="1601218065584">
+      <screen x="0" y="0" width="1848" height="1080" />
+    </state>
+    <state x="529" y="116" key="CommitChangelistDialog2/0.0.1848.1080@0.0.1848.1080" timestamp="1601218065584" />
+    <state x="339" y="138" width="1171" height="825" key="DiffContextDialog" timestamp="1601218097525">
+      <screen x="0" y="0" width="1848" height="1080" />
+    </state>
+    <state x="339" y="138" width="1171" height="825" key="DiffContextDialog/0.0.1848.1080@0.0.1848.1080" timestamp="1601218097525" />
+    <state width="1311" height="274" key="GridCell.Tab.0.bottom" timestamp="1602189474299">
+      <screen x="0" y="0" width="1848" height="1080" />
+    </state>
+    <state width="1311" height="274" key="GridCell.Tab.0.bottom/0.0.1848.1080@0.0.1848.1080" timestamp="1602189474299" />
+    <state width="1311" height="274" key="GridCell.Tab.0.center" timestamp="1602189474299">
+      <screen x="0" y="0" width="1848" height="1080" />
+    </state>
+    <state width="1311" height="274" key="GridCell.Tab.0.center/0.0.1848.1080@0.0.1848.1080" timestamp="1602189474299" />
+    <state width="1311" height="274" key="GridCell.Tab.0.left" timestamp="1602189474299">
+      <screen x="0" y="0" width="1848" height="1080" />
+    </state>
+    <state width="1311" height="274" key="GridCell.Tab.0.left/0.0.1848.1080@0.0.1848.1080" timestamp="1602189474299" />
+    <state width="1311" height="274" key="GridCell.Tab.0.right" timestamp="1602189474299">
+      <screen x="0" y="0" width="1848" height="1080" />
+    </state>
+    <state width="1311" height="274" key="GridCell.Tab.0.right/0.0.1848.1080@0.0.1848.1080" timestamp="1602189474299" />
+    <state width="1311" height="338" key="GridCell.Tab.1.bottom" timestamp="1602189474295">
+      <screen x="0" y="0" width="1848" height="1080" />
+    </state>
+    <state width="1311" height="338" key="GridCell.Tab.1.bottom/0.0.1848.1080@0.0.1848.1080" timestamp="1602189474295" />
+    <state width="1311" height="338" key="GridCell.Tab.1.center" timestamp="1602189474295">
+      <screen x="0" y="0" width="1848" height="1080" />
+    </state>
+    <state width="1311" height="338" key="GridCell.Tab.1.center/0.0.1848.1080@0.0.1848.1080" timestamp="1602189474295" />
+    <state width="1311" height="338" key="GridCell.Tab.1.left" timestamp="1602189474295">
+      <screen x="0" y="0" width="1848" height="1080" />
+    </state>
+    <state width="1311" height="338" key="GridCell.Tab.1.left/0.0.1848.1080@0.0.1848.1080" timestamp="1602189474295" />
+    <state width="1311" height="338" key="GridCell.Tab.1.right" timestamp="1602189474295">
+      <screen x="0" y="0" width="1848" height="1080" />
+    </state>
+    <state width="1311" height="338" key="GridCell.Tab.1.right/0.0.1848.1080@0.0.1848.1080" timestamp="1602189474295" />
+    <state x="218" y="104" key="MergeDialog" timestamp="1601222987217">
+      <screen x="0" y="0" width="1848" height="1080" />
+    </state>
+    <state x="218" y="104" key="MergeDialog/0.0.1848.1080@0.0.1848.1080" timestamp="1601222987217" />
+    <state x="563" y="312" key="MultipleFileMergeDialog" timestamp="1601218057135">
+      <screen x="0" y="0" width="1848" height="1080" />
+    </state>
+    <state x="563" y="312" key="MultipleFileMergeDialog/0.0.1848.1080@0.0.1848.1080" timestamp="1601218057135" />
+    <state x="637" y="253" key="RollbackChangesDialog" timestamp="1601217732488">
+      <screen x="0" y="0" width="1848" height="1080" />
+    </state>
+    <state x="637" y="253" key="RollbackChangesDialog/0.0.1848.1080@0.0.1848.1080" timestamp="1601217732488" />
+    <state x="617" y="175" key="SettingsEditor" timestamp="1602188884197">
+      <screen x="0" y="0" width="1848" height="1080" />
+    </state>
+    <state x="617" y="175" key="SettingsEditor/0.0.1848.1080@0.0.1848.1080" timestamp="1602188884197" />
+    <state x="519" y="283" key="Vcs.Push.Dialog.v2" timestamp="1604337368546">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state x="516" y="283" key="Vcs.Push.Dialog.v2/0.0.1848.1080@0.0.1848.1080" timestamp="1601230278934" />
+    <state x="519" y="283" key="Vcs.Push.Dialog.v2/0.0.1858.1080/-1920.0.1920.1040@0.0.1858.1080" timestamp="1604337368546" />
+    <state x="1114" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604336346835">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state x="1108" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1848.1080@0.0.1848.1080" timestamp="1601949128992" />
+    <state x="1114" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1858.1080/-1920.0.1920.1040@0.0.1858.1080" timestamp="1604336346835" />
+  </component>
+</project>
