@@ -1,18 +1,21 @@
 package com.sfinancial.admin.adminID
 
+import com.sfinancial.config.hasidconfig.HashIdInterface
 import com.sfinancial.notification.exception.FaliedEncryptHashId
 import com.sfinancial.notification.exception.FileNotFound
 import org.hashids.Hashids
 import java.io.File
 import java.io.FileNotFoundException
 
-class UserID: AdminIDInterface{
+class UserID(
+    private val hashIdInterface: HashIdInterface
+): AdminIDInterface{
 
     private fun getHashSecret():String{
         try {
-            return File("secretHashid.txt").readLines()[0]
+            return hashIdInterface.getString()
         }catch (e: FileNotFoundException){
-            throw FileNotFound("File secretHashid not found!")
+            throw FileNotFound("File SecretHashId not found!")
         }catch (e: Exception){
             throw e
         }

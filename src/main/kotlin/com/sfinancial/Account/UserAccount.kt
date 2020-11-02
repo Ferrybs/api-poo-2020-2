@@ -4,7 +4,7 @@ import com.sfinancial.admin.adminID.AdminIDInterface
 import com.sfinancial.group.GroupInterface
 
 class UserAccount(
-        private val groupInterface: GroupInterface,
+        private val groupInterface: GroupInterface? = null,
 ): AccountInterface {
     var idAccount: String? = null
 
@@ -17,7 +17,7 @@ class UserAccount(
             }
         }
     }
-    override fun getGroupInterface(): GroupInterface {
+    override fun getGroupInterface(): GroupInterface? {
         return groupInterface
     }
 }
