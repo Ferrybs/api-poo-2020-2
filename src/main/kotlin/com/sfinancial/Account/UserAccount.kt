@@ -8,7 +8,7 @@ class UserAccount(
 ): AccountInterface {
     var idAccount: String? = null
 
-    private fun cId(adminIDInterface: AdminIDInterface){
+    fun cId(adminIDInterface: AdminIDInterface){
         if (idAccount == null){
             try {
                 idAccount = adminIDInterface.create()

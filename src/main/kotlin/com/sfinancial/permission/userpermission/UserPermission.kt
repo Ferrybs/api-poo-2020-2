@@ -14,7 +14,6 @@ class UserPermission(
     override fun registerAccount(){
         try {
             if (VerifierUser(groupInterface).verifier()){
-                
             }
         }
     }

@@ -10,7 +10,7 @@ class AdminUserAccount(
 ) {
     fun register(){
         try {
-            if (groupInterface!=null && groupInterface.verifier()){
+            if (){
 
             }
         }
