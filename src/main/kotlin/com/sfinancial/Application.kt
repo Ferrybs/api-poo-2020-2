@@ -10,9 +10,10 @@ fun main(){
     var server: NettyServer
     try {
         server = NettyFactory(nettyConfig).connect()
-        val sfinancial = Sfinancial(server)
-        sfinancial.startServer()
     }catch (e: Exception){
         throw e
     }
+
+    val sfinancial = Sfinancial(server)
+    sfinancial.startServer()
 }
