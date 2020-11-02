@@ -1,6 +1,5 @@
 package com.sfinancial.group
 
-import com.sfinancial.permission.UserPermissionInterface
 import com.sfinancial.person.PersonInterface
 
 class User(
