@@ -1,10 +1,8 @@
-package com.sfinancial.config.nettyconfig
+package com.sfinancial.config.readNettyConfig
 
-interface ConfigNettyInterface {
+interface ReadNettyConfigInterface {
     fun getConnectionString(): String
     fun getDatabaseName(): String
-    fun getSecretJwt():String
-    fun getSecretHashid():String
     fun getIssuer(): String
     fun getHost(): String
     fun getPort():Int

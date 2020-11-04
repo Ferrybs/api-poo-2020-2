@@ -8,4 +8,6 @@ connectionString.txt
 databaseName.txt
 secretJwt.txt
 secretHashid.txt
-Issuer.txt
+connectionIssuer.txt
+connectionHost.txt
+connectionPort.txt

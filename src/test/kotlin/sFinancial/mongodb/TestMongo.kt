@@ -1,7 +1,7 @@
 package sFinancial.mongodb
 
 import com.mongodb.client.MongoDatabase
-import com.sfinancial.config.nettyconfig.NettyConfig
+import com.sfinancial.config.readNettyConfig.ReadReadNettyConfig
 import com.sfinancial.database.mongodb.MongoConnection
 import org.junit.Assert
 
@@ -11,7 +11,7 @@ class TestMongo {
 
     private fun getCliente(): MongoConnection {
         try {
-            val netty = NettyConfig()
+            val netty = ReadReadNettyConfig()
             val stringConnection = netty.getConnectionString()
             val dbname = netty.getDatabaseName()
             return MongoConnection(stringConnection,dbname)

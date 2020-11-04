@@ -1,7 +1,7 @@
 package sFinancial
 
 import org.junit.Test
-import sFinancial.config.TestNettyConfig
+import sFinancial.config.TestReadNettyConfig
 import sFinancial.mongodb.TestMongo
 
 
@@ -10,7 +10,7 @@ class TestSfinancial {
     @Test
     fun testSfinancial(){
         TestMongo().testAll()
-        TestNettyConfig().testAll()
+        TestReadNettyConfig().testAll()
     }
 
 }

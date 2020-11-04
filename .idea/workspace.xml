@@ -23,6 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7ba38ae-1f59-40ed-9818-2e93a2d08c9a" name="Default Changelist" comment="verfica finaceiro">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/config/ConfigInterfaceReadRead.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/config/readHashidConfig/ReadHashIdInterface.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/config/readHashidConfig/ReadReadHashIdConfig.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" afterDir="false" />
@@ -30,23 +33,25 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/Account/UserAccount.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/Account/UserAccount.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/admin/adminID/UserID.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/admin/adminID/UserID.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/admin/adminUser/AdminUserAccount.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/admin/adminUser/AdminUserAccount.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/config/nettyconfig/ConfigNettyInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/config/nettyconfig/ConfigNettyInterface.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/config/nettyconfig/NettyConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/config/nettyconfig/NettyConfig.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/database/DBInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/database/DBInterface.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/database/mongodb/MongoConnection.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/database/mongodb/MongoConnection.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/database/mongodb/MongoManagement.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/database/mongodb/MongoManagement.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/database/mongodb/mongoFactory/UserAccountFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/database/mongodb/mongoFactory/MongoFactory.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/notification/exception/FaliedEncryptHashId.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/notification/exception/FailedEncryptHashId.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/notification/exception/FiliedVerifier.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/notification/exception/FailedVerifier.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/route/routeAuth/AuthRegister.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/route/routeAuth/AuthRegister.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/Application.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/Application.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/Test.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/Test.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/admin/adminID/UserID.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/admin/adminID/AdminUserHashid.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/config/ConfigInterface.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/config/hasidconfig/HashIdConfig.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/config/hasidconfig/HashIdInterface.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/config/nettyconfig/ConfigNettyInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/config/readNettyConfig/ReadNettyConfigInterface.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/config/nettyconfig/NettyConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/config/readNettyConfig/ReadReadNettyConfig.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/server/netty/NettyEnv.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/server/netty/NettyEnv.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/server/netty/NettyFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/server/netty/NettyFactory.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/verifier/VerifierUser.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/verifier/VerifierUser.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/server/netty/NettyServer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/server/netty/NettyServer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/sFinancial/TestSfinancial.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/sFinancial/TestSfinancial.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/sFinancial/config/TestNettyConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/sFinancial/config/TestReadNettyConfig.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/sFinancial/mongodb/TestMongo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/sFinancial/mongodb/TestMongo.kt" afterDir="false" />
     </list>
     <list id="c9781802-89d0-4548-ac91-6b34e577bde4" name="Revert &quot;passasndo parametro e so isso&quot;" comment="Revert &quot;passasndo parametro e so isso&quot;&#10;&#10;This reverts commit a62f3f9f" />
     <option name="SHOW_DIALOG" value="false" />
@@ -114,7 +119,7 @@
     <property name="settings.editor.selected.configurable" value="reference.idesettings.debugger.capture" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Gradle.TestNettyConfig">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -125,6 +130,25 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="TestNettyConfig" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;sFinancial.config.TestNettyConfig&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
     </configuration>
     <configuration name="ServidorKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <module name="api-poo-2020-2.main" />
@@ -141,6 +165,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.TestNettyConfig" />
         <item itemvalue="Kotlin.ServidorKt" />
       </list>
     </recent_temporary>
@@ -156,7 +181,7 @@
       <workItem from="1604350100232" duration="1213000" />
       <workItem from="1604422753972" duration="1823000" />
       <workItem from="1604501611821" duration="399000" />
-      <workItem from="1604503814908" duration="2460000" />
+      <workItem from="1604503814908" duration="3771000" />
     </task>
     <task id="LOCAL-00001" summary="fianneiro com algumas funcoes">
       <created>1601211057922</created>
@@ -221,7 +246,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601230277201</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="NewUserAccount">
+      <created>1604509926886</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1604509926886</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -258,9 +290,14 @@
     <MESSAGE value="parametro que faltou" />
     <MESSAGE value="Revert &quot;passasndo parametro e so isso&quot;&#10;&#10;This reverts commit a62f3f9f" />
     <MESSAGE value="verfica finaceiro" />
-    <option name="LAST_COMMIT_MESSAGE" value="verfica finaceiro" />
+    <MESSAGE value="NewUserAccount" />
+    <option name="LAST_COMMIT_MESSAGE" value="NewUserAccount" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="17" y="85" width="1034" height="1604" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604511156941">
+      <screen x="0" y="0" width="1080" height="1689" />
+    </state>
+    <state x="17" y="85" width="1034" height="1604" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1080.646.1920.1080/0.0.1080.1689@0.0.1080.1689" timestamp="1604511156941" />
     <state x="273" y="710" width="528" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604422919819">
       <screen x="0" y="0" width="1080" height="1689" />
     </state>
@@ -273,22 +310,26 @@
       <screen x="0" y="0" width="1848" height="1080" />
     </state>
     <state x="339" y="138" width="1171" height="825" key="DiffContextDialog/0.0.1848.1080@0.0.1848.1080" timestamp="1601218097525" />
-    <state width="1311" height="274" key="GridCell.Tab.0.bottom" timestamp="1602189474299">
-      <screen x="0" y="0" width="1848" height="1080" />
+    <state width="1034" height="565" key="GridCell.Tab.0.bottom" timestamp="1604510507061">
+      <screen x="0" y="0" width="1080" height="1689" />
     </state>
     <state width="1311" height="274" key="GridCell.Tab.0.bottom/0.0.1848.1080@0.0.1848.1080" timestamp="1602189474299" />
-    <state width="1311" height="274" key="GridCell.Tab.0.center" timestamp="1602189474299">
-      <screen x="0" y="0" width="1848" height="1080" />
+    <state width="1034" height="565" key="GridCell.Tab.0.bottom/1080.646.1920.1080/0.0.1080.1689@0.0.1080.1689" timestamp="1604510507061" />
+    <state width="1034" height="565" key="GridCell.Tab.0.center" timestamp="1604510507061">
+      <screen x="0" y="0" width="1080" height="1689" />
     </state>
     <state width="1311" height="274" key="GridCell.Tab.0.center/0.0.1848.1080@0.0.1848.1080" timestamp="1602189474299" />
-    <state width="1311" height="274" key="GridCell.Tab.0.left" timestamp="1602189474299">
-      <screen x="0" y="0" width="1848" height="1080" />
+    <state width="1034" height="565" key="GridCell.Tab.0.center/1080.646.1920.1080/0.0.1080.1689@0.0.1080.1689" timestamp="1604510507061" />
+    <state width="1034" height="565" key="GridCell.Tab.0.left" timestamp="1604510507061">
+      <screen x="0" y="0" width="1080" height="1689" />
     </state>
     <state width="1311" height="274" key="GridCell.Tab.0.left/0.0.1848.1080@0.0.1848.1080" timestamp="1602189474299" />
-    <state width="1311" height="274" key="GridCell.Tab.0.right" timestamp="1602189474299">
-      <screen x="0" y="0" width="1848" height="1080" />
+    <state width="1034" height="565" key="GridCell.Tab.0.left/1080.646.1920.1080/0.0.1080.1689@0.0.1080.1689" timestamp="1604510507061" />
+    <state width="1034" height="565" key="GridCell.Tab.0.right" timestamp="1604510507061">
+      <screen x="0" y="0" width="1080" height="1689" />
     </state>
     <state width="1311" height="274" key="GridCell.Tab.0.right/0.0.1848.1080@0.0.1848.1080" timestamp="1602189474299" />
+    <state width="1034" height="565" key="GridCell.Tab.0.right/1080.646.1920.1080/0.0.1080.1689@0.0.1080.1689" timestamp="1604510507061" />
     <state width="1311" height="338" key="GridCell.Tab.1.bottom" timestamp="1602189474295">
       <screen x="0" y="0" width="1848" height="1080" />
     </state>

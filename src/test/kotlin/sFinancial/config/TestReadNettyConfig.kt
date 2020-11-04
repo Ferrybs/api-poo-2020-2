@@ -1,17 +1,21 @@
 package sFinancial.config
 
-import com.sfinancial.config.nettyconfig.NettyConfig
+import com.sfinancial.config.readNettyConfig.ReadReadNettyConfig
 import org.junit.Assert
 import org.junit.Test
 
-class TestNettyConfig {
-    private val nettyConfig = NettyConfig()
+class TestReadNettyConfig {
+    private val nettyConfig = ReadReadNettyConfig()
 
+    @Test
     fun testAll(){
         testConnectionString()
         testDBname()
         testSecretJwt()
+        testSecretHasid()
         testIssuer()
+        testHost()
+        testPort()
     }
 
     @Test
@@ -45,9 +49,39 @@ class TestNettyConfig {
     }
 
     @Test
+    fun testSecretHasid(){
+        try {
+            val secret = nettyConfig.getSecretHashid()
+            Assert.assertEquals(String,secret)
+        }catch (e: Exception){
+            throw e
+        }
+    }
+
+    @Test
     fun testIssuer(){
         try {
             val secret = nettyConfig.getIssuer()
+            Assert.assertEquals(String,secret)
+        }catch (e: Exception){
+            throw e
+        }
+    }
+
+    @Test
+    fun testHost(){
+        try {
+            val secret = nettyConfig.getHost()
+            Assert.assertEquals(String,secret)
+        }catch (e: Exception){
+            throw e
+        }
+    }
+
+    @Test
+    fun testPort(){
+        try {
+            val secret = nettyConfig.getPort()
             Assert.assertEquals(String,secret)
         }catch (e: Exception){
             throw e

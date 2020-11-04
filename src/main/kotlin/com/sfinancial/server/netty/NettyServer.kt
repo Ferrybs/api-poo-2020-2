@@ -1,7 +1,7 @@
 package com.sfinancial.server.netty
 
 import com.sfinancial.auth.AuthInterface
-import com.sfinancial.config.nettyconfig.ConfigNettyInterface
+import com.sfinancial.config.readNettyConfig.ReadNettyConfigInterface
 import com.sfinancial.database.DBInterface
 import com.sfinancial.server.ServerInterface
 import io.ktor.server.engine.*
@@ -10,10 +10,10 @@ import kotlin.Exception
 
 
 class NettyServer(
-    authInterface: AuthInterface,
-    dbInterface: DBInterface,
-    configNettyInterface: ConfigNettyInterface
-) : ServerInterface, NettyEnv(authInterface,dbInterface, configNettyInterface) {
+        authInterface: AuthInterface,
+        dbInterface: DBInterface,
+        readNettyConfigInterface: ReadNettyConfigInterface
+) : ServerInterface, NettyEnv(authInterface,dbInterface, readNettyConfigInterface) {
 
     private fun getServer(): NettyApplicationEngine {
         try {

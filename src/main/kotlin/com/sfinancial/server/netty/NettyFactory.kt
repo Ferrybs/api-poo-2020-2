@@ -1,21 +1,18 @@
 package com.sfinancial.server.netty
 
-import com.mongodb.client.MongoDatabase
 import com.sfinancial.auth.AuthJwt
-import com.sfinancial.config.nettyconfig.ConfigNettyInterface
-import com.sfinancial.config.nettyconfig.NettyConfig
-import com.sfinancial.database.mongodb.MongoConnection
+import com.sfinancial.config.readNettyConfig.ReadNettyConfigInterface
 import com.sfinancial.database.mongodb.MongoManagement
 
 class NettyFactory(
-        private val configNettyInterface: ConfigNettyInterface
+        private val readNettyConfigInterface: ReadNettyConfigInterface
 ) {
 
 
 
     fun connect(): NettyServer{
        try {
-           return NettyServer(getJwt(),getMongoDB(),configNettyInterface)
+           return NettyServer(getJwt(),getMongoDB(),readNettyConfigInterface)
        }catch (e: Exception){
            throw e
        }
@@ -24,8 +21,8 @@ class NettyFactory(
 
     private fun getMongoDB(): MongoManagement {
         try {
-            val connectionString =  configNettyInterface.getConnectionString()
-            val databaseName = configNettyInterface.getDatabaseName()
+            val connectionString =  readNettyConfigInterface.getConnectionString()
+            val databaseName = readNettyConfigInterface.getDatabaseName()
             return MongoManagement(
                     connectionString,
                     databaseName
@@ -36,8 +33,8 @@ class NettyFactory(
     }
     private fun getJwt(): AuthJwt {
         try {
-            val secret = configNettyInterface.getSecretJwt()
-            val issuer = configNettyInterface.getIssuer()
+            val secret = readNettyConfigInterface.getSecretJwt()
+            val issuer = readNettyConfigInterface.getIssuer()
             return AuthJwt(secret,issuer)
         }catch (e: Exception){
             throw e
