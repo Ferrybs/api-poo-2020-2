@@ -40,7 +40,7 @@ class TestReadConfig {
     fun testConnectionString(){
         try {
             val connectionString = config.getConnectionString()
-            Assert.assertEquals("java.lang.String",connectionString.javaClass.name)
+            println(connectionString)
         }catch (e: Exception){
             throw e
         }
@@ -50,7 +50,7 @@ class TestReadConfig {
     fun testDBname(){
         try {
             val dbName = config.getConnectionString()
-            Assert.assertEquals("java.lang.String",dbName.javaClass.name)
+            println(dbName)
         }catch (e: Exception){
             throw e
         }
@@ -60,7 +60,7 @@ class TestReadConfig {
     fun testSecretJwt(){
         try {
             val secret = config.getSecretJwt()
-            Assert.assertEquals("java.lang.String",secret.javaClass.name)
+            println(secret)
         }catch (e: Exception){
             throw e
         }
@@ -70,7 +70,7 @@ class TestReadConfig {
     fun testSecretHashid(){
         try {
             val secret = config.getSecretHashid()
-            Assert.assertEquals("java.lang.String",secret.javaClass.name)
+            println(secret)
         }catch (e: Exception){
             throw e
         }
@@ -79,8 +79,8 @@ class TestReadConfig {
     @Test
     fun testIssuer(){
         try {
-            val secret = config.getIssuer()
-            Assert.assertEquals("java.lang.String",secret.javaClass.name)
+            val issuer = config.getIssuer()
+            println(issuer)
         }catch (e: Exception){
             throw e
         }
@@ -89,8 +89,8 @@ class TestReadConfig {
     @Test
     fun testHost(){
         try {
-            val secret = config.getHost()
-            Assert.assertEquals("java.lang.String",secret.javaClass.name)
+            val host = config.getHost()
+            println(host)
         }catch (e: Exception){
             throw e
         }
@@ -99,8 +99,8 @@ class TestReadConfig {
     @Test
     fun testPort(){
         try {
-            val secret = config.getPort()
-            Assert.assertEquals("int",secret.javaClass.name)
+            val port = config.getPort()
+            println(port)
         }catch (e: Exception){
             throw e
         }
