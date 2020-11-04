@@ -8,9 +8,9 @@ import org.litote.kmongo.KMongo
 abstract class Mongodb(
         private val connectionString: String,
 ){
-     private val client = getClient()
+     private val client = connectClient()
 
-     private fun getClient():MongoClient{
+     private fun connectClient():MongoClient{
           try {
               return KMongo.createClient(connectionString)
           }catch (e: MongoException){
@@ -29,5 +29,9 @@ abstract class Mongodb(
           }catch (e: Exception){
                throw e
           }
+     }
+
+     fun getClient(): MongoClient{
+          return client
      }
 }

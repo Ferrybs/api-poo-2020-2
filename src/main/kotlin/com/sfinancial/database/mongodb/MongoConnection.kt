@@ -12,6 +12,7 @@ open class MongoConnection(
 
     private fun connect(): MongoDatabase{
         try {
+            val client = getClient()
             return client.getDatabase(databaseName)
         }catch (e: MongoException){
             throw e

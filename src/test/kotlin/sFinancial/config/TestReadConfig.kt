@@ -21,6 +21,9 @@ class TestReadConfig {
             throw e
         }
     }
+    fun getConfig(): Config {
+        return config
+    }
 
     @Test
     fun testAll(){
