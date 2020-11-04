@@ -13,6 +13,9 @@ internal data class Sfinancial(
             throw e
         }
     }
+    fun setMongo(){
+
+    }
 
 }
 

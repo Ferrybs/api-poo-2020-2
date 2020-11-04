@@ -6,36 +6,10 @@ import java.io.FileNotFoundException
 
 class ReadNettyConfig: NettyConfigInterface {
 
-    override fun getConnectionString(): String {
-        try {
-            return File("connectionString.txt").readLines()[0]
-        }catch (e: FileNotFoundException){
-            throw FileNotFound("Arquivo: connectionString nao encontrado!")
-        }catch (e: Exception){
-            throw e
-        }
-    }
-    override fun getDatabaseName(): String{
-        try {
-            return File("databaseName.txt").readLines()[0]
-        }catch (e: FileNotFoundException){
-            throw FileNotFound("Arquivo: databaseName nao encontrado!")
-        }catch (e: Exception){
-            throw e
-        }
-    }
-    override fun getIssuer(): String{
-        try {
-            return File("connectionIssuer.txt").readLines()[0]
-        }catch (e: FileNotFoundException){
-            throw FileNotFound("Arquivo: connectionIssuer nao encontrado!")
-        }catch (e: Exception){
-            throw e
-        }
-    }
+
     override fun getHost(): String {
         try {
-            return File("connectionHost.txt").readLines()[0].toString()
+            return File("connectionHost.txt").readLines()[0]
         }catch (e: FileNotFoundException){
             throw FileNotFound("Arquivo: connectionHost nao encontrado!")
         }catch (e: Exception){

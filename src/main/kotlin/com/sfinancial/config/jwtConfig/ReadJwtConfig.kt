@@ -14,4 +14,14 @@ class ReadJwtConfig: JwtConfigInterface {
             throw e
         }
     }
+
+    override fun getIssuer(): String{
+        try {
+            return File("connectionIssuer.txt").readLines()[0]
+        }catch (e: FileNotFoundException){
+            throw FileNotFound("Arquivo: connectionIssuer nao encontrado!")
+        }catch (e: Exception){
+            throw e
+        }
+    }
 }
