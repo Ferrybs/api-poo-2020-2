@@ -1,9 +1,11 @@
 #comentarios
 
+.gradle/
 gradle/
-idea/
+.idea/
 build/
-ConnectionString.txt
+connectionString.txt
 databaseName.txt
 secretJwt.txt
 secretHashid.txt
+Issuer.txt

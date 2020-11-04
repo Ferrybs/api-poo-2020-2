@@ -8,9 +8,9 @@ class NettyConfig: ConfigNettyInterface {
 
     override fun getConnectionString(): String {
         try {
-            return File("ConnectionString.txt").readLines()[0]
+            return File("connectionString.txt").readLines()[0]
         }catch (e: FileNotFoundException){
-            throw FileNotFound("Arquivo nao encontrado!")
+            throw FileNotFound("Arquivo: connectionString nao encontrado!")
         }catch (e: Exception){
             throw e
         }
@@ -19,43 +19,52 @@ class NettyConfig: ConfigNettyInterface {
         try {
             return File("databaseName.txt").readLines()[0]
         }catch (e: FileNotFoundException){
-            throw FileNotFound("Arquivo nao databaseName encontrado!")
+            throw FileNotFound("Arquivo: databaseName nao encontrado!")
         }catch (e: Exception){
             throw e
         }
     }
     override fun getSecretJwt():String{
         try {
+            return File("secretHashid.txt").readLines()[0]
+        }catch (e: FileNotFoundException){
+            throw FileNotFound("Arquivo: secretHashid nao encontrado!")
+        }catch (e: Exception){
+            throw e
+        }
+    }
+    override fun getSecretHashid():String{
+        try {
             return File("secretJwt.txt").readLines()[0]
         }catch (e: FileNotFoundException){
-            throw FileNotFound("Arquivo nao secretJwt encontrado!")
+            throw FileNotFound("Arquivo: secretJwt nao encontrado!")
         }catch (e: Exception){
             throw e
         }
     }
     override fun getIssuer(): String{
         try {
-            return File("Issuer.txt").readLines()[0]
+            return File("connectionIssuer.txt").readLines()[0]
         }catch (e: FileNotFoundException){
-            throw FileNotFound("Arquivo nao Issuer encontrado!")
+            throw FileNotFound("Arquivo: connectionIssuer nao encontrado!")
         }catch (e: Exception){
             throw e
         }
     }
     override fun getHost(): String {
         try {
-            return File("Host.txt").readLines()[0]
+            return File("connectionHost.txt").readLines()[0]
         }catch (e: FileNotFoundException){
-            throw FileNotFound("Arquivo host nao encontrado!")
+            throw FileNotFound("Arquivo: connectionHost nao encontrado!")
         }catch (e: Exception){
             throw e
         }
     }
     override fun getPort():Int{
         try {
-            return File("Port.txt").readLines()[0].toInt()
+            return File("connectionPort.txt").readLines()[0].toInt()
         }catch (e: FileNotFoundException){
-            throw FileNotFound("Arquivo port nao encontrado!")
+            throw FileNotFound("Arquivo: connectionPort nao encontrado!")
         }catch (e: Exception){
             throw e
         }

@@ -1,7 +1,7 @@
 package com.sfinancial.verifier
 
 import com.sfinancial.group.GroupInterface
-import com.sfinancial.notification.exception.FiliedVerifier
+import com.sfinancial.notification.exception.FailedVerifier
 
 class VerifierUser(
         val groupInterface: GroupInterface? = null
@@ -13,7 +13,7 @@ class VerifierUser(
             }
             return false
         }catch (e: Exception){
-            throw FiliedVerifier("Filied to verifier user")
+            throw FailedVerifier("Filied to verifier user")
         }
     }
 }

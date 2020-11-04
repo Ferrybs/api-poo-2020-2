@@ -23,8 +23,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7ba38ae-1f59-40ed-9818-2e93a2d08c9a" name="Default Changelist" comment="verfica finaceiro">
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/permission/userpermission/UserPermission.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/permission/userpermission/UserPermission.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/Account/UserAccount.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/Account/UserAccount.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/admin/adminID/UserID.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/admin/adminID/UserID.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/admin/adminUser/AdminUserAccount.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/admin/adminUser/AdminUserAccount.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/config/nettyconfig/ConfigNettyInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/config/nettyconfig/ConfigNettyInterface.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/config/nettyconfig/NettyConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/config/nettyconfig/NettyConfig.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/database/DBInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/database/DBInterface.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/database/mongodb/MongoConnection.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/database/mongodb/MongoConnection.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/database/mongodb/MongoManagement.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/database/mongodb/MongoManagement.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/database/mongodb/mongoFactory/UserAccountFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/database/mongodb/mongoFactory/MongoFactory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/notification/exception/FaliedEncryptHashId.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/notification/exception/FailedEncryptHashId.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/notification/exception/FiliedVerifier.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/notification/exception/FailedVerifier.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/route/routeAuth/AuthRegister.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/route/routeAuth/AuthRegister.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/server/netty/NettyFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/server/netty/NettyFactory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/verifier/VerifierUser.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sfinancial/verifier/VerifierUser.kt" afterDir="false" />
     </list>
     <list id="c9781802-89d0-4548-ac91-6b34e577bde4" name="Revert &quot;passasndo parametro e so isso&quot;" comment="Revert &quot;passasndo parametro e so isso&quot;&#10;&#10;This reverts commit a62f3f9f" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,10 +59,29 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="br.com.empresa" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin File" />
+        <option value="Kotlin Interface" />
+        <option value="Class" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -63,10 +104,28 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="reference.idesettings.debugger.capture" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ServidorKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <module name="api-poo-2020-2.main" />
       <option name="VM_PARAMETERS" />
@@ -94,6 +153,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1601138980339</updated>
+      <workItem from="1604350100232" duration="1213000" />
+      <workItem from="1604422753972" duration="1823000" />
+      <workItem from="1604501611821" duration="399000" />
+      <workItem from="1604503814908" duration="2460000" />
     </task>
     <task id="LOCAL-00001" summary="fianneiro com algumas funcoes">
       <created>1601211057922</created>
@@ -161,6 +224,9 @@
     <option name="localTasksCounter" value="10" />
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
       <list>
@@ -195,6 +261,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="verfica finaceiro" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="273" y="710" width="528" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604422919819">
+      <screen x="0" y="0" width="1080" height="1689" />
+    </state>
+    <state x="273" y="710" width="528" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1080.646.1920.1080/0.0.1080.1689@0.0.1080.1689" timestamp="1604422919819" />
     <state x="529" y="116" key="CommitChangelistDialog2" timestamp="1601218065584">
       <screen x="0" y="0" width="1848" height="1080" />
     </state>

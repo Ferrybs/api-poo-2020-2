@@ -11,9 +11,10 @@ class AdminUserAccount(
 ) {
     fun register(){
         try {
-            if (){
-
-            }
+            userAccount.cId()
+            dbInterface.registerUserAccount(userAccount)
+        }catch (e: Exception){
+            throw e
         }
     }
 

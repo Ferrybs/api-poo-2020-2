@@ -1,8 +1,10 @@
 package com.sfinancial.server.netty
 
+import com.mongodb.client.MongoDatabase
 import com.sfinancial.auth.AuthJwt
 import com.sfinancial.config.nettyconfig.ConfigNettyInterface
 import com.sfinancial.config.nettyconfig.NettyConfig
+import com.sfinancial.database.mongodb.MongoConnection
 import com.sfinancial.database.mongodb.MongoManagement
 
 class NettyFactory(

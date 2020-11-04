@@ -17,7 +17,6 @@ internal fun Route.register(dbInterface: DBInterface) {
         val user = call.receiveOrNull<User>()
         if(user != null){
             try {
-
                 UserPermission(user, dbInterface = dbInterface).registerAccount()
             }catch (e: Exception) {
                 call.respond(HttpStatusCode.NotAcceptable)

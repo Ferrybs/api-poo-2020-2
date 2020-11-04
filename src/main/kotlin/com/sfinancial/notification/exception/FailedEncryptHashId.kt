@@ -1,5 +1,7 @@
 package com.sfinancial.notification.exception
 
-class FiliedVerifier(
+import java.lang.RuntimeException
+
+class FailedEncryptHashId(
         message: String? = null
 ): RuntimeException(message)

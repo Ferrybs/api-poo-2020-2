@@ -1,10 +1,9 @@
 package com.sfinancial.admin.adminID
 
 import com.sfinancial.config.hasidconfig.HashIdInterface
-import com.sfinancial.notification.exception.FaliedEncryptHashId
+import com.sfinancial.notification.exception.FailedEncryptHashId
 import com.sfinancial.notification.exception.FileNotFound
 import org.hashids.Hashids
-import java.io.File
 import java.io.FileNotFoundException
 
 class UserID(
@@ -29,7 +28,7 @@ class UserID(
             val hashids = Hashids(getHashSecret(), 6, "1234567890abcdef")
             return hashids.encode(final)
         }catch (e: Exception){
-            throw FaliedEncryptHashId("Failed to encrypt hashid")
+            throw FailedEncryptHashId("Failed to encrypt hashid")
         }catch (e: Exception){
             throw e
         }
