@@ -8,10 +8,8 @@ import org.litote.kmongo.KMongo
 abstract class Mongodb(
         private val connectionString: String,
 ){
-     val client = getClient()
+     private val client = getClient()
 
-
-     @JvmName("getClient1")
      private fun getClient():MongoClient{
           try {
               return KMongo.createClient(connectionString)
