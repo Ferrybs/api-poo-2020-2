@@ -1,6 +1,6 @@
 package com.sfinancial.config.databaseConfig
 
-interface DatabaseInterface {
+interface DatabaseConfigInterface {
     fun getConnectionString(): String
     fun getDatabaseName(): String
 }

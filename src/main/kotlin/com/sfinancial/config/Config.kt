@@ -1,5 +1,6 @@
 package com.sfinancial.config
 
+import com.sfinancial.config.databaseConfig.DatabaseConfigInterface
 import com.sfinancial.config.hashidConfig.HashIdConfigInterface
 import com.sfinancial.config.jwtConfig.JwtConfigInterface
 import com.sfinancial.config.nettyConfig.NettyConfigInterface
@@ -7,7 +8,8 @@ import com.sfinancial.config.nettyConfig.NettyConfigInterface
 class Config(
         private val hashIdConfigInterface: HashIdConfigInterface,
         private val jwtConfigInterface: JwtConfigInterface,
-        private val nettyConfigInterface: NettyConfigInterface
+        private val nettyConfigInterface: NettyConfigInterface,
+        private val databaseConfigInterface: DatabaseConfigInterface
 ): ConfigInterface {
 
     override fun getSecretHashid(): String {
@@ -28,7 +30,7 @@ class Config(
 
     override fun getConnectionString(): String {
         try {
-            return nettyConfigInterface.getConnectionString()
+            return databaseConfigInterface.getConnectionString()
         }catch (e: Exception){
             throw e
         }
@@ -36,7 +38,7 @@ class Config(
 
     override fun getDatabaseName(): String {
         try {
-            return nettyConfigInterface.getDatabaseName()
+            return databaseConfigInterface.getDatabaseName()
         }catch (e: Exception){
             throw e
         }
@@ -44,7 +46,7 @@ class Config(
 
     override fun getIssuer(): String {
         try {
-            return nettyConfigInterface.getIssuer()
+            return jwtConfigInterface.getIssuer()
         }catch (e: Exception){
             throw e
         }

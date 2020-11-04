@@ -1,6 +1,7 @@
 package com.sfinancial
 
 import com.sfinancial.config.Config
+import com.sfinancial.config.databaseConfig.MongoConfig
 import com.sfinancial.config.hashidConfig.ReadHashIdConfig
 import com.sfinancial.config.jwtConfig.ReadJwtConfig
 import com.sfinancial.config.nettyConfig.ReadNettyConfig
@@ -14,7 +15,12 @@ fun main(){
         val readHashIdConfig = ReadHashIdConfig()
         val readJwtConfig = ReadJwtConfig()
         val readNettyConfig = ReadNettyConfig()
-        config = Config(readHashIdConfig,readJwtConfig,readNettyConfig)
+        val mongoConfig = MongoConfig()
+        config = Config(
+                readHashIdConfig,
+                readJwtConfig,
+                readNettyConfig,
+                mongoConfig)
     }catch (e: Exception){
         throw e
     }

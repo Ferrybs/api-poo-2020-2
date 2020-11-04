@@ -1,4 +1,4 @@
-package com.sfinancial.route.routeAuth
+package com.sfinancial.route.routeUserAuth
 
 import com.sfinancial.auth.AuthInterface
 import com.sfinancial.database.DBInterface
