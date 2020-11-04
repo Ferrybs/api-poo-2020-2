@@ -2,6 +2,7 @@ package com.sfinancial.route.routeAuth
 
 
 import com.sfinancial.admin.adminUser.AdminUserAccount
+import com.sfinancial.config.ConfigInterface
 import com.sfinancial.database.DBInterface
 import com.sfinancial.group.User
 import com.sfinancial.permission.userpermission.UserPermission
@@ -12,12 +13,17 @@ import io.ktor.response.*
 import io.ktor.routing.*
 
 
-internal fun Route.register(dbInterface: DBInterface) {
+internal fun Route.register(dbInterface: DBInterface,configInterface: ConfigInterface) {
     post("/register") {
         val user = call.receiveOrNull<User>()
         if(user != null){
             try {
-                UserPermission(user, dbInterface = dbInterface).registerAccount()
+                UserPermission(
+                        user,
+                        null,
+                        dbInterface,
+                        configInterface
+                ).registerAccount()
             }catch (e: Exception) {
                 call.respond(HttpStatusCode.NotAcceptable)
             }

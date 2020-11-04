@@ -1,10 +1,10 @@
-package com.sfinancial.config.readHashidConfig
+package com.sfinancial.config.hashidConfig
 
 import com.sfinancial.notification.exception.FileNotFound
 import java.io.File
 import java.io.FileNotFoundException
 
-class ReadReadHashIdConfig: ReadHashIdInterface {
+class ReadHashIdConfig: HashIdConfigInterface {
     override fun getSecretHashid():String{
         try {
             return File("secretJwt.txt").readLines()[0]

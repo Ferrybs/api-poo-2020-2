@@ -1,10 +1,10 @@
-package com.sfinancial.config.readJwtConfig
+package com.sfinancial.config.jwtConfig
 
 import com.sfinancial.notification.exception.FileNotFound
 import java.io.File
 import java.io.FileNotFoundException
 
-class ReadJwtConfig: ReadJwtConfigInterface {
+class ReadJwtConfig: JwtConfigInterface {
     override fun getSecretJwt():String{
         try {
             return File("secretHashid.txt").readLines()[0]

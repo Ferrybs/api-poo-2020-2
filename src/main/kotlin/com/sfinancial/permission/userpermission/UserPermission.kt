@@ -3,6 +3,7 @@ package com.sfinancial.permission.userpermission
 import com.sfinancial.Account.AccountInterface
 import com.sfinancial.Account.UserAccount
 import com.sfinancial.admin.adminUser.AdminUserAccount
+import com.sfinancial.config.ConfigInterface
 import com.sfinancial.database.DBInterface
 import com.sfinancial.group.GroupInterface
 import com.sfinancial.login.LoginInterface
@@ -12,7 +13,8 @@ import kotlin.Exception
 class UserPermission(
         private val groupInterface: GroupInterface? = null,
         private val accountInterface: AccountInterface? = null,
-        private val dbInterface: DBInterface
+        private val dbInterface: DBInterface,
+        private val configInterface: ConfigInterface
 
 ): UserPermissionInterface {
 
@@ -20,7 +22,7 @@ class UserPermission(
         try {
             if (VerifierUser(groupInterface).verifier()) {
                 val userAccount = UserAccount(groupInterface)
-                AdminUserAccount(userAccount, dbInterface)
+                AdminUserAccount(userAccount, dbInterface,configInterface)
             }
         }catch (e: Exception){
             throw e

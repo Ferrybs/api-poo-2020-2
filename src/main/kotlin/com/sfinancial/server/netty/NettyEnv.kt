@@ -1,7 +1,8 @@
 package com.sfinancial.server.netty
 
 import com.sfinancial.auth.AuthInterface
-import com.sfinancial.config.readNettyConfig.ReadNettyConfigInterface
+import com.sfinancial.config.ConfigInterface
+import com.sfinancial.config.nettyConfig.NettyConfigInterface
 import com.sfinancial.database.DBInterface
 import com.sfinancial.feature.authJwt.moduleJwt
 import com.sfinancial.feature.gson.moduleGson
@@ -12,7 +13,7 @@ import io.ktor.server.engine.*
 abstract class NettyEnv(
         private val authInterface: AuthInterface,
         private val dbInterface: DBInterface,
-        private val readNettyConfigInterface: ReadNettyConfigInterface
+        private val configInterface: ConfigInterface
 ){
     fun getEnv(): ApplicationEngineEnvironment {
         try {
@@ -22,7 +23,7 @@ abstract class NettyEnv(
                     moduleStatusPages()
                     moduleJwt(getAuthInterface())
                     moduleGson()
-                    routes(getDbInterface(),getAuthInterface())
+                    routes(getDbInterface(),getAuthInterface(),getConfig())
                 }
                 connector {
                     host = getHost()
@@ -33,10 +34,17 @@ abstract class NettyEnv(
             throw e
         }
     }
+    private fun getConfig(): ConfigInterface{
+        try {
+            return configInterface
+        }catch (e: Exception){
+            throw e
+        }
+    }
     private fun getHost():String{
         var host: String = "0.0.0.0"
         try {
-            host = readNettyConfigInterface.getHost()
+            host = configInterface.getHost()
         }catch (e: Exception){
             println("error detecting host opening at: $host")
         }finally {
@@ -46,7 +54,7 @@ abstract class NettyEnv(
     private fun getPort(): Int{
         var port: Int = 8080
         try {
-            port = readNettyConfigInterface.getPort()
+            port = configInterface.getPort()
         }catch (e: Exception){
             println("error detecting port opening at: $port")
         }finally {

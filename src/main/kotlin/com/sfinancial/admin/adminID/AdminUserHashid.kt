@@ -1,18 +1,18 @@
 package com.sfinancial.admin.adminID
 
-import com.sfinancial.config.readNettyConfig.ReadReadNettyConfig
+import com.sfinancial.config.ConfigInterface
 import com.sfinancial.notification.exception.FailedEncryptHashId
 import com.sfinancial.notification.exception.FileNotFound
 import org.hashids.Hashids
 import java.io.FileNotFoundException
 
 class AdminUserHashid(
+        private val configInterface: ConfigInterface
 ): AdminIDInterface{
-    private val readNettyConfig = ReadReadNettyConfig()
 
     private fun getHashSecret():String{
         try {
-            return readNettyConfig.getSecretHashid()
+            return configInterface.getSecretHashid()
         }catch (e: FileNotFoundException){
             throw FileNotFound("File SecretHashId not found!")
         }catch (e: Exception){

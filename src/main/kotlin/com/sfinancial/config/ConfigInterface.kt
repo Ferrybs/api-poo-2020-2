@@ -1,7 +1,8 @@
 package com.sfinancial.config
 
-import com.sfinancial.config.readHashidConfig.ReadHashIdInterface
-import com.sfinancial.config.readNettyConfig.ReadNettyConfigInterface
+import com.sfinancial.config.hashidConfig.HashIdConfigInterface
+import com.sfinancial.config.jwtConfig.JwtConfigInterface
+import com.sfinancial.config.nettyConfig.NettyConfigInterface
 
-interface ConfigInterface: ReadNettyConfigInterface,ReadHashIdInterface {
+interface ConfigInterface: NettyConfigInterface,HashIdConfigInterface, JwtConfigInterface {
 }

@@ -1,10 +1,10 @@
-package com.sfinancial.config.readNettyConfig
+package com.sfinancial.config.nettyConfig
 
 import com.sfinancial.notification.exception.FileNotFound
 import java.io.File
 import java.io.FileNotFoundException
 
-class ReadReadNettyConfig: ReadNettyConfigInterface {
+class ReadNettyConfig: NettyConfigInterface {
 
     override fun getConnectionString(): String {
         try {
