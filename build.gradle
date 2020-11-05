@@ -2,7 +2,7 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.4.10'
 }
 
-group 'br.com.empresa'
+group 'com.sfinancial'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -51,7 +51,6 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.13.1'
 
 }
-
 
 compileKotlin {
     kotlinOptions {

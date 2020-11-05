@@ -1,7 +1,6 @@
 #comentarios
 
 .gradle/
-gradle/
 .idea/
 build/
 connectionString.txt
