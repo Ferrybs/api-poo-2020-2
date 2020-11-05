@@ -1,7 +1,7 @@
 package com.sfinancial.database.mongodb.mongoFactory
 
 import com.mongodb.client.MongoDatabase
-import com.sfinancial.Account.UserAccount
+import com.sfinancial.account.UserAccount
 
 class NewUserAccount(
         database: MongoDatabase

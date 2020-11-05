@@ -1,6 +1,6 @@
 package com.sfinancial.admin
 
-import com.sfinancial.Account.AccountInterface
+import com.sfinancial.account.AccountInterface
 
 interface AdminInterface {
     fun register(accountInterface: AccountInterface)

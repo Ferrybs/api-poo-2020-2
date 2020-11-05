@@ -1,13 +1,15 @@
 package com.sfinancial.person
 
-import com.sfinancial.Address.Address
+import com.fasterxml.jackson.annotation.JsonAutoDetect
+import com.sfinancial.address.Address
 
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 open class Person(
-        private var name: String? = null,
-        private var lastName: String? = null,
-        private var birth: String? = null,
-        private var document: String? = null,
-        private var address: Address? = null
+        private val name: String? = null,
+        private val lastName: String? = null,
+        private val birth: String? = null,
+        private val document: String? = null,
+        private val address: Address? = null
 ): PersonInterface{
         override fun verifier(): Boolean {
                 if (address != null){

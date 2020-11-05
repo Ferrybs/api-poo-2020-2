@@ -8,7 +8,8 @@ fun Application.moduleGson(){
     install(ContentNegotiation){
         gson{
             setPrettyPrinting()
-            serializeNulls()
+            excludeFieldsWithoutExposeAnnotation()
+            create()
         }
     }
 }

@@ -3,7 +3,7 @@ package com.sfinancial.verifier
 import com.sfinancial.group.GroupInterface
 import com.sfinancial.notification.exception.FailedVerifier
 
-class VerifierUser(
+class VerifierGroup(
         val groupInterface: GroupInterface? = null
 ) {
     fun verifier(): Boolean {

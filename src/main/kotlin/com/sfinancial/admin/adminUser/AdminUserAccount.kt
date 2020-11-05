@@ -1,10 +1,9 @@
 package com.sfinancial.admin.adminUser
 
 
-import com.sfinancial.Account.UserAccount
+import com.sfinancial.account.UserAccount
 import com.sfinancial.config.ConfigInterface
 import com.sfinancial.database.DBInterface
-import com.sfinancial.group.GroupInterface
 
 class AdminUserAccount(
         private val userAccount: UserAccount,

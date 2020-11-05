@@ -1,8 +1,7 @@
 package com.sfinancial.database.mongodb
 
-import com.sfinancial.Account.UserAccount
+import com.sfinancial.account.UserAccount
 import com.sfinancial.database.DBInterface
-import com.sfinancial.database.mongodb.mongoFactory.MongoFactory
 import com.sfinancial.database.mongodb.mongoFactory.NewUserAccount
 
 open class MongoManagement(

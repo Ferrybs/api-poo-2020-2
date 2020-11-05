@@ -4,7 +4,7 @@ import com.sfinancial.notification.exception.FileNotFound
 import java.io.File
 import java.io.FileNotFoundException
 
-class MongoConfig: DatabaseConfigInterface {
+class ReadMongoConfig: DatabaseConfigInterface {
 
     override fun getConnectionString(): String {
         try {

@@ -24,7 +24,7 @@ internal fun Route.register(dbInterface: DBInterface,configInterface: ConfigInte
                         configInterface
                 ).registerAccount()
             }catch (e: Exception) {
-                throw InvalidFields("Campo(s) Invalido(s)!")
+                throw InvalidFields("Campo(s) Invalido(s)! Menssagem: ${e.message}")
             }
         }
         throw InvalidRequest("User nao pode ser nulo!")

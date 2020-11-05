@@ -1,12 +1,13 @@
-package com.sfinancial.Account
+package com.sfinancial.account
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect
 import com.sfinancial.admin.adminID.AdminUserHashid
 import com.sfinancial.config.ConfigInterface
-import com.sfinancial.config.jwtConfig.JwtConfigInterface
-import com.sfinancial.group.GroupInterface
+import com.sfinancial.group.User
 
-class UserAccount(
-        private val groupInterface: GroupInterface? = null,
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+data class UserAccount(
+        private val user: User? = null,
 ): AccountInterface {
     var idAccount: String? = null
 
@@ -19,7 +20,7 @@ class UserAccount(
             }
         }
     }
-    override fun getGroupInterface(): GroupInterface? {
-        return groupInterface
+    override fun getUser(): User? {
+        return user
     }
 }

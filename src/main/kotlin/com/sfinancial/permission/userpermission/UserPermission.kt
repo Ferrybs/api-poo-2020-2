@@ -1,13 +1,12 @@
 package com.sfinancial.permission.userpermission
 
-import com.sfinancial.Account.AccountInterface
-import com.sfinancial.Account.UserAccount
+import com.sfinancial.account.AccountInterface
+import com.sfinancial.account.UserAccount
 import com.sfinancial.admin.adminUser.AdminUserAccount
 import com.sfinancial.config.ConfigInterface
 import com.sfinancial.database.DBInterface
 import com.sfinancial.group.GroupInterface
-import com.sfinancial.login.LoginInterface
-import com.sfinancial.verifier.VerifierUser
+import com.sfinancial.verifier.VerifierGroup
 import kotlin.Exception
 
 class UserPermission(
@@ -20,8 +19,8 @@ class UserPermission(
 
     override fun registerAccount(){
         try {
-            if (VerifierUser(groupInterface).verifier()) {
-                val userAccount = UserAccount(groupInterface)
+            if (VerifierGroup(groupInterface).verifier()) {
+                val userAccount = UserAccount()
                 AdminUserAccount(userAccount, dbInterface,configInterface)
             }
         }catch (e: Exception){

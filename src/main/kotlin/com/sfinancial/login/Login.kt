@@ -1,8 +1,9 @@
 package com.sfinancial.login
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect
 import io.ktor.auth.*
 
-
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 class Login(
         private val username: String? = null,
         private val password: String? = null
