@@ -5,8 +5,12 @@ plugins {
 group 'com.sfinancial'
 version '1.0-SNAPSHOT'
 
-bootJar{
-    mainClassName = "com.sfinancial.Application.kt"
+sourceSets.main.java.srcDirs = ['src']
+mainClassName = "com.sfinancial.Application.kt"
+
+plugins {
+    id 'java'
+    id 'application'
 }
 
 repositories {
