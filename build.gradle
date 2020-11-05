@@ -5,7 +5,9 @@ plugins {
 group 'com.sfinancial'
 version '1.0-SNAPSHOT'
 
-mainClass = "com.sfinancial.Application.kt"
+bootJar{
+    mainClassName = "com.sfinancial.Application.kt"
+}
 
 repositories {
     // (NUVEM)
