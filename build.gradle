@@ -5,6 +5,8 @@ plugins {
 group 'com.sfinancial'
 version '1.0-SNAPSHOT'
 
+mainClass
+
 repositories {
     // (NUVEM)
     jcenter()
