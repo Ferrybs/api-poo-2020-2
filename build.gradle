@@ -1,12 +1,9 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.4.10'
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '6.0.0'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.0'
+    id 'application'
 }
-
-group 'com.sfinancial'
-version '1.0-SNAPSHOT'
-
-mainClassName = "com.sfinancial.Application.kt"
-
 
 repositories {
     // (NUVEM)
@@ -60,3 +57,8 @@ compileKotlin {
         jvmTarget = '1.8'
     }
 }
+
+group 'com.sfinancial'
+version '1.0-SNAPSHOT'
+
+mainClassName = "com.sfinancial.Application"
