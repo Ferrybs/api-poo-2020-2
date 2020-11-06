@@ -8,28 +8,16 @@ class ReadMongoConfig: DatabaseConfigInterface {
 
     override fun getConnectionString(): String {
         return try {
-            File("connectionString.txt").readLines()[0]
-        }catch (e: Exception){
-            try {
                 System.getenv("connectionString")
             }catch (e: Exception){
                 throw e
             }
-        }catch (e: Exception){
-            throw e
-        }
     }
     override fun getDatabaseName(): String{
         return try {
-            File("databaseName.txt").readLines()[0]
-        }catch (e: Exception){
-            try {
                 System.getenv("databaseName")
             }catch (e: Exception){
                 throw e
             }
-        }catch (e: Exception){
-            throw e
-        }
     }
 }
