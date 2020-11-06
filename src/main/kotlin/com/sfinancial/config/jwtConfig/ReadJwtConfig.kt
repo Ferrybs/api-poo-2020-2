@@ -6,20 +6,28 @@ import java.io.FileNotFoundException
 
 class ReadJwtConfig: JwtConfigInterface {
     override fun getSecretJwt():String{
-        try {
-            return File("secretHashid.txt").readLines()[0]
+        return try {
+            File("secretJwt.txt").readLines()[0]
         }catch (e: FileNotFoundException){
-            throw FileNotFound("Arquivo: secretHashid nao encontrado!")
+            try {
+                System.getenv("secretJwt")
+            }catch (e: Exception){
+                throw e
+            }
         }catch (e: Exception){
             throw e
         }
     }
 
     override fun getIssuer(): String{
-        try {
-            return File("connectionIssuer.txt").readLines()[0]
+        return try {
+            File("connectionIssuer.txt").readLines()[0]
         }catch (e: FileNotFoundException){
-            throw FileNotFound("Arquivo: connectionIssuer nao encontrado!")
+            try {
+                System.getenv("connectionIssuer")
+            }catch (e: Exception){
+                throw e
+            }
         }catch (e: Exception){
             throw e
         }

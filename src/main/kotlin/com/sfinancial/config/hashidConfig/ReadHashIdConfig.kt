@@ -6,10 +6,14 @@ import java.io.FileNotFoundException
 
 class ReadHashIdConfig: HashIdConfigInterface {
     override fun getSecretHashid():String{
-        try {
-            return File("secretJwt.txt").readLines()[0]
-        }catch (e: FileNotFoundException){
-            throw FileNotFound("Arquivo: secretJwt nao encontrado!")
+        return try {
+            File("secretHashid.txt").readLines()[0]
+        }catch (e: FileNotFoundException) {
+            try {
+                System.getenv("secretHashid")
+            }catch (e: Exception){
+                throw e
+            }
         }catch (e: Exception){
             throw e
         }

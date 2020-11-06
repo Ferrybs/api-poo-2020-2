@@ -7,19 +7,27 @@ import java.io.FileNotFoundException
 class ReadMongoConfig: DatabaseConfigInterface {
 
     override fun getConnectionString(): String {
-        try {
-            return File("connectionString.txt").readLines()[0]
+        return try {
+            File("connectionString.txt").readLines()[0]
         }catch (e: FileNotFoundException){
-            throw FileNotFound("Arquivo: connectionString nao encontrado!")
+            try {
+                System.getenv("connectionString")
+            }catch (e: Exception){
+                throw e
+            }
         }catch (e: Exception){
             throw e
         }
     }
     override fun getDatabaseName(): String{
-        try {
-            return File("databaseName.txt").readLines()[0]
+        return try {
+            File("databaseName.txt").readLines()[0]
         }catch (e: FileNotFoundException){
-            throw FileNotFound("Arquivo: databaseName nao encontrado!")
+            try {
+                System.getenv("databaseName")
+            }catch (e: Exception){
+                throw e
+            }
         }catch (e: Exception){
             throw e
         }

@@ -8,19 +8,27 @@ class ReadNettyConfig: NettyConfigInterface {
 
 
     override fun getHost(): String {
-        try {
+        return try {
             return File("connectionHost.txt").readLines()[0]
         }catch (e: FileNotFoundException){
-            throw FileNotFound("Arquivo: connectionHost nao encontrado!")
+            try {
+                System.getenv("connectionHost")
+            }catch (e: Exception){
+                throw e
+            }
         }catch (e: Exception){
             throw e
         }
     }
     override fun getPort():Int{
-        try {
-            return File("connectionPort.txt").readLines()[0].toInt()
+        return try {
+            File("connectionPort.txt").readLines()[0].toInt()
         }catch (e: FileNotFoundException){
-            throw FileNotFound("Arquivo: connectionPort nao encontrado!")
+            try {
+                System.getenv("connectionPort").toInt()
+            }catch (e: Exception){
+                throw e
+            }
         }catch (e: Exception){
             throw e
         }
