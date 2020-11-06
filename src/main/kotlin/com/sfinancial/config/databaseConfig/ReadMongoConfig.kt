@@ -9,7 +9,7 @@ class ReadMongoConfig: DatabaseConfigInterface {
     override fun getConnectionString(): String {
         return try {
             File("connectionString.txt").readLines()[0]
-        }catch (e: FileNotFoundException){
+        }catch (e: Exception){
             try {
                 System.getenv("connectionString")
             }catch (e: Exception){
@@ -22,7 +22,7 @@ class ReadMongoConfig: DatabaseConfigInterface {
     override fun getDatabaseName(): String{
         return try {
             File("databaseName.txt").readLines()[0]
-        }catch (e: FileNotFoundException){
+        }catch (e: Exception){
             try {
                 System.getenv("databaseName")
             }catch (e: Exception){
