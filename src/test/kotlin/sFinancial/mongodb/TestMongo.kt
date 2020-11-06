@@ -28,11 +28,6 @@ class TestMongo {
         }
     }
 
-    fun testAll(){
-        testClientConnection()
-        testDBConnection()
-    }
-
     @Test
     fun testClientConnection(){
         val client = getClient()
