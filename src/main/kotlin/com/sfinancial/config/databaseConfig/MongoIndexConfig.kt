@@ -16,7 +16,7 @@ class MongoIndexConfig {
 
     private fun getMongoDB(): MongoDatabase {
         try {
-            val readMongoConfig = ReadMongoConfig()
+            val readMongoConfig = EnvMongoConfig()
             val connectionString = readMongoConfig.getConnectionString()
             val databaseName = readMongoConfig.getDatabaseName()
             return MongoManagement(connectionString,databaseName).getDatabase()

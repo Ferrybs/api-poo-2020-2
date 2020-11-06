@@ -4,19 +4,19 @@ import com.sfinancial.notification.exception.FileNotFound
 import java.io.File
 import java.io.FileNotFoundException
 
-class ReadNettyConfig: NettyConfigInterface {
+class EnvNettyConfig: NettyConfigInterface {
 
 
     override fun getHost(): String {
         return try {
-                System.getenv("connectionHost") ?: "0.0.0.0"
+                System.getenv("cHost") ?: "0.0.0.0"
             }catch (e: Exception){
                 throw e
             }
     }
     override fun getPort():Int{
         return try {
-                System.getenv("connectionPort").toInt()
+                System.getenv("PORT").toInt()
             }catch (e: Exception){
                 throw e
             }

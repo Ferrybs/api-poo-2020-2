@@ -1,10 +1,10 @@
 package com.sfinancial
 
 import com.sfinancial.config.Config
-import com.sfinancial.config.databaseConfig.ReadMongoConfig
-import com.sfinancial.config.hashidConfig.ReadHashIdConfig
-import com.sfinancial.config.jwtConfig.ReadJwtConfig
-import com.sfinancial.config.nettyConfig.ReadNettyConfig
+import com.sfinancial.config.databaseConfig.EnvMongoConfig
+import com.sfinancial.config.hashidConfig.EnvHashIdConfig
+import com.sfinancial.config.jwtConfig.EnvJwtConfig
+import com.sfinancial.config.nettyConfig.EnvNettyConfig
 import com.sfinancial.server.netty.NettyFactory
 import com.sfinancial.server.netty.NettyServer
 
@@ -12,10 +12,10 @@ import com.sfinancial.server.netty.NettyServer
 fun main(){
     var config: Config
     try {
-        val readHashIdConfig = ReadHashIdConfig()
-        val readJwtConfig = ReadJwtConfig()
-        val readNettyConfig = ReadNettyConfig()
-        val mongoConfig = ReadMongoConfig()
+        val readHashIdConfig = EnvHashIdConfig()
+        val readJwtConfig = EnvJwtConfig()
+        val readNettyConfig = EnvNettyConfig()
+        val mongoConfig = EnvMongoConfig()
         config = Config(
                 readHashIdConfig,
                 readJwtConfig,

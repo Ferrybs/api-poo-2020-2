@@ -4,13 +4,13 @@ import com.sfinancial.notification.exception.FileNotFound
 import java.io.File
 import java.io.FileNotFoundException
 
-class ReadJwtConfig: JwtConfigInterface {
+class EnvJwtConfig: JwtConfigInterface {
     override fun getSecretJwt():String{
         return try {
             File("secretJwt.txt").readLines()[0]
         }catch (e: FileNotFoundException){
             try {
-                System.getenv("secretJwt")
+                System.getenv("sJwt")
             }catch (e: Exception){
                 throw e
             }
@@ -24,7 +24,7 @@ class ReadJwtConfig: JwtConfigInterface {
             File("connectionIssuer.txt").readLines()[0]
         }catch (e: FileNotFoundException){
             try {
-                System.getenv("connectionIssuer")
+                System.getenv("cIssuer")
             }catch (e: Exception){
                 throw e
             }

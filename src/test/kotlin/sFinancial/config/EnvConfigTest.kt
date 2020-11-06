@@ -1,19 +1,17 @@
 package sFinancial.config
 
-import com.sfinancial.config.Config
-import com.sfinancial.config.databaseConfig.ReadMongoConfig
-import com.sfinancial.config.hashidConfig.ReadHashIdConfig
-import com.sfinancial.config.jwtConfig.ReadJwtConfig
-import com.sfinancial.config.nettyConfig.ReadNettyConfig
-import org.junit.Assert
+import com.sfinancial.config.databaseConfig.EnvMongoConfig
+import com.sfinancial.config.hashidConfig.EnvHashIdConfig
+import com.sfinancial.config.jwtConfig.EnvJwtConfig
+import com.sfinancial.config.nettyConfig.EnvNettyConfig
 import org.junit.Test
 
-class TestReadConfig {
+class EnvConfigTest {
 
     @Test
     fun testConnectionString(){
         try {
-            val connectionString = ReadMongoConfig().getConnectionString()
+            val connectionString = EnvMongoConfig().getConnectionString()
             println(connectionString)
         }catch (e: Exception){
             throw e
@@ -23,7 +21,7 @@ class TestReadConfig {
     @Test
     fun testDBname(){
         try {
-            val dbName = ReadMongoConfig().getDatabaseName()
+            val dbName = EnvMongoConfig().getDatabaseName()
             println(dbName)
         }catch (e: Exception){
             throw e
@@ -33,7 +31,7 @@ class TestReadConfig {
     @Test
     fun testSecretJwt(){
         try {
-            val secret = ReadJwtConfig().getSecretJwt()
+            val secret = EnvJwtConfig().getSecretJwt()
             println(secret)
         }catch (e: Exception){
             throw e
@@ -43,7 +41,7 @@ class TestReadConfig {
     @Test
     fun testSecretHashid(){
         try {
-            val secret = ReadHashIdConfig().getSecretHashid()
+            val secret = EnvHashIdConfig().getSecretHashid()
             println(secret)
         }catch (e: Exception){
             throw e
@@ -53,7 +51,7 @@ class TestReadConfig {
     @Test
     fun testIssuer(){
         try {
-            val issuer = ReadJwtConfig().getIssuer()
+            val issuer = EnvJwtConfig().getIssuer()
             println(issuer)
         }catch (e: Exception){
             throw e
@@ -63,7 +61,7 @@ class TestReadConfig {
     @Test
     fun testHost(){
         try {
-            val host = ReadNettyConfig().getHost()
+            val host = EnvNettyConfig().getHost()
             println(host)
         }catch (e: Exception){
             throw e
@@ -73,7 +71,7 @@ class TestReadConfig {
     @Test
     fun testPort(){
         try {
-            val port = ReadNettyConfig().getPort()
+            val port = EnvNettyConfig().getPort()
             println(port)
         }catch (e: Exception){
             throw e

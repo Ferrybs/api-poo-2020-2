@@ -1,7 +1,7 @@
 package sFinancial.mongodb
 
 import com.mongodb.client.MongoDatabase
-import com.sfinancial.config.databaseConfig.ReadMongoConfig
+import com.sfinancial.config.databaseConfig.EnvMongoConfig
 import com.sfinancial.database.mongodb.MongoConnection
 import org.junit.Assert
 
@@ -11,7 +11,7 @@ class TestMongo {
 
     private fun getClient(): MongoConnection {
         try {
-            val config = ReadMongoConfig()
+            val config = EnvMongoConfig()
             val stringConnection = config.getConnectionString()
             val dbname = config.getDatabaseName()
             return MongoConnection(stringConnection,dbname)
