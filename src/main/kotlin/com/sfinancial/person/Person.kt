@@ -19,7 +19,7 @@ open class Person(
                               birth,
                               document
                       ).any { it == null }
-                        if (!hasNull && address!!.verifier()){
+                        if (!hasNull && address.verifier()){
                                 return true
                         }
                 }
