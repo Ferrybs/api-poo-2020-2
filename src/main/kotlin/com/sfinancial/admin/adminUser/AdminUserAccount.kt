@@ -10,7 +10,7 @@ class AdminUserAccount(
         private val dbInterface: DBInterface,
         private val configInterface: ConfigInterface
 ) {
-    fun register(){
+    fun registerUser(){
         try {
             userAccount.cId(configInterface)
         }catch (e: Exception){

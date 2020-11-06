@@ -13,8 +13,6 @@ class AdminUserHashid(
     private fun getHashSecret():String{
         try {
             return configInterface.getSecretHashid()
-        }catch (e: FileNotFoundException){
-            throw FileNotFound("File SecretHashId not found!")
         }catch (e: Exception){
             throw e
         }

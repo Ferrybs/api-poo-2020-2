@@ -26,13 +26,13 @@ class NettyServer(
 
     override fun start() {
         try {
-            this.getServer().start(wait = true)
+            getServer().start(wait = true)
         }catch (e: Exception){
             throw e
         }
     }
 
-    override fun rDatabase(): DBInterface {
+    override fun getDBInterface(): DBInterface {
         try {
             return getDbInterface()
         }catch (e: Exception){
