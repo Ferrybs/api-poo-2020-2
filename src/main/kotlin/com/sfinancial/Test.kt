@@ -1,6 +1,6 @@
 package com.sfinancial
 
-import com.sfinancial.config.databaseConfig.MongoIndexConfig
+import com.sfinancial.config.mongoConfig.MongoIndexConfig
 
 
 fun main(){

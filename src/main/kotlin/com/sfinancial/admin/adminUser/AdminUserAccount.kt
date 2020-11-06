@@ -8,11 +8,10 @@ import com.sfinancial.database.DBInterface
 class AdminUserAccount(
         private val userAccount: UserAccount,
         private val dbInterface: DBInterface,
-        private val configInterface: ConfigInterface
 ) {
     fun registerUser(){
         try {
-            userAccount.cId(configInterface)
+            userAccount.cId()
         }catch (e: Exception){
             throw e
         }

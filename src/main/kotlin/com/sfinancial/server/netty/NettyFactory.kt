@@ -1,43 +1,25 @@
 package com.sfinancial.server.netty
 
+import com.sfinancial.auth.AuthInterface
 import com.sfinancial.auth.AuthJwt
 import com.sfinancial.config.ConfigInterface
+import com.sfinancial.config.nettyConfig.NettyConfigInterface
+import com.sfinancial.database.DBInterface
 import com.sfinancial.database.mongodb.MongoManagement
 
 class NettyFactory(
-        private val configInterface: ConfigInterface
+        private val dbInterface: DBInterface,
+        private val authInterface: AuthInterface,
+        private val nettyConfigInterface: NettyConfigInterface
 ) {
 
 
 
     fun connect(): NettyServer{
        try {
-           return NettyServer(getJwt(),getMongoDB(),configInterface)
+           return NettyServer(authInterface,dbInterface,nettyConfigInterface)
        }catch (e: Exception){
            throw e
        }
-    }
-
-
-    private fun getMongoDB(): MongoManagement {
-        try {
-            val connectionString =  configInterface.getConnectionString()
-            val databaseName = configInterface.getDatabaseName()
-            return MongoManagement(
-                    connectionString,
-                    databaseName
-            )
-        }catch (e: Exception){
-            throw e
-        }
-    }
-    private fun getJwt(): AuthJwt {
-        try {
-            val secret = configInterface.getSecretJwt()
-            val issuer = configInterface.getIssuer()
-            return AuthJwt(secret,issuer)
-        }catch (e: Exception){
-            throw e
-        }
     }
 }

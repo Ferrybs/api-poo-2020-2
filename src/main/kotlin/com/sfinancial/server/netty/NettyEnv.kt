@@ -13,7 +13,7 @@ import io.ktor.server.engine.*
 abstract class NettyEnv(
         private val authInterface: AuthInterface,
         private val dbInterface: DBInterface,
-        private val configInterface: ConfigInterface
+        private val nettyConfigInterface: NettyConfigInterface
 ){
     fun getEnv(): ApplicationEngineEnvironment {
         try {
@@ -23,7 +23,7 @@ abstract class NettyEnv(
                     moduleStatusPages()
                     moduleJwt(getAuthInterface())
                     moduleGson()
-                    routes(getDbInterface(),getAuthInterface(),getConfig())
+                    routes(getDbInterface(),getAuthInterface())
                 }
                 connector {
                     host = getHost()
@@ -34,17 +34,10 @@ abstract class NettyEnv(
             throw e
         }
     }
-    private fun getConfig(): ConfigInterface{
-        try {
-            return configInterface
-        }catch (e: Exception){
-            throw e
-        }
-    }
     private fun getHost():String{
         var host: String = "0.0.0.0"
         try {
-            host = configInterface.getHost()
+            host = nettyConfigInterface.getHost()
         }catch (e: Exception){
             println("error detecting host opening at: $host")
         }finally {
@@ -54,7 +47,7 @@ abstract class NettyEnv(
     private fun getPort(): Int{
         var port: Int = 8080
         try {
-            port = configInterface.getPort()
+            port = nettyConfigInterface.getPort()
         }catch (e: Exception){
             println("error detecting port opening at: $port")
         }finally {

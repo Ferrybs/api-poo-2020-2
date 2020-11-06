@@ -12,7 +12,7 @@ import io.ktor.request.*
 import io.ktor.routing.*
 
 
-internal fun Route.register(dbInterface: DBInterface,configInterface: ConfigInterface) {
+internal fun Route.register(dbInterface: DBInterface) {
     post("/register") {
         val user = call.receiveOrNull<User>()
         if(user != null){
@@ -21,7 +21,6 @@ internal fun Route.register(dbInterface: DBInterface,configInterface: ConfigInte
                         user,
                         null,
                         dbInterface,
-                        configInterface
                 ).registerAccount()
             }catch (e: Exception) {
                 throw InvalidFields("Campo(s) Invalido(s)! Menssagem: ${e.message}")

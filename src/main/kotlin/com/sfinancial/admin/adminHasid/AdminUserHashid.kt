@@ -1,18 +1,15 @@
-package com.sfinancial.admin.adminID
+package com.sfinancial.admin.adminHasid
 
-import com.sfinancial.config.ConfigInterface
+import com.sfinancial.config.hashidConfig.EnvHashIdConfig
 import com.sfinancial.notification.exception.FailedEncryptHashId
-import com.sfinancial.notification.exception.FileNotFound
 import org.hashids.Hashids
-import java.io.FileNotFoundException
 
 class AdminUserHashid(
-        private val configInterface: ConfigInterface
 ): AdminIDInterface{
 
-    private fun getHashSecret():String{
+    private fun getEnvHashidSecret():String{
         try {
-            return configInterface.getSecretHashid()
+            return EnvHashIdConfig().getSecretHashid()
         }catch (e: Exception){
             throw e
         }
@@ -23,12 +20,10 @@ class AdminUserHashid(
         var final = (rand1 * rand2).toLong()
         if (final < 0) final *= (-1)
         try {
-            val hashids = Hashids(getHashSecret(), 6, "1234567890abcdef")
+            val hashids = Hashids(getEnvHashidSecret(), 6, "1234567890abcdef")
             return hashids.encode(final)
         }catch (e: Exception){
             throw FailedEncryptHashId("Failed to encrypt hashid")
-        }catch (e: Exception){
-            throw e
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.sfinancial.config.databaseConfig
+package com.sfinancial.config.mongoConfig
 
 import com.mongodb.client.MongoDatabase
 import com.mongodb.client.model.IndexOptions

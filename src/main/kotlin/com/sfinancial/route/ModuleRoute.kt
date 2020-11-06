@@ -8,7 +8,7 @@ import com.sfinancial.route.routeHome.homeRoutes
 import io.ktor.application.*
 
 
-fun Application.routes(dbInterface: DBInterface,authInterface: AuthInterface, configInterface: ConfigInterface) {
-    authRoutes(dbInterface,authInterface,configInterface)
+fun Application.routes(dbInterface: DBInterface,authInterface: AuthInterface) {
+    authRoutes(dbInterface,authInterface)
     homeRoutes()
 }

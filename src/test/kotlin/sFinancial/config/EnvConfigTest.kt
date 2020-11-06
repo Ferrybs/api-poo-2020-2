@@ -1,6 +1,6 @@
 package sFinancial.config
 
-import com.sfinancial.config.databaseConfig.EnvMongoConfig
+import com.sfinancial.config.mongoConfig.EnvMongoConfig
 import com.sfinancial.config.hashidConfig.EnvHashIdConfig
 import com.sfinancial.config.jwtConfig.EnvJwtConfig
 import com.sfinancial.config.nettyConfig.EnvNettyConfig

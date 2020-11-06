@@ -1,7 +1,7 @@
 package sFinancial.mongodb
 
 import com.mongodb.client.MongoDatabase
-import com.sfinancial.config.databaseConfig.EnvMongoConfig
+import com.sfinancial.config.mongoConfig.EnvMongoConfig
 import com.sfinancial.database.mongodb.MongoConnection
 import org.junit.Assert
 

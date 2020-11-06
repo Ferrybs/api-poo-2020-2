@@ -13,7 +13,6 @@ class UserPermission(
         private val groupInterface: GroupInterface? = null,
         private val accountInterface: AccountInterface? = null,
         private val dbInterface: DBInterface,
-        private val configInterface: ConfigInterface
 
 ): UserPermissionInterface {
 
@@ -21,7 +20,7 @@ class UserPermission(
         try {
             if (VerifierGroup(groupInterface).verifier()) {
                 val userAccount = UserAccount()
-                AdminUserAccount(userAccount, dbInterface,configInterface)
+                AdminUserAccount(userAccount, dbInterface)
             }
         }catch (e: Exception){
             throw e

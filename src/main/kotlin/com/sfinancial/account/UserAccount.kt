@@ -1,8 +1,7 @@
 package com.sfinancial.account
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect
-import com.sfinancial.admin.adminID.AdminUserHashid
-import com.sfinancial.config.ConfigInterface
+import com.sfinancial.admin.adminHasid.AdminUserHashid
 import com.sfinancial.group.User
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
@@ -11,10 +10,10 @@ data class UserAccount(
 ): AccountInterface {
     var idAccount: String? = null
 
-    fun cId(configInterface: ConfigInterface){
+    fun cId(){
         if (idAccount == null){
             try {
-                idAccount = AdminUserHashid(configInterface).create()
+                idAccount = AdminUserHashid().create()
             }catch (e: Exception){
                 throw e
             }

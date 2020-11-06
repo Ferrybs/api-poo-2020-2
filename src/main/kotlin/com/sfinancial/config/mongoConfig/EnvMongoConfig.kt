@@ -1,10 +1,6 @@
-package com.sfinancial.config.databaseConfig
+package com.sfinancial.config.mongoConfig
 
-import com.sfinancial.notification.exception.FileNotFound
-import java.io.File
-import java.io.FileNotFoundException
-
-class EnvMongoConfig: DatabaseConfigInterface {
+class EnvMongoConfig: mongoConfigInterface {
 
     override fun getConnectionString(): String {
         return try {

@@ -12,9 +12,8 @@ import kotlin.Exception
 
 class NettyServer(
         authInterface: AuthInterface,
-        dbInterface: DBInterface,
-        configInterface: ConfigInterface
-) : ServerInterface, NettyEnv(authInterface,dbInterface, configInterface) {
+        dbInterface: DBInterface, nettyConfigInterface: NettyConfigInterface
+) : ServerInterface, NettyEnv(authInterface,dbInterface, nettyConfigInterface) {
 
     private fun getServer(): NettyApplicationEngine {
         try {

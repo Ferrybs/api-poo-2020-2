@@ -1,4 +1,4 @@
-package com.sfinancial.admin.adminID
+package com.sfinancial.admin.adminHasid
 
 interface AdminIDInterface {
     fun create(): String
