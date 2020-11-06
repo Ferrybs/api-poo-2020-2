@@ -57,6 +57,10 @@ compileKotlin {
         jvmTarget = '1.8'
     }
 }
+
+task stage {
+    dependsOn build
+}
 apply plugin : "application"
 group 'com.sfinancial'
 version '1.0-SNAPSHOT'
