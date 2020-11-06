@@ -32,7 +32,7 @@ class TestMongo {
     fun testClientConnection(){
         val client = getClient()
         Thread.sleep(3000)
-        println(client.getConnectionString())
+        println(client.getClientString())
         Assert.assertEquals(true,client.getConnectionStatus())
     }
     @Test

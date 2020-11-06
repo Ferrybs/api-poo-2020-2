@@ -30,7 +30,7 @@ abstract class Mongodb(
                throw e
           }
      }
-     fun getConnectionString(): String{
+     fun getClientString(): String{
           try {
                return client.clusterDescription.shortDescription
           }catch (e: MongoException){
