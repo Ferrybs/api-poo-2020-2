@@ -73,10 +73,12 @@ gradle.taskGraph.whenReady {
             test.enabled = false
         }
 }
-
-
 apply plugin : "application"
 group 'com.sfinancial'
 version '1.0-SNAPSHOT'
 
-mainClassName = "com.sfinancial.Application"
+application {
+    mainClass = 'com.sfinancial.Application'
+}
+
+
