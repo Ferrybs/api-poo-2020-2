@@ -1,8 +1,5 @@
 #comentarios
 
-.gradle/
-.idea/
-build/
 connectionString.txt
 databaseName.txt
 secretJwt.txt
@@ -10,3 +7,12 @@ secretHashid.txt
 connectionIssuer.txt
 connectionHost.txt
 connectionPort.txt
+
+build
+.gradle
+.idea
+out
+*.iml
+*.ipr
+*.iws
+.DS_Store
