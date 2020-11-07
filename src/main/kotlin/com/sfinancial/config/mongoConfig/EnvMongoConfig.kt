@@ -1,6 +1,6 @@
 package com.sfinancial.config.mongoConfig
 
-class EnvMongoConfig: mongoConfigInterface {
+class EnvMongoConfig: MongoConfigInterface {
 
     override fun getConnectionString(): String {
         return try {

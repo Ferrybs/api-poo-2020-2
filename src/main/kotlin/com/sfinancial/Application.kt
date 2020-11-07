@@ -1,7 +1,7 @@
 package com.sfinancial
 
 import com.sfinancial.auth.AuthJwt
-import com.sfinancial.config.mongoConfig.mongoConfigInterface
+import com.sfinancial.config.mongoConfig.MongoConfigInterface
 import com.sfinancial.config.mongoConfig.EnvMongoConfig
 import com.sfinancial.config.jwtConfig.EnvJwtConfig
 import com.sfinancial.config.jwtConfig.JwtConfigInterface
@@ -31,10 +31,10 @@ fun main(){
     sfinancial.startServer()
 }
 
-private fun getMongoDB(mongoConfigInterface: mongoConfigInterface): MongoManagement{
+private fun getMongoDB(MongoConfigInterface: MongoConfigInterface): MongoManagement{
     try {
-        val cString = mongoConfigInterface.getConnectionString()
-        val dbName = mongoConfigInterface.getDatabaseName()
+        val cString = MongoConfigInterface.getConnectionString()
+        val dbName = MongoConfigInterface.getDatabaseName()
         return MongoManagement(cString,dbName)
     }catch (e: Exception){
         throw e

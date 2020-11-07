@@ -1,6 +1,6 @@
 package com.sfinancial.config
 
-import com.sfinancial.config.mongoConfig.mongoConfigInterface
+import com.sfinancial.config.mongoConfig.MongoConfigInterface
 import com.sfinancial.config.hashidConfig.HashIdConfigInterface
 import com.sfinancial.config.jwtConfig.JwtConfigInterface
 import com.sfinancial.config.nettyConfig.NettyConfigInterface
@@ -9,7 +9,7 @@ class Config(
         private val hashIdConfigInterface: HashIdConfigInterface,
         private val jwtConfigInterface: JwtConfigInterface,
         private val nettyConfigInterface: NettyConfigInterface,
-        private val mongoConfigInterface: mongoConfigInterface
+        private val MongoConfigInterface: MongoConfigInterface
 ): ConfigInterface {
 
     override fun getSecretHashid(): String {
@@ -30,7 +30,7 @@ class Config(
 
     override fun getConnectionString(): String {
         try {
-            return mongoConfigInterface.getConnectionString()
+            return MongoConfigInterface.getConnectionString()
         }catch (e: Exception){
             throw e
         }
@@ -38,7 +38,7 @@ class Config(
 
     override fun getDatabaseName(): String {
         try {
-            return mongoConfigInterface.getDatabaseName()
+            return MongoConfigInterface.getDatabaseName()
         }catch (e: Exception){
             throw e
         }
