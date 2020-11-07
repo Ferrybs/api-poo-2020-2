@@ -5,6 +5,8 @@ import com.sfinancial.config.mongoConfig.MongoConfigInterface
 import com.sfinancial.config.mongoConfig.EnvMongoConfig
 import com.sfinancial.config.jwtConfig.EnvJwtConfig
 import com.sfinancial.config.jwtConfig.JwtConfigInterface
+import com.sfinancial.config.jwtConfig.ReadJwtConfig
+import com.sfinancial.config.mongoConfig.ReadMongoConfig
 import com.sfinancial.config.nettyConfig.EnvNettyConfig
 import com.sfinancial.database.mongodb.MongoManagement
 import com.sfinancial.server.netty.NettyFactory
@@ -13,8 +15,8 @@ import com.sfinancial.server.netty.NettyServer
 
 fun main(){
 
-    val envMongoConfig = EnvMongoConfig()
-    val envJwtConfig = EnvJwtConfig()
+    val envMongoConfig = ReadMongoConfig()
+    val envJwtConfig = ReadJwtConfig()
 
     var server: NettyServer
     try {
