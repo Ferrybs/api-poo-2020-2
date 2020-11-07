@@ -68,13 +68,13 @@ class EnvConfigTest {
         }
     }
 
-    @Test
-    fun testPort(){
-        try {
-            val port = EnvNettyConfig().getPort()
-            println(port)
-        }catch (e: Exception){
-            throw e
-        }
-    }
+//    @Test
+//    fun testPort(){
+//        try {
+//            val port = EnvNettyConfig().getPort()
+//            println(port)
+//        }catch (e: Exception){
+//            throw e
+//        }
+//    }
 }
