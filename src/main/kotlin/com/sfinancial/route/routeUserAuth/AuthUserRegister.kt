@@ -7,7 +7,9 @@ import com.sfinancial.notification.exception.InvalidFields
 import com.sfinancial.notification.exception.InvalidRequest
 import com.sfinancial.permission.userpermission.UserPermission
 import io.ktor.application.*
+import io.ktor.http.*
 import io.ktor.request.*
+import io.ktor.response.*
 import io.ktor.routing.*
 
 
@@ -16,13 +18,10 @@ internal fun Route.register(dbInterface: DBInterface) {
         val user = call.receiveOrNull<User>()
         if(user != null){
             try {
-                UserPermission(
-                        user,
-                        null,
-                        dbInterface,
-                ).registerAccount()
+                UserPermission(user,dbInterface).createAccount()
+                call.respond(HttpStatusCode.Created, mapOf("Ok" to  true))
             }catch (e: Exception) {
-                throw InvalidFields("Campo(s) Invalido(s)! Menssagem: ${e.message}")
+                throw InvalidFields("Campo(s) Invalido(s)! Mensagem: ${e.message}")
             }
         }
         throw InvalidRequest("User nao pode ser nulo!")

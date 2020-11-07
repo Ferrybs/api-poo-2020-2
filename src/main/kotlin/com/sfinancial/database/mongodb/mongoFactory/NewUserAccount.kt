@@ -1,5 +1,6 @@
 package com.sfinancial.database.mongodb.mongoFactory
 
+import com.mongodb.MongoException
 import com.mongodb.client.MongoDatabase
 import com.sfinancial.account.UserAccount
 
@@ -11,7 +12,7 @@ class NewUserAccount(
         try {
             val coll = getCollUserAccount()
             coll.insertOne(userAccount)
-        }catch (e: Exception){
+        }catch (e: MongoException){
             throw e
         }
     }

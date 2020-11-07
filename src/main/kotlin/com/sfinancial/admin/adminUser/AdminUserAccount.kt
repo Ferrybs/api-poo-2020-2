@@ -8,9 +8,10 @@ class AdminUserAccount(
         private val userAccount: UserAccount,
         private val dbInterface: DBInterface,
 ) {
-    fun registerUser(){
+    fun registerAccount(){
         try {
             userAccount.cId()
+            dbInterface.insertNewUserAccount(userAccount)
         }catch (e: Exception){
             throw e
         }

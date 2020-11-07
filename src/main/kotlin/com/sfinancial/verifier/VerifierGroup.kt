@@ -4,7 +4,7 @@ import com.sfinancial.group.GroupInterface
 import com.sfinancial.notification.exception.FailedVerifier
 
 class VerifierGroup(
-        val groupInterface: GroupInterface? = null
+        private val groupInterface: GroupInterface? = null
 ) {
     fun verifier(): Boolean {
         try {
@@ -13,7 +13,7 @@ class VerifierGroup(
             }
             return false
         }catch (e: Exception){
-            throw FailedVerifier("Filied to verifier user")
+            throw FailedVerifier("Failed to verifier user")
         }
     }
 }
