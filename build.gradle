@@ -78,7 +78,7 @@ group 'com.sfinancial'
 version '1.0-SNAPSHOT'
 
 application {
-    mainClass = 'com.sfinancial.Application'
+    mainClassName = 'com.sfinancial.Application'
 }
 
 
