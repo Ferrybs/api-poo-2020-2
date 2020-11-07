@@ -1,7 +1,6 @@
 package com.sfinancial.route.routeUserAuth
 
 
-import com.sfinancial.config.ConfigInterface
 import com.sfinancial.database.DBInterface
 import com.sfinancial.group.User
 import com.sfinancial.notification.exception.InvalidFields

@@ -2,7 +2,6 @@ package com.sfinancial.admin.adminUser
 
 
 import com.sfinancial.account.UserAccount
-import com.sfinancial.config.ConfigInterface
 import com.sfinancial.database.DBInterface
 
 class AdminUserAccount(

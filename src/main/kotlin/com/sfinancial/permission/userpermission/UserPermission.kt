@@ -3,7 +3,6 @@ package com.sfinancial.permission.userpermission
 import com.sfinancial.account.AccountInterface
 import com.sfinancial.account.UserAccount
 import com.sfinancial.admin.adminUser.AdminUserAccount
-import com.sfinancial.config.ConfigInterface
 import com.sfinancial.database.DBInterface
 import com.sfinancial.group.GroupInterface
 import com.sfinancial.verifier.VerifierGroup

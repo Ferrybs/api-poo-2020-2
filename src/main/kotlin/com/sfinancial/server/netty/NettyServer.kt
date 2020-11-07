@@ -1,7 +1,6 @@
 package com.sfinancial.server.netty
 
 import com.sfinancial.auth.AuthInterface
-import com.sfinancial.config.ConfigInterface
 import com.sfinancial.config.nettyConfig.NettyConfigInterface
 import com.sfinancial.database.DBInterface
 import com.sfinancial.server.ServerInterface
