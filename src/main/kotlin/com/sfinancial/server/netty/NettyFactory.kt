@@ -13,8 +13,6 @@ class NettyFactory(
         private val nettyConfigInterface: NettyConfigInterface
 ) {
 
-
-
     fun connect(): NettyServer{
        try {
            return NettyServer(authInterface,dbInterface,nettyConfigInterface)
