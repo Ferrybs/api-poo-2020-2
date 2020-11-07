@@ -58,9 +58,23 @@ compileKotlin {
     }
 }
 
-task stage {
-    dependsOn build
+task stage(dependsOn: ['build', 'clean'])
+build.mustRunAfter clean
+
+task copyToLib(type: Copy) {
+    into "$buildDir/libs"
+    from(configurations.compile)
 }
+stage.dependsOn(copyToLib)
+
+gradle.taskGraph.whenReady {
+    taskGraph ->
+        if (taskGraph.hasTask(stage)) {
+            test.enabled = false
+        }
+}
+
+
 apply plugin : "application"
 group 'com.sfinancial'
 version '1.0-SNAPSHOT'
