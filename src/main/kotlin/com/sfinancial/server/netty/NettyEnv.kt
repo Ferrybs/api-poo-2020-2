@@ -19,7 +19,6 @@ abstract class NettyEnv(
         try {
             return applicationEngineEnvironment {
                 module {
-                    //querendo mudar para moduleList mas n consegui implementar - Felipe Araujo
                     moduleStatusPages()
                     moduleJwt(getAuthInterface())
                     moduleGson()
@@ -35,23 +34,17 @@ abstract class NettyEnv(
         }
     }
     private fun getHost():String{
-        var host: String = "0.0.0.0"
         try {
-            host = nettyConfigInterface.getHost()
+            return  nettyConfigInterface.getHost()
         }catch (e: Exception){
-            println("error detecting host opening at: $host")
-        }finally {
-            return host
+            throw e
         }
     }
     private fun getPort(): Int{
-        var port: Int = 8080
         try {
-            port = nettyConfigInterface.getPort()
+            return nettyConfigInterface.getPort()
         }catch (e: Exception){
-            println("error detecting port opening at: $port")
-        }finally {
-            return port
+            throw e
         }
         
     }
