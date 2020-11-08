@@ -12,7 +12,7 @@ import com.sfinancial.person.Person
 import org.bson.Document
 import org.litote.kmongo.getCollection
 import org.litote.kmongo.util.KMongoUtil
-import javax.jws.soap.SOAPBinding
+
 
 class MongoIndexConfig {
     private val database = getMongoDB()

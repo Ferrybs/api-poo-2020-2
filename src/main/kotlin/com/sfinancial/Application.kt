@@ -8,6 +8,7 @@ import com.sfinancial.config.jwtConfig.JwtConfigInterface
 import com.sfinancial.config.jwtConfig.ReadJwtConfig
 import com.sfinancial.config.mongoConfig.ReadMongoConfig
 import com.sfinancial.config.nettyConfig.EnvNettyConfig
+import com.sfinancial.config.nettyConfig.ReadNettyConfig
 import com.sfinancial.database.mongodb.MongoManagement
 import com.sfinancial.server.netty.NettyFactory
 import com.sfinancial.server.netty.NettyServer
@@ -23,7 +24,7 @@ fun main(){
         server = NettyFactory(
                 getMongoDB(envMongoConfig),
                 getAuthJwt(envJwtConfig),
-                EnvNettyConfig()
+                ReadNettyConfig()
         ).connect()
     }catch (e: Exception){
         throw e

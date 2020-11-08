@@ -3,6 +3,7 @@ package com.sfinancial.feature.statusPages
 import com.sfinancial.notification.exception.InvalidCredential
 import com.sfinancial.notification.exception.InvalidFields
 import com.sfinancial.notification.exception.InvalidRequest
+import com.sfinancial.notification.exception.SuccessfullyCreated
 import io.ktor.application.*
 import io.ktor.features.*
 import io.ktor.http.*
@@ -18,6 +19,9 @@ fun Application.moduleStatusPages(){
         }
         exception<InvalidRequest>{ exception ->
             call.respond(HttpStatusCode.BadRequest, mapOf("OK" to false, "error" to (exception.message ?: "")))
+        }
+        exception<SuccessfullyCreated>{ exception ->
+            call.respond(HttpStatusCode.Created, mapOf("OK" to false, "error" to (exception.message ?: "")))
         }
     }
 }
