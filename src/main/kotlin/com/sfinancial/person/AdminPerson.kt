@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 
 class AdminPerson (
-        private  val idemployee: String? = null
+        private  val idEmployee: String? = null
 
 )
 
