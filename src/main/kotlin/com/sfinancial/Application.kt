@@ -2,30 +2,27 @@ package com.sfinancial
 
 import com.sfinancial.auth.AuthJwt
 import com.sfinancial.config.mongoConfig.MongoConfigInterface
-import com.sfinancial.config.mongoConfig.EnvMongoConfig
-import com.sfinancial.config.jwtConfig.EnvJwtConfig
 import com.sfinancial.config.jwtConfig.JwtConfigInterface
-import com.sfinancial.config.jwtConfig.ReadJwtConfig
-import com.sfinancial.config.mongoConfig.MongoIndexConfig
-import com.sfinancial.config.mongoConfig.ReadMongoConfig
-import com.sfinancial.config.nettyConfig.EnvNettyConfig
-import com.sfinancial.config.nettyConfig.ReadNettyConfig
-import com.sfinancial.database.mongodb.MongoManagement
+import com.sfinancial.config.jwtConfig.JwtConfigRead
+import com.sfinancial.config.mongoConfig.MongoConfigIndex
+import com.sfinancial.config.mongoConfig.MongoConfigRead
+import com.sfinancial.config.nettyConfig.NettyConfigRead
+import com.sfinancial.database.mongodb.MongoDbManagement
 import com.sfinancial.server.netty.NettyFactory
 import com.sfinancial.server.netty.NettyServer
 
 
 fun main(){
 
-    val envMongoConfig = ReadMongoConfig()
-    val envJwtConfig = ReadJwtConfig()
+    val envMongoConfig = MongoConfigRead()
+    val envJwtConfig = JwtConfigRead()
 
     var server: NettyServer
     try {
         server = NettyFactory(
                 getMongoDB(envMongoConfig),
                 getAuthJwt(envJwtConfig),
-                ReadNettyConfig()
+                NettyConfigRead()
         ).connect()
     }catch (e: Exception){
         throw e
@@ -41,11 +38,11 @@ fun main(){
     sfinancial.startServer()
 }
 
-private fun getMongoDB(MongoConfigInterface: MongoConfigInterface): MongoManagement{
+private fun getMongoDB(MongoConfigInterface: MongoConfigInterface): MongoDbManagement{
     try {
         val cString = MongoConfigInterface.getConnectionString()
         val dbName = MongoConfigInterface.getDatabaseName()
-        return MongoManagement(cString,dbName)
+        return MongoDbManagement(cString,dbName)
     }catch (e: Exception){
         throw e
     }
@@ -60,5 +57,5 @@ private fun getAuthJwt(jwtConfigInterface: JwtConfigInterface): AuthJwt {
     }
 }
 private fun setMongodb(){
-    MongoIndexConfig().setUserAccount()
+    MongoConfigIndex().setUserAccount()
 }

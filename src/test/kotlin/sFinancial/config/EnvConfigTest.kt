@@ -1,9 +1,9 @@
 package sFinancial.config
 
-import com.sfinancial.config.mongoConfig.EnvMongoConfig
-import com.sfinancial.config.hashidConfig.EnvHashIdConfig
-import com.sfinancial.config.jwtConfig.EnvJwtConfig
-import com.sfinancial.config.nettyConfig.EnvNettyConfig
+import com.sfinancial.config.mongoConfig.MongoConfigEnv
+import com.sfinancial.config.hashidConfig.HashIdConfigEnv
+import com.sfinancial.config.jwtConfig.JwtConfigEnv
+import com.sfinancial.config.nettyConfig.NettyConfigEnv
 import org.junit.Test
 
 class EnvConfigTest {
@@ -11,7 +11,7 @@ class EnvConfigTest {
     @Test
     fun testConnectionString(){
         try {
-            val connectionString = EnvMongoConfig().getConnectionString()
+            val connectionString = MongoConfigEnv().getConnectionString()
             println(connectionString)
         }catch (e: Exception){
             throw e
@@ -21,7 +21,7 @@ class EnvConfigTest {
     @Test
     fun testDBname(){
         try {
-            val dbName = EnvMongoConfig().getDatabaseName()
+            val dbName = MongoConfigEnv().getDatabaseName()
             println(dbName)
         }catch (e: Exception){
             throw e
@@ -31,7 +31,7 @@ class EnvConfigTest {
     @Test
     fun testSecretJwt(){
         try {
-            val secret = EnvJwtConfig().getSecretJwt()
+            val secret = JwtConfigEnv().getSecretJwt()
             println(secret)
         }catch (e: Exception){
             throw e
@@ -41,7 +41,7 @@ class EnvConfigTest {
     @Test
     fun testSecretHashid(){
         try {
-            val secret = EnvHashIdConfig().getSecretHashid()
+            val secret = HashIdConfigEnv().getSecretHashid()
             println(secret)
         }catch (e: Exception){
             throw e
@@ -51,7 +51,7 @@ class EnvConfigTest {
     @Test
     fun testIssuer(){
         try {
-            val issuer = EnvJwtConfig().getIssuer()
+            val issuer = JwtConfigEnv().getIssuer()
             println(issuer)
         }catch (e: Exception){
             throw e
@@ -61,7 +61,7 @@ class EnvConfigTest {
     @Test
     fun testHost(){
         try {
-            val host = EnvNettyConfig().getHost()
+            val host = NettyConfigEnv().getHost()
             println(host)
         }catch (e: Exception){
             throw e

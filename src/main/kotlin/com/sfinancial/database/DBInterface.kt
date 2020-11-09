@@ -1,7 +1,7 @@
 package com.sfinancial.database
 
-import com.sfinancial.account.UserAccount
+import com.sfinancial.account.AccountUser
 
 interface DBInterface {
-    fun insertNewUserAccount(userAccount: UserAccount)
+    fun insertNewUserAccount(userAccount: AccountUser)
 }

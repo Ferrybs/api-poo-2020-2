@@ -1,14 +1,6 @@
 package com.sfinancial
 
 import com.google.gson.Gson
-import com.sfinancial.address.Address
-import com.sfinancial.config.mongoConfig.MongoIndexConfig
-import com.sfinancial.config.mongoConfig.ReadMongoConfig
-import com.sfinancial.database.mongodb.MongoManagement
-import com.sfinancial.database.mongodb.mongoFactory.LoginUserAccount
-import com.sfinancial.group.User
-import com.sfinancial.login.UserLogin
-import com.sfinancial.person.Person
 
 
 fun main(){

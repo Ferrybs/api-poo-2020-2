@@ -1,20 +1,20 @@
 package sFinancial.mongodb
 
 import com.mongodb.client.MongoDatabase
-import com.sfinancial.config.mongoConfig.EnvMongoConfig
-import com.sfinancial.database.mongodb.MongoConnection
+import com.sfinancial.config.mongoConfig.MongoConfigEnv
+import com.sfinancial.database.mongodb.MongoDbConnection
 import org.junit.Assert
 
 import org.junit.Test
 
 class TestMongo {
 
-    private fun getClient(): MongoConnection {
+    private fun getClient(): MongoDbConnection {
         try {
-            val config = EnvMongoConfig()
+            val config = MongoConfigEnv()
             val stringConnection = config.getConnectionString()
             val dbname = config.getDatabaseName()
-            return MongoConnection(stringConnection,dbname)
+            return MongoDbConnection(stringConnection,dbname)
         }catch (e: Exception){
             throw e
         }

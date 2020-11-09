@@ -1,7 +1,6 @@
 package com.sfinancial.verifier
 
 import com.sfinancial.login.LoginInterface
-import com.sfinancial.notification.exception.InvalidFields
 
 class VerifierLogin(
         private val loginInterface: LoginInterface
