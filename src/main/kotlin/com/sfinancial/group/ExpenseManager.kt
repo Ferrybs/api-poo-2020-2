@@ -1,4 +1,4 @@
-package com.sfinancial.feature.statusPages
+package com.sfinancial.group
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect
 import com.sfinancial.person.PersonAdmin
