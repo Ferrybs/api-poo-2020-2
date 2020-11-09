@@ -19,7 +19,7 @@ internal fun Route.register(dbInterface: DBInterface) {
         val user = call.receiveOrNull<User>()
         if(user != null){
             try {
-                UserPermission(user,dbInterface).createAccount()
+                UserPermission(dbInterface).createAccount(user)
                 call.respond(HttpStatusCode.Created,
                         mapOf(
                                 "OK" to true,
@@ -27,9 +27,9 @@ internal fun Route.register(dbInterface: DBInterface) {
             }catch (e: FailedVerifier) {
                 throw e
             }catch (e: Exception){
-                throw InvalidFields("Invalid fields! Mensagem: ${e.message}")
+                throw InvalidFields("Invalid fields! Message: ${e.message}")
             }
         }
-        throw InvalidRequest("User nao pode ser nulo!")
+        throw InvalidRequest("User cannot be null!")
     }
 }

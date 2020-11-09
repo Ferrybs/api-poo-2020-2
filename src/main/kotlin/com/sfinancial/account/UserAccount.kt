@@ -5,11 +5,12 @@ import com.sfinancial.admin.adminHasid.AdminUserHashid
 import com.sfinancial.group.User
 import com.sfinancial.payment.Payment
 import com.sfinancial.payment.card.CreditCard
+import org.litote.kmongo.Data
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 data class UserAccount(
         private val user: User? = null,
-        private val payment: = mutableListOf<>()
+        private val payment: MutableList<CreditCard> = mutableListOf()
 ): AccountInterface {
     var idAccount: String? = null
 
