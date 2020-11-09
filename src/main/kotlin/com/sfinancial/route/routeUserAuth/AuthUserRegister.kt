@@ -3,9 +3,9 @@ package com.sfinancial.route.routeUserAuth
 
 import com.sfinancial.database.DBInterface
 import com.sfinancial.group.User
+import com.sfinancial.notification.exception.FailedVerifier
 import com.sfinancial.notification.exception.InvalidFields
 import com.sfinancial.notification.exception.InvalidRequest
-import com.sfinancial.notification.exception.SuccessfullyCreated
 import com.sfinancial.permission.userpermission.UserPermission
 import io.ktor.application.*
 import io.ktor.http.*
@@ -20,8 +20,11 @@ internal fun Route.register(dbInterface: DBInterface) {
         if(user != null){
             try {
                 UserPermission(user,dbInterface).createAccount()
-                throw SuccessfullyCreated("Usuario criado com sucesso!")
-            }catch (e: Exception) {
+                call.respond(HttpStatusCode.Created,
+                        mapOf("OK" to true, "message" to "Conta criada com sucesso!"))
+            }catch (e: FailedVerifier) {
+                throw e
+            }catch (e: Exception){
                 throw InvalidFields("Campo(s) Invalido(s)! Mensagem: ${e.message}")
             }
         }

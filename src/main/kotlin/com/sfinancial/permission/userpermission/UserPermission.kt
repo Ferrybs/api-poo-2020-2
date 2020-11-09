@@ -5,6 +5,8 @@ import com.sfinancial.admin.adminUser.AdminUserAccount
 import com.sfinancial.database.DBInterface
 import com.sfinancial.group.GroupInterface
 import com.sfinancial.group.User
+import com.sfinancial.notification.exception.FailedVerifier
+import com.sfinancial.notification.exception.InvalidFields
 import com.sfinancial.verifier.VerifierGroup
 import kotlin.Exception
 
@@ -19,6 +21,7 @@ class UserPermission(
                 val userAccount = UserAccount(user)
                 AdminUserAccount(userAccount, dbInterface).registerAccount()
             }
+            throw FailedVerifier("Falha ao verificar  usuario!")
         }catch (e: Exception){
             throw e
         }
