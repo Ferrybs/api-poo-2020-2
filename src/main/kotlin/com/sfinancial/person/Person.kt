@@ -3,6 +3,7 @@ package com.sfinancial.person
 import com.fasterxml.jackson.annotation.JsonAutoDetect
 import com.sfinancial.address.Address
 
+
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 open class Person(
         private val name: String? = null,

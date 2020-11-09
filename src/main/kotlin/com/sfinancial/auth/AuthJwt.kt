@@ -2,7 +2,6 @@ package com.sfinancial.auth
 
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
-import com.sfinancial.login.Login
 import com.sfinancial.login.LoginInterface
 
 class AuthJwt(

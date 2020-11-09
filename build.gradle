@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'com.github.johnrengelman.shadow' version '6.0.0'
     id 'org.jetbrains.kotlin.jvm' version '1.4.0'
+    id "org.jetbrains.kotlin.kapt" version "1.4.10"
     id 'application'
 }
 
@@ -42,6 +43,7 @@ dependencies {
     // https://mvnrepository.com/artifact/org.mindrot/jbcrypt
     compile group: 'org.mindrot', name: 'jbcrypt', version: '0.4'
 
+    kapt 'org.litote.kmongo:kmongo-annotation-processor:4.1.2'
     compile 'org.mongodb:bson:4.1.1'
 
     testImplementation group: 'org.amshove.kluent', name: 'kluent', version: '1.38'
@@ -74,7 +76,7 @@ gradle.taskGraph.whenReady {
         }
 }
 
-
+apply plugin: 'kotlin-kapt'
 apply plugin : "application"
 group 'com.sfinancial'
 version '1.0-SNAPSHOT'

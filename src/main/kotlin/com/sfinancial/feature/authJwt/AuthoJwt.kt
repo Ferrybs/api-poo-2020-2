@@ -2,7 +2,7 @@ package com.sfinancial.feature.authJwt
 
 import com.sfinancial.auth.AuthInterface
 import com.sfinancial.auth.AuthJwt
-import com.sfinancial.login.Login
+import com.sfinancial.login.UserLogin
 import io.ktor.auth.*
 import io.ktor.application.*
 import io.ktor.auth.jwt.*
@@ -16,7 +16,7 @@ fun Application.moduleJwt(authInterface: AuthInterface) {
                 val username = it.payload.getClaim("username").asString()
                 val password = it.payload.getClaim("password").asString()
                 if (username!= null && password !=null){
-                    Login(username,password)
+                    UserLogin(username,password)
                 }
                 null
             }
