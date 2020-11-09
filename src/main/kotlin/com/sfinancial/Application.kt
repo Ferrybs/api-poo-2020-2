@@ -6,6 +6,7 @@ import com.sfinancial.config.mongoConfig.EnvMongoConfig
 import com.sfinancial.config.jwtConfig.EnvJwtConfig
 import com.sfinancial.config.jwtConfig.JwtConfigInterface
 import com.sfinancial.config.jwtConfig.ReadJwtConfig
+import com.sfinancial.config.mongoConfig.MongoIndexConfig
 import com.sfinancial.config.mongoConfig.ReadMongoConfig
 import com.sfinancial.config.nettyConfig.EnvNettyConfig
 import com.sfinancial.config.nettyConfig.ReadNettyConfig
@@ -51,4 +52,7 @@ private fun getAuthJwt(jwtConfigInterface: JwtConfigInterface): AuthJwt {
     }catch (e: Exception){
         throw e
     }
+}
+private fun setMongodb(){
+    MongoIndexConfig().setUserAccount()
 }

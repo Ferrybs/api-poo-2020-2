@@ -31,32 +31,4 @@ class MongoIndexConfig {
         coll.createIndex("{'idAccount':1}",indexUnique)
         coll.createIndex("{'user.person.document':1}",indexUnique)
     }
-    fun testUserAccount(){
-        val coll = database.getCollection<UserAccount>()
-
-        val address = Address(
-                "test",
-                "test",
-                "test",
-                "test",
-                "test",
-                "test"
-        )
-        val person = Person(
-                "test",
-                "test",
-                "test",
-                "test",
-                address
-        )
-        val user = User(
-                "test",
-                "test",
-            person
-        )
-        val userAccount = UserAccount(user)
-        userAccount.idAccount = "testee"
-
-        coll.insertOne(userAccount)
-    }
 }
