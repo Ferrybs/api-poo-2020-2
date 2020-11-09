@@ -30,6 +30,12 @@ fun main(){
     }catch (e: Exception){
         throw e
     }
+    //set Indexs Mongodb
+    try {
+        setMongodb()
+    }catch (e: Exception){
+        println("Error to setMongodb: ${e.message}")
+    }
 
     val sfinancial = Sfinancial(server)
     sfinancial.startServer()
