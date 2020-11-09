@@ -9,7 +9,7 @@ import com.sfinancial.payment.card.CreditCard
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 data class UserAccount(
         private val user: User? = null,
-        private val payment: CreditCard? = null,
+        private val payment: = mutableListOf<>()
 ): AccountInterface {
     var idAccount: String? = null
 
