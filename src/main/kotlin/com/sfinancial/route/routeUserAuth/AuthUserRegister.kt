@@ -21,11 +21,13 @@ internal fun Route.register(dbInterface: DBInterface) {
             try {
                 UserPermission(user,dbInterface).createAccount()
                 call.respond(HttpStatusCode.Created,
-                        mapOf("OK" to true, "message" to "Conta criada com sucesso!"))
+                        mapOf(
+                                "OK" to true,
+                                "message" to "User account successfully crested!"))
             }catch (e: FailedVerifier) {
                 throw e
             }catch (e: Exception){
-                throw InvalidFields("Campo(s) Invalido(s)! Mensagem: ${e.message}")
+                throw InvalidFields("Invalid fields! Mensagem: ${e.message}")
             }
         }
         throw InvalidRequest("User nao pode ser nulo!")
