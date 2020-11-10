@@ -15,7 +15,6 @@ class GetUserAccountMongoFactory(
     fun get(loginInterface: LoginInterface): UserAccount{
         try {
             val coll = getCollUserAccount()
-            val bson = KMongoUtil.toBson("{'user.username': '${loginInterface.getUsername()}','user.password': '${loginInterface.getPassword()}'}")
             val login = coll.findOne(
                     "{'user.username': '${loginInterface.getUsername()}'," +
                             "'user.password': '${loginInterface.getPassword()}'}")
