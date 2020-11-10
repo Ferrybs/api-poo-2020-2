@@ -5,7 +5,7 @@ import com.sfinancial.database.DBInterface
 import com.sfinancial.login.LoginInterface
 import com.sfinancial.login.UserLogin
 
-class UserAdminLoginAccount(
+class LoginAccountUserAdmin(
         private val loginInterface: LoginInterface,
         private val dbInterface: DBInterface,
         private val authInterface: AuthInterface
