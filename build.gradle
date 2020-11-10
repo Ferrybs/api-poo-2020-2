@@ -18,6 +18,8 @@ repositories {
 
 }
 
+sourceSets.main.java.srcDirs = ['src']
+
 dependencies {
     // - Kotlin
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
@@ -81,4 +83,6 @@ apply plugin : "application"
 group 'com.sfinancial'
 version '1.0-SNAPSHOT'
 
-mainClassName = "com.sfinancial.Application"
+
+mainClassName = "com.sfinancial.ApplicationKt"
+
