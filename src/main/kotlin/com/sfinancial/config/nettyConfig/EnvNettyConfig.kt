@@ -5,7 +5,7 @@ class EnvNettyConfig: NettyConfigInterface {
 
     override fun getHost(): String {
         return try {
-                System.getenv("cHost") ?: "0.0.0.0"
+                System.getenv("cHost")
             }catch (e: Exception){
                 throw e
             }
