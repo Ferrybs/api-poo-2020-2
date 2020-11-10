@@ -3,26 +3,26 @@ package com.sfinancial
 import com.sfinancial.auth.AuthJwt
 import com.sfinancial.config.mongoConfig.MongoConfigInterface
 import com.sfinancial.config.jwtConfig.JwtConfigInterface
-import com.sfinancial.config.jwtConfig.JwtConfigRead
-import com.sfinancial.config.mongoConfig.MongoConfigIndex
-import com.sfinancial.config.mongoConfig.MongoConfigRead
-import com.sfinancial.config.nettyConfig.NettyConfigRead
-import com.sfinancial.database.mongodb.MongoDbManagement
+import com.sfinancial.config.jwtConfig.ReadJwtConfig
+import com.sfinancial.config.mongoConfig.IndexMongoConfig
+import com.sfinancial.config.mongoConfig.ReadMongoConfig
+import com.sfinancial.config.nettyConfig.ReadNettyConfig
+import com.sfinancial.database.mongodb.ManagementMongodb
 import com.sfinancial.server.netty.NettyFactory
 import com.sfinancial.server.netty.NettyServer
 
 
 fun main(){
 
-    val envMongoConfig = MongoConfigRead()
-    val envJwtConfig = JwtConfigRead()
+    val envMongoConfig = ReadMongoConfig()
+    val envJwtConfig = ReadJwtConfig()
 
     var server: NettyServer
     try {
         server = NettyFactory(
                 getMongoDB(envMongoConfig),
                 getAuthJwt(envJwtConfig),
-                NettyConfigRead()
+                ReadNettyConfig()
         ).connect()
     }catch (e: Exception){
         throw e
@@ -38,11 +38,11 @@ fun main(){
     sfinancial.startServer()
 }
 
-private fun getMongoDB(MongoConfigInterface: MongoConfigInterface): MongoDbManagement{
+private fun getMongoDB(MongoConfigInterface: MongoConfigInterface): ManagementMongodb{
     try {
         val cString = MongoConfigInterface.getConnectionString()
         val dbName = MongoConfigInterface.getDatabaseName()
-        return MongoDbManagement(cString,dbName)
+        return ManagementMongodb(cString,dbName)
     }catch (e: Exception){
         throw e
     }
@@ -57,5 +57,5 @@ private fun getAuthJwt(jwtConfigInterface: JwtConfigInterface): AuthJwt {
     }
 }
 private fun setMongodb(){
-    MongoConfigIndex().setUserAccount()
+    IndexMongoConfig().setUserAccount()
 }

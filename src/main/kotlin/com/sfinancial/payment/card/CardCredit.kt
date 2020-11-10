@@ -1,4 +1,12 @@
 package com.sfinancial.payment.card
 
-class CardCredit {
+import com.fasterxml.jackson.annotation.JsonAutoDetect
+
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+class CardCredit(
+        private val name: String? = null,
+        private val number: String? = null,
+        private val validity: String? = null,
+        private val since: String? = null
+) {
 }

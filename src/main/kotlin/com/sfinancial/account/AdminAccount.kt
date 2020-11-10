@@ -1,4 +1,4 @@
 package com.sfinancial.account
 
-interface AccountInterface {
+class AdminAccount {
 }

@@ -5,6 +5,5 @@ import com.sfinancial.person.PersonInterface
 import javax.swing.text.StyledEditorKit
 
 interface GroupInterface {
-    fun getPerson(): Person?
-    fun verifier():Boolean
+    fun verifier(): Boolean
 }

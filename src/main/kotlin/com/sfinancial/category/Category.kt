@@ -1,8 +1,11 @@
 package com.sfinancial.category
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect
+
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 class Category(
-        var name: String? = null,
-        var priority: String? = null,
-        var description: String? = null
+        private val name: String? = null,
+        private val priority: String? = null,
+        private val description: String? = null
 ) {
 }
