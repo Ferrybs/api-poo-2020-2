@@ -11,20 +11,17 @@ open class Person(
         private val birth: String? = null,
         private val document: String? = null,
         private val address: Address? = null
-): PersonInterface{
-        override fun verifier(): Boolean {
-                if (address != null){
-                      val hasNull = listOf(
-                              name,
-                              lastName,
-                              birth,
-                              document
-                      ).any { it == null }
-                        if (!hasNull && address.verifier()){
-                                return true
-                        }
-                }
-                return false
-        }
+) : PersonInterface {
+
+    override fun verifier(): Boolean {
+        val hasNull = listOf(
+                name,
+                lastName,
+                birth,
+                document
+        ).any { it == null }
+
+        return !hasNull
+    }
 
 }

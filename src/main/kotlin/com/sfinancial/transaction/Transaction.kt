@@ -1,4 +1,4 @@
-package com.sfinancial.transation
+package com.sfinancial.transaction
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect
 

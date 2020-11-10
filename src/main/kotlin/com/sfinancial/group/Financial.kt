@@ -5,7 +5,7 @@ import com.sfinancial.person.AdminPerson
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 
-class ExpenseManager (
+class Financial (
         username:String,
         password:String,
         private val adminPerson: AdminPerson? = null
