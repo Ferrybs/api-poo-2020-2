@@ -1,11 +1,14 @@
 package com.sfinancial
 
 import com.sfinancial.auth.AuthJwt
+import com.sfinancial.config.jwtConfig.EnvJwtConfig
 import com.sfinancial.config.mongoConfig.MongoConfigInterface
 import com.sfinancial.config.jwtConfig.JwtConfigInterface
 import com.sfinancial.config.jwtConfig.ReadJwtConfig
+import com.sfinancial.config.mongoConfig.EnvMongoConfig
 import com.sfinancial.config.mongoConfig.IndexMongoConfig
 import com.sfinancial.config.mongoConfig.ReadMongoConfig
+import com.sfinancial.config.nettyConfig.EnvNettyConfig
 import com.sfinancial.config.nettyConfig.ReadNettyConfig
 import com.sfinancial.database.mongodb.ManagementMongodb
 import com.sfinancial.server.netty.NettyFactory
@@ -14,15 +17,15 @@ import com.sfinancial.server.netty.NettyServer
 
 fun main(){
 
-    val envMongoConfig = ReadMongoConfig()
-    val envJwtConfig = ReadJwtConfig()
+    val envMongoConfig = EnvMongoConfig()
+    val envJwtConfig = EnvJwtConfig()
 
     var server: NettyServer
     try {
         server = NettyFactory(
                 getMongoDB(envMongoConfig),
                 getAuthJwt(envJwtConfig),
-                ReadNettyConfig()
+                EnvNettyConfig()
         ).connect()
     }catch (e: Exception){
         throw e
