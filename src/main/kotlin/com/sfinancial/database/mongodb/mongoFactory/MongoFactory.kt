@@ -13,7 +13,7 @@ open class MongoFactory(
 
     internal fun getCollUserAccount(): MongoCollection<UserAccount> {
         try {
-            return database.getCollection<UserAccount>()
+            return database.getCollection()
         }catch (e: MongoException){
             throw FailedReturnCollectionException(e.message)
         }

@@ -1,4 +1,4 @@
-package com.sfinancial.admin.UserAdmin
+package com.sfinancial.admin.userAdmin
 
 
 import com.sfinancial.account.UserAccount

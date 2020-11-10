@@ -9,6 +9,6 @@ class ExpenseManager (
         username:String,
         password:String,
         private val adminPerson: AdminPerson? = null
-): Group()
+):Group(username,password)
 {
 }

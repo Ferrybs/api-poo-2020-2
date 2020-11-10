@@ -14,7 +14,7 @@ class IndexMongoConfig {
 
     private fun getMongoDB(): MongoDatabase {
         try {
-            val readMongoConfig = EnvMongoConfig()
+            val readMongoConfig = ReadMongoConfig()
             val connectionString = readMongoConfig.getConnectionString()
             val databaseName = readMongoConfig.getDatabaseName()
             return ManagementMongodb(connectionString,databaseName).getDatabase()
@@ -26,6 +26,7 @@ class IndexMongoConfig {
     fun setUserAccount(){
         val coll = database.getCollection<UserAccount>()
         coll.createIndex("{'idAccount':1}",indexUnique)
+        coll.createIndex("{'user.username':1}",indexUnique)
         coll.createIndex("{'user.person.document':1}",indexUnique)
     }
 }

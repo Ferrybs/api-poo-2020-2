@@ -14,6 +14,8 @@ class NewUserAccountMongoFactory(
             coll.insertOne(userAccount)
         }catch (e: MongoException){
             throw e
+        }catch (e: Exception){
+            throw e
         }
     }
 }

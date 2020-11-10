@@ -1,4 +1,4 @@
-package com.sfinancial.admin.UserAdmin
+package com.sfinancial.admin.userAdmin
 
 import com.sfinancial.auth.AuthInterface
 import com.sfinancial.database.DBInterface

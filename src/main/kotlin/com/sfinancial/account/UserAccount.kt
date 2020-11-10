@@ -1,18 +1,18 @@
 package com.sfinancial.account
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect
-import com.sfinancial.admin.IdAdmin.UserIdAdmin
+import com.sfinancial.admin.idAdmin.UserIdAdmin
 import com.sfinancial.category.Category
-import com.sfinancial.group.UserGroup
-import com.sfinancial.payment.card.CardCredit
+import com.sfinancial.group.User
+import com.sfinancial.payment.card.CreditCard
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 data class UserAccount(
-        private val userGroup: UserGroup? = null,
-        private val category: MutableList<Category>? = mutableListOf(),
-        private val payment: MutableList<CardCredit>? = mutableListOf()
+        private val user: User? = null,
 ): AccountInterface {
     private var idAccount: String? = null
+    private val category: MutableList<Category> = mutableListOf()
+    private val payment: MutableList<CreditCard> =  mutableListOf()
 
     fun cId(){
         if (idAccount == null){
@@ -23,7 +23,7 @@ data class UserAccount(
             }
         }
     }
-    fun getUser(): UserGroup? {
-        return userGroup
+    fun getUser(): User? {
+        return user
     }
 }

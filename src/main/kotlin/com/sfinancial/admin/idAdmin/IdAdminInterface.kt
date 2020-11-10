@@ -1,4 +1,4 @@
-package com.sfinancial.admin.IdAdmin
+package com.sfinancial.admin.idAdmin
 
 interface IdAdminInterface {
     fun create(): String

@@ -1,33 +1,45 @@
 package com.sfinancial
 
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.google.gson.Gson
+import com.sfinancial.account.UserAccount
+import com.sfinancial.address.Address
+import com.sfinancial.group.User
+import com.sfinancial.person.Person
+import org.litote.kmongo.util.KMongoUtil
 
 
-fun main(){
+fun main() {
+//    val gson = Gson()
 //    val endereco = Address(
-//            "test",
-//            "test",
+//            "Av a",
+//            "123",
 //            "teste",
-//            "test",
-//            "test",
-//            "test"
+//            "123452 323",
+//            "Brasilia",
+//            "DF"
 //    )
 //    val pessoa = Person(
-//           null,
-//            "test",
-//            "test",
-//            "test",
+//            "Felipe",
+//            "Araujo",
+//            "10-10-1003",
+//            "123 233 445 21",
 //            endereco
 //    )
 //
-//    val user = User("test","test",pessoa)
+//    val user = User(
+//            "Felipe",
+//            "123456",
+//            pessoa
+//            )
 //
-      val gson = Gson()
-//    println(gson.toJson(user))
+//      val userAccount = UserAccount(user)
+//    val map = jacksonObjectMapper()
+//
+//    println(map.writeValueAsString(user))
 
-//    val database = MongoManagement(ReadMongoConfig().getConnectionString(),ReadMongoConfig().getDatabaseName()).getDatabase()
-//    val get = UserLogin("fedlipe","123c456")
-//    val login = LoginUserAccount(database,get).getUserAccount()
-//    println(gson.toJson(login))
+
+    val bson = KMongoUtil.toBson("{'username': 'felipe','password':'123345'}")
+    println(bson)
 
 }

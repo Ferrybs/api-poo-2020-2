@@ -2,7 +2,7 @@ package com.sfinancial.route.routeUserAuth
 
 
 import com.sfinancial.database.DBInterface
-import com.sfinancial.group.UserGroup
+import com.sfinancial.group.User
 import com.sfinancial.notification.exception.FailedVerifierException
 import com.sfinancial.notification.exception.InvalidFieldsException
 import com.sfinancial.notification.exception.InvalidRequestException
@@ -16,7 +16,7 @@ import io.ktor.routing.*
 
 internal fun Route.register(dbInterface: DBInterface) {
     post("/register") {
-        val user = call.receiveOrNull<UserGroup>()
+        val user = call.receiveOrNull<User>()
         if(user != null){
             try {
                 UserPermission(dbInterface).createAccount(user)

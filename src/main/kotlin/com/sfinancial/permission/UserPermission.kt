@@ -1,11 +1,11 @@
 package com.sfinancial.permission
 
 import com.sfinancial.account.UserAccount
-import com.sfinancial.admin.UserAdmin.UserAdminLoginAccount
-import com.sfinancial.admin.UserAdmin.UserAdminRegisterAccount
+import com.sfinancial.admin.userAdmin.UserAdminLoginAccount
+import com.sfinancial.admin.userAdmin.UserAdminRegisterAccount
 import com.sfinancial.auth.AuthInterface
 import com.sfinancial.database.DBInterface
-import com.sfinancial.group.UserGroup
+import com.sfinancial.group.User
 import com.sfinancial.login.LoginInterface
 import com.sfinancial.notification.exception.FailedVerifierException
 import com.sfinancial.verifier.GroupVerifier
@@ -16,13 +16,14 @@ class UserPermission(
         private val dbInterface: DBInterface
 ){
 
-    fun createAccount(groupUser: UserGroup){
+    fun createAccount(groupUser: User){
         try {
             if (GroupVerifier(groupUser).verifier()) {
                 val userAccount = UserAccount(groupUser)
                 UserAdminRegisterAccount(userAccount, dbInterface).registerAccount()
+            }else{
+                throw FailedVerifierException("Failed to verify user!")
             }
-            throw FailedVerifierException("Failed to verify user!")
         }catch (e: Exception){
             throw e
         }
