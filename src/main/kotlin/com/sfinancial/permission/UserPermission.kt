@@ -1,6 +1,7 @@
 package com.sfinancial.permission
 
 import com.sfinancial.account.UserAccount
+import com.sfinancial.admin.userAdmin.GetUserAccountUserAdmin
 import com.sfinancial.admin.userAdmin.LoginAccountUserAdmin
 import com.sfinancial.admin.userAdmin.RegisterAccountUserAdmin
 import com.sfinancial.auth.AuthInterface
@@ -37,5 +38,13 @@ class UserPermission(
         }catch (e: Exception){
             throw e
         }
+    }
+    fun getUserAccount(loginInterface: LoginInterface): UserAccount {
+        try {
+            return GetUserAccountUserAdmin(dbInterface).getUserAccount(loginInterface)
+        }catch (e: Exception) {
+            throw e
+        }
+
     }
 }

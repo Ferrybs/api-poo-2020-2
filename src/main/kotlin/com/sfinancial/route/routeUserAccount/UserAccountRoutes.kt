@@ -12,6 +12,6 @@ internal fun Application.userAccountRoutes(
         authInterface: AuthInterface
 ) {
     routing {
-        myUserAccount()
+        myUserAccount(dbInterface)
     }
 }

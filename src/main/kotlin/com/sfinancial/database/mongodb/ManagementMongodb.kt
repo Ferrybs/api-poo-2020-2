@@ -19,7 +19,7 @@ open class ManagementMongodb(
         }
     }
 
-    override fun getAccountUser(loginInterface: LoginInterface): UserAccount {
+    override fun getUserAccount(loginInterface: LoginInterface): UserAccount {
         try {
             return GetUserAccountMongoFactory(getDatabase()).get(loginInterface)
         }catch (e: Exception){

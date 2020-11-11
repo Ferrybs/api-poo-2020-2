@@ -5,5 +5,5 @@ import com.sfinancial.login.LoginInterface
 
 interface DBInterface {
     fun insertNewAccountUser(userAccount: UserAccount)
-    fun getAccountUser(loginInterface: LoginInterface): UserAccount
+    fun getUserAccount(loginInterface: LoginInterface): UserAccount
 }
