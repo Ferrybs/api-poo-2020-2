@@ -10,7 +10,7 @@ internal fun Route.myUserAccount(){
     authenticate {
         get("/myUserAccount") {
             val principal = call.principal<UserLogin>() ?: error("No principal")
-
+            call.respond("autenticado!")
         }
     }
 

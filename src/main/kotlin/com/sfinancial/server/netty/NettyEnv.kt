@@ -19,7 +19,7 @@ abstract class NettyEnv(
         try {
             return applicationEngineEnvironment {
                 module {
-                    moduleCors()
+                    //moduleCors()
                     moduleStatusPages()
                     moduleJwt(getAuthInterface())
                     moduleGson()
