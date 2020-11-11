@@ -4,6 +4,7 @@ import com.sfinancial.notification.exception.FailedVerifierException
 import com.sfinancial.notification.exception.InvalidCredentialException
 import com.sfinancial.notification.exception.InvalidFieldsException
 import com.sfinancial.notification.exception.InvalidRequestException
+import com.sfinancial.notification.statusPages.StatusPageCreated
 import io.ktor.application.*
 import io.ktor.features.*
 import io.ktor.http.*
@@ -22,6 +23,9 @@ fun Application.moduleStatusPages(){
         }
         exception<FailedVerifierException>{ exception ->
             call.respond(HttpStatusCode.NotAcceptable, mapOf("OK" to false, "error" to (exception.message ?: "")))
+        }
+        exception<StatusPageCreated>{ exception ->
+            call.respond(HttpStatusCode.Created, mapOf("OK" to true, "message" to (exception.message ?: "")))
         }
     }
 }

@@ -10,6 +10,15 @@ class CreditCard(
         private val validity: String? = null,
         private val since: String? = null,
         private val cid: String? = null
-) {
+): CardInterface {
     private val transaction = mutableListOf<Transaction>()
+    override fun verifier(): Boolean {
+        return !listOf(
+            name,
+            number,
+            validity,
+            since,
+            cid
+        ).any{it == null}
+    }
 }

@@ -1,6 +1,7 @@
 package com.sfinancial.permission
 
 import com.sfinancial.account.UserAccount
+import com.sfinancial.admin.userAdmin.AddCreditCardUserAdmin
 import com.sfinancial.admin.userAdmin.GetUserAccountUserAdmin
 import com.sfinancial.admin.userAdmin.LoginAccountUserAdmin
 import com.sfinancial.admin.userAdmin.RegisterAccountUserAdmin
@@ -9,6 +10,8 @@ import com.sfinancial.database.DBInterface
 import com.sfinancial.group.User
 import com.sfinancial.login.LoginInterface
 import com.sfinancial.notification.exception.FailedVerifierException
+import com.sfinancial.payment.card.CreditCard
+import com.sfinancial.verifier.CardVerifier
 import com.sfinancial.verifier.GroupVerifier
 import com.sfinancial.verifier.LoginVerifier
 import kotlin.Exception
@@ -47,4 +50,17 @@ class UserPermission(
         }
 
     }
+
+    fun createCreditCard(loginInterface: LoginInterface, creditCard: CreditCard){
+        try {
+            if (CardVerifier(creditCard).verifier()){
+                AddCreditCardUserAdmin(dbInterface).addCreditCard(loginInterface, creditCard)
+            }else{
+                throw FailedVerifierException("Failed to verifier!")
+            }
+        }catch (e : Exception){
+            throw e
+        }
+    }
 }
+

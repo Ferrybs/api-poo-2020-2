@@ -4,7 +4,13 @@ import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.google.gson.Gson
 import com.sfinancial.account.UserAccount
 import com.sfinancial.address.Address
+import com.sfinancial.config.mongoConfig.ReadMongoConfig
+import com.sfinancial.database.mongodb.ManagementMongodb
+import com.sfinancial.database.mongodb.mongoFactory.GetUserAccountMongoFactory
+import com.sfinancial.database.mongodb.mongoFactory.NewCreditCardMongoFactory
 import com.sfinancial.group.User
+import com.sfinancial.login.UserLogin
+import com.sfinancial.payment.card.CreditCard
 import com.sfinancial.person.Person
 import org.litote.kmongo.util.KMongoUtil
 
@@ -37,9 +43,9 @@ fun main() {
 //    val map = jacksonObjectMapper()
 //
 //    println(map.writeValueAsString(user))
-
-
-    val bson = KMongoUtil.toBson("{'username': 'felipe','password':'123345'}")
-    println(bson)
-
+    val mongo = ManagementMongodb(ReadMongoConfig().getConnectionString(),ReadMongoConfig().getDatabaseName()).getDatabase()
+    val creditCard = CreditCard("teste","teste","teste","teste","teste")
+    val userAccount = GetUserAccountMongoFactory(mongo).get(UserLogin("felipe","123456"))
+    userAccount.addPayment(creditCard)
+    NewCreditCardMongoFactory(mongo).create(userAccount)
 }

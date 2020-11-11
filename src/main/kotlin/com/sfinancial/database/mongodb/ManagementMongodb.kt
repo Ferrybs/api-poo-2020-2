@@ -5,6 +5,7 @@ import com.sfinancial.database.DBInterface
 import com.sfinancial.database.mongodb.mongoFactory.GetUserAccountMongoFactory
 import com.sfinancial.database.mongodb.mongoFactory.NewUserAccountMongoFactory
 import com.sfinancial.login.LoginInterface
+import com.sfinancial.payment.card.CreditCard
 
 open class ManagementMongodb(
         connectionString: String,
@@ -25,5 +26,8 @@ open class ManagementMongodb(
         }catch (e: Exception){
             throw e
         }
+    }
+
+    override fun insertNewCreditCard(userAccount: UserAccount) {
     }
 }
