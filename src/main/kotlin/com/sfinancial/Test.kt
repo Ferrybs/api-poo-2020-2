@@ -16,7 +16,7 @@ import org.litote.kmongo.util.KMongoUtil
 
 
 fun main() {
-//    val gson = Gson()
+    val gson = Gson()
 //    val endereco = Address(
 //            "Av a",
 //            "123",
@@ -40,12 +40,15 @@ fun main() {
 //            )
 //
 //      val userAccount = UserAccount(user)
-//    val map = jacksonObjectMapper()
+    val map = jacksonObjectMapper()
 //
 //    println(map.writeValueAsString(user))
-    val mongo = ManagementMongodb(ReadMongoConfig().getConnectionString(),ReadMongoConfig().getDatabaseName()).getDatabase()
-    val creditCard = CreditCard("teste","teste","teste","teste","teste")
-    val userAccount = GetUserAccountMongoFactory(mongo).get(UserLogin("felipe","123456"))
-    userAccount.addPayment(creditCard)
-    NewCreditCardMongoFactory(mongo).create(userAccount)
+    val mongo = ManagementMongodb(ReadMongoConfig().getConnectionString(), ReadMongoConfig().getDatabaseName()).getDatabase()
+    val creditCard = CreditCard("teste", "teste", "teste", "teste", "teste")
+    val userAccount = GetUserAccountMongoFactory(mongo).get(UserLogin("felipe", "123456"))
+    NewCreditCardMongoFactory(mongo).create(userAccount,creditCard)
+    val string = map.writeValueAsString(creditCard)
+    println(string)
+
+
 }

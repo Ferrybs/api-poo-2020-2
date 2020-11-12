@@ -11,8 +11,7 @@ class AddCreditCardUserAdmin(
     fun addCreditCard(loginInterface: LoginInterface, creditCard: CreditCard) {
         try {
             val user = dbInterface.getUserAccount(loginInterface)
-            user.addPayment(creditCard)
-            dbInterface.insertNewCreditCard(user)
+            dbInterface.insertNewCreditCard(user,creditCard)
         } catch (e: Exception) {
             throw e
         }

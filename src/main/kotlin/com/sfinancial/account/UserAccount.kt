@@ -39,16 +39,4 @@ data class UserAccount(
             throw e
         }
     }
-
-    fun getPayment(): MutableList<CreditCard> {
-        return payment
-    }
-
-    fun addPayment(creditCard: CreditCard){
-        try {
-            payment.add(creditCard)
-        }catch (e : Exception){
-            throw e
-        }
-    }
 }

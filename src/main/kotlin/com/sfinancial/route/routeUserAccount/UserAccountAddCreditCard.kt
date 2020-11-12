@@ -13,12 +13,12 @@ import io.ktor.routing.*
 
 internal fun Route.addCreditCard(dbInterface: DBInterface) {
     authenticate {
-        post("/myUserAccount/AddCreditCard") {
+        post("/myUserAccount/addCreditCard") {
             val userLogin = call.principal<UserLogin>() ?: error("No principal")
             try {
                 val post = call.receiveOrNull<CreditCard>()
                 if (post != null){
-                    UserPermission(dbInterface).createCreditCard(userLogin, post)
+                    UserPermission(dbInterface).createCreditCard(userLogin,post)
                     throw StatusPageCreated("Credit card successfully added!")
                 }else{
                     throw InvalidFieldsException("Invalid fields!")

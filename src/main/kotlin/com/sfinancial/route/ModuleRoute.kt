@@ -9,7 +9,7 @@ import io.ktor.application.*
 
 
 fun Application.routes(dbInterface: DBInterface,authInterface: AuthInterface) {
-    userAccountRoutes(dbInterface,authInterface)
+    userAccountRoutes(dbInterface)
     authRoutes(dbInterface,authInterface)
     homeRoutes()
 }

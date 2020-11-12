@@ -1,21 +1,19 @@
 package com.sfinancial.database.mongodb.mongoFactory
 
-import com.google.gson.Gson
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.mongodb.client.MongoDatabase
-import com.mongodb.client.model.Filters.eq
-import com.mongodb.client.model.Updates
 import com.sfinancial.account.UserAccount
 import com.sfinancial.payment.card.CreditCard
-import org.litote.kmongo.set
-import org.litote.kmongo.util.KMongoUtil
+import org.litote.kmongo.MongoOperator.*
+import org.litote.kmongo.updateOne
 
 class NewCreditCardMongoFactory(
     database: MongoDatabase
 ): MongoFactory(database) {
-    private val gson = Gson()
-    fun create(userAccount: UserAccount){
+    private val map = jacksonObjectMapper()
+    fun create(userAccount: UserAccount,creditCard: CreditCard){
         val coll = getCollUserAccount()
-        val bson = KMongoUtil.toBson(gson.toJson(userAccount.getPayment()))
-        coll.updateOne(eq("{'idAccount':${userAccount.getIdAccount()}}"),Updates.addToSet("payment",bson))
-    }
+        val string = map.writeValueAsString(creditCard)
+        coll.updateOne("{idAccount:'${userAccount.getIdAccount()}'}", "{${push}:{payment:$string}}")
+        }
 }

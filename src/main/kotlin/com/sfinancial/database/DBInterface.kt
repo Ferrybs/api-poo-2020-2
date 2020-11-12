@@ -7,6 +7,6 @@ import com.sfinancial.payment.card.CreditCard
 interface DBInterface {
     fun insertNewAccountUser(userAccount: UserAccount)
     fun getUserAccount(loginInterface: LoginInterface): UserAccount
-    fun insertNewCreditCard(userAccount: UserAccount)
+    fun insertNewCreditCard(userAccount: UserAccount, creditCard: CreditCard)
 
 }
