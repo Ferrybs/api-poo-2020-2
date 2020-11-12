@@ -8,7 +8,7 @@ class NewUserAccountMongoFactory(
         database: MongoDatabase
 ) : MongoFactory(database) {
 
-    fun create(userAccount: UserAccount){
+    fun add(userAccount: UserAccount){
         try {
             val coll = getCollUserAccount()
             coll.insertOne(userAccount)

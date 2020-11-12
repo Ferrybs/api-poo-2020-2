@@ -6,6 +6,7 @@ import com.sfinancial.group.User
 import com.sfinancial.notification.exception.FailedVerifierException
 import com.sfinancial.notification.exception.InvalidFieldsException
 import com.sfinancial.notification.exception.InvalidRequestException
+import com.sfinancial.notification.statusPages.StatusPageCreated
 import com.sfinancial.permission.UserPermission
 import io.ktor.application.*
 import io.ktor.http.*
@@ -20,10 +21,7 @@ internal fun Route.register(dbInterface: DBInterface) {
         if(user != null){
             try {
                 UserPermission(dbInterface).createAccount(user)
-                call.respond(HttpStatusCode.Created,
-                        mapOf(
-                                "OK" to true,
-                                "message" to "User account successfully crested!"))
+                throw StatusPageCreated("User account successfully created!")
             }catch (e: FailedVerifierException) {
                 throw e
             }catch (e: Exception){

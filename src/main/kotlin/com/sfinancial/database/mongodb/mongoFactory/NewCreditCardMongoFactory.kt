@@ -11,9 +11,13 @@ class NewCreditCardMongoFactory(
     database: MongoDatabase
 ): MongoFactory(database) {
     private val map = jacksonObjectMapper()
-    fun create(userAccount: UserAccount,creditCard: CreditCard){
-        val coll = getCollUserAccount()
-        val string = map.writeValueAsString(creditCard)
-        coll.updateOne("{idAccount:'${userAccount.getIdAccount()}'}", "{${push}:{payment:$string}}")
+    fun add(userAccount: UserAccount, creditCard: CreditCard){
+        try {
+            val coll = getCollUserAccount()
+            val string = map.writeValueAsString(creditCard)
+            coll.updateOne("{idAccount:'${userAccount.getIdAccount()}'}", "{${addToSet}:{payment:$string}}")
+        }catch (e: Exception){
+            throw e
+        }
         }
 }

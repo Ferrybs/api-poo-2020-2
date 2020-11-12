@@ -29,5 +29,6 @@ class IndexMongoConfig {
         coll.createIndex("{'user.username':1}",indexUnique)
         coll.createIndex("{'user.person.document':1}",indexUnique)
         coll.createIndex("{'payment.number':1}",indexUnique)
+        coll.createIndex("{'idAccount':1,'category.name':1}")
     }
 }
