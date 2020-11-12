@@ -4,6 +4,7 @@ import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.google.gson.Gson
 import com.sfinancial.account.UserAccount
 import com.sfinancial.address.Address
+import com.sfinancial.config.mongoConfig.IndexMongoConfig
 import com.sfinancial.config.mongoConfig.ReadMongoConfig
 import com.sfinancial.database.mongodb.ManagementMongodb
 import com.sfinancial.database.mongodb.mongoFactory.GetUserAccountMongoFactory
@@ -43,12 +44,7 @@ fun main() {
     val map = jacksonObjectMapper()
 //
 //    println(map.writeValueAsString(user))
-    val mongo = ManagementMongodb(ReadMongoConfig().getConnectionString(), ReadMongoConfig().getDatabaseName()).getDatabase()
-    val creditCard = CreditCard("teste", "teste", "teste", "teste", "teste")
-    val userAccount = GetUserAccountMongoFactory(mongo).get(UserLogin("felipe", "123456"))
-    NewCreditCardMongoFactory(mongo).create(userAccount,creditCard)
-    val string = map.writeValueAsString(creditCard)
-    println(string)
+      IndexMongoConfig().setUserAccount()
 
 
 }

@@ -1,6 +1,7 @@
 package com.sfinancial.payment.card
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect
+import com.sfinancial.notification.exception.InvalidFieldsException
 import com.sfinancial.transaction.Transaction
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
@@ -20,5 +21,16 @@ class CreditCard(
             since,
             cid
         ).any{it == null}
+    }
+    override fun getId():String {
+        try {
+            if (number != null){
+                return number
+            }else{
+                throw InvalidFieldsException("Credit Card number is null!")
+            }
+        }catch (e: Exception){
+            throw e
+        }
     }
 }

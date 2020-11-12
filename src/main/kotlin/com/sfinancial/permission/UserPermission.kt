@@ -53,8 +53,13 @@ class UserPermission(
 
     fun createCreditCard(loginInterface: LoginInterface, creditCard: CreditCard){
         try {
-            if (CardVerifier(creditCard).verifier()){
-                AddCreditCardUserAdmin(dbInterface).addCreditCard(loginInterface, creditCard)
+            val verifier = CardVerifier(creditCard)
+            if (verifier.verifier()){
+                if (verifier.verifierUnique(dbInterface)){
+                    AddCreditCardUserAdmin(dbInterface).addCreditCard(loginInterface, creditCard)
+                }else{
+                    throw  FailedVerifierException("Credit Card is not unique!")
+                }
             }else{
                 throw FailedVerifierException("Failed to verifier!")
             }
