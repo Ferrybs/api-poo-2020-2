@@ -17,15 +17,15 @@ import com.sfinancial.server.netty.NettyServer
 
 fun main(){
 
-    val envMongoConfig = ReadMongoConfig()
-    val envJwtConfig = ReadJwtConfig()
+    val envMongoConfig = EnvMongoConfig()
+    val envJwtConfig = EnvJwtConfig()
 
     var server: NettyServer
     try {
         server = NettyFactory(
                 getMongoDB(envMongoConfig),
                 getAuthJwt(envJwtConfig),
-                ReadNettyConfig()
+                EnvNettyConfig()
         ).connect()
     }catch (e: Exception){
         throw e
