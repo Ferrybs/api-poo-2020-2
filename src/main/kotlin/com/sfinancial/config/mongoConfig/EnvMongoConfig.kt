@@ -4,14 +4,14 @@ class EnvMongoConfig: MongoConfigInterface {
 
     override fun getConnectionString(): String {
         return try {
-                System.getenv("cString")
+                System.getenv("MONGODB_URI")
             }catch (e: Exception){
                 throw e
             }
     }
     override fun getDatabaseName(): String{
         return try {
-                System.getenv("dbName")
+                System.getenv("dbName") ?: "apiPoo"
             }catch (e: Exception){
                 throw e
             }
