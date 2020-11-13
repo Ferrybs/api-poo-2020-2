@@ -11,8 +11,8 @@ import kotlin.Exception
 
 class NettyServer(
         authInterface: AuthInterface,
-        dbInterface: DBInterface, nettyConfigInterface: NettyConfigInterface
-) : ServerInterface, NettyEnv(authInterface,dbInterface, nettyConfigInterface) {
+        nettyConfigInterface: NettyConfigInterface
+) : ServerInterface, NettyEnv(authInterface,nettyConfigInterface) {
 
     private fun getServer(): NettyApplicationEngine {
         try {
@@ -25,14 +25,6 @@ class NettyServer(
     override fun start() {
         try {
             getServer().start(wait = true)
-        }catch (e: Exception){
-            throw e
-        }
-    }
-
-    override fun getDBInterface(): DBInterface {
-        try {
-            return getDbInterface()
         }catch (e: Exception){
             throw e
         }

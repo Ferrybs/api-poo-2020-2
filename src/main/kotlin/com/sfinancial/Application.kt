@@ -23,7 +23,6 @@ fun main(){
     var server: NettyServer
     try {
         server = NettyFactory(
-                getMongoDB(envMongoConfig),
                 getAuthJwt(envJwtConfig),
                 EnvNettyConfig()
         ).connect()
