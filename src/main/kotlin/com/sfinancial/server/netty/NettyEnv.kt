@@ -28,7 +28,7 @@ abstract class NettyEnv(
                     moduleStatusPages()
                     moduleJwt(getAuthInterface())
                     moduleGson()
-                    routes(getDbInterface(),getAuthInterface())
+                    routes(getAuthInterface())
                 }
             }
         }catch (e: Exception){

@@ -8,11 +8,11 @@ import io.ktor.application.*
 import io.ktor.routing.*
 
 internal fun Application.userAccountRoutes(
-        dbInterface: DBInterface
+
 ) {
     routing {
-        addCategory(dbInterface)
-        addCreditCard(dbInterface)
-        myUserAccount(dbInterface)
+        addCategory()
+        addCreditCard()
+        myUserAccount()
     }
 }
