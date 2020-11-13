@@ -6,14 +6,6 @@ plugins {
     id 'application'
 }
 
-jar {
-    manifest {
-        attributes(
-                'Main-Class': 'com.sfinancial.ApplicationKt'
-        )
-    }
-}
-
 repositories {
     // (NUVEM)
     jcenter()
