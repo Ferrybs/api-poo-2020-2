@@ -6,6 +6,14 @@ plugins {
     id 'application'
 }
 
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'com.sfinancial.AplicationKt'
+        )
+    }
+}
+
 repositories {
     // (NUVEM)
     jcenter()
@@ -77,6 +85,8 @@ gradle.taskGraph.whenReady {
             test.enabled = false
         }
 }
+
+
 
 apply plugin: 'kotlin-kapt'
 apply plugin : "application"
