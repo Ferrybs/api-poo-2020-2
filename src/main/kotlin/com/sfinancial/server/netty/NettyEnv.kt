@@ -43,7 +43,11 @@ abstract class NettyEnv(
     }
     private fun getPort(): Int{
         try {
-            return nettyConfigInterface.getPort()
+            val port = nettyConfigInterface.getPort()
+            println("########################")
+            println("LENDO NO ENV PORTA $port")
+            println("########################")
+            return port
         }catch (e: Exception){
             throw e
         }
