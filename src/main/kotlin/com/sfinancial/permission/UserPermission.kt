@@ -15,7 +15,7 @@ import com.sfinancial.verifier.*
 import javax.security.auth.login.FailedLoginException
 import kotlin.Exception
 
-class UserPermission(
+open class UserPermission(
         private val dbInterface: DBInterface
 ){
     fun createAccount(user: User){
