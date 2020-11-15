@@ -128,5 +128,22 @@ class UserPermission(
             throw e
         }
     }
+
+
+
+
+
+
+
+    fun deleteCreditCard(creditCard: CreditCard){
+        try {
+            if(CardVerifier(creditCard).verifier()){
+                DeleteCreditCardUserAdmin(dbInterface).delete(creditCard)
+            }
+
+        }catch (e:Exception){
+            throw e
+        }
+    }
 }
 
