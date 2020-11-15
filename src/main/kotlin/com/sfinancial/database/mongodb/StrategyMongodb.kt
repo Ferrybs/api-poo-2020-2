@@ -82,4 +82,12 @@ open class StrategyMongodb(
             throw e
         }
     }
+
+    override fun deleteAddress(address: Address) {
+        TODO("Not yet implemented")
+    }
+
+    override fun updateTransaction(number: String, transaction: Transaction) {
+        TODO("Not yet implemented")
+    }
 }

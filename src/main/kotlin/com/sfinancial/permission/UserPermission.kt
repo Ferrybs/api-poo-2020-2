@@ -120,7 +120,12 @@ class UserPermission(
 
     fun deleteAddress(loginInterface: LoginInterface, address: Address){
         try {
-
+            if (AddressVerifier(address).verifier()){
+                val user = dbInterface.getUserAccount(loginInterface)
+                DeleteAddressUserAdmin(dbInterface).delete(user, address)
+            }
+        }catch (e:Exception){
+            throw e
         }
     }
 }
