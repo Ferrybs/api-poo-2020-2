@@ -12,7 +12,7 @@ import io.ktor.routing.*
 
 internal fun Route.myUserAccount(dbInterface: DBInterface){
     authenticate {
-        get("/my-user-account/my-account") {
+        get("/my-user-account") {
             val userLogin = call.principal<UserLogin>() ?: error("No principal")
             try {
                 val user = UserPermission(dbInterface).getUserAccount(userLogin)
