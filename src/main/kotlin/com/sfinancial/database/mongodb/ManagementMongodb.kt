@@ -62,19 +62,4 @@ open class ManagementMongodb(
             throw e
         }
     }
-
-
-
-
-
-
-
-    override fun updateAddress(userAccount: UserAccount, address: Address) {
-       try {
-           UpdateAddressMongoFactory(getDatabase())
-       }catch (e:Exception){
-           throw e
-       }
-    }
-
 }

@@ -15,6 +15,6 @@ interface DBInterface {
     fun getCreditCard(creditCardInterface: CardInterface)
     fun insertNewCategory(userAccount: UserAccount,category: Category)
     fun insertNewTransaction(userAccount: UserAccount,creditCard: CreditCard,transaction: Transaction)
-
+    fun updateCategory(userAccount: UserAccount,category: Category)
     fun updateAddress(userAccount: UserAccount, address: Address)
 }

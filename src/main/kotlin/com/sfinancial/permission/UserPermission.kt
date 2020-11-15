@@ -88,19 +88,5 @@ class UserPermission(
             throw e
         }
     }
-
-    fun updateAddress (loginInterface: LoginInterface,address: Address) {
-        try{
-        if(AddressVerifier(address).verifier()){
-            AddCategoryUserAdmin(dbInterface)
-        }
-
-    }catch (e:Exception){
-        throw e
-        }
-    }
-
-
 }
-
 
