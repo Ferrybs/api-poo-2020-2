@@ -14,14 +14,13 @@ import io.ktor.response.*
 import io.ktor.routing.*
 
 
-internal fun Route.login(authInterface: AuthInterface) {
+internal fun Route.login(authInterface: AuthInterface,dbInterface: DBInterface) {
     get("/login") {
         val get = call.receiveOrNull<UserLogin>()
         if (get != null){
             try {
-                val env = EnvMongoConfig()
-                val mongo = ManagementMongodb(env.getConnectionString(),env.getDatabaseName())
-                val token = UserPermission(mongo).login(get,authInterface)
+
+                val token = UserPermission(dbInterface).login(get,authInterface)
                 call.respond(mapOf("Ok" to true,"token" to token))
             }catch (e: InvalidCredentialException){
                 throw e

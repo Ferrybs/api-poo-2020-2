@@ -6,10 +6,11 @@ import io.ktor.application.*
 import io.ktor.routing.*
 
 internal fun Application.authRoutes(
-        authInterface: AuthInterface
+        authInterface: AuthInterface,
+        dbInterface: DBInterface
 ) {
     routing {
-        login(authInterface)
+        login(authInterface,dbInterface)
         register()
     }
 }

@@ -12,14 +12,12 @@ import io.ktor.http.*
 import io.ktor.response.*
 import io.ktor.routing.*
 
-internal fun Route.myUserAccount(){
+internal fun Route.myUserAccount(dbInterface: DBInterface){
     authenticate {
         get("/myUserAccount") {
             val userLogin = call.principal<UserLogin>() ?: error("No principal")
-            val env = EnvMongoConfig()
-            val mongo = ManagementMongodb(env.getConnectionString(),env.getDatabaseName())
             try {
-                val user = UserPermission(mongo).getUserAccount(userLogin)
+                val user = UserPermission(dbInterface).getUserAccount(userLogin)
                 call.respond(HttpStatusCode.Found,user)
             }catch (e: Exception) {
                 throw InvalidFieldsException("${e.message}")

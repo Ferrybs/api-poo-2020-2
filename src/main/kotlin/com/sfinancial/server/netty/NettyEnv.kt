@@ -14,7 +14,8 @@ import io.ktor.server.engine.*
 
 abstract class NettyEnv(
         private val authInterface: AuthInterface,
-        private val nettyConfigInterface: NettyConfigInterface
+        private val nettyConfigInterface: NettyConfigInterface,
+        private val dbInterface: DBInterface
 ){
     fun getEnv(): ApplicationEngineEnvironment {
         try {
@@ -28,7 +29,7 @@ abstract class NettyEnv(
                     moduleStatusPages()
                     moduleJwt(getAuthInterface())
                     moduleGson()
-                    routes(getAuthInterface())
+                    routes(getAuthInterface(),getDbInterface())
                 }
             }
         }catch (e: Exception){
@@ -63,8 +64,7 @@ abstract class NettyEnv(
     }
     fun getDbInterface(): DBInterface {
         try {
-            val env = EnvMongoConfig()
-            return ManagementMongodb(env.getConnectionString(),env.getDatabaseName())
+           return dbInterface
         }catch (e: Exception){
             throw e
         }

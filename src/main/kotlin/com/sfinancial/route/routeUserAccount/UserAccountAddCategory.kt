@@ -14,16 +14,14 @@ import io.ktor.request.*
 import io.ktor.routing.*
 import java.util.*
 
-fun Route.addCategory(){
+fun Route.addCategory(dbInterface: DBInterface){
     authenticate {
         post("/myUserAccount/addCategory") {
             val userLogin = call.principal<UserLogin>() ?: error("No principal")
             try {
                 val post = call.receiveOrNull<Category>()
-                val env = EnvMongoConfig()
-                val mongo = ManagementMongodb(env.getConnectionString(),env.getDatabaseName())
                 if (post !=null){
-                    UserPermission(mongo).createCategory(userLogin,post)
+                    UserPermission(dbInterface).createCategory(userLogin,post)
                     throw StatusPageCreated("Category has been created successfully")
                 }
             }catch (e: StatusPageCreated){

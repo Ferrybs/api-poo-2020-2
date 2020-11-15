@@ -23,9 +23,9 @@ fun main(){
     var server: NettyServer
     try {
         server = NettyFactory(
-                getMongoDB(envMongoConfig),
-                getAuthJwt(envJwtConfig),
-                ReadNettyConfig()
+            getAuthJwt(envJwtConfig),
+            ReadNettyConfig(),
+            getMongoDB(envMongoConfig)
         ).connect()
     }catch (e: Exception){
         throw e
