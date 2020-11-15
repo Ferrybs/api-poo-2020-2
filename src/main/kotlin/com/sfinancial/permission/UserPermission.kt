@@ -1,6 +1,7 @@
 package com.sfinancial.permission
 
 import com.sfinancial.account.UserAccount
+import com.sfinancial.address.Address
 import com.sfinancial.admin.userAdmin.*
 import com.sfinancial.auth.AuthInterface
 import com.sfinancial.call.CallCreditCardTransaction
@@ -11,6 +12,7 @@ import com.sfinancial.login.LoginInterface
 import com.sfinancial.notification.exception.FailedFindException
 import com.sfinancial.notification.exception.FailedVerifierException
 import com.sfinancial.payment.card.CreditCard
+import com.sfinancial.transaction.Transaction
 import com.sfinancial.verifier.*
 import javax.security.auth.login.FailedLoginException
 import kotlin.Exception
@@ -88,6 +90,37 @@ open class UserPermission(
             }
         }catch (e: Exception){
             throw e
+        }
+    }
+    fun updateTransaction(loginInterface: LoginInterface, callCreditCardTransaction: CallCreditCardTransaction){
+        try{
+            val number = callCreditCardTransaction.getNumber()
+            val transaction = callCreditCardTransaction.getPayment()
+            if (TransactionVerifier(transaction).verifier()){
+                UpdateTransactionUserAdmin(dbInterface).update(number, transaction)
+            }
+
+        }catch (e: Exception){
+        throw e
+    }
+    }
+
+    fun updateAddress(loginInterface: LoginInterface, address: Address){
+        try {
+            if (AddressVerifier(address).verifier())
+            {
+                val user = dbInterface.getUserAccount(loginInterface)
+                UpdateAddressUserAdmin(dbInterface).update(user,address)
+            }
+        }catch (e:Exception){
+            throw e
+        }
+
+    }
+
+    fun deleteAddress(loginInterface: LoginInterface, address: Address){
+        try {
+
         }
     }
 }
