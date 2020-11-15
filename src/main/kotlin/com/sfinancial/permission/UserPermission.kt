@@ -119,9 +119,6 @@ open class UserPermission(
     }
 
     fun deleteAddress(loginInterface: LoginInterface, address: Address){
-        try {
-
-        }
     }
 }
 

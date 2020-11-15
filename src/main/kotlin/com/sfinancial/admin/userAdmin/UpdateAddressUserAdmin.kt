@@ -14,6 +14,5 @@ class UpdateAddressUserAdmin(
         }catch (e: Exception){
             throw e
         }
-
     }
 }

@@ -14,13 +14,14 @@ class NewCreditCardMongoFactory(
     private val map = jacksonObjectMapper()
     fun add(userAccount: UserAccount, creditCard: CreditCard){
         try {
-            addCreditCard(creditCard)
+
             val coll = getCollUserAccount()
             val string = creditCard.getId()
             val status = coll.updateOne("{idAccount:'${userAccount.getIdAccount()}'}", "{${addToSet}:{payment:'$string'}}")
             if(status.modifiedCount.toInt()==0) {
                 throw FailedUpdateException("Failed to update! Matches: ${status.matchedCount} ")
             }
+            addCreditCard(creditCard)
         }catch (e: Exception){
             throw e
         }
