@@ -1,6 +1,7 @@
 package com.sfinancial.permission
 
 import com.sfinancial.account.UserAccount
+import com.sfinancial.address.Address
 import com.sfinancial.admin.userAdmin.*
 import com.sfinancial.auth.AuthInterface
 import com.sfinancial.call.CallCreditCardTransaction
@@ -87,5 +88,19 @@ class UserPermission(
             throw e
         }
     }
+
+    fun updateAddress (loginInterface: LoginInterface,address: Address) {
+        try{
+        if(AddressVerifier(address).verifier()){
+            AddCategoryUserAdmin(dbInterface)
+        }
+
+    }catch (e:Exception){
+        throw e
+        }
+    }
+
+
 }
+
 

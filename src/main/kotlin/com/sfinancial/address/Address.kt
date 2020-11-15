@@ -10,8 +10,8 @@ data class Address(
         private val zipCode: String? = null,
         private val city: String? = null,
         private val state: String? = null,
-){
-        fun verifier(): Boolean{
+):AddressInterface{
+      override fun verifier(): Boolean{
                 val hasNull = listOf(
                         street,
                         number,

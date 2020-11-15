@@ -1,6 +1,7 @@
 package com.sfinancial.database.mongodb
 
 import com.sfinancial.account.UserAccount
+import com.sfinancial.address.Address
 import com.sfinancial.category.Category
 import com.sfinancial.database.DBInterface
 import com.sfinancial.database.mongodb.mongoFactory.*
@@ -61,4 +62,19 @@ open class ManagementMongodb(
             throw e
         }
     }
+
+
+
+
+
+
+
+    override fun updateAddress(userAccount: UserAccount, address: Address) {
+       try {
+           UpdateAddressMongoFactory(getDatabase())
+       }catch (e:Exception){
+           throw e
+       }
+    }
+
 }

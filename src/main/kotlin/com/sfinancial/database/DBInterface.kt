@@ -1,6 +1,7 @@
 package com.sfinancial.database
 
 import com.sfinancial.account.UserAccount
+import com.sfinancial.address.Address
 import com.sfinancial.category.Category
 import com.sfinancial.login.LoginInterface
 import com.sfinancial.payment.card.CardInterface
@@ -15,4 +16,5 @@ interface DBInterface {
     fun insertNewCategory(userAccount: UserAccount,category: Category)
     fun insertNewTransaction(userAccount: UserAccount,creditCard: CreditCard,transaction: Transaction)
 
+    fun updateAddress(userAccount: UserAccount, address: Address)
 }
