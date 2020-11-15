@@ -27,8 +27,11 @@ import java.util.*
 
 
 fun main() {
-    val nettyConfig = EnvNettyConfig()
-    embeddedServer(Netty,port = nettyConfig.getPort()){
+    val nettyConfig = EnvNettyConfig().getPort()
+    println("++++++++++++++++++++")
+    println("+ LENDO: $nettyConfig+")
+    println("++++++++++++++++++++")
+    embeddedServer(Netty,port = nettyConfig){
         routing {
             get(""){
                 call.respond(HttpStatusCode.Accepted,"FUNCIONA")
