@@ -1,8 +1,6 @@
 package com.sfinancial.route.routeUserAccount
 
-import com.sfinancial.config.mongoConfig.EnvMongoConfig
 import com.sfinancial.database.DBInterface
-import com.sfinancial.database.mongodb.ManagementMongodb
 import com.sfinancial.login.UserLogin
 import com.sfinancial.notification.exception.InvalidFieldsException
 import com.sfinancial.notification.statusPages.StatusPageCreated

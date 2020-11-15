@@ -1,9 +1,7 @@
 package com.sfinancial.route.routeUserAuth
 
 import com.sfinancial.auth.AuthInterface
-import com.sfinancial.config.mongoConfig.EnvMongoConfig
 import com.sfinancial.database.DBInterface
-import com.sfinancial.database.mongodb.ManagementMongodb
 import com.sfinancial.login.UserLogin
 import com.sfinancial.notification.exception.InvalidCredentialException
 import com.sfinancial.notification.exception.InvalidFieldsException

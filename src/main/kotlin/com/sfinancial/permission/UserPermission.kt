@@ -18,13 +18,11 @@ import kotlin.Exception
 class UserPermission(
         private val dbInterface: DBInterface
 ){
-    fun createAccount(groupUser: User){
+    fun createAccount(user: User){
         try {
-            if (GroupVerifier(groupUser).verifier()) {
-                val userAccount = UserAccount(groupUser)
+            if (GroupVerifier(user).verifier()) {
+                val userAccount = UserAccount(user)
                 RegisterUseAdmin(userAccount, dbInterface).registerAccount()
-            }else{
-                throw FailedVerifierException("Failed to verify user!")
             }
         }catch (e: Exception){
             throw e

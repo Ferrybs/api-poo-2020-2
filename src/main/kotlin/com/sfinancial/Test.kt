@@ -1,57 +1,24 @@
 package com.sfinancial
 
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-import com.google.gson.Gson
-import com.sfinancial.account.UserAccount
-import com.sfinancial.address.Address
-import com.sfinancial.call.CallCreditCardTransaction
-import com.sfinancial.category.Category
-import com.sfinancial.config.mongoConfig.IndexMongoConfig
 import com.sfinancial.config.mongoConfig.ReadMongoConfig
-import com.sfinancial.database.mongodb.ManagementMongodb
+import com.sfinancial.database.mongodb.StrategyMongodb
 import com.sfinancial.database.mongodb.mongoFactory.GetUserAccountMongoFactory
-import com.sfinancial.database.mongodb.mongoFactory.NewCreditCardMongoFactory
-import com.sfinancial.group.User
+import com.sfinancial.database.mongodb.mongoFactory.NewTransactionMongoFactory
 import com.sfinancial.login.UserLogin
 import com.sfinancial.payment.card.CreditCard
-import com.sfinancial.person.Person
 import com.sfinancial.transaction.Transaction
-import org.litote.kmongo.util.KMongoUtil
-import java.util.*
 
 
 fun main() {
-    val gson = Gson()
-//    val endereco = Address(
-//            "Av a",
-//            "123",
-//            "teste",
-//            "123452 323",
-//            "Brasilia",
-//            "DF"
-//    )
-//    val pessoa = Person(
-//            "Felipe",
-//            "Araujo",
-//            "10-10-1003",
-//            "123 233 445 21",
-//            endereco
-//    )
-//
-//    val user = User(
-//            "Felipe",
-//            "123456",
-//            pessoa
-//            )
-//
-//      val userAccount = UserAccount(user)
+    val setting = ReadMongoConfig()
+    val database = StrategyMongodb(setting.getConnectionString(),setting.getDatabaseName()).getDatabase()
     val map = jacksonObjectMapper()
     val transaction = Transaction("1231","10 - 121- 11",123.00,"Fatee")
-//    println(map.writeValueAsString(user))
-      println(map.writeValueAsString(CallCreditCardTransaction(
-              "121341",
-              transaction
-      )))
+
+    val user = GetUserAccountMongoFactory(database).get(UserLogin("felipe","123456"))
+    val creditCard  = CreditCard(number = "1234 1234 1234 1234")
+    NewTransactionMongoFactory(database).add(user,creditCard,transaction)
 
 
 }

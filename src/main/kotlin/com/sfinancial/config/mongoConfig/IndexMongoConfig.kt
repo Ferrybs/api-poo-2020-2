@@ -3,7 +3,7 @@ package com.sfinancial.config.mongoConfig
 import com.mongodb.client.MongoDatabase
 import com.mongodb.client.model.IndexOptions
 import com.sfinancial.account.UserAccount
-import com.sfinancial.database.mongodb.ManagementMongodb
+import com.sfinancial.database.mongodb.StrategyMongodb
 import org.litote.kmongo.createIndex
 import org.litote.kmongo.getCollection
 
@@ -17,7 +17,7 @@ class IndexMongoConfig {
             val readMongoConfig = ReadMongoConfig()
             val connectionString = readMongoConfig.getConnectionString()
             val databaseName = readMongoConfig.getDatabaseName()
-            return ManagementMongodb(connectionString,databaseName).getDatabase()
+            return StrategyMongodb(connectionString,databaseName).getDatabase()
         }catch (e: Exception){
             throw e
         }

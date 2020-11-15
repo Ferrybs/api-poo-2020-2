@@ -10,7 +10,7 @@ import com.sfinancial.payment.card.CardInterface
 import com.sfinancial.payment.card.CreditCard
 import com.sfinancial.transaction.Transaction
 
-open class ManagementMongodb(
+open class StrategyMongodb(
         connectionString: String,
         databaseName: String,
 ) : ConnectionMongodb(connectionString, databaseName), DBInterface {

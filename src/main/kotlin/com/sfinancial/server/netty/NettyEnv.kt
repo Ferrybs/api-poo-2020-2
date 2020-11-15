@@ -1,10 +1,8 @@
 package com.sfinancial.server.netty
 
 import com.sfinancial.auth.AuthInterface
-import com.sfinancial.config.mongoConfig.EnvMongoConfig
 import com.sfinancial.config.nettyConfig.NettyConfigInterface
 import com.sfinancial.database.DBInterface
-import com.sfinancial.database.mongodb.ManagementMongodb
 import com.sfinancial.feature.authJwt.moduleJwt
 import com.sfinancial.feature.doubleReceive.moduleDoubleReceive
 import com.sfinancial.feature.gson.moduleGson

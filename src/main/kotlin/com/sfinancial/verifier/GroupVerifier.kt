@@ -10,10 +10,12 @@ class GroupVerifier(
         try {
             if (groupInterface.verifier()){
                 return true
+            }else{
+                throw FailedVerifierException("Failed to verify user!")
             }
-            return false
+
         }catch (e: Exception){
-            throw FailedVerifierException("Failed to verifier user")
+            throw e
         }
     }
 }

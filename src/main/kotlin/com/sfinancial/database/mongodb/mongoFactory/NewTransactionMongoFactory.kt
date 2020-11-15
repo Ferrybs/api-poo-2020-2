@@ -17,8 +17,8 @@ class NewTransactionMongoFactory(
             val string = map.writeValueAsString(transaction)
             val coll = getCollUserAccount()
             val res = coll.updateOne(
-                    "{'payment':'${creditCard.getId()}'}",
-                    "{${MongoOperator.addToSet}:{transaction:${string}}}")
+                    "{'payment.number':'${creditCard.getId()}'}",
+                    "{${MongoOperator.addToSet}:{payment.transaction:${string}}}")
             res.toString()
         }catch (e: Exception){
             throw e
