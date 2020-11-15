@@ -8,8 +8,8 @@ class Transaction(
         private val date: String? = null,
         private val value: Double? = null,
         private val local: String? = null,
-) {
-    fun verifier(): Boolean{
+): TransactionInterface{
+    override fun verifier(): Boolean{
         val hasNull = listOf(
                 idTransaction,
                 date,

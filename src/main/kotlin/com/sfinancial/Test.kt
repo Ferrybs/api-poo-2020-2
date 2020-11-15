@@ -4,6 +4,7 @@ import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.google.gson.Gson
 import com.sfinancial.account.UserAccount
 import com.sfinancial.address.Address
+import com.sfinancial.call.CallCreditCardTransaction
 import com.sfinancial.category.Category
 import com.sfinancial.config.mongoConfig.IndexMongoConfig
 import com.sfinancial.config.mongoConfig.ReadMongoConfig
@@ -14,6 +15,7 @@ import com.sfinancial.group.User
 import com.sfinancial.login.UserLogin
 import com.sfinancial.payment.card.CreditCard
 import com.sfinancial.person.Person
+import com.sfinancial.transaction.Transaction
 import org.litote.kmongo.util.KMongoUtil
 import java.util.*
 
@@ -44,12 +46,11 @@ fun main() {
 //
 //      val userAccount = UserAccount(user)
     val map = jacksonObjectMapper()
-//
+    val transaction = Transaction("1231","10 - 121- 11",123.00,"Fatee")
 //    println(map.writeValueAsString(user))
-      println(map.writeValueAsString(Category(
-              "Saude",
-              5,
-              "Farmacia e Hospitais"
+      println(map.writeValueAsString(CallCreditCardTransaction(
+              "121341",
+              transaction
       )))
 
 

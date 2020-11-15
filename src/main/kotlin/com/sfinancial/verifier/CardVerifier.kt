@@ -15,6 +15,14 @@ class CardVerifier(
          throw e
         }
     }
+    fun verifierId():Boolean{
+        try {
+            cardInterface.getId()
+            return true
+        }catch (e: Exception){
+            throw e
+        }
+    }
     fun verifierUnique(dbInterface: DBInterface): Boolean{
         return try {
             dbInterface.getCreditCard(cardInterface)

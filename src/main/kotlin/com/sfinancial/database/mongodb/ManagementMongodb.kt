@@ -7,6 +7,7 @@ import com.sfinancial.database.mongodb.mongoFactory.*
 import com.sfinancial.login.LoginInterface
 import com.sfinancial.payment.card.CardInterface
 import com.sfinancial.payment.card.CreditCard
+import com.sfinancial.transaction.Transaction
 
 open class ManagementMongodb(
         connectionString: String,
@@ -48,6 +49,14 @@ open class ManagementMongodb(
     override fun insertNewCategory(userAccount: UserAccount, category: Category) {
         try {
             NewCategoryMongoFactory(getDatabase()).add(userAccount,category)
+        }catch (e: Exception){
+            throw e
+        }
+    }
+
+    override fun insertNewTransaction(userAccount: UserAccount, creditCard: CreditCard,transaction: Transaction) {
+        try {
+            NewTransactionMongoFactory(getDatabase()).add(userAccount,creditCard,transaction)
         }catch (e: Exception){
             throw e
         }

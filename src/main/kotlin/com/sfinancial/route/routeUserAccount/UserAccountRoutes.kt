@@ -11,6 +11,7 @@ internal fun Application.userAccountRoutes(
         dbInterface: DBInterface
 ) {
     routing {
+        addTransaction(dbInterface)
         addCategory(dbInterface)
         addCreditCard(dbInterface)
         myUserAccount(dbInterface)
