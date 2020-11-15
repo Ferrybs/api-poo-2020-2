@@ -1,7 +1,9 @@
 package com.sfinancial.route.routeUserAccount
 
 import com.sfinancial.category.Category
+import com.sfinancial.config.mongoConfig.EnvMongoConfig
 import com.sfinancial.database.DBInterface
+import com.sfinancial.database.mongodb.ManagementMongodb
 import com.sfinancial.login.UserLogin
 import com.sfinancial.notification.exception.InvalidFieldsException
 import com.sfinancial.notification.statusPages.StatusPageCreated
@@ -12,14 +14,16 @@ import io.ktor.request.*
 import io.ktor.routing.*
 import java.util.*
 
-fun Route.addCategory(dbInterface: DBInterface){
+fun Route.addCategory(){
     authenticate {
         post("/myUserAccount/addCategory") {
             val userLogin = call.principal<UserLogin>() ?: error("No principal")
             try {
                 val post = call.receiveOrNull<Category>()
+                val env = EnvMongoConfig()
+                val mongo = ManagementMongodb(env.getConnectionString(),env.getDatabaseName())
                 if (post !=null){
-                    UserPermission(dbInterface).createCategory(userLogin,post)
+                    UserPermission(mongo).createCategory(userLogin,post)
                     throw StatusPageCreated("Category has been created successfully")
                 }
             }catch (e: StatusPageCreated){

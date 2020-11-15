@@ -5,14 +5,13 @@ import com.sfinancial.config.nettyConfig.NettyConfigInterface
 import com.sfinancial.database.DBInterface
 
 class NettyFactory(
-        private val dbInterface: DBInterface,
         private val authInterface: AuthInterface,
         private val nettyConfigInterface: NettyConfigInterface
 ) {
 
     fun connect(): NettyServer{
        try {
-           return NettyServer(authInterface,dbInterface,nettyConfigInterface)
+           return NettyServer(authInterface,nettyConfigInterface)
        }catch (e: Exception){
            throw e
        }
