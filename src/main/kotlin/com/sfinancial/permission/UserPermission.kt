@@ -120,5 +120,22 @@ open class UserPermission(
 
     fun deleteAddress(loginInterface: LoginInterface, address: Address){
     }
+
+
+
+
+
+
+
+    fun deleteCreditCard(creditCard: CreditCard){
+        try {
+            if(CardVerifier(creditCard).verifier()){
+                DeleteCreditCardUserAdmin(dbInterface).delete(creditCard)
+            }
+
+        }catch (e:Exception){
+            throw e
+        }
+    }
 }
 
