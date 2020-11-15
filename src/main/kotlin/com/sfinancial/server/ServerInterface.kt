@@ -5,5 +5,4 @@ import com.sfinancial.database.DBInterface
 
 interface ServerInterface{
     fun start()
-    fun getDBInterface(): DBInterface
 }

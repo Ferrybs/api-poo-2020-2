@@ -1,24 +1,28 @@
+buildscript {
+    ext.kotlin_version = '1.3.10'
+    ext.ktor_version = '1.0.0'
+
+    repositories {
+        mavenCentral()
+    }
+}
+
 plugins {
     id 'java'
     id 'com.github.johnrengelman.shadow' version '6.0.0'
     id 'org.jetbrains.kotlin.jvm' version '1.4.0'
-    id "org.jetbrains.kotlin.kapt" version "1.4.10"
     id 'application'
 }
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'kotlin'
+
+sourceCompatibility = 1.8
 
 repositories {
-    // (NUVEM)
     jcenter()
-    mavenCentral()
-    maven { url 'https://dl.bintray.com/kotlin/ktor' }
-    maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
-
-    // (FISICO) - Pasta: /lib
-
-
 }
-
-sourceSets.main.java.srcDirs = ['src']
 
 dependencies {
     // - Kotlin
@@ -27,7 +31,6 @@ dependencies {
     // - Servidor ktor e gson
     implementation 'io.ktor:ktor-server-netty:1.4.0'
     implementation "io.ktor:ktor-gson:1.4.0"
-    implementation "io.ktor:ktor-server-netty:1.4.0"
     implementation "io.ktor:ktor-html-builder:1.4.0"
     implementation "io.ktor:ktor-locations:1.4.0"
     implementation "io.ktor:ktor-auth-ldap:1.4.0"
@@ -35,17 +38,13 @@ dependencies {
     implementation "io.ktor:ktor-auth-jwt:1.4.0"
     implementation 'ch.qos.logback:logback-classic:1.2.3'
     implementation 'com.google.code.gson:gson:2.8.6'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.0"
 
     implementation 'org.litote.kmongo:kmongo:4.1.2'
-    implementation 'org.litote.kmongo:kmongo-coroutine:4.1.2'
-    implementation 'org.litote.kmongo:kmongo-rxjava2:4.1.2'
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-cbor:1.0.1'
 
     // https://mvnrepository.com/artifact/org.mindrot/jbcrypt
     compile group: 'org.mindrot', name: 'jbcrypt', version: '0.4'
 
-    kapt 'org.litote.kmongo:kmongo-annotation-processor:4.1.2'
     compile 'org.mongodb:bson:4.1.1'
 
     testImplementation group: 'org.amshove.kluent', name: 'kluent', version: '1.38'
@@ -57,34 +56,15 @@ dependencies {
 }
 
 compileKotlin {
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
 }
 
-task stage(dependsOn: ['build', 'clean'])
-build.mustRunAfter clean
+apply plugin: 'application'
 
-task copyToLib(type: Copy) {
-    into "$buildDir/libs"
-    from(configurations.compile)
+mainClassName = 'com.sfinancial.TestKt'
+task stage {
+    dependsOn installDist
 }
-stage.dependsOn(copyToLib)
-
-gradle.taskGraph.whenReady {
-    taskGraph ->
-        if (taskGraph.hasTask(stage)) {
-            test.enabled = false
-        }
-}
-
-
-
-apply plugin: 'kotlin-kapt'
-apply plugin : "application"
-group 'com.sfinancial'
-version '1.0-SNAPSHOT'
-
-
-mainClassName = "com.sfinancial.ApplicationKt"
-
