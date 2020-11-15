@@ -27,7 +27,6 @@ dependencies {
     // - Servidor ktor e gson
     implementation 'io.ktor:ktor-server-netty:1.4.0'
     implementation "io.ktor:ktor-gson:1.4.0"
-    implementation "io.ktor:ktor-server-netty:1.4.0"
     implementation "io.ktor:ktor-html-builder:1.4.0"
     implementation "io.ktor:ktor-locations:1.4.0"
     implementation "io.ktor:ktor-auth-ldap:1.4.0"
@@ -45,7 +44,6 @@ dependencies {
     // https://mvnrepository.com/artifact/org.mindrot/jbcrypt
     compile group: 'org.mindrot', name: 'jbcrypt', version: '0.4'
 
-    kapt 'org.litote.kmongo:kmongo-annotation-processor:4.1.2'
     compile 'org.mongodb:bson:4.1.1'
 
     testImplementation group: 'org.amshove.kluent', name: 'kluent', version: '1.38'
@@ -80,11 +78,10 @@ gradle.taskGraph.whenReady {
 
 
 
-apply plugin: 'kotlin-kapt'
 apply plugin : "application"
 group 'com.sfinancial'
 version '1.0-SNAPSHOT'
 
 
-mainClassName = "com.sfinancial.ApplicationKt"
+mainClassName = "com.sfinancial.TestKt"
 
