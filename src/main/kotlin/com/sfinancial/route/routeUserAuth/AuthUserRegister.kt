@@ -2,6 +2,7 @@ package com.sfinancial.route.routeUserAuth
 
 
 import com.sfinancial.config.mongoConfig.EnvMongoConfig
+import com.sfinancial.database.DBInterface
 import com.sfinancial.database.mongodb.StrategyMongodb
 import com.sfinancial.group.User
 import com.sfinancial.notification.exception.FailedVerifierException
@@ -14,16 +15,17 @@ import io.ktor.request.*
 import io.ktor.routing.*
 
 
-internal fun Route.register() {
+internal fun Route.register(dbInterface: DBInterface) {
     post("/register") {
         val user = call.receiveOrNull<User>()
         if(user != null){
             try {
-                val env = EnvMongoConfig()
-                val mongo = StrategyMongodb(env.getConnectionString(),env.getDatabaseName())
-                UserPermission(mongo).createAccount(user)
+                UserPermission(dbInterface).createAccount(user)
                 throw StatusPageCreated("User account successfully created!")
-            }catch (e: FailedVerifierException) {
+            }catch (e: StatusPageCreated){
+                throw e
+            }
+            catch (e: FailedVerifierException) {
                 throw e
             }catch (e: Exception){
                 throw InvalidFieldsException("Invalid fields! Message: ${e.message}")

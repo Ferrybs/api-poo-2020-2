@@ -13,7 +13,7 @@ data class UserAccount(
 ): AccountInterface {
     private var idAccount: String? = null
     private val category: MutableList<Category> = mutableListOf()
-    private val payment: MutableList<CreditCard> =  mutableListOf()
+    private val payment: MutableList<String> =  mutableListOf()
 
     fun cId(){
         if (idAccount == null){

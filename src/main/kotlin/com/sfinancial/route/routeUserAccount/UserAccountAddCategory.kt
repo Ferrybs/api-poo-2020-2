@@ -13,7 +13,7 @@ import io.ktor.routing.*
 
 fun Route.addCategory(dbInterface: DBInterface){
     authenticate {
-        post("/myUserAccount/addCategory") {
+        post("/my-user-account/add-category") {
             val userLogin = call.principal<UserLogin>() ?: error("No principal")
             try {
                 val post = call.receiveOrNull<Category>()

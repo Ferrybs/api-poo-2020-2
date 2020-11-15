@@ -39,12 +39,16 @@ open class StrategyMongodb(
         }
     }
 
-    override fun getCreditCard(creditCardInterface: CardInterface) {
+    override fun getCreditCard(creditCardInterface: CardInterface): CreditCard {
         try {
-            GetCreditCardMongoFactory(getDatabase()).get(creditCardInterface)
+            return GetCreditCardMongoFactory(getDatabase()).get(creditCardInterface)
         }catch (e: Exception){
             throw e
         }
+    }
+
+    override fun getPaymentAccount(number: String): UserAccount {
+        TODO("Not yet implemented")
     }
 
     override fun insertNewCategory(userAccount: UserAccount, category: Category) {
@@ -55,9 +59,25 @@ open class StrategyMongodb(
         }
     }
 
-    override fun insertNewTransaction(userAccount: UserAccount, creditCard: CreditCard,transaction: Transaction) {
+    override fun insertNewTransaction(creditCard: CreditCard, transaction: Transaction) {
         try {
-            NewTransactionMongoFactory(getDatabase()).add(userAccount,creditCard,transaction)
+            NewTransactionMongoFactory(getDatabase()).add(creditCard,transaction)
+        }catch (e: Exception){
+            throw e
+        }
+    }
+
+    override fun updateCategory(userAccount: UserAccount, category: Category) {
+        try {
+            UpdateCategoryMongoFactory(getDatabase()).update(userAccount,category)
+        }catch (e: Exception){
+            throw e
+        }
+    }
+
+    override fun updateAddress(userAccount: UserAccount, address: Address) {
+        try {
+            UpdateAddressMongoFactory(getDatabase()).update(userAccount,address)
         }catch (e: Exception){
             throw e
         }

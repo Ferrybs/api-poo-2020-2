@@ -9,7 +9,7 @@ class UpdateCategoryMongoFactory(database: MongoDatabase
     fun update(userAccount: UserAccount,category: Category){
         try{
            val coll = getCollUserAccount()
-            coll.updateOne("{'idAccount':${userAccount.getIdAccount()}}","")
+            TODO("NADA")
         }catch (e : Exception){
             throw e
         }

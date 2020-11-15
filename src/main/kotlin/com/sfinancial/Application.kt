@@ -57,5 +57,7 @@ private fun getAuthJwt(jwtConfigInterface: JwtConfigInterface): AuthJwt {
     }
 }
 private fun setMongodb(){
-    IndexMongoConfig().setUserAccount()
+    val idx = IndexMongoConfig()
+    idx.setUserAccount()
+    idx.setCreditCard()
 }

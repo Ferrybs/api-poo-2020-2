@@ -1,6 +1,7 @@
 package com.sfinancial.verifier
 
 import com.sfinancial.login.LoginInterface
+import com.sfinancial.notification.exception.FailedVerifierException
 
 class LoginVerifier(
         private val loginInterface: LoginInterface

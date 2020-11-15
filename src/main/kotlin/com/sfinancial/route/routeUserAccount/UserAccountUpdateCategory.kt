@@ -18,7 +18,7 @@ internal fun Route.updateCategory(dbInterface: DBInterface){
             val userLogin = call.principal<UserLogin>() ?: error("No principal")
             try {
                 val put = call.receive<Category>()
-                call.respond(HttpStatusCode.Found,user)
+                TODO("NADA")
             }catch (e: Exception) {
                 throw InvalidFieldsException("${e.message}")
             }

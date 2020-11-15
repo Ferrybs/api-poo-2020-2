@@ -12,9 +12,10 @@ interface DBInterface {
     fun insertNewAccountUser(userAccount: UserAccount)
     fun getUserAccount(loginInterface: LoginInterface): UserAccount
     fun insertNewCreditCard(userAccount: UserAccount, creditCard: CreditCard)
-    fun getCreditCard(creditCardInterface: CardInterface)
+    fun getCreditCard(creditCardInterface: CardInterface): CreditCard
+    fun getPaymentAccount(number: String): UserAccount
     fun insertNewCategory(userAccount: UserAccount,category: Category)
-    fun insertNewTransaction(userAccount: UserAccount,creditCard: CreditCard,transaction: Transaction)
+    fun insertNewTransaction(creditCard: CreditCard,transaction: Transaction)
     fun updateCategory(userAccount: UserAccount,category: Category)
     fun updateAddress(userAccount: UserAccount, address: Address)
 }

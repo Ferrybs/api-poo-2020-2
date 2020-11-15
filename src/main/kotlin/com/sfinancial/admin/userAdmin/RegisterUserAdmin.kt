@@ -4,7 +4,7 @@ package com.sfinancial.admin.userAdmin
 import com.sfinancial.account.UserAccount
 import com.sfinancial.database.DBInterface
 
-class RegisterUseAdmin(
+class RegisterUserAdmin(
         private val userAccount: UserAccount,
         private val dbInterface: DBInterface,
 ) {

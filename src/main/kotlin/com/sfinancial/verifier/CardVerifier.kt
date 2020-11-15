@@ -23,14 +23,4 @@ class CardVerifier(
             throw e
         }
     }
-    fun verifierUnique(dbInterface: DBInterface): Boolean{
-        return try {
-            dbInterface.getCreditCard(cardInterface)
-            false
-        }catch (e: NotFoundException){
-            true
-        }catch (e: Exception){
-            throw e
-        }
-    }
 }

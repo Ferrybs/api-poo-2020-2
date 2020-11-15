@@ -17,7 +17,6 @@ internal fun Route.login(authInterface: AuthInterface,dbInterface: DBInterface) 
         val get = call.receiveOrNull<UserLogin>()
         if (get != null){
             try {
-
                 val token = UserPermission(dbInterface).login(get,authInterface)
                 call.respond(mapOf("Ok" to true,"token" to token))
             }catch (e: InvalidCredentialException){

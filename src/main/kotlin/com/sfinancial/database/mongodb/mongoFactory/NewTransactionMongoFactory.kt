@@ -7,19 +7,17 @@ import com.sfinancial.payment.card.CreditCard
 import com.sfinancial.transaction.Transaction
 import org.litote.kmongo.MongoOperator
 import org.litote.kmongo.updateOne
+import org.litote.kmongo.MongoOperator.*
 
 class NewTransactionMongoFactory(
         database: MongoDatabase
 ) : MongoFactory(database) {
     private val map = jacksonObjectMapper()
-    fun add(userAccount: UserAccount,creditCard: CreditCard,transaction: Transaction){
+    fun add(creditCard: CreditCard,transaction: Transaction){
         try {
+            val coll = getCollPayment()
             val string = map.writeValueAsString(transaction)
-            val coll = getCollUserAccount()
-            val res = coll.updateOne(
-                    "{'payment.number':'${creditCard.getId()}'}",
-                    "{${MongoOperator.addToSet}:{payment.transaction:${string}}}")
-            res.toString()
+            val status = coll.updateOne("{number:'${creditCard.getId()}'}", "{${addToSet}:{transaction:$string}}")
         }catch (e: Exception){
             throw e
         }

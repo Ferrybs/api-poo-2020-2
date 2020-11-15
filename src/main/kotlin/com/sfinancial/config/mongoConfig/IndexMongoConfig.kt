@@ -4,6 +4,7 @@ import com.mongodb.client.MongoDatabase
 import com.mongodb.client.model.IndexOptions
 import com.sfinancial.account.UserAccount
 import com.sfinancial.database.mongodb.StrategyMongodb
+import com.sfinancial.payment.card.CreditCard
 import org.litote.kmongo.createIndex
 import org.litote.kmongo.getCollection
 
@@ -28,7 +29,10 @@ class IndexMongoConfig {
         coll.createIndex("{'idAccount':1}",indexUnique)
         coll.createIndex("{'user.username':1}",indexUnique)
         coll.createIndex("{'user.person.document':1}",indexUnique)
-        coll.createIndex("{'payment.number':1}",indexUnique)
         coll.createIndex("{'idAccount':1,'category.name':1}")
+    }
+    fun setCreditCard(){
+        val coll = database.getCollection<CreditCard>()
+        coll.createIndex("{'number':1}",indexUnique)
     }
 }

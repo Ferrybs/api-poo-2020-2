@@ -18,7 +18,7 @@ fun main() {
 
     val user = GetUserAccountMongoFactory(database).get(UserLogin("felipe","123456"))
     val creditCard  = CreditCard(number = "1234 1234 1234 1234")
-    NewTransactionMongoFactory(database).add(user,creditCard,transaction)
+    NewTransactionMongoFactory(database).add(creditCard,transaction)
 
 
 }

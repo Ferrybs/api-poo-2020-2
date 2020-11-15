@@ -13,7 +13,7 @@ import io.ktor.routing.*
 
 internal fun Route.addCreditCard(dbInterface: DBInterface) {
     authenticate {
-        post("/myUserAccount/addCreditCard") {
+        post("/my-user-account/add-credit-card") {
             val userLogin = call.principal<UserLogin>() ?: error("No principal")
             try {
                 val post = call.receiveOrNull<CreditCard>()

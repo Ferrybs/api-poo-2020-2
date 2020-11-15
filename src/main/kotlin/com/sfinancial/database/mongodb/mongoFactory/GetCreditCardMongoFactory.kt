@@ -13,10 +13,10 @@ class GetCreditCardMongoFactory(
         database: MongoDatabase
 ) : MongoFactory(database) {
 
-    fun get(creditCardInterface: CardInterface): UserAccount {
+    fun get(creditCardInterface: CardInterface): CreditCard {
         try {
-            val coll = getCollUserAccount()
-            val card =coll.findOne("{'payment.number': '${creditCardInterface.getId()}'}")
+            val coll = getCollPayment()
+            val card =coll.findOne("{'number': ${creditCardInterface.getId()}}")
             if (card != null){
                 return card
             }else{

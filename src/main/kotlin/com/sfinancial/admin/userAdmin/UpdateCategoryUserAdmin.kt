@@ -8,9 +8,6 @@ class UpdateCategoryUserAdmin(
     private val dbInterface: DBInterface
 ) {
     fun update(loginInterface: LoginInterface, category: Category){
-        try {
-
-        }catch (e: Exception){
-            throw e
-        }
+        TODO("NADA")
+    }
 }

@@ -11,6 +11,6 @@ internal fun Application.authRoutes(
 ) {
     routing {
         login(authInterface,dbInterface)
-        register()
+        register(dbInterface)
     }
 }
