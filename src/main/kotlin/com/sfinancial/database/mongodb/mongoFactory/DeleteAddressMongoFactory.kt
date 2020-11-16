@@ -1,9 +1,7 @@
 package com.sfinancial.database.mongodb.mongoFactory
 
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.mongodb.client.MongoDatabase
 import com.sfinancial.account.UserAccount
-import com.sfinancial.address.Address
 import com.sfinancial.notification.exception.FailedUpdateException
 import org.litote.kmongo.updateOne
 import org.litote.kmongo.MongoOperator.*

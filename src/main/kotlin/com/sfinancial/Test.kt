@@ -5,6 +5,7 @@ import com.sfinancial.config.mongoConfig.ReadMongoConfig
 import com.sfinancial.database.mongodb.StrategyMongodb
 import com.sfinancial.database.mongodb.mongoFactory.*
 import com.sfinancial.login.UserLogin
+import com.sfinancial.payment.card.CreditCard
 import com.sfinancial.transaction.Transaction
 
 
@@ -28,5 +29,6 @@ fun main() {
             "Facaaaa"
     )
     val user = GetUserAccountMongoFactory(database).get(UserLogin("felipe","123456"))
-
+    //NewCreditCardMongoFactory(database).add(user,CreditCard("Fel","123","re","w","w"))
+    DeleteCreditCardMongoFactory(database).delete(CreditCard(number = "123"))
 }

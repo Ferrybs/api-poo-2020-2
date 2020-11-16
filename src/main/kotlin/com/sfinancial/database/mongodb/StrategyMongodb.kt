@@ -103,7 +103,11 @@ open class StrategyMongodb(
     }
 
     override fun deleteCreditCard(creditCard: CreditCard) {
-        TODO("Not yet implemented")
+        try {
+            DeleteCreditCardMongoFactory(getDatabase()).delete(creditCard)
+        }catch (e: Exception){
+            throw e
+        }
     }
 
     override fun deleteAddress(userAccount: UserAccount) {
