@@ -9,7 +9,7 @@ class DeleteAddressUserAdmin(
 ) {
     fun delete(userAccount: UserAccount, address: Address){
         try {
-        dbInterface.deleteAddress(address)
+        dbInterface.deleteAddress(userAccount,address)
         }catch (e:Exception){
             throw e
         }

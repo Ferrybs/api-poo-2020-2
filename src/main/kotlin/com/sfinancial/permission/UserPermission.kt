@@ -16,7 +16,7 @@ import com.sfinancial.payment.card.CreditCard
 import com.sfinancial.verifier.*
 import kotlin.Exception
 
-class UserPermission(
+open class UserPermission(
         private val dbInterface: DBInterface
 ){
     fun createAccount(user: User){

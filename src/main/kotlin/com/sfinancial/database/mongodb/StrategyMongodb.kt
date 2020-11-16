@@ -87,7 +87,7 @@ open class StrategyMongodb(
         }
     }
     override fun updateTransaction(number: String, transaction: Transaction) {
-        TODO("Not yet implemented")
+
     }
 
     override fun deleteCreditCard(creditCard: CreditCard) {
