@@ -1,5 +1,6 @@
 package com.sfinancial.route.routeUserAccount
 
+import com.sfinancial.call.CallCreditCardTransaction
 import com.sfinancial.database.DBInterface
 import com.sfinancial.login.UserLogin
 import com.sfinancial.notification.exception.InvalidFieldsException
@@ -15,7 +16,7 @@ internal fun Route.deleteTransaction(dbInterface: DBInterface){
         delete ("/my-user-account/delete-transaction") {
             val userLogin = call.principal<UserLogin>() ?: error("No principal")
             try {
-                val delete = call.receive<Transaction>()
+                val delete = call.receive<CallCreditCardTransaction>()
                 UserPermission(dbInterface).deleteTransaction(userLogin, delete)
             }catch (e: Exception) {
                 throw InvalidFieldsException("${e.message}")
