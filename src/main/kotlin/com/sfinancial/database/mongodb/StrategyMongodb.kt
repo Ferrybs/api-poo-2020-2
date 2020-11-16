@@ -86,8 +86,12 @@ open class StrategyMongodb(
             throw e
         }
     }
-    override fun updateTransaction(number: String, transaction: Transaction) {
-
+    override fun updateTransaction(transaction: Transaction) {
+        try {
+            UpdateTransactionMongoFactory(getDatabase()).update(transaction)
+        }catch (e: Exception){
+            throw e
+        }
     }
 
     override fun deleteCreditCard(creditCard: CreditCard) {
@@ -99,7 +103,11 @@ open class StrategyMongodb(
     }
 
     override fun deleteCategory(userAccount: UserAccount, category: Category) {
-        TODO("Not yet implemented")
+        try {
+            DeleteCategoryMongoFactory(getDatabase()).delete(userAccount,category)
+        }catch (e: Exception){
+            throw e
+        }
     }
 
     override fun deleteTransaction(userAccount: UserAccount, transaction: Transaction) {

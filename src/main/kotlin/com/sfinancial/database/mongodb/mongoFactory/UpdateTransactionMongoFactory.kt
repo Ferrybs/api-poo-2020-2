@@ -17,8 +17,10 @@ class UpdateTransactionMongoFactory(
         try {
             val coll = getCollPayment()
             val string = map.writeValueAsString(transaction)
-            val status= coll.updateOne("{'transaction.idTransaction':'${transaction.getIdTransaction()}'}",
-                    "{${set}:{'transaction.$':$string}}")
+            val status= coll.updateOne(
+                    "{'transaction.idTransaction':'${transaction.getIdTransaction()}'}",
+                    "{${set}:{'transaction.$':$string}}"
+            )
             if(status.modifiedCount.toInt()==0) {
                 throw FailedUpdateException("Failed to update! Matches: ${status.matchedCount} ")
             }

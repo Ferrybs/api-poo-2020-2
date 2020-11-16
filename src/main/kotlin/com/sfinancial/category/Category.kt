@@ -16,13 +16,23 @@ class Category(
                 description
         ).any { it == null }
     }
-
     override fun getPriority(): Int {
         try {
             if (priority != null) {
                 return priority
             }
             throw InvalidFieldsException("Category does not have priority!")
+        }catch (e: Exception){
+            throw e
+        }
+    }
+
+    override fun getName(): String {
+        try {
+            if (name != null) {
+                return name
+            }
+            throw InvalidFieldsException("Category does not have name!")
         }catch (e: Exception){
             throw e
         }

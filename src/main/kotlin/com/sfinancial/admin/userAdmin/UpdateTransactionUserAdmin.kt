@@ -7,9 +7,9 @@ import com.sfinancial.transaction.Transaction
 class UpdateTransactionUserAdmin (
     private val dbInterface: DBInterface
 ) {
-    fun update (number: String, transaction: Transaction){
+    fun update (transaction: Transaction){
         try{
-            dbInterface.updateTransaction(number,transaction)
+            dbInterface.updateTransaction(transaction)
         }catch (e: Exception){
         throw e
     }

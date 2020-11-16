@@ -13,6 +13,7 @@ import com.sfinancial.notification.exception.FailedFindException
 import com.sfinancial.notification.exception.FailedVerifierException
 import com.sfinancial.notification.exception.InvalidCredentialException
 import com.sfinancial.payment.card.CreditCard
+import com.sfinancial.transaction.Transaction
 import com.sfinancial.verifier.*
 import kotlin.Exception
 
@@ -97,12 +98,10 @@ open class UserPermission(
             throw e
         }
     }
-    fun updateTransaction(loginInterface: LoginInterface, callCreditCardTransaction: CallCreditCardTransaction){
+    fun updateTransaction(loginInterface: LoginInterface, transaction: Transaction){
         try{
-            val number = callCreditCardTransaction.getNumber()
-            val transaction = callCreditCardTransaction.getPayment()
             if (TransactionVerifier(transaction).verifier()&& LoginVerifier(loginInterface).verifier()){
-                UpdateTransactionUserAdmin(dbInterface).update(number, transaction)
+                UpdateTransactionUserAdmin(dbInterface).update(transaction)
             }
 
         }catch (e: Exception){
