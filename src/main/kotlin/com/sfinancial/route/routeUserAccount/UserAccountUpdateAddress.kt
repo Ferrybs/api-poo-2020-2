@@ -18,6 +18,7 @@ internal fun Route.updateAddress(dbInterface: DBInterface){
             val userLogin = call.principal<UserLogin>() ?: error("No principal")
             try {
                 val put = call.receive<Address>()
+                UserPermission(dbInterface).updateAddress(userLogin,put)
             }catch (e: Exception) {
                 throw InvalidFieldsException("${e.message}")
             }

@@ -42,7 +42,10 @@ class UserPermission(
     }
     fun getUserAccount(loginInterface: LoginInterface): UserAccount {
         try {
-            return GetUserAccountUserAdmin(dbInterface).getUserAccount(loginInterface)
+            if (LoginVerifier(loginInterface).verifier()){
+                return GetUserAccountUserAdmin(dbInterface).getUserAccount(loginInterface)
+            }
+            throw FailedVerifierException("Failed to verify login")
         }catch (e: Exception) {
             throw e
         }
@@ -51,8 +54,7 @@ class UserPermission(
 
     fun createCreditCard(loginInterface: LoginInterface, creditCard: CreditCard){
         try {
-            val verifier = CardVerifier(creditCard)
-            if (verifier.verifier()){
+            if (CardVerifier(creditCard).verifier() && LoginVerifier(loginInterface).verifier()){
                 val user = dbInterface.getUserAccount(loginInterface)
                 AddCreditCardUserAdmin(dbInterface).add(user, creditCard)
             }else{
@@ -64,7 +66,7 @@ class UserPermission(
     }
     fun createCategory(loginInterface: LoginInterface,category: Category){
         try {
-            if(CategoryVerifier(category).verifier()){
+            if(CategoryVerifier(category).verifier()&& LoginVerifier(loginInterface).verifier()){
                 AddCategoryUserAdmin(dbInterface).add(loginInterface,category)
             }else{
                 throw FailedVerifierException("Failed to verifier!")
@@ -78,7 +80,11 @@ class UserPermission(
         try {
             val creditCard = CreditCard(number = callCreditCardTransaction.getNumber())
             val transaction = callCreditCardTransaction.getPayment()
-            if (CardVerifier(creditCard).verifierId() && TransactionVerifier(transaction).verifier()){
+            if (
+                    CardVerifier(creditCard).verifierId() &&
+                    TransactionVerifier(transaction).verifier()&&
+                    LoginVerifier(loginInterface).verifier()
+            ){
                 val userAccount = dbInterface.getUserAccount(loginInterface)
                 val userCard = dbInterface.getPaymentAccount(creditCard.getNumber())
                 if (userAccount.getIdAccount() == userCard.getIdAccount()){
@@ -95,7 +101,7 @@ class UserPermission(
         try{
             val number = callCreditCardTransaction.getNumber()
             val transaction = callCreditCardTransaction.getPayment()
-            if (TransactionVerifier(transaction).verifier()){
+            if (TransactionVerifier(transaction).verifier()&& LoginVerifier(loginInterface).verifier()){
                 UpdateTransactionUserAdmin(dbInterface).update(number, transaction)
             }
 
@@ -106,7 +112,7 @@ class UserPermission(
 
     fun updateAddress(loginInterface: LoginInterface, address: Address){
         try {
-            if (AddressVerifier(address).verifier())
+            if (AddressVerifier(address).verifier()&& LoginVerifier(loginInterface).verifier())
             {
                 val user = dbInterface.getUserAccount(loginInterface)
                 UpdateAddressUserAdmin(dbInterface).update(user,address)
@@ -119,7 +125,7 @@ class UserPermission(
 
     fun deleteAddress(loginInterface: LoginInterface, address: Address){
         try {
-            if (AddressVerifier(address).verifier()){
+            if (AddressVerifier(address).verifier()&& LoginVerifier(loginInterface).verifier()){
                 val user = dbInterface.getUserAccount(loginInterface)
                 DeleteAddressUserAdmin(dbInterface).delete(user, address)
             }
@@ -138,7 +144,7 @@ class UserPermission(
         try {
             if(CardVerifier(creditCard).verifier()){
                 val user = dbInterface.getUserAccount(loginInterface)
-                val usercard = dbInterface.getPaymentAccount(creditCard.getId())
+                val usercard = dbInterface.getPaymentAccount(creditCard.getNumber())
                 if(user.getIdAccount() == usercard.getIdAccount()){
                     DeleteCreditCardUserAdmin(dbInterface).delete(creditCard)
                 }
@@ -151,7 +157,7 @@ class UserPermission(
 
     fun deleteCategory(loginInterface: LoginInterface,category: Category){
         try{
-           if(CategoryVerifier(category).verifier()){
+           if(CategoryVerifier(category).verifier()&& LoginVerifier(loginInterface).verifier()){
               val user = dbInterface.getUserAccount(loginInterface)
               DeleteCategoryUserAdmin(dbInterface).delete(user, category)
            }

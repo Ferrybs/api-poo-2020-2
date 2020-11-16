@@ -86,16 +86,23 @@ open class StrategyMongodb(
             throw e
         }
     }
-
-    override fun deleteAddress(address: Address) {
-        TODO("Not yet implemented")
-    }
-
     override fun updateTransaction(number: String, transaction: Transaction) {
         TODO("Not yet implemented")
     }
 
     override fun deleteCreditCard(creditCard: CreditCard) {
+        TODO("Not yet implemented")
+    }
+
+    override fun deleteAddress(userAccount: UserAccount, address: Address) {
+        TODO("Not yet implemented")
+    }
+
+    override fun deleteCategory(userAccount: UserAccount, category: Category) {
+        TODO("Not yet implemented")
+    }
+
+    override fun deleteTransaction(userAccount: UserAccount, transaction: Transaction) {
         TODO("Not yet implemented")
     }
 }
