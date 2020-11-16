@@ -136,13 +136,28 @@ class UserPermission(
 
 
 
-    fun deleteCreditCard(creditCard: CreditCard){
+    fun deleteCreditCard(loginInterface: LoginInterface,creditCard: CreditCard){
         try {
             if(CardVerifier(creditCard).verifier()){
-                DeleteCreditCardUserAdmin(dbInterface).delete(creditCard)
+                val user = dbInterface.getUserAccount(loginInterface)
+                val usercard = dbInterface.getPaymentAccount(creditCard.getId())
+                if(user.getIdAccount() == usercard.getIdAccount()){
+                    DeleteCreditCardUserAdmin(dbInterface).delete(creditCard)
+                }
+                throw InvalidCredentialException ("Invalid Credential !!")
             }
-
         }catch (e:Exception){
+            throw e
+        }
+    }
+
+    fun deleteCategory(loginInterface: LoginInterface,category: Category){
+        try{
+           if(CategoryVerifier(category).verifier()){
+              val user = dbInterface.getUserAccount(loginInterface)
+              DeleteCategoryUserAdmin(dbInterface).delete(user, category)
+           }
+        }catch(e: Exception){
             throw e
         }
     }

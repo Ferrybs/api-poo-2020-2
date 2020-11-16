@@ -20,6 +20,6 @@ interface DBInterface {
     fun updateAddress(userAccount: UserAccount, address: Address)
     fun updateTransaction(number: String, transaction: Transaction)
     fun deleteCreditCard(creditCard: CreditCard)
-    fun deleteAddress(address: Address)
-    fun deleteTransaction(userAccount: UserAccount, transaction: Transaction)
+    fun deleteAddress(userAccount: UserAccount,address: Address)
+    fun deleteCategory(userAccount: UserAccount,category: Category)
 }
