@@ -145,5 +145,17 @@ class UserPermission(
             throw e
         }
     }
-}
 
+    fun deleteTransaction(loginInterface: LoginInterface, transaction: Transaction){
+        try {
+            if (LoginVerifier(loginInterface).verifier()&&TransactionVerifier(transaction).verifierId()){
+                val user = dbInterface.getUserAccount(loginInterface)
+                DeleteTrasactionUserAdmin(dbInterface).delete(user, transaction)
+            }
+        }catch (e:Exception){
+            throw e
+        }
+    }
+
+
+}

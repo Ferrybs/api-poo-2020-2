@@ -21,4 +21,5 @@ interface DBInterface {
     fun updateTransaction(number: String, transaction: Transaction)
     fun deleteCreditCard(creditCard: CreditCard)
     fun deleteAddress(address: Address)
+    fun deleteTransaction(userAccount: UserAccount, transaction: Transaction)
 }
