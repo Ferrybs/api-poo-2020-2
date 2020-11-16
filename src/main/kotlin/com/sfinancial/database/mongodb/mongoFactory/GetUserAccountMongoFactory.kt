@@ -3,7 +3,10 @@ package com.sfinancial.database.mongodb.mongoFactory
 import com.mongodb.client.MongoDatabase
 import com.sfinancial.account.UserAccount
 import com.sfinancial.login.LoginInterface
+import com.sfinancial.notification.exception.FailedFindException
 import com.sfinancial.notification.exception.InvalidCredentialException
+import com.sfinancial.payment.card.CreditCard
+import com.sfinancial.transaction.Transaction
 import org.litote.kmongo.and
 import org.litote.kmongo.findOne
 import org.litote.kmongo.util.KMongoUtil
@@ -25,5 +28,37 @@ class GetUserAccountMongoFactory(
         }
 
 
+    }
+    fun get(transaction: Transaction): UserAccount {
+        try {
+            val coll = getCollPayment()
+            val credit = coll.findOne(
+                    "{'transaction.idTransaction':'${transaction.getIdTransaction()}'}"
+            )
+            if (credit != null){
+                val number = credit.getNumber()
+                val coll2 = getCollUserAccount()
+                val userAccount = coll2.findOne("{payment:'$number'}")
+                if (userAccount!=null){
+                    return userAccount
+                }
+            }
+            throw FailedFindException("Failed to find!")
+        }catch (e: Exception){
+            throw e
+        }
+    }
+    fun get(creditCard: CreditCard): UserAccount {
+        try{
+            val coll = getCollUserAccount()
+            val userAccount = coll.findOne("{'payment':'${creditCard.getNumber()}'}")
+            if (userAccount != null){
+                return userAccount
+            }else{
+                throw FailedFindException("Failed to find Account!")
+            }
+        }catch (e: Exception){
+            throw e
+        }
     }
 }

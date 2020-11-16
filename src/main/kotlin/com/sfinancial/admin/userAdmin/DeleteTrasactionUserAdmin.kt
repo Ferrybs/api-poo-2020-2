@@ -2,7 +2,6 @@ package com.sfinancial.admin.userAdmin
 
 import com.sfinancial.account.UserAccount
 import com.sfinancial.database.DBInterface
-import com.sfinancial.login.LoginInterface
 import com.sfinancial.transaction.Transaction
 
 class DeleteTrasactionUserAdmin (
@@ -10,7 +9,7 @@ class DeleteTrasactionUserAdmin (
 ) {
     fun delete(userAccount: UserAccount, transaction: Transaction){
         try {
-            dbInterface.deleteTransaction(userAccount, transaction)
+            dbInterface.deleteTransaction(transaction)
         }catch (e:Exception){
             throw e
         }

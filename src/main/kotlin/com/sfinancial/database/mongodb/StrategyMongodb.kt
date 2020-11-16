@@ -47,9 +47,17 @@ open class StrategyMongodb(
         }
     }
 
-    override fun getPaymentAccount(number: String): UserAccount {
+    override fun getUserAccount(transaction: Transaction): UserAccount {
         try {
-            return GetUserPaymentMongoFactory(getDatabase()).get(number)
+            return GetUserAccountMongoFactory(getDatabase()).get(transaction)
+        }catch (e: Exception){
+            throw e
+        }
+    }
+
+    override fun getUserAccount(creditCard: CreditCard): UserAccount {
+        try {
+            return GetUserAccountMongoFactory(getDatabase()).get(creditCard)
         }catch (e: Exception){
             throw e
         }
@@ -114,7 +122,12 @@ open class StrategyMongodb(
         }
     }
 
-    override fun deleteTransaction(userAccount: UserAccount, transaction: Transaction) {
-        TODO("Not yet implemented")
+    override fun deleteTransaction(transaction: Transaction) {
+        try {
+            DeleteTransactionMongoFactory(getDatabase()).delete(transaction)
+        }catch (e: Exception){
+            throw e
+        }
     }
+
 }

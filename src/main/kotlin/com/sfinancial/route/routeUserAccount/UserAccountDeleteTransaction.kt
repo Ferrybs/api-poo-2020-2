@@ -16,7 +16,7 @@ internal fun Route.deleteTransaction(dbInterface: DBInterface){
         delete ("/my-user-account/delete-transaction") {
             val userLogin = call.principal<UserLogin>() ?: error("No principal")
             try {
-                val delete = call.receive<CallCreditCardTransaction>()
+                val delete = call.receive<Transaction>()
                 UserPermission(dbInterface).deleteTransaction(userLogin, delete)
             }catch (e: Exception) {
                 throw InvalidFieldsException("${e.message}")

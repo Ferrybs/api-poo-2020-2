@@ -1,16 +1,11 @@
 package com.sfinancial
 
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-import com.sfinancial.address.Address
-import com.sfinancial.category.Category
-import com.sfinancial.config.mongoConfig.IndexMongoConfig
 import com.sfinancial.config.mongoConfig.ReadMongoConfig
 import com.sfinancial.database.mongodb.StrategyMongodb
 import com.sfinancial.database.mongodb.mongoFactory.*
 import com.sfinancial.login.UserLogin
-import com.sfinancial.payment.card.CreditCard
 import com.sfinancial.transaction.Transaction
-import com.sun.jndi.cosnaming.IiopUrl
 
 
 fun main() {
@@ -33,6 +28,5 @@ fun main() {
             "Facaaaa"
     )
     val user = GetUserAccountMongoFactory(database).get(UserLogin("felipe","123456"))
-    DeleteTransactionMongoFactory(database).delete(transaction)
 
 }

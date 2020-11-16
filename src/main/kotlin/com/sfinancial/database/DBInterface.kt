@@ -10,17 +10,18 @@ import com.sfinancial.transaction.Transaction
 
 interface DBInterface {
     fun insertNewAccountUser(userAccount: UserAccount)
-    fun getUserAccount(loginInterface: LoginInterface): UserAccount
     fun insertNewCreditCard(userAccount: UserAccount, creditCard: CreditCard)
-    fun getCreditCard(creditCardInterface: CardInterface): CreditCard
-    fun getPaymentAccount(number: String): UserAccount
     fun insertNewCategory(userAccount: UserAccount,category: Category)
     fun insertNewTransaction(creditCard: CreditCard,transaction: Transaction)
+    fun getUserAccount(loginInterface: LoginInterface): UserAccount
+    fun getUserAccount(creditCard: CreditCard): UserAccount
+    fun getUserAccount(transaction: Transaction) : UserAccount
+    fun getCreditCard(creditCardInterface: CardInterface): CreditCard
     fun updateCategory(userAccount: UserAccount,category: Category)
     fun updateAddress(userAccount: UserAccount, address: Address)
     fun updateTransaction(transaction: Transaction)
     fun deleteCreditCard(creditCard: CreditCard)
     fun deleteAddress(userAccount: UserAccount)
     fun deleteCategory(userAccount: UserAccount,category: Category)
-    fun deleteTransaction(userAccount: UserAccount, transaction: Transaction)
+    fun deleteTransaction(transaction: Transaction)
 }

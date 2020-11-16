@@ -16,7 +16,10 @@ class NewTransactionMongoFactory(
         try {
             val coll = getCollPayment()
             val string = map.writeValueAsString(transaction)
-            val status = coll.updateOne("{number:'${creditCard.getNumber()}'}", "{${addToSet}:{transaction:$string}}")
+            val status = coll.updateOne(
+                    "{number:'${creditCard.getNumber()}'}",
+                    "{${addToSet}:{transaction:$string}}"
+            )
             if(status.modifiedCount.toInt()==0) {
                 throw FailedUpdateException("Failed to update! Matches: ${status.matchedCount} ")
             }

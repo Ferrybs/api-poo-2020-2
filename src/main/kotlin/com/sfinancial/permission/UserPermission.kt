@@ -87,7 +87,7 @@ open class UserPermission(
                     LoginVerifier(loginInterface).verifier()
             ){
                 val userAccount = dbInterface.getUserAccount(loginInterface)
-                val userCard = dbInterface.getPaymentAccount(creditCard.getNumber())
+                val userCard = dbInterface.getUserAccount(creditCard)
                 if (userAccount.getIdAccount() == userCard.getIdAccount()){
                     AddTransactionUserAdmin(dbInterface).add(creditCard,transaction)
                 }else{
@@ -132,19 +132,12 @@ open class UserPermission(
             throw e
         }
     }
-
-
-
-
-
-
-
     fun deleteCreditCard(loginInterface: LoginInterface,creditCard: CreditCard){
         try {
             if(CardVerifier(creditCard).verifier()){
                 val user = dbInterface.getUserAccount(loginInterface)
-                val usercard = dbInterface.getPaymentAccount(creditCard.getNumber())
-                if(user.getIdAccount() == usercard.getIdAccount()){
+                val userCard = dbInterface.getUserAccount(creditCard)
+                if(user.getIdAccount() == userCard.getIdAccount()){
                     DeleteCreditCardUserAdmin(dbInterface).delete(creditCard)
                 }
                 throw InvalidCredentialException ("Invalid Credential!")
@@ -164,32 +157,12 @@ open class UserPermission(
             throw e
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    fun deleteTransaction(loginInterface: LoginInterface, callCreditCardTransaction: CallCreditCardTransaction){
+    fun deleteTransaction(loginInterface: LoginInterface, transaction: Transaction){
         try {
-            val transaction = callCreditCardTransaction.getPayment()
-            val number = callCreditCardTransaction.getNumber()
             if (LoginVerifier(loginInterface).verifier()&&TransactionVerifier().verifierId()){
                 val user = dbInterface.getUserAccount(loginInterface)
-                val usercredit = dbInterface.getPaymentAccount(number)
-                if (user.getIdAccount() == usercredit.getIdAccount()){
+                val userCredit = dbInterface.getUserAccount(transaction)
+                if (user.getIdAccount() == userCredit.getIdAccount()){
                     DeleteTrasactionUserAdmin(dbInterface).delete(user, transaction)
                 }
                 throw InvalidCredentialException("Invalid credential")
