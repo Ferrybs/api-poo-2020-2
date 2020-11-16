@@ -7,9 +7,9 @@ import com.sfinancial.database.DBInterface
 class DeleteAddressUserAdmin(
     private val dbInterface: DBInterface
 ) {
-    fun delete(userAccount: UserAccount, address: Address){
+    fun delete(userAccount: UserAccount){
         try {
-        dbInterface.deleteAddress(userAccount,address)
+        dbInterface.deleteAddress(userAccount)
         }catch (e:Exception){
             throw e
         }

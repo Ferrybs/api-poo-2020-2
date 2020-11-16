@@ -26,15 +26,13 @@ fun main() {
 //    val idx = IndexMongoConfig()
 //    idx.setUserAccount()
 //    idx.setCreditCard()
-    val address = Address(
-            " ",
-            "",
-            "",
-            "",
-            "",
-            ""
+    val transaction = Transaction(
+            "1231",
+            "10 22 221",
+            123.23,
+            "Facaaaa"
     )
     val user = GetUserAccountMongoFactory(database).get(UserLogin("felipe","123456"))
-    DeleteAddressMongoFactory(database).delete(user,address)
+    DeleteTransactionMongoFactory(database).delete(transaction)
 
 }

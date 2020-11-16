@@ -2,21 +2,22 @@ package com.sfinancial.database.mongodb.mongoFactory
 
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.mongodb.client.MongoDatabase
-import com.sfinancial.account.UserAccount
-import com.sfinancial.address.Address
 import com.sfinancial.notification.exception.FailedUpdateException
+import com.sfinancial.transaction.Transaction
 import org.litote.kmongo.updateOne
 import org.litote.kmongo.MongoOperator.*
 
-class DeleteAddressMongoFactory(
+class DeleteTransactionMongoFactory(
         database: MongoDatabase
-) : MongoFactory(database) {
-    fun delete(userAccount: UserAccount){
+) : MongoFactory(database){
+    private val map = jacksonObjectMapper()
+    fun delete(transaction: Transaction){
         try {
-            val coll = getCollUserAccount()
+            val coll = getCollPayment()
+            val string = map.writeValueAsString(transaction)
             val status = coll.updateOne(
-                    "{'idAccount':'${userAccount.getIdAccount()}'}",
-                    "{${unset}:{'user.person.address':1}}"
+                    "{'transaction.idTransaction': '${transaction.getIdTransaction()}'}",
+                    "{$pull:{'transaction': $string}}"
             )
             if(status.modifiedCount.toInt()==0) {
                 throw FailedUpdateException("Failed to update! Matches: ${status.matchedCount} ")
@@ -24,6 +25,5 @@ class DeleteAddressMongoFactory(
         }catch (e: Exception){
             throw e
         }
-
     }
 }

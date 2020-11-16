@@ -98,8 +98,12 @@ open class StrategyMongodb(
         TODO("Not yet implemented")
     }
 
-    override fun deleteAddress(userAccount: UserAccount, address: Address) {
-        TODO("Not yet implemented")
+    override fun deleteAddress(userAccount: UserAccount) {
+        try {
+            DeleteAddressMongoFactory(getDatabase()).delete(userAccount)
+        }catch (e: Exception){
+            throw e
+        }
     }
 
     override fun deleteCategory(userAccount: UserAccount, category: Category) {

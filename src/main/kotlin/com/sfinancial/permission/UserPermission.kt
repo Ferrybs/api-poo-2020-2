@@ -126,7 +126,7 @@ open class UserPermission(
         try {
             if (AddressVerifier(address).verifier()&& LoginVerifier(loginInterface).verifier()){
                 val user = dbInterface.getUserAccount(loginInterface)
-                DeleteAddressUserAdmin(dbInterface).delete(user, address)
+                DeleteAddressUserAdmin(dbInterface).delete(user)
             }
         }catch (e:Exception){
             throw e
@@ -147,7 +147,7 @@ open class UserPermission(
                 if(user.getIdAccount() == usercard.getIdAccount()){
                     DeleteCreditCardUserAdmin(dbInterface).delete(creditCard)
                 }
-                throw InvalidCredentialException ("Invalid Credential !!")
+                throw InvalidCredentialException ("Invalid Credential!")
             }
         }catch (e:Exception){
             throw e
