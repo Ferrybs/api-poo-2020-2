@@ -31,13 +31,3 @@ internal fun Route.addTransaction(dbInterface: DBInterface){
     }
 
 }
-
-/*
-   {
-        'numero': "String",
-        'id': "String,
-        'valor': "String",
-        'data':"String",
-        'local': "String"
-   }
- */

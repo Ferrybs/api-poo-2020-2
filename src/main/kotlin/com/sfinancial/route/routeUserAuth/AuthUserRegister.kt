@@ -17,20 +17,18 @@ import io.ktor.routing.*
 
 internal fun Route.register(dbInterface: DBInterface) {
     post("/register") {
-        val user = call.receiveOrNull<User>()
-        if(user != null){
-            try {
-                UserPermission(dbInterface).createAccount(user)
-                throw StatusPageCreated("User account successfully created!")
-            }catch (e: StatusPageCreated){
-                throw e
-            }
-            catch (e: FailedVerifierException) {
-                throw e
-            }catch (e: Exception){
-                throw InvalidFieldsException("Invalid fields! Message: ${e.message}")
-            }
+        try {
+            val user = call.receive<User>()
+            UserPermission(dbInterface).createAccount(user)
+            throw StatusPageCreated("User account successfully created!")
+        } catch (e: StatusPageCreated) {
+            throw e
+        } catch (e: FailedVerifierException) {
+            throw e
+        } catch (e: InvalidFieldsException) {
+            throw e
+        } catch (e: Exception) {
+            throw InvalidFieldsException("${e.message}")
         }
-        throw InvalidRequestException("User cannot be null!")
     }
 }

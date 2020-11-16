@@ -11,7 +11,7 @@ class GetUserPaymentMongoFactory(
     fun get(number: String): UserAccount {
         try {
             val coll = getCollUserAccount()
-            val userAccount = coll.findOne("{'payment':${number}}")
+            val userAccount = coll.findOne("{'payment':'${number}'}")
             if (userAccount != null){
                 return userAccount
             }else{

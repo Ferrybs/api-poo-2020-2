@@ -11,7 +11,7 @@ class AddTransactionUserAdmin(
 ) {
     fun add(creditCard: CreditCard,transaction: Transaction){
         try {
-
+            dbInterface.insertNewTransaction(creditCard,transaction)
         }catch (e: Exception){
             throw e
         }

@@ -12,9 +12,7 @@ import com.sfinancial.login.LoginInterface
 import com.sfinancial.notification.exception.FailedFindException
 import com.sfinancial.notification.exception.FailedVerifierException
 import com.sfinancial.payment.card.CreditCard
-import com.sfinancial.transaction.Transaction
 import com.sfinancial.verifier.*
-import javax.security.auth.login.FailedLoginException
 import kotlin.Exception
 
 class UserPermission(
@@ -81,7 +79,7 @@ class UserPermission(
             val transaction = callCreditCardTransaction.getPayment()
             if (CardVerifier(creditCard).verifierId() && TransactionVerifier(transaction).verifier()){
                 val userAccount = dbInterface.getUserAccount(loginInterface)
-                val userCard = dbInterface.getPaymentAccount(creditCard.getId())
+                val userCard = dbInterface.getPaymentAccount(creditCard.getNumber())
                 if (userAccount.getIdAccount() == userCard.getIdAccount()){
                     AddTransactionUserAdmin(dbInterface).add(creditCard,transaction)
                 }else{

@@ -11,19 +11,17 @@ import io.ktor.auth.*
 import io.ktor.request.*
 import io.ktor.routing.*
 
-fun Route.addCategory(dbInterface: DBInterface){
+fun Route.addCategory(dbInterface: DBInterface) {
     authenticate {
         post("/my-user-account/add-category") {
             val userLogin = call.principal<UserLogin>() ?: error("No principal")
             try {
-                val post = call.receiveOrNull<Category>()
-                if (post !=null){
-                    UserPermission(dbInterface).createCategory(userLogin,post)
-                    throw StatusPageCreated("Category has been created successfully")
-                }
-            }catch (e: StatusPageCreated){
+                val post = call.receive<Category>()
+                UserPermission(dbInterface).createCategory(userLogin, post)
+                throw StatusPageCreated("Category has been created successfully!")
+            }catch (e: StatusPageCreated) {
                 throw e
-            }catch (e: Exception){
+            }catch (e: Exception) {
                 throw InvalidFieldsException("${e.message}")
             }
         }

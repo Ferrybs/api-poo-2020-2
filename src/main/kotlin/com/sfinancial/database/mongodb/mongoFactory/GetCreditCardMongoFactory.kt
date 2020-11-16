@@ -1,11 +1,9 @@
 package com.sfinancial.database.mongodb.mongoFactory
 
 import com.mongodb.client.MongoDatabase
-import com.sfinancial.account.UserAccount
 import com.sfinancial.payment.card.CardInterface
 import com.sfinancial.payment.card.CreditCard
 import io.ktor.features.*
-import org.litote.kmongo.find
 import org.litote.kmongo.findOne
 import kotlin.Exception
 
@@ -16,7 +14,7 @@ class GetCreditCardMongoFactory(
     fun get(creditCardInterface: CardInterface): CreditCard {
         try {
             val coll = getCollPayment()
-            val card =coll.findOne("{'number': ${creditCardInterface.getId()}}")
+            val card =coll.findOne("{'number': ${creditCardInterface.getNumber()}}")
             if (card != null){
                 return card
             }else{

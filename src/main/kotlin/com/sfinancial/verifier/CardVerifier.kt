@@ -1,8 +1,6 @@
 package com.sfinancial.verifier
 
-import com.sfinancial.database.DBInterface
 import com.sfinancial.payment.card.CardInterface
-import io.ktor.features.*
 import kotlin.Exception
 
 class CardVerifier(
@@ -17,7 +15,7 @@ class CardVerifier(
     }
     fun verifierId():Boolean{
         try {
-            cardInterface.getId()
+            cardInterface.getNumber()
             return true
         }catch (e: Exception){
             throw e

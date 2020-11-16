@@ -48,7 +48,11 @@ open class StrategyMongodb(
     }
 
     override fun getPaymentAccount(number: String): UserAccount {
-        TODO("Not yet implemented")
+        try {
+            return GetUserPaymentMongoFactory(getDatabase()).get(number)
+        }catch (e: Exception){
+            throw e
+        }
     }
 
     override fun insertNewCategory(userAccount: UserAccount, category: Category) {
@@ -88,6 +92,10 @@ open class StrategyMongodb(
     }
 
     override fun updateTransaction(number: String, transaction: Transaction) {
+        TODO("Not yet implemented")
+    }
+
+    override fun deleteCreditCard(creditCard: CreditCard) {
         TODO("Not yet implemented")
     }
 }

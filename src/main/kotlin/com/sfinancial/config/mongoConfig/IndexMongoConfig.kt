@@ -34,5 +34,6 @@ class IndexMongoConfig {
     fun setCreditCard(){
         val coll = database.getCollection<CreditCard>()
         coll.createIndex("{'number':1}",indexUnique)
+        coll.createIndex("{'transaction.idTransaction':1}",indexUnique)
     }
 }

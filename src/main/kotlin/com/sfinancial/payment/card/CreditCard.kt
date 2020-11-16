@@ -10,7 +10,7 @@ class CreditCard(
         private val number: String? = null,
         private val validity: String? = null,
         private val since: String? = null,
-        private val cid: String? = null
+        private val cvv: String? = null
 ): CardInterface {
     private val transaction = mutableListOf<Transaction>()
     override fun verifier(): Boolean {
@@ -19,10 +19,10 @@ class CreditCard(
             number,
             validity,
             since,
-            cid
+            cvv
         ).any{it == null}
     }
-    override fun getId():String {
+    override fun getNumber():String {
         try {
             if (number != null){
                 return number

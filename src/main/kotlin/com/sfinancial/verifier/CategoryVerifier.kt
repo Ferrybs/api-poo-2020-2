@@ -9,7 +9,7 @@ class CategoryVerifier(
 
     fun verifier(): Boolean {
        try {
-           if (categoryInterface.verifier()){
+           if (categoryInterface.verifier()&& categoryInterface.getPriority() <= 10){
                return true
            }
            return false

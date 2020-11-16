@@ -12,18 +12,16 @@ import io.ktor.response.*
 import io.ktor.routing.*
 
 
-internal fun Route.login(authInterface: AuthInterface,dbInterface: DBInterface) {
+internal fun Route.login(authInterface: AuthInterface, dbInterface: DBInterface) {
     get("/login") {
-        val get = call.receiveOrNull<UserLogin>()
-        if (get != null){
-            try {
-                val token = UserPermission(dbInterface).login(get,authInterface)
-                call.respond(mapOf("Ok" to true,"token" to token))
-            }catch (e: InvalidCredentialException){
-                throw e
-            } catch (e: Exception){
-                throw InvalidFieldsException("Invalid Fields!")
-            }
+        try {
+            val get = call.receive<UserLogin>()
+            val token = UserPermission(dbInterface).login(get, authInterface)
+            call.respond(mapOf("Ok" to true, "token" to token))
+        } catch (e: InvalidCredentialException) {
+            throw e
+        }catch (e: Exception) {
+            throw InvalidFieldsException("${e.message}")
         }
     }
 }
