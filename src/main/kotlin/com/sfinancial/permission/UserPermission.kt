@@ -11,6 +11,7 @@ import com.sfinancial.group.User
 import com.sfinancial.login.LoginInterface
 import com.sfinancial.notification.exception.FailedFindException
 import com.sfinancial.notification.exception.FailedVerifierException
+import com.sfinancial.notification.exception.InvalidCredentialException
 import com.sfinancial.payment.card.CreditCard
 import com.sfinancial.transaction.Transaction
 import com.sfinancial.verifier.*
@@ -146,12 +147,36 @@ class UserPermission(
         }
     }
 
-    fun deleteTransaction(loginInterface: LoginInterface, transaction: Transaction){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    fun deleteTransaction(loginInterface: LoginInterface, callCreditCardTransaction: CallCreditCardTransaction){
         try {
-            if (LoginVerifier(loginInterface).verifier()&&TransactionVerifier(transaction).verifierId()){
+            val transaction = callCreditCardTransaction.getPayment()
+            val number = callCreditCardTransaction.getNumber()
+            if (LoginVerifier(loginInterface).verifier()&&TransactionVerifier().verifierId()){
                 val user = dbInterface.getUserAccount(loginInterface)
-                DeleteTrasactionUserAdmin(dbInterface).delete(user, transaction)
+                val usercredit = dbInterface.getPaymentAccount(number)
+                if (user.getIdAccount() == usercredit.getIdAccount()){
+                    DeleteTrasactionUserAdmin(dbInterface).delete(user, transaction)
+                }
+                throw InvalidCredentialException("Invalid credential")
             }
+
         }catch (e:Exception){
             throw e
         }
