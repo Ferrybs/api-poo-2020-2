@@ -19,4 +19,14 @@ class TransactionVerifier(
             throw e
         }
     }
+
+    fun verifierId() : Boolean {
+        try {
+            transactionInterface?.getIdTransaction()
+            return true
+        }catch (e:Exception){
+            throw e
+        }
+    }
+
 }

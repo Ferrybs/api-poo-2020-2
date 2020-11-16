@@ -1,6 +1,7 @@
 package com.sfinancial.transaction
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect
+import com.sfinancial.notification.exception.InvalidFieldsException
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 class Transaction(
@@ -18,5 +19,17 @@ class Transaction(
         ).any { it == null }
 
         return !hasNull
+    }
+
+    override fun getIdTransaction(): String {
+        try {
+            if (idTransaction != null){
+                return idTransaction
+            }else{
+                throw InvalidFieldsException("Id transaction cannot be read")
+            }
+        }catch (e:Exception){
+            throw e
+        }
     }
 }

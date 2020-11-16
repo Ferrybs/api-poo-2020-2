@@ -22,4 +22,5 @@ interface DBInterface {
     fun deleteCreditCard(creditCard: CreditCard)
     fun deleteAddress(userAccount: UserAccount,address: Address)
     fun deleteCategory(userAccount: UserAccount,category: Category)
+    fun deleteTransaction(userAccount: UserAccount, transaction: Transaction)
 }
