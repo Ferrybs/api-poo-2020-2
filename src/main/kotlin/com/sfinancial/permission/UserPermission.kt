@@ -145,5 +145,16 @@ class UserPermission(
             throw e
         }
     }
+
+    fun deleteCategory(loginInterface: LoginInterface,category: Category){
+        try{
+           if(CategoryVerifier(category).verifier()){
+              val user = dbInterface.getUserAccount(loginInterface)
+              DeleteCategoryUserAdmin(dbInterface).delete(user, category)
+           }
+        }catch(e: Exception){
+            throw e
+        }
+    }
 }
 
