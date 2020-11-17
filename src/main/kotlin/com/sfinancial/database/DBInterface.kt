@@ -29,5 +29,7 @@ interface DBInterface {
     fun deleteCategory(userAccount: UserAccount,category: Category)
     fun deleteTransaction(transaction: Transaction)
 
+    fun insertNewClassifierAccount(classifierAccount: ClassifierAccount)
+
     fun getClassifierAccount(): ClassifierAccount
 }

@@ -1,5 +1,6 @@
 package com.sfinancial.database.mongodb
 
+import ClassifierAccount
 import com.sfinancial.account.UserAccount
 import com.sfinancial.address.Address
 import com.sfinancial.category.Category
@@ -132,6 +133,14 @@ open class StrategyMongodb(
         }catch (e: Exception){
             throw e
         }
+    }
+
+    override fun insertNewClassifierAccount(classifierAccount: ClassifierAccount) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getClassifierAccount(): ClassifierAccount {
+        TODO("Not yet implemented")
     }
 
 }

@@ -1,5 +1,6 @@
 package com.sfinancial.database.mongodb.mongoFactory
 
+import ClassifierAccount
 import com.mongodb.MongoException
 import com.mongodb.client.MongoCollection
 import com.mongodb.client.MongoDatabase
@@ -32,7 +33,7 @@ open class MongoFactory(
             throw e
         }
     }
-    internal fun getCollClassifier(): MongoCollection<Classifier> {
+    internal fun getCollClassifier(): MongoCollection<ClassifierAccount> {
         try {
             return database.getCollection()
         }catch (e: MongoException){
