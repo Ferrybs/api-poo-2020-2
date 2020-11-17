@@ -7,6 +7,7 @@ import com.sfinancial.address.Address
 import com.sfinancial.category.Category
 import com.sfinancial.database.DBInterface
 import com.sfinancial.database.mongodb.mongoFactory.*
+import com.sfinancial.group.User
 import com.sfinancial.login.LoginInterface
 import com.sfinancial.payment.card.CardInterface
 import com.sfinancial.payment.card.CreditCard
@@ -62,6 +63,10 @@ open class StrategyMongodb(
         TODO("Not yet implemented")
     }
 
+    override fun getUserAccount(user: User): UserAccount {
+        TODO("Not yet implemented")
+    }
+
     override fun getUserAccount(creditCard: CreditCard): UserAccount {
         try {
             return GetUserAccountMongoFactory(getDatabase()).get(creditCard)
@@ -110,6 +115,10 @@ open class StrategyMongodb(
     }
 
     override fun updateUserPerson(userAccount: UserAccount, person: Person) {
+        TODO("Not yet implemented")
+    }
+
+    override fun updateUser(user: User) {
         TODO("Not yet implemented")
     }
 
