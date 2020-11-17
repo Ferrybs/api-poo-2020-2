@@ -1,15 +1,15 @@
 package com.sfinancial.admin.userAdmin
 
 import com.sfinancial.account.UserAccount
-import com.sfinancial.category.Category
 import com.sfinancial.database.DBInterface
+import com.sfinancial.person.Person
 
-class UpdateCategoryUserAdmin(
+class UpdatePersonUserAdmin(
     private val dbInterface: DBInterface
 ) {
-    fun update(userAccount: UserAccount, category: Category){
+    fun update(userAccount: UserAccount, person: Person){
         try {
-            dbInterface.updateCategory(userAccount,category)
+            dbInterface.updateUserPerson(userAccount,person)
         }catch (e:  Exception){
             throw e
         }

@@ -15,6 +15,7 @@ import com.sfinancial.notification.exception.FailedVerifierException
 import com.sfinancial.notification.exception.InvalidCredentialException
 import com.sfinancial.notification.exception.InvalidFieldsException
 import com.sfinancial.payment.card.CreditCard
+import com.sfinancial.person.Person
 import com.sfinancial.transaction.Transaction
 import com.sfinancial.verifier.*
 import kotlin.Exception
@@ -210,13 +211,35 @@ open class UserPermission(
                     GetCreditCardUserAdmin(dbInterface).get(creditCard)
                     //sql injection
                 }else{
-                    throw InvalidCredentialException("Invalid credential")
+                    throw InvalidCredentialException("Credit Card does not match!")
                 }
+            }else{
+                throw InvalidCredentialException("Invalid credential")
             }
 
         }catch (e:Exception){
             throw e
         }
+    }
+    fun updatePerson(loginInterface: LoginInterface, person: Person){
+        try {
+            if (PersonVerifier(person).verifier()&& LoginVerifier(loginInterface).verifier())
+            {
+                val user = dbInterface.getUserAccount(loginInterface)
+                val personAccount = dbInterface.getUserAccount(person)
+                if (user.getIdAccount() == personAccount.getIdAccount()){
+                    UpdatePersonUserAdmin(dbInterface).update(user,person)
+                    //sql injection
+                }else{
+                    throw InvalidCredentialException("Person does not match!")
+                }
+            }else{
+            throw InvalidCredentialException("Invalid credential!")
+        }
+        }catch (e:Exception){
+            throw e
+        }
+
     }
 
 
