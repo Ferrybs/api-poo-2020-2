@@ -3,6 +3,7 @@ package com.sfinancial.config.mongoConfig
 import ClassifierAccount
 import com.mongodb.client.MongoDatabase
 import com.mongodb.client.model.IndexOptions
+import com.sfinancial.account.AdminAccount
 import com.sfinancial.account.UserAccount
 import com.sfinancial.database.mongodb.StrategyMongodb
 import com.sfinancial.payment.card.CreditCard
@@ -39,6 +40,12 @@ class IndexMongoConfig {
     }
     fun setClassifier(){
         val coll = database.getCollection<ClassifierAccount>()
+        coll.createIndex("{'idAccount':1}",indexUnique)
+        coll.createIndex("{'classifier.username':1}",indexUnique)
+        coll.createIndex("{'classifier.person.idEmployee':1}",indexUnique)
+    }
+    fun setAdmin(){
+        val coll = database.getCollection<AdminAccount>()
         coll.createIndex("{'idAccount':1}",indexUnique)
         coll.createIndex("{'classifier.username':1}",indexUnique)
         coll.createIndex("{'classifier.person.idEmployee':1}",indexUnique)
