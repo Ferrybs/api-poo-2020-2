@@ -12,7 +12,7 @@ import com.sfinancial.notification.exception.FailedVerifierException
 import com.sfinancial.verifier.GroupVerifier
 import com.sfinancial.verifier.LoginVerifier
 
-class ClassifierPermission(
+open class ClassifierPermission(
         private val dbInterface: DBInterface
 ) : UserPermission(dbInterface){
 
