@@ -2,9 +2,10 @@ package com.sfinancial.admin.userAdmin
 
 import com.sfinancial.account.UserAccount
 import com.sfinancial.database.DBInterface
+import com.sfinancial.payment.card.CreditCard
 import com.sfinancial.transaction.Transaction
 
-class DeleteTrasactionUserAdmin (
+class DeleteTransactionUserAdmin (
     private val dbInterface: DBInterface
 ) {
     fun delete(userAccount: UserAccount, transaction: Transaction){

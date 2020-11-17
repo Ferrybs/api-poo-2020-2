@@ -191,7 +191,24 @@ open class UserPermission(
                 val user = dbInterface.getUserAccount(loginInterface)
                 val userCredit = dbInterface.getUserAccount(transaction)
                 if (user.getIdAccount() == userCredit.getIdAccount()){
-                    DeleteTrasactionUserAdmin(dbInterface).delete(user, transaction)
+                    DeleteTransactionUserAdmin(dbInterface).delete(user, transaction)
+                }else{
+                    throw InvalidCredentialException("Invalid credential")
+                }
+            }
+
+        }catch (e:Exception){
+            throw e
+        }
+    }
+    fun getCreditCard(loginInterface: LoginInterface, creditCard: CreditCard){
+        try {
+            if (LoginVerifier(loginInterface).verifier()&&CardVerifier(creditCard).verifierId()){
+                val user = dbInterface.getUserAccount(loginInterface)
+                val userCredit = dbInterface.getUserAccount(creditCard)
+                if (user.getIdAccount() == userCredit.getIdAccount()){
+                    GetCreditCardUserAdmin(dbInterface).get(creditCard)
+                    //sql injection
                 }else{
                     throw InvalidCredentialException("Invalid credential")
                 }
