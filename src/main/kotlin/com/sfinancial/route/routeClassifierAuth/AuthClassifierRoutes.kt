@@ -6,13 +6,12 @@ import com.sfinancial.database.DBInterface
 import io.ktor.application.*
 import io.ktor.routing.*
 
-internal fun Application.authRoutes(
+internal fun Application.authClassifierRoutes(
         authInterface: AuthInterface,
         dbInterface: DBInterface,
         idAdminInterface: IdAdminInterface
 ) {
     routing {
-        login(authInterface,dbInterface)
-        register(dbInterface,idAdminInterface)
+        classifierLogin(authInterface,dbInterface)
     }
 }

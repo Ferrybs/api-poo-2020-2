@@ -26,8 +26,6 @@ class GetUserAccountMongoFactory(
         }catch (e: Exception){
             throw e
         }
-
-
     }
     fun get(transaction: Transaction): UserAccount {
         try {
@@ -43,7 +41,7 @@ class GetUserAccountMongoFactory(
                     return userAccount
                 }
             }
-            throw FailedFindException("Failed to find!")
+            throw FailedFindException("Failed to find transaction!")
         }catch (e: Exception){
             throw e
         }

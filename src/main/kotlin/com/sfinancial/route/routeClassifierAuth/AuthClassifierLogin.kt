@@ -2,9 +2,11 @@ package com.sfinancial.route.routeUserAuth
 
 import com.sfinancial.auth.AuthInterface
 import com.sfinancial.database.DBInterface
+import com.sfinancial.login.ClassifierLogin
 import com.sfinancial.login.UserLogin
 import com.sfinancial.notification.exception.InvalidCredentialException
 import com.sfinancial.notification.exception.InvalidFieldsException
+import com.sfinancial.permission.ClassifierPermission
 import com.sfinancial.permission.UserPermission
 import io.ktor.application.*
 import io.ktor.request.*
@@ -12,11 +14,11 @@ import io.ktor.response.*
 import io.ktor.routing.*
 
 
-internal fun Route.userLogin(authInterface: AuthInterface, dbInterface: DBInterface) {
-    get("/userLogin") {
+internal fun Route.classifierLogin(authInterface: AuthInterface, dbInterface: DBInterface) {
+    get("/classifier/userLogin") {
         try {
-            val get = call.receive<UserLogin>()
-            val token = UserPermission(dbInterface).login(get, authInterface)
+            val get = call.receive<ClassifierLogin>()
+            val token = ClassifierPermission(dbInterface).login(get,authInterface)
             call.respond(mapOf("Ok" to true, "token" to token))
         } catch (e: InvalidCredentialException) {
             throw e

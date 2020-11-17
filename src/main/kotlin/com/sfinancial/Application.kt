@@ -25,7 +25,7 @@ fun main(){
     val jwtConfig = ReadJwtConfig()
     val hashIdConfig = ReadHashidConfig()
 
-    var server: NettyServer
+    val server: NettyServer
     try {
         server = NettyFactory(
                 ReadNettyConfig(),
@@ -60,8 +60,8 @@ private fun getAuthJwt(jwtConfigInterface: JwtConfigInterface): AuthJwt {
     }
 }
 
-private fun getHashId(hashidIdConfigInterface: HashIdConfigInterface): HashIdAdmin {
-    return HashIdAdmin(hashidIdConfigInterface)
+private fun getHashId(hashIdIdConfigInterface: HashIdConfigInterface): HashIdAdmin {
+    return HashIdAdmin(hashIdIdConfigInterface)
 }
 
 private fun setMongodb(){

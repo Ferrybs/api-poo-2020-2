@@ -1,25 +1,22 @@
-package com.sfinancial.account
+
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect
 import com.sfinancial.admin.idAdmin.IdAdminInterface
-import com.sfinancial.category.Category
-import com.sfinancial.group.User
+import com.sfinancial.group.Classifier
 import com.sfinancial.notification.exception.FailedFindException
 import com.sfinancial.notification.exception.FailedUpdateException
 import com.sfinancial.notification.exception.InvalidFieldsException
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-data class UserAccount(
-        private val user: User? = null,
+data class ClassifierAccount(
+        private val classifier: Classifier? = null,
 ) {
     private var idAccount: String? = null
-    private val category: MutableList<Category> = mutableListOf()
-    private val payment: MutableList<String> =  mutableListOf()
 
     fun cId(idAdminInterface: IdAdminInterface){
         try {
             if (idAccount == null){
-                idAccount = idAdminInterface.create(8)
+                idAccount = idAdminInterface.create(12)
             }else{
                 throw FailedUpdateException("idAccount is not null!")
             }
@@ -29,12 +26,12 @@ data class UserAccount(
 
     }
 
-    fun getUser(): User {
+    fun getUser(): Classifier {
         try {
-            if (user != null){
-                return user
+            if (classifier != null){
+                return classifier
             }
-            throw FailedFindException("User is null!")
+            throw FailedFindException("Classifier is null!")
         }catch (e: Exception){
             throw e
         }

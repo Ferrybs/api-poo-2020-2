@@ -5,6 +5,7 @@ import com.sfinancial.category.Category
 import com.sfinancial.database.DBInterface
 import com.sfinancial.login.UserLogin
 import com.sfinancial.notification.exception.InvalidFieldsException
+import com.sfinancial.notification.statusPages.StatusPageDeleted
 import com.sfinancial.permission.UserPermission
 import io.ktor.application.*
 import io.ktor.auth.*
@@ -18,6 +19,9 @@ internal fun Route.deleteCategory(dbInterface: DBInterface){
             try {
                 val delete = call.receive<Category>()
                 UserPermission(dbInterface).deleteCategory(userLogin,delete)
+                throw StatusPageDeleted("Category deleted!")
+            }catch (e: StatusPageDeleted){
+                throw e
             }catch (e: Exception) {
                 throw InvalidFieldsException("${e.message}")
             }

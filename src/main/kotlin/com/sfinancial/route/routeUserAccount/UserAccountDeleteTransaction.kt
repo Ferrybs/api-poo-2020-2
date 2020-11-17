@@ -4,6 +4,7 @@ import com.sfinancial.call.CallCreditCardTransaction
 import com.sfinancial.database.DBInterface
 import com.sfinancial.login.UserLogin
 import com.sfinancial.notification.exception.InvalidFieldsException
+import com.sfinancial.notification.statusPages.StatusPageDeleted
 import com.sfinancial.permission.UserPermission
 import com.sfinancial.transaction.Transaction
 import io.ktor.application.*
@@ -18,6 +19,9 @@ internal fun Route.deleteTransaction(dbInterface: DBInterface){
             try {
                 val delete = call.receive<Transaction>()
                 UserPermission(dbInterface).deleteTransaction(userLogin, delete)
+                throw StatusPageDeleted("Transaction deleted")
+            }catch (e: StatusPageDeleted){
+                throw e
             }catch (e: Exception) {
                 throw InvalidFieldsException("${e.message}")
             }

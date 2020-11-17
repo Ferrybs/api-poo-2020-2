@@ -13,6 +13,7 @@ import com.sfinancial.login.LoginInterface
 import com.sfinancial.notification.exception.FailedFindException
 import com.sfinancial.notification.exception.FailedVerifierException
 import com.sfinancial.notification.exception.InvalidCredentialException
+import com.sfinancial.notification.exception.InvalidFieldsException
 import com.sfinancial.payment.card.CreditCard
 import com.sfinancial.transaction.Transaction
 import com.sfinancial.verifier.*
@@ -31,12 +32,12 @@ open class UserPermission(
             throw e
         }
     }
-    fun login(loginInterface: LoginInterface, authInterface: AuthInterface): String {
+    open fun login(loginInterface: LoginInterface, authInterface: AuthInterface): String {
         try {
             if(LoginVerifier(loginInterface).verifier()){
                 return LoginUserAdmin(loginInterface,dbInterface,authInterface).login()
             }else{
-                throw FailedVerifierException("Filed to verify login!")
+                throw FailedVerifierException("Filed to verify userLogin!")
             }
         }catch (e: Exception){
             throw e
@@ -47,7 +48,7 @@ open class UserPermission(
             if (LoginVerifier(loginInterface).verifier()){
                 return GetUserAccountUserAdmin(dbInterface).getUserAccount(loginInterface)
             }
-            throw FailedVerifierException("Failed to verify login")
+            throw FailedVerifierException("Failed to verify userLogin")
         }catch (e: Exception) {
             throw e
         }
@@ -156,13 +157,16 @@ open class UserPermission(
     }
     fun deleteCreditCard(loginInterface: LoginInterface,creditCard: CreditCard){
         try {
-            if(CardVerifier(creditCard).verifier()){
+            if(CardVerifier(creditCard).verifierId() && LoginVerifier(loginInterface).verifier()){
                 val user = dbInterface.getUserAccount(loginInterface)
                 val userCard = dbInterface.getUserAccount(creditCard)
                 if(user.getIdAccount() == userCard.getIdAccount()){
                     DeleteCreditCardUserAdmin(dbInterface).delete(creditCard)
+                }else{
+                    throw FailedFindException ("Accounts does not match!")
                 }
-                throw InvalidCredentialException ("Invalid Credential!")
+            }else{
+                throw InvalidCredentialException("Invalid credential!")
             }
         }catch (e:Exception){
             throw e
@@ -174,6 +178,8 @@ open class UserPermission(
            if(CategoryVerifier(category).verifier()&& LoginVerifier(loginInterface).verifier()){
               val user = dbInterface.getUserAccount(loginInterface)
               DeleteCategoryUserAdmin(dbInterface).delete(user, category)
+           }else{
+               throw InvalidFieldsException("Failed to verify category")
            }
         }catch(e: Exception){
             throw e
@@ -186,8 +192,9 @@ open class UserPermission(
                 val userCredit = dbInterface.getUserAccount(transaction)
                 if (user.getIdAccount() == userCredit.getIdAccount()){
                     DeleteTrasactionUserAdmin(dbInterface).delete(user, transaction)
+                }else{
+                    throw InvalidCredentialException("Invalid credential")
                 }
-                throw InvalidCredentialException("Invalid credential")
             }
 
         }catch (e:Exception){

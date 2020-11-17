@@ -1,4 +1,4 @@
-package com.sfinancial.route.routeUserAuth
+package com.sfinancial.route.routeAdminAuth
 
 
 import com.sfinancial.admin.idAdmin.IdAdminInterface
@@ -16,8 +16,8 @@ import io.ktor.request.*
 import io.ktor.routing.*
 
 
-internal fun Route.userRegister(dbInterface: DBInterface, idAdminInterface: IdAdminInterface) {
-    post("/userRegister") {
+internal fun Route.classifierRegister(dbInterface: DBInterface,idAdminInterface: IdAdminInterface) {
+    post("/admin/userRegister-classifier") {
         try {
             val user = call.receive<User>()
             UserPermission(dbInterface).createAccount(user,idAdminInterface)
