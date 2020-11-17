@@ -4,6 +4,8 @@ import com.sfinancial.address.Address
 import com.sfinancial.database.DBInterface
 import com.sfinancial.login.UserLogin
 import com.sfinancial.notification.exception.InvalidFieldsException
+import com.sfinancial.notification.statusPages.StatusPageCreated
+import com.sfinancial.notification.statusPages.StatusPageUpdated
 import com.sfinancial.permission.UserPermission
 import io.ktor.application.*
 import io.ktor.auth.*
@@ -19,7 +21,11 @@ internal fun Route.updateAddress(dbInterface: DBInterface){
             try {
                 val put = call.receive<Address>()
                 UserPermission(dbInterface).updateAddress(userLogin,put)
-            }catch (e: Exception) {
+                throw StatusPageUpdated("Address updated!")
+            }catch (e: StatusPageUpdated){
+                throw e
+            }
+            catch (e: Exception) {
                 throw InvalidFieldsException("${e.message}")
             }
         }

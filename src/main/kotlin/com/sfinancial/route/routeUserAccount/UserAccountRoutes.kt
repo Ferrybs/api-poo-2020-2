@@ -11,9 +11,16 @@ internal fun Application.userAccountRoutes(
         dbInterface: DBInterface
 ) {
     routing {
-        addTransaction(dbInterface)
+        myUserAccount(dbInterface)
+
         addCategory(dbInterface)
         addCreditCard(dbInterface)
-        myUserAccount(dbInterface)
+        addTransaction(dbInterface)
+
+        updateAddress(dbInterface)
+        updateCategory(dbInterface)
+        updateTransaction(dbInterface)
+
+
     }
 }

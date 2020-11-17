@@ -14,7 +14,7 @@ class LoginUserAdmin(
         try {
             val accountUser = dbInterface.getUserAccount(loginInterface)
             val user = accountUser.getUser()
-            val login = UserLogin(user?.getUsername(),user?.getPassword())
+            val login = UserLogin(user.getUsername(),user.getPassword())
             return authInterface.sign(login)
         }catch (e: Exception){
             throw e

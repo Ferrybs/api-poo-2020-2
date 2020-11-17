@@ -13,7 +13,11 @@ import com.sfinancial.server.netty.NettyServer
 
 
 fun main(){
-
+    try {
+        setMongodb()
+    }catch (e: Exception){
+        println("Error to setMongodb: ${e.message}")
+    }
     val envMongoConfig = ReadMongoConfig()
     val envJwtConfig = ReadJwtConfig()
 
@@ -29,12 +33,6 @@ fun main(){
     }
     val sfinancial = Sfinancial(server)
     sfinancial.startServer()
-    //set Indexs Mongodb
-    try {
-        setMongodb()
-    }catch (e: Exception){
-        println("Error to setMongodb: ${e.message}")
-    }
 
 }
 

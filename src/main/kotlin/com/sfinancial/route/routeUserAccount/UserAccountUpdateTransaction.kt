@@ -5,6 +5,7 @@ import com.sfinancial.category.Category
 import com.sfinancial.database.DBInterface
 import com.sfinancial.login.UserLogin
 import com.sfinancial.notification.exception.InvalidFieldsException
+import com.sfinancial.notification.statusPages.StatusPageUpdated
 import com.sfinancial.permission.UserPermission
 import com.sfinancial.transaction.Transaction
 import io.ktor.application.*
@@ -19,7 +20,11 @@ internal fun Route.updateTransaction(dbInterface: DBInterface){
             try {
                 val put = call.receive<Transaction>()
                UserPermission(dbInterface).updateTransaction(userLogin, put)
-            }catch (e: Exception) {
+                throw StatusPageUpdated("Transaction updated!")
+            }catch (e: StatusPageUpdated){
+                throw e
+            }
+            catch (e: Exception) {
                 throw InvalidFieldsException("${e.message}")
             }
         }

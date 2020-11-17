@@ -29,11 +29,12 @@ class IndexMongoConfig {
         coll.createIndex("{'idAccount':1}",indexUnique)
         coll.createIndex("{'user.username':1}",indexUnique)
         coll.createIndex("{'user.person.document':1}",indexUnique)
-        coll.createIndex("{'idAccount':1,'category.name':1}")
+        coll.createIndex("{'idAccount':1,'category.name':1}",indexUnique)
     }
     fun setCreditCard(){
         val coll = database.getCollection<CreditCard>()
         coll.createIndex("{'number':1}",indexUnique)
         coll.createIndex("{'transaction.idTransaction':1}",indexUnique)
+        coll.createIndex("{'number':1,'transaction.idTransaction':1}",indexUnique)
     }
 }

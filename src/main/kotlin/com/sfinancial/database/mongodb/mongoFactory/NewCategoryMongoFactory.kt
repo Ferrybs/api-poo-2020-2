@@ -20,9 +20,10 @@ class NewCategoryMongoFactory(
            val coll = getCollUserAccount()
            val status = coll.updateOne(
                    "{idAccount:'${userAccount.getIdAccount()}'}",
-                   "{${addToSet}:{category:$string}}")
+                   "{${addToSet}:{category:$string}}"
+           )
            if(status.modifiedCount.toInt()==0){
-               throw FailedUpdateException("Failed to update! Matches: ${status.matchedCount} ")
+               throw FailedUpdateException("Failed to update category! Matches: ${status.matchedCount} ")
            }
        }catch (e: Exception){
            throw e

@@ -15,7 +15,6 @@ data class Address(
                 val hasNull = listOf(
                         street,
                         number,
-                        complement,
                         zipCode,
                         city,
                         state

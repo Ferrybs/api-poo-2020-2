@@ -8,6 +8,8 @@ import com.sfinancial.notification.exception.FailedUpdateException
 import org.litote.kmongo.MongoOperator
 import org.litote.kmongo.updateOne
 import org.litote.kmongo.MongoOperator.*
+import org.litote.kmongo.set
+
 class UpdateCategoryMongoFactory(
         database: MongoDatabase
 ):MongoFactory(database){

@@ -59,7 +59,7 @@ open class UserPermission(
                 val user = dbInterface.getUserAccount(loginInterface)
                 AddCreditCardUserAdmin(dbInterface).add(user, creditCard)
             }else{
-                throw FailedVerifierException("Failed to verifier!")
+                throw FailedVerifierException("Failed to verifier credit card!")
             }
         }catch (e : Exception){
             throw e
@@ -70,7 +70,7 @@ open class UserPermission(
             if(CategoryVerifier(category).verifier()&& LoginVerifier(loginInterface).verifier()){
                 AddCategoryUserAdmin(dbInterface).add(loginInterface,category)
             }else{
-                throw FailedVerifierException("Failed to verifier!")
+                throw FailedVerifierException("Failed to verifier category!")
             }
         }catch (e: Exception){
             throw e
@@ -107,6 +107,18 @@ open class UserPermission(
         }catch (e: Exception){
         throw e
     }
+    }
+    fun updateCategory(loginInterface: LoginInterface,category: Category){
+        try {
+            if (LoginVerifier(loginInterface).verifier() && CategoryVerifier(category).verifier()){
+                val user = dbInterface.getUserAccount(loginInterface)
+                UpdateCategoryUserAdmin(dbInterface).update(user,category)
+            }else{
+                throw FailedVerifierException("Failed to verifier category!")
+            }
+        }catch (e : Exception){
+            throw e
+        }
     }
 
     fun updateAddress(loginInterface: LoginInterface, address: Address){

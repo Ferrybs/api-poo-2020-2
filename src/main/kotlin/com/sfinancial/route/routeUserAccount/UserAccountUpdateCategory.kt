@@ -4,6 +4,7 @@ import com.sfinancial.category.Category
 import com.sfinancial.database.DBInterface
 import com.sfinancial.login.UserLogin
 import com.sfinancial.notification.exception.InvalidFieldsException
+import com.sfinancial.notification.statusPages.StatusPageUpdated
 import com.sfinancial.permission.UserPermission
 import io.ktor.application.*
 import io.ktor.auth.*
@@ -18,8 +19,11 @@ internal fun Route.updateCategory(dbInterface: DBInterface){
             val userLogin = call.principal<UserLogin>() ?: error("No principal")
             try {
                 val put = call.receive<Category>()
-                TODO("NADA")
-            }catch (e: Exception) {
+                UserPermission(dbInterface).updateCategory(userLogin,put)
+                throw StatusPageUpdated("Category updated!")
+            }catch (e :StatusPageUpdated){
+                throw e
+            } catch (e: Exception) {
                 throw InvalidFieldsException("${e.message}")
             }
         }

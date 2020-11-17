@@ -19,7 +19,7 @@ class NewCreditCardMongoFactory(
             val string = creditCard.getNumber()
             val status = coll.updateOne("{idAccount:'${userAccount.getIdAccount()}'}", "{${addToSet}:{payment:'$string'}}")
             if(status.modifiedCount.toInt()==0) {
-                throw FailedUpdateException("Failed to update! Matches: ${status.matchedCount} ")
+                throw FailedUpdateException("Failed to update credit card! Matches: ${status.matchedCount} ")
             }
             addCreditCard(creditCard)
         }catch (e: Exception){
