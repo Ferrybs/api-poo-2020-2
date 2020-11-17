@@ -6,4 +6,5 @@ import javax.swing.text.StyledEditorKit
 
 interface GroupInterface {
     fun verifier(): Boolean
+    fun verifierGroup(): Boolean
 }

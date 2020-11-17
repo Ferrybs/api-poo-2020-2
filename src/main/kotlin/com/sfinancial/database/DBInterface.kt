@@ -6,6 +6,7 @@ import com.sfinancial.account.FinancialAccount
 import com.sfinancial.account.UserAccount
 import com.sfinancial.address.Address
 import com.sfinancial.category.Category
+import com.sfinancial.group.User
 import com.sfinancial.login.LoginInterface
 import com.sfinancial.payment.card.CardInterface
 import com.sfinancial.payment.card.CreditCard
@@ -23,11 +24,13 @@ interface DBInterface {
     fun getUserAccount(transaction: Transaction) : UserAccount
     fun getCreditCard(creditCardInterface: CardInterface): CreditCard
     fun getUserAccount(person: Person) : UserAccount
+    fun getUserAccount(user: User):UserAccount
 
     fun updateCategory(userAccount: UserAccount, category: Category)
     fun updateAddress(userAccount: UserAccount, address: Address)
     fun updateTransaction(transaction: Transaction)
     fun updateUserPerson(userAccount: UserAccount, person: Person)
+    fun updateUser(user: User)
 
     fun deleteCreditCard(creditCard: CreditCard)
     fun deleteAddress(userAccount: UserAccount)

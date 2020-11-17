@@ -10,6 +10,7 @@ import com.sfinancial.category.Category
 import com.sfinancial.database.DBInterface
 import com.sfinancial.group.User
 import com.sfinancial.login.LoginInterface
+import com.sfinancial.login.UserLogin
 import com.sfinancial.notification.exception.FailedFindException
 import com.sfinancial.notification.exception.FailedVerifierException
 import com.sfinancial.notification.exception.InvalidCredentialException
@@ -242,5 +243,22 @@ open class UserPermission(
 
     }
 
-
+    fun updateUser(loginInterface: LoginInterface, user: User){
+        try {
+            if(GroupVerifier(user).verifierGroup() && LoginVerifier(loginInterface).verifier()) {
+                val userAccount = dbInterface.getUserAccount(loginInterface)
+                val personAccount = dbInterface.getUserAccount(user)
+                if (userAccount.getIdAccount() == personAccount.getIdAccount()) {
+                    UpdateUserUserAdmin(dbInterface).update(user)
+                    //sql injection
+                } else {
+                    throw InvalidCredentialException("Person does not match!")
+                }
+            }else {
+                throw InvalidCredentialException("Invalid credential!")
+            }
+        }catch (e:Exception){
+            throw e
+        }
+    }
 }

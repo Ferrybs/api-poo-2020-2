@@ -18,4 +18,8 @@ class GroupVerifier(
             throw e
         }
     }
+
+    fun verifierGroup(): Boolean{
+        return groupInterface.verifierGroup()
+    }
 }
