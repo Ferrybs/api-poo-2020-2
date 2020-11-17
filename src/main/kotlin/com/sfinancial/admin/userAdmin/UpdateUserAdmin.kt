@@ -4,7 +4,7 @@ import com.sfinancial.account.UserAccount
 import com.sfinancial.database.DBInterface
 import com.sfinancial.group.User
 
-class UpdateUserUserAdmin (
+class UpdateUserAdmin (
         private val dbInterface: DBInterface
 ){
     fun update(user: User){

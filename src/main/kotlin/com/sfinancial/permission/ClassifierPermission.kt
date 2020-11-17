@@ -34,7 +34,7 @@ open class ClassifierPermission(
                 RegisterClassifierAdmin(dbInterface).register(classifierAccount,idAdminInterface)
             }else
             {
-                throw FailedVerifierException("Failed to verifier classifier!")
+                throw FailedVerifierException("Failed to verify classifier!")
             }
         }catch (e: Exception){
             throw e

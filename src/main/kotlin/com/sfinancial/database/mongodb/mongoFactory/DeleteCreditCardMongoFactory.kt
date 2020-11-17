@@ -32,7 +32,7 @@ class DeleteCreditCardMongoFactory(
                     "{${pull}:{'payment': '${creditCard.getNumber()}'}}"
             )
             if(status.modifiedCount.toInt()==0) {
-                throw FailedUpdateException("Failed to update payment! Matches: ${status.matchedCount} ")
+                throw FailedUpdateException("Failed to delete payment! Matches: ${status.matchedCount} ")
             }
         }catch (e: Exception){
             throw e

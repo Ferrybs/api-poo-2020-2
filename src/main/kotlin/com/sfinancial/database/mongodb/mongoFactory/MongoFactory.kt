@@ -6,9 +6,7 @@ import com.mongodb.client.MongoCollection
 import com.mongodb.client.MongoDatabase
 import com.sfinancial.account.AdminAccount
 import com.sfinancial.account.UserAccount
-import com.sfinancial.group.Classifier
 import com.sfinancial.notification.exception.FailedReturnCollectionException
-import com.sfinancial.payment.Payment
 import com.sfinancial.payment.card.CreditCard
 import org.litote.kmongo.getCollection
 

@@ -31,7 +31,7 @@ class AdminAccount(
             if (admin != null){
                 return admin
             }
-            throw FailedFindException("Classifier is null!")
+            throw FailedFindException("Admin is null!")
         }catch (e: Exception){
             throw e
         }

@@ -10,7 +10,6 @@ import com.sfinancial.category.Category
 import com.sfinancial.database.DBInterface
 import com.sfinancial.group.User
 import com.sfinancial.login.LoginInterface
-import com.sfinancial.login.UserLogin
 import com.sfinancial.notification.exception.FailedFindException
 import com.sfinancial.notification.exception.FailedVerifierException
 import com.sfinancial.notification.exception.InvalidCredentialException
@@ -63,7 +62,7 @@ open class UserPermission(
                 val user = dbInterface.getUserAccount(loginInterface)
                 AddCreditCardUserAdmin(dbInterface).add(user, creditCard)
             }else{
-                throw FailedVerifierException("Failed to verifier credit card!")
+                throw FailedVerifierException("Failed to verify credit card!")
             }
         }catch (e : Exception){
             throw e
@@ -75,7 +74,7 @@ open class UserPermission(
                 val user = dbInterface.getUserAccount(loginInterface)
                 AddCategoryUserAdmin(dbInterface).add(user,category,idAdminInterface)
             }else{
-                throw FailedVerifierException("Failed to verifier category!")
+                throw FailedVerifierException("Failed to verify category!")
             }
         }catch (e: Exception){
             throw e
@@ -127,7 +126,7 @@ open class UserPermission(
                 val user = dbInterface.getUserAccount(loginInterface)
                 UpdateCategoryUserAdmin(dbInterface).update(user,category)
             }else{
-                throw FailedVerifierException("Failed to verifier category!")
+                throw FailedVerifierException("Failed to update category!")
             }
         }catch (e : Exception){
             throw e
@@ -165,7 +164,7 @@ open class UserPermission(
                 if(user.getIdAccount() == userCard.getIdAccount()){
                     DeleteCreditCardUserAdmin(dbInterface).delete(creditCard)
                 }else{
-                    throw FailedFindException ("Accounts does not match!")
+                    throw FailedFindException ("Credit card not found!")
                 }
             }else{
                 throw InvalidCredentialException("Invalid credential!")
@@ -181,7 +180,7 @@ open class UserPermission(
               val user = dbInterface.getUserAccount(loginInterface)
               DeleteCategoryUserAdmin(dbInterface).delete(user, category)
            }else{
-               throw InvalidFieldsException("Failed to verify category")
+               throw InvalidFieldsException("Failed to delete category")
            }
         }catch(e: Exception){
             throw e
@@ -249,10 +248,10 @@ open class UserPermission(
                 val userAccount = dbInterface.getUserAccount(loginInterface)
                 val personAccount = dbInterface.getUserAccount(user)
                 if (userAccount.getIdAccount() == personAccount.getIdAccount()) {
-                    UpdateUserUserAdmin(dbInterface).update(user)
+                    UpdateUserAdmin(dbInterface).update(user)
                     //sql injection
                 } else {
-                    throw InvalidCredentialException("Person does not match!")
+                    throw InvalidCredentialException("User does not match!")
                 }
             }else {
                 throw InvalidCredentialException("Invalid credential!")

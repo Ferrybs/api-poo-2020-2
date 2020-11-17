@@ -21,7 +21,7 @@ class DeleteCategoryMongoFactory(
                     "{${pull}:{'category':${string}}}"
             )
             if(status.modifiedCount.toInt()==0) {
-                throw FailedUpdateException("Failed to update! Matches: ${status.matchedCount} ")
+                throw FailedUpdateException("Failed to delete category! Matches: ${status.matchedCount} ")
             }
         }catch (e: Exception){
             throw e

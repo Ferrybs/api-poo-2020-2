@@ -17,7 +17,7 @@ class DeleteAddressMongoFactory(
                     "{${unset}:{'user.person.address':1}}"
             )
             if(status.modifiedCount.toInt()==0) {
-                throw FailedUpdateException("Failed to update! Matches: ${status.matchedCount} ")
+                throw FailedUpdateException("Failed to delete address! Matches: ${status.matchedCount} ")
             }
         }catch (e: Exception){
             throw e

@@ -20,7 +20,7 @@ class UpdateAddressMongoFactory
             val status= coll.updateOne("{idAccount:'${userAccount.getIdAccount()}'}",
                     "{${set}:{'user.person.address':$string}}")
             if(status.modifiedCount.toInt()==0) {
-                throw FailedUpdateException("Failed to update! Matches: ${status.matchedCount} ")
+                throw FailedUpdateException("Failed to update address! Matches: ${status.matchedCount} ")
             }
         }catch (e:Exception){
             throw e

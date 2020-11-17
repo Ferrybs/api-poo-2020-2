@@ -20,7 +20,7 @@ class DeleteTransactionMongoFactory(
                     "{$pull:{'transaction': $string}}"
             )
             if(status.modifiedCount.toInt()==0) {
-                throw FailedUpdateException("Failed to update transaction! Matches: ${status.matchedCount} ")
+                throw FailedUpdateException("Failed to delete transaction! Matches: ${status.matchedCount} ")
             }
         }catch (e: Exception){
             throw e
