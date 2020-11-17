@@ -23,7 +23,7 @@ internal fun Route.classifierRegister(dbInterface: DBInterface,idAdminInterface:
         try {
             val classifier = call.receive<Classifier>()
             ClassifierPermission(dbInterface).createAccount(classifier,idAdminInterface)
-            throw StatusPageCreated("User account successfully created!")
+            throw StatusPageCreated("Classifier account successfully created!")
         } catch (e: StatusPageCreated) {
             throw e
         } catch (e: FailedVerifierException) {

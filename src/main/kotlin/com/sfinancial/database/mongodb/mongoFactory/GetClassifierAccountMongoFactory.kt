@@ -1,5 +1,6 @@
 package com.sfinancial.database.mongodb.mongoFactory
 
+import ClassifierAccount
 import com.mongodb.client.MongoDatabase
 import com.sfinancial.group.Classifier
 import com.sfinancial.login.LoginInterface
@@ -9,7 +10,7 @@ import org.litote.kmongo.findOne
 class GetClassifierAccountMongoFactory(
         database: MongoDatabase
 ) : MongoFactory(database) {
-    fun get(loginInterface: LoginInterface): Classifier {
+    fun get(loginInterface: LoginInterface): ClassifierAccount? {
         try {
             val coll = getCollClassifier()
             val login = coll.findOne(

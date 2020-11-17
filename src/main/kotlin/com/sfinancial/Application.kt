@@ -68,4 +68,5 @@ private fun setMongodb(){
     val idx = IndexMongoConfig()
     idx.setUserAccount()
     idx.setCreditCard()
+    idx.setClassifier()
 }

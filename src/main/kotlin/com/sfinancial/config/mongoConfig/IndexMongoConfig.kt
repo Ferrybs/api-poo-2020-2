@@ -1,5 +1,6 @@
 package com.sfinancial.config.mongoConfig
 
+import ClassifierAccount
 import com.mongodb.client.MongoDatabase
 import com.mongodb.client.model.IndexOptions
 import com.sfinancial.account.UserAccount
@@ -35,5 +36,11 @@ class IndexMongoConfig {
         val coll = database.getCollection<CreditCard>()
         coll.createIndex("{'number':1}",indexUnique)
         coll.createIndex("{'transaction.idTransaction':1}",indexUnique)
+    }
+    fun setClassifier(){
+        val coll = database.getCollection<ClassifierAccount>()
+        coll.createIndex("{'idAccount':1}",indexUnique)
+        coll.createIndex("{'classifier.username':1}",indexUnique)
+        coll.createIndex("{'classifier.person.idEmployee':1}",indexUnique)
     }
 }

@@ -25,7 +25,7 @@ class FinancialAccount(
 
     }
 
-    fun getUser(): Financial {
+    fun getFinancial(): Financial {
         try {
             if (financial != null){
                 return financial

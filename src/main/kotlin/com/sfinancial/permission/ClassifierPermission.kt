@@ -32,6 +32,9 @@ open class ClassifierPermission(
             if (GroupVerifier(classifier).verifier()) {
                 val classifierAccount = ClassifierAccount(classifier)
                 RegisterClassifierAdmin(dbInterface).register(classifierAccount,idAdminInterface)
+            }else
+            {
+                throw FailedVerifierException("Failed to verifier classifier!")
             }
         }catch (e: Exception){
             throw e

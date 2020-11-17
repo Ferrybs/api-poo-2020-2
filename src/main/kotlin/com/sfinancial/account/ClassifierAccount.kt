@@ -26,7 +26,7 @@ data class ClassifierAccount(
 
     }
 
-    fun getUser(): Classifier {
+    fun getClassifier(): Classifier {
         try {
             if (classifier != null){
                 return classifier
@@ -37,10 +37,10 @@ data class ClassifierAccount(
         }
     }
 
-    fun getIdAccount(): String? {
+    fun getIdAccount(): String {
         try {
             if (idAccount != null){
-                return idAccount
+                return idAccount.toString()
             }else{
                 throw InvalidFieldsException("Account has no id!")
             }
