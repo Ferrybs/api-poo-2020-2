@@ -19,7 +19,7 @@ class UpdateCategoryMongoFactory(
            val coll = getCollUserAccount()
             val string= map.writeValueAsString(category)
             val status = coll.updateOne(
-                    "{'idAccount':'${userAccount.getIdAccount()}', 'category.name': '${category.getName()}'}",
+                    "{'idAccount':'${userAccount.getIdAccount()}', 'category.idCategory': '${category.getIdCategory()}'}",
                     "{${set}:{'category.$':$string}}"
             )
             if(status.modifiedCount.toInt()==0) {

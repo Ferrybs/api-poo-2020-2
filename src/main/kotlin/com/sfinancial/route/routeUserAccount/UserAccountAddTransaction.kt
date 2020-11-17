@@ -1,5 +1,6 @@
 package com.sfinancial.route.routeUserAccount
 
+import com.sfinancial.admin.idAdmin.IdAdminInterface
 import com.sfinancial.call.CallCreditCardTransaction
 import com.sfinancial.database.DBInterface
 import com.sfinancial.login.UserLogin
@@ -13,13 +14,13 @@ import io.ktor.auth.*
 import io.ktor.request.*
 import io.ktor.routing.*
 
-internal fun Route.addTransaction(dbInterface: DBInterface){
+internal fun Route.addTransaction(dbInterface: DBInterface,idAdminInterface: IdAdminInterface){
     authenticate {
         post("/my-userAccount/add-transaction") {
             val userLogin = call.principal<UserLogin>() ?: error("No principal")
             try {
                 val post = call.receive<CallCreditCardTransaction>()
-                UserPermission(dbInterface).createTransaction(userLogin,post)
+                UserPermission(dbInterface).createTransaction(userLogin,post,idAdminInterface)
                 throw StatusPageCreated("Transaction created successfully!")
             }catch (e: StatusPageCreated){
                 throw e

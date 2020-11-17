@@ -1,5 +1,6 @@
 package com.sfinancial.server.netty
 
+import com.sfinancial.admin.idAdmin.IdAdminInterface
 import com.sfinancial.auth.AuthInterface
 import com.sfinancial.config.nettyConfig.NettyConfigInterface
 import com.sfinancial.database.DBInterface
@@ -12,8 +13,9 @@ import kotlin.Exception
 class NettyServer(
         authInterface: AuthInterface,
         dbInterface: DBInterface,
-        nettyConfigInterface: NettyConfigInterface
-) : ServerInterface, NettyEnv(authInterface,nettyConfigInterface,dbInterface) {
+        nettyConfigInterface: NettyConfigInterface,
+        idAdminInterface: IdAdminInterface
+) : ServerInterface, NettyEnv(authInterface,nettyConfigInterface,dbInterface, idAdminInterface) {
 
     private fun getServer(): NettyApplicationEngine {
         try {

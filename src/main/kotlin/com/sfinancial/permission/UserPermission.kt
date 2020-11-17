@@ -2,6 +2,7 @@ package com.sfinancial.permission
 
 import com.sfinancial.account.UserAccount
 import com.sfinancial.address.Address
+import com.sfinancial.admin.idAdmin.IdAdminInterface
 import com.sfinancial.admin.userAdmin.*
 import com.sfinancial.auth.AuthInterface
 import com.sfinancial.call.CallCreditCardTransaction
@@ -20,11 +21,11 @@ import kotlin.Exception
 open class UserPermission(
         private val dbInterface: DBInterface
 ){
-    fun createAccount(user: User){
+    fun createAccount(user: User,idAdminInterface: IdAdminInterface){
         try {
             if (GroupVerifier(user).verifier()) {
                 val userAccount = UserAccount(user)
-                RegisterUserAdmin(userAccount, dbInterface).registerAccount()
+                RegisterUserAdmin(userAccount, dbInterface).registerAccount(idAdminInterface)
             }
         }catch (e: Exception){
             throw e
@@ -65,10 +66,11 @@ open class UserPermission(
             throw e
         }
     }
-    fun createCategory(loginInterface: LoginInterface,category: Category){
+    fun createCategory(loginInterface: LoginInterface,category: Category,idAdminInterface: IdAdminInterface){
         try {
             if(CategoryVerifier(category).verifier()&& LoginVerifier(loginInterface).verifier()){
-                AddCategoryUserAdmin(dbInterface).add(loginInterface,category)
+                val user = dbInterface.getUserAccount(loginInterface)
+                AddCategoryUserAdmin(dbInterface).add(user,category,idAdminInterface)
             }else{
                 throw FailedVerifierException("Failed to verifier category!")
             }
@@ -77,7 +79,11 @@ open class UserPermission(
         }
     }
 
-    fun createTransaction(loginInterface: LoginInterface,callCreditCardTransaction: CallCreditCardTransaction){
+    fun createTransaction(
+            loginInterface: LoginInterface,
+            callCreditCardTransaction: CallCreditCardTransaction,
+            idAdminInterface: IdAdminInterface
+    ){
         try {
             val creditCard = CreditCard(number = callCreditCardTransaction.getNumber())
             val transaction = callCreditCardTransaction.getPayment()
@@ -89,7 +95,11 @@ open class UserPermission(
                 val userAccount = dbInterface.getUserAccount(loginInterface)
                 val userCard = dbInterface.getUserAccount(creditCard)
                 if (userAccount.getIdAccount() == userCard.getIdAccount()){
-                    AddTransactionUserAdmin(dbInterface).add(creditCard,transaction)
+                    AddTransactionUserAdmin(dbInterface).add(
+                            creditCard,
+                            transaction,
+                            idAdminInterface
+                    )
                 }else{
                     throw FailedFindException("Failed to match user!")
                 }
@@ -134,9 +144,9 @@ open class UserPermission(
 
     }
 
-    fun deleteAddress(loginInterface: LoginInterface, address: Address){
+    fun deleteAddress(loginInterface: LoginInterface){
         try {
-            if (AddressVerifier(address).verifier()&& LoginVerifier(loginInterface).verifier()){
+            if (LoginVerifier(loginInterface).verifier()){
                 val user = dbInterface.getUserAccount(loginInterface)
                 DeleteAddressUserAdmin(dbInterface).delete(user)
             }

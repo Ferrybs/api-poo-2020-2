@@ -1,7 +1,7 @@
 package com.sfinancial.config.hashidConfig
 
 class EnvHashIdConfig: HashIdConfigInterface {
-    override fun getSecretHashid():String{
+    override fun getSecretHashId():String{
         return try {
                 System.getenv("sHashid")
             }catch (e: Exception){

@@ -1,6 +1,7 @@
 package com.sfinancial.route.routeUserAuth
 
 
+import com.sfinancial.admin.idAdmin.IdAdminInterface
 import com.sfinancial.config.mongoConfig.EnvMongoConfig
 import com.sfinancial.database.DBInterface
 import com.sfinancial.database.mongodb.StrategyMongodb
@@ -15,11 +16,11 @@ import io.ktor.request.*
 import io.ktor.routing.*
 
 
-internal fun Route.register(dbInterface: DBInterface) {
+internal fun Route.register(dbInterface: DBInterface,idAdminInterface: IdAdminInterface) {
     post("/register") {
         try {
             val user = call.receive<User>()
-            UserPermission(dbInterface).createAccount(user)
+            UserPermission(dbInterface).createAccount(user,idAdminInterface)
             throw StatusPageCreated("User account successfully created!")
         } catch (e: StatusPageCreated) {
             throw e

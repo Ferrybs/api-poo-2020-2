@@ -1,6 +1,9 @@
 package com.sfinancial
 
+import com.sfinancial.admin.idAdmin.HashIdAdmin
 import com.sfinancial.auth.AuthJwt
+import com.sfinancial.config.hashidConfig.HashIdConfigInterface
+import com.sfinancial.config.hashidConfig.ReadHashidConfig
 import com.sfinancial.config.mongoConfig.MongoConfigInterface
 import com.sfinancial.config.jwtConfig.JwtConfigInterface
 import com.sfinancial.config.jwtConfig.ReadJwtConfig
@@ -18,21 +21,23 @@ fun main(){
     }catch (e: Exception){
         println("Error to setMongodb: ${e.message}")
     }
-    val envMongoConfig = ReadMongoConfig()
-    val envJwtConfig = ReadJwtConfig()
+    val mongoConfig = ReadMongoConfig()
+    val jwtConfig = ReadJwtConfig()
+    val hashIdConfig = ReadHashidConfig()
 
     var server: NettyServer
     try {
         server = NettyFactory(
-            getAuthJwt(envJwtConfig),
-            ReadNettyConfig(),
-            getMongoDB(envMongoConfig)
+                ReadNettyConfig(),
+                getAuthJwt(jwtConfig),
+                getMongoDB(mongoConfig),
+                getHashId(hashIdConfig)
         ).connect()
     }catch (e: Exception){
         throw e
     }
-    val sfinancial = Sfinancial(server)
-    sfinancial.startServer()
+    val sFinancial = Sfinancial(server)
+    sFinancial.startServer()
 
 }
 
@@ -54,6 +59,11 @@ private fun getAuthJwt(jwtConfigInterface: JwtConfigInterface): AuthJwt {
         throw e
     }
 }
+
+private fun getHashId(hashidIdConfigInterface: HashIdConfigInterface): HashIdAdmin {
+    return HashIdAdmin(hashidIdConfigInterface)
+}
+
 private fun setMongodb(){
     val idx = IndexMongoConfig()
     idx.setUserAccount()

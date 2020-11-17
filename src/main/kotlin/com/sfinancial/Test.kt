@@ -4,6 +4,7 @@ import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.sfinancial.address.Address
 import com.sfinancial.call.CallCreditCardTransaction
 import com.sfinancial.category.Category
+import com.sfinancial.config.mongoConfig.IndexMongoConfig
 import com.sfinancial.config.mongoConfig.ReadMongoConfig
 import com.sfinancial.database.mongodb.StrategyMongodb
 import com.sfinancial.database.mongodb.mongoFactory.*
@@ -27,4 +28,5 @@ fun main() {
             "SP"
     )
     println(map.writeValueAsString(address))
+    IndexMongoConfig().setCreditCard()
 }

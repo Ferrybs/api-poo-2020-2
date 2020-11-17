@@ -1,6 +1,8 @@
 package com.sfinancial.category
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect
+import com.sfinancial.admin.idAdmin.IdAdminInterface
+import com.sfinancial.notification.exception.FailedFindException
 import com.sfinancial.notification.exception.InvalidFieldsException
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
@@ -9,6 +11,35 @@ class Category(
         private val priority: Int? = null,
         private val description: String? = null
 ) : CategoryInterface {
+    private var idCategory: String? = null
+
+    override fun cId(idAdminInterface: IdAdminInterface) {
+        try {
+            if (idCategory == null){
+                idCategory = idAdminInterface.create(4)
+            }
+            else{
+                throw InvalidFieldsException("idCategory is not null")
+            }
+        }catch (e: Exception){
+            throw e
+        }
+    }
+
+    override fun getIdCategory():String {
+        try {
+            if (idCategory != null){
+                return idCategory.toString()
+            }else
+            {
+                throw FailedFindException("idCategory is null!")
+            }
+        }catch (e: Exception){
+            throw e
+        }
+    }
+
+
     override fun verifier(): Boolean {
         return !listOf(
                 name,

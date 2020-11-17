@@ -1,13 +1,13 @@
 package com.sfinancial.account
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect
-import com.sfinancial.admin.idAdmin.UserIdAdmin
+import com.sfinancial.admin.idAdmin.HashIdAdmin
+import com.sfinancial.admin.idAdmin.IdAdminInterface
 import com.sfinancial.category.Category
 import com.sfinancial.group.User
 import com.sfinancial.notification.exception.FailedFindException
 import com.sfinancial.notification.exception.FailedUpdateException
 import com.sfinancial.notification.exception.InvalidFieldsException
-import com.sfinancial.payment.card.CreditCard
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 data class UserAccount(
@@ -17,10 +17,10 @@ data class UserAccount(
     private val category: MutableList<Category> = mutableListOf()
     private val payment: MutableList<String> =  mutableListOf()
 
-    fun cId(){
+    fun cId(idAdminInterface: IdAdminInterface){
         try {
             if (idAccount == null){
-                idAccount = UserIdAdmin().create()
+                idAccount = idAdminInterface.create(8)
             }else{
                 throw FailedUpdateException("idAccount is not null!")
             }

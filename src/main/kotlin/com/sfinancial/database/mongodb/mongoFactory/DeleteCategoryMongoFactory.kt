@@ -17,7 +17,7 @@ class DeleteCategoryMongoFactory(
            val coll = getCollUserAccount()
             val string = map.writeValueAsString(category)
             val status = coll.updateOne(
-                    "{'idAccount':'${userAccount.getIdAccount()}','category.name':'${category.getName()}'}",
+                    "{'idAccount':'${userAccount.getIdAccount()}','category.idCategory':'${category.getIdCategory()}'}",
                     "{${pull}:{'category':${string}}}"
             )
             if(status.modifiedCount.toInt()==0) {

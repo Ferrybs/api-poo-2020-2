@@ -5,6 +5,7 @@ import com.sfinancial.notification.exception.InvalidCredentialException
 import com.sfinancial.notification.exception.InvalidFieldsException
 import com.sfinancial.notification.exception.InvalidRequestException
 import com.sfinancial.notification.statusPages.StatusPageCreated
+import com.sfinancial.notification.statusPages.StatusPageDeleted
 import com.sfinancial.notification.statusPages.StatusPageUpdated
 import io.ktor.application.*
 import io.ktor.features.*
@@ -29,6 +30,9 @@ fun Application.moduleStatusPages(){
             call.respond(HttpStatusCode.Created, mapOf("OK" to true, "message" to (exception.message ?: "")))
         }
         exception<StatusPageUpdated>{ exception ->
+            call.respond(HttpStatusCode.Accepted, mapOf("OK" to true, "message" to (exception.message ?: "")))
+        }
+        exception<StatusPageDeleted>{ exception ->
             call.respond(HttpStatusCode.Accepted, mapOf("OK" to true, "message" to (exception.message ?: "")))
         }
     }
