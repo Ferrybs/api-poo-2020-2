@@ -12,7 +12,7 @@ import com.sfinancial.notification.exception.FailedVerifierException
 import com.sfinancial.verifier.GroupVerifier
 import com.sfinancial.verifier.LoginVerifier
 
-class ClassifierPermission(
+open class ClassifierPermission(
         private val dbInterface: DBInterface
 ) : UserPermission(dbInterface){
 
@@ -32,6 +32,9 @@ class ClassifierPermission(
             if (GroupVerifier(classifier).verifier()) {
                 val classifierAccount = ClassifierAccount(classifier)
                 RegisterClassifierAdmin(dbInterface).register(classifierAccount,idAdminInterface)
+            }else
+            {
+                throw FailedVerifierException("Failed to verifier classifier!")
             }
         }catch (e: Exception){
             throw e

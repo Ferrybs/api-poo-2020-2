@@ -1,15 +1,14 @@
+package com.sfinancial.account
 
-
-import com.fasterxml.jackson.annotation.JsonAutoDetect
 import com.sfinancial.admin.idAdmin.IdAdminInterface
 import com.sfinancial.group.Classifier
+import com.sfinancial.group.Financial
 import com.sfinancial.notification.exception.FailedFindException
 import com.sfinancial.notification.exception.FailedUpdateException
 import com.sfinancial.notification.exception.InvalidFieldsException
 
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-data class ClassifierAccount(
-        private val classifier: Classifier? = null,
+class FinancialAccount(
+        private val financial: Financial? = null
 ) {
     private var idAccount: String? = null
 
@@ -26,21 +25,21 @@ data class ClassifierAccount(
 
     }
 
-    fun getClassifier(): Classifier {
+    fun getFinancial(): Financial {
         try {
-            if (classifier != null){
-                return classifier
+            if (financial != null){
+                return financial
             }
-            throw FailedFindException("Classifier is null!")
+            throw FailedFindException("Financial is null!")
         }catch (e: Exception){
             throw e
         }
     }
 
-    fun getIdAccount(): String {
+    fun getIdAccount(): String? {
         try {
             if (idAccount != null){
-                return idAccount.toString()
+                return idAccount
             }else{
                 throw InvalidFieldsException("Account has no id!")
             }

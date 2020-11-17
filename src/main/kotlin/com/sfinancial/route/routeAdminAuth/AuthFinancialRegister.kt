@@ -1,5 +1,8 @@
 package com.sfinancial.route.routeAdminAuth
 
+import com.sfinancial.group.Financial
+import com.sfinancial.permission.FinancialPermission
+
 
 import com.sfinancial.admin.idAdmin.IdAdminInterface
 import com.sfinancial.config.mongoConfig.EnvMongoConfig
@@ -18,12 +21,12 @@ import io.ktor.request.*
 import io.ktor.routing.*
 
 
-internal fun Route.classifierRegister(dbInterface: DBInterface,idAdminInterface: IdAdminInterface) {
-    post("/admin/register-classifier") {
+internal fun Route.financialRegister(dbInterface: DBInterface,idAdminInterface: IdAdminInterface) {
+    post("/admin/register-financial") {
         try {
-            val classifier = call.receive<Classifier>()
-            ClassifierPermission(dbInterface).createAccount(classifier,idAdminInterface)
-            throw StatusPageCreated("Classifier account successfully created!")
+            val financial = call.receive<Financial>()
+            FinancialPermission(dbInterface).createAccount(financial, idAdminInterface)
+            throw StatusPageCreated("Financial account successfully created!")
         } catch (e: StatusPageCreated) {
             throw e
         } catch (e: FailedVerifierException) {

@@ -1,6 +1,7 @@
 package com.sfinancial.database
 
 import ClassifierAccount
+import com.sfinancial.account.FinancialAccount
 import com.sfinancial.account.UserAccount
 import com.sfinancial.address.Address
 import com.sfinancial.category.Category
@@ -35,4 +36,7 @@ interface DBInterface {
     fun insertNewClassifierAccount(classifierAccount: ClassifierAccount)
 
     fun getClassifierAccount(): ClassifierAccount
+
+    fun insertNewFinancialAccount(financialAccount: FinancialAccount)
+    fun getFinancialAccount():FinancialAccount
 }
