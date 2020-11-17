@@ -4,6 +4,7 @@ import ClassifierAccount
 import com.mongodb.MongoException
 import com.mongodb.client.MongoCollection
 import com.mongodb.client.MongoDatabase
+import com.sfinancial.account.AdminAccount
 import com.sfinancial.account.UserAccount
 import com.sfinancial.group.Classifier
 import com.sfinancial.notification.exception.FailedReturnCollectionException
@@ -34,6 +35,15 @@ open class MongoFactory(
         }
     }
     internal fun getCollClassifier(): MongoCollection<ClassifierAccount> {
+        try {
+            return database.getCollection()
+        }catch (e: MongoException){
+            throw FailedReturnCollectionException(e.message)
+        }catch (e: Exception){
+            throw e
+        }
+    }
+    internal fun getCollAdmin(): MongoCollection<AdminAccount> {
         try {
             return database.getCollection()
         }catch (e: MongoException){

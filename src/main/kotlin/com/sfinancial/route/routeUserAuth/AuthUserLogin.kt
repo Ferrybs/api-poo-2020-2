@@ -13,7 +13,7 @@ import io.ktor.routing.*
 
 
 internal fun Route.userLogin(authInterface: AuthInterface, dbInterface: DBInterface) {
-    get("/userLogin") {
+    get("/login") {
         try {
             val get = call.receive<UserLogin>()
             val token = UserPermission(dbInterface).login(get, authInterface)

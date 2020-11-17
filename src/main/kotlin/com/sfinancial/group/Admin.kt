@@ -6,7 +6,7 @@ import io.ktor.auth.*
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 
-class Financial (
+class Admin (
         username:String,
         password:String,
         private val adminPerson: AdminPerson? = null

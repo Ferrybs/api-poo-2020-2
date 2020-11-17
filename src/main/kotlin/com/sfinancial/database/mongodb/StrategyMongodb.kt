@@ -1,6 +1,7 @@
 package com.sfinancial.database.mongodb
 
 import ClassifierAccount
+import com.sfinancial.account.AdminAccount
 import com.sfinancial.account.FinancialAccount
 import com.sfinancial.account.UserAccount
 import com.sfinancial.address.Address
@@ -162,6 +163,18 @@ open class StrategyMongodb(
     }
 
     override fun getFinancialAccount(): FinancialAccount {
+        TODO("Not yet implemented")
+    }
+
+    override fun insertNewAdminAccount(adminAccount: AdminAccount) {
+        try {
+            NewAdminAccount(getDatabase()).add(adminAccount)
+        }catch (e: Exception){
+            throw e
+        }
+    }
+
+    override fun getAdminAccount(loginInterface: LoginInterface): AdminAccount {
         TODO("Not yet implemented")
     }
 

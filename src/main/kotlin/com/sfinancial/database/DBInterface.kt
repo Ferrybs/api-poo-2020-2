@@ -1,6 +1,7 @@
 package com.sfinancial.database
 
 import ClassifierAccount
+import com.sfinancial.account.AdminAccount
 import com.sfinancial.account.FinancialAccount
 import com.sfinancial.account.UserAccount
 import com.sfinancial.address.Address
@@ -39,4 +40,7 @@ interface DBInterface {
 
     fun insertNewFinancialAccount(financialAccount: FinancialAccount)
     fun getFinancialAccount():FinancialAccount
+
+    fun insertNewAdminAccount(adminAccount: AdminAccount)
+    fun getAdminAccount(loginInterface: LoginInterface): AdminAccount
 }

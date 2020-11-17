@@ -7,7 +7,7 @@ import com.sfinancial.database.DBInterface
 import com.sfinancial.group.Financial
 import com.sfinancial.login.LoginInterface
 
-class FinancialPermission(
+open class FinancialPermission(
         private val dbInterface: DBInterface
 ):ClassifierPermission(dbInterface) {
     fun createAccount(financial: Financial, idAdminInterface: IdAdminInterface){
