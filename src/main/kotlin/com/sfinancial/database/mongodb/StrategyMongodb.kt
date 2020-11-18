@@ -177,14 +177,18 @@ open class StrategyMongodb(
 
     override fun insertNewAdminAccount(adminAccount: AdminAccount) {
         try {
-            NewAdminAccount(getDatabase()).add(adminAccount)
+            NewAdminAccountMongoFactory(getDatabase()).add(adminAccount)
         }catch (e: Exception){
             throw e
         }
     }
 
     override fun getAdminAccount(loginInterface: LoginInterface): AdminAccount {
-        TODO("Not yet implemented")
+        try {
+            return GetAdminAccountMongoFactory(getDatabase()).get(loginInterface)
+        }catch (e: Exception){
+            throw e
+        }
     }
 
 }
