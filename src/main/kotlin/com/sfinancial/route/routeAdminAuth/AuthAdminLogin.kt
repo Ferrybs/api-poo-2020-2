@@ -2,6 +2,7 @@ package com.sfinancial.route.routeAdminAuth
 
 
 import com.sfinancial.admin.idAdmin.IdAdminInterface
+import com.sfinancial.auth.AuthInterface
 import com.sfinancial.config.mongoConfig.EnvMongoConfig
 import com.sfinancial.database.DBInterface
 import com.sfinancial.database.mongodb.StrategyMongodb
@@ -26,9 +27,16 @@ import io.ktor.response.*
 import io.ktor.routing.*
 
 
-internal fun Route.adminLogin(dbInterface: DBInterface,idAdminInterface: IdAdminInterface) {
-   authenticate {
-       get("/admin/login") {
-       }
-   }
+internal fun Route.adminLogin(dbInterface: DBInterface, authInterface: AuthInterface) {
+    get("/admin/login") {
+        try {
+            val get = call.receive<AdminLogin>()
+            val token = AdminPermission(dbInterface).login(get, authInterface)
+            call.respond(mapOf("Ok" to true, "token" to token))
+        } catch (e: InvalidCredentialException) {
+            throw e
+        } catch (e: Exception) {
+            throw InvalidFieldsException("${e.message}")
+        }
+    }
 }
