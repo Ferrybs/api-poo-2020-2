@@ -1,6 +1,7 @@
 package com.sfinancial.route.routeFinancialAccount
 
 import com.sfinancial.admin.idAdmin.IdAdminInterface
+import com.sfinancial.call.CallCreditCardTransaction
 import com.sfinancial.call.CallUserAccountCategory
 import com.sfinancial.database.DBInterface
 import com.sfinancial.login.Login
@@ -13,12 +14,12 @@ import io.ktor.auth.*
 import io.ktor.request.*
 import io.ktor.routing.*
 
-fun Route.financialDeleteTransaction(dbInterface: DBInterface, idAdminInterface: IdAdminInterface) {
+fun Route.financialDeleteTransaction(dbInterface: DBInterface) {
     authenticate {
         delete("/financial/delete-transaction") {
             try {
                 val principal = call.principal<Login>() ?: error("No principal")
-                val delete = call.receive<Transaction>()
+                val delete = call.receive<CallCreditCardTransaction>()
                 FinancialPermission(dbInterface).deleteTransaction(principal,delete)
                 throw StatusPageCreated("Transaction has been deleted successfully!")
             }catch (e: StatusPageCreated) {

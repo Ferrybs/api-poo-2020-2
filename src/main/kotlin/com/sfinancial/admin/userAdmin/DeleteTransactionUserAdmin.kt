@@ -8,9 +8,9 @@ import com.sfinancial.transaction.Transaction
 class DeleteTransactionUserAdmin (
     private val dbInterface: DBInterface
 ) {
-    fun delete(transaction: Transaction){
+    fun delete(creditCard: CreditCard,transaction: Transaction){
         try {
-            dbInterface.deleteTransaction(transaction)
+            dbInterface.deleteTransaction(creditCard,transaction)
         }catch (e:Exception){
             throw e
         }

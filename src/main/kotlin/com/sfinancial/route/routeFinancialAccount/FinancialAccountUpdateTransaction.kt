@@ -15,7 +15,7 @@ import io.ktor.auth.*
 import io.ktor.request.*
 import io.ktor.routing.*
 
-fun Route.financialAccountUpdateTransaction(dbInterface: DBInterface) {
+fun Route.financialUpdateTransaction(dbInterface: DBInterface) {
     authenticate {
         put("/financial/update-transaction") {
             try {

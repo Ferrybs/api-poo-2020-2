@@ -195,13 +195,19 @@ open class UserPermission(
             throw e
         }
     }
-    open fun deleteTransaction(loginInterface: LoginInterface, transaction: Transaction){
+    open fun deleteTransaction(loginInterface: LoginInterface, callCreditCardTransaction: CallCreditCardTransaction){
         try {
-            if (LoginVerifier(loginInterface).verifier()&&TransactionVerifier().verifierId()){
+            val transaction = callCreditCardTransaction.getTransaction()
+            val creditCard = callCreditCardTransaction.getCreditCard()
+            if (
+                    LoginVerifier(loginInterface).verifier()&&
+                    TransactionVerifier().verifierId() &&
+                    CardVerifier(creditCard).verifierId()
+            ){
                 val user = dbInterface.getUserAccount(loginInterface)
                 val userCredit = dbInterface.getUserAccount(transaction)
                 if (user.getIdAccount() == userCredit.getIdAccount()){
-                    DeleteTransactionUserAdmin(dbInterface).delete(transaction)
+                    DeleteTransactionUserAdmin(dbInterface).delete(creditCard,transaction)
                 }else{
                     throw InvalidCredentialException("Invalid credential")
                 }
@@ -211,7 +217,7 @@ open class UserPermission(
             throw e
         }
     }
-    fun getCreditCard(loginInterface: LoginInterface, creditCard: CreditCard): CreditCard {
+    open fun getCreditCard(loginInterface: LoginInterface, creditCard: CreditCard): CreditCard {
         try {
             if (LoginVerifier(loginInterface).verifier()&&CardVerifier(creditCard).verifierId()){
                 val user = dbInterface.getUserAccount(loginInterface)
@@ -269,7 +275,7 @@ open class UserPermission(
             throw e
         }
     }
-    fun getTransaction(loginInterface: LoginInterface, transaction: Transaction): CreditCard {
+    open fun getTransaction(loginInterface: LoginInterface, transaction: Transaction): CreditCard {
         try {
             if (LoginVerifier(loginInterface).verifier()&&TransactionVerifier(transaction).verifierId()){
                 val user = dbInterface.getUserAccount(loginInterface)

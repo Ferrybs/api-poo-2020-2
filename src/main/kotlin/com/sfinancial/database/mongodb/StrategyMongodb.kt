@@ -179,9 +179,9 @@ open class StrategyMongodb(
         }
     }
 
-    override fun deleteTransaction(transaction: Transaction) {
+    override fun deleteTransaction(creditCard: CreditCard,transaction: Transaction) {
         try {
-            DeleteTransactionMongoFactory(getDatabase()).delete(transaction)
+            DeleteTransactionMongoFactory(getDatabase()).delete(creditCard,transaction)
         }catch (e: Exception){
             throw e
         }

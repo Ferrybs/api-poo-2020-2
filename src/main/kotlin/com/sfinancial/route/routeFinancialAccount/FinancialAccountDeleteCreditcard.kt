@@ -14,7 +14,7 @@ import io.ktor.auth.*
 import io.ktor.request.*
 import io.ktor.routing.*
 
-fun Route.financialDeleteCreditCard(dbInterface: DBInterface, idAdminInterface: IdAdminInterface) {
+fun Route.financialDeleteCreditCard(dbInterface: DBInterface) {
     authenticate {
         delete("/financial/delete-credit-card") {
             try {

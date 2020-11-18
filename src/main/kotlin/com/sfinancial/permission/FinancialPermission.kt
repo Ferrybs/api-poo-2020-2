@@ -13,6 +13,7 @@ import com.sfinancial.database.DBInterface
 import com.sfinancial.group.Financial
 import com.sfinancial.login.LoginInterface
 import com.sfinancial.notification.exception.FailedVerifierException
+import com.sfinancial.notification.exception.InvalidFieldsException
 import com.sfinancial.payment.card.CreditCard
 import com.sfinancial.transaction.Transaction
 import com.sfinancial.verifier.CardVerifier
@@ -83,12 +84,14 @@ open class FinancialPermission(
     }
     override fun deleteTransaction(
             loginInterface: LoginInterface,
-            transaction: Transaction,
+            callCreditCardTransaction: CallCreditCardTransaction,
                 ){
         try {
+            val transaction = callCreditCardTransaction.getTransaction()
+            val creditCard = callCreditCardTransaction.getCreditCard()
             dbInterface.getFinancialAccount(loginInterface)
-            if (TransactionVerifier(transaction).verifierId()){
-                DeleteTransactionUserAdmin(dbInterface).delete(transaction)
+            if (TransactionVerifier(transaction).verifierId()&&CardVerifier(creditCard).verifierId()){
+                DeleteTransactionUserAdmin(dbInterface).delete(creditCard,transaction)
             }else{
                 throw FailedVerifierException("Failed to verify transaction!")
             }
@@ -96,15 +99,14 @@ open class FinancialPermission(
             throw e
         }
     }
-    fun getTransaction(
+    override fun getTransaction(
             loginInterface: LoginInterface,
-            transaction: Transaction,
-            idAdminInterface: IdAdminInterface
-    ){
+            transaction: Transaction
+    ): CreditCard {
         try {
             dbInterface.getFinancialAccount(loginInterface)
             if (TransactionVerifier(transaction).verifierId()){
-            GetTransactionUserAccount(dbInterface).get(transaction)
+            return GetTransactionUserAccount(dbInterface).get(transaction)
             }else{
                 throw FailedVerifierException("Failed to verify transaction!")
             }
@@ -126,6 +128,21 @@ open class FinancialPermission(
                 throw FailedVerifierException("Failed to verify transaction!")
             }
         }catch (e : Exception){
+            throw e
+        }
+    }
+    override fun getCreditCard(
+            loginInterface: LoginInterface,
+            creditCard: CreditCard
+    ): CreditCard {
+        try {
+            dbInterface.getFinancialAccount(loginInterface)
+            if (CardVerifier(creditCard).verifierId()){
+                return GetCreditCardUserAdmin(dbInterface).get(creditCard)
+            }else{
+                throw InvalidFieldsException("Invalid Credit Card")
+            }
+        }catch (e: Exception){
             throw e
         }
     }

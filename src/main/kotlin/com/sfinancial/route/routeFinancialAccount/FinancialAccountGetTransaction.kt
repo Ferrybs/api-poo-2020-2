@@ -17,13 +17,13 @@ import io.ktor.request.*
 import io.ktor.response.*
 import io.ktor.routing.*
 
-fun Route.financialGetTransaction(dbInterface: DBInterface, idAdminInterface: IdAdminInterface) {
+fun Route.financialGetTransaction(dbInterface: DBInterface) {
     authenticate {
         get("/financial/get-transaction") {
             try {
                 val principal = call.principal<Login>() ?: error("No principal")
                 val get = call.receive<Transaction>()
-                val list = FinancialPermission(dbInterface).getTransaction(principal, get, idAdminInterface)
+                val list = FinancialPermission(dbInterface).getTransaction(principal, get)
                 call.respond(HttpStatusCode.Found, list)
                 throw StatusPageCreated("Transaction  successfully!")
             }catch (e: StatusPageCreated) {
