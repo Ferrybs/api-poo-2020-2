@@ -29,18 +29,16 @@ fun main() {
     val database = StrategyMongodb(setting.getConnectionString(),setting.getDatabaseName()).getDatabase()
     val map = jacksonObjectMapper()
     val gson = Gson()
-    val adminAccount = AdminAccount(
-            Admin(
-                    "admin",
-                    "admin",
-                    AdminPerson(
-                            "123"
-                    )
+    val classifier = Classifier(
+            "admin",
+            "admin",
+            AdminPerson(
+                    "1234"
             )
     )
 
     //adminAccount.cId(HashIdAdmin(ReadHashidConfig()))
     //val coll = database.getCollection<AdminAccount>()
     //coll.insertOne(adminAccount)
-    println(gson.toJson(adminAccount))
+    println(gson.toJson(classifier))
 }
