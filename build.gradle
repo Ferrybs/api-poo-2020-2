@@ -42,8 +42,6 @@ dependencies {
     implementation 'org.litote.kmongo:kmongo:4.1.2'
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-cbor:1.0.1'
 
-    // https://mvnrepository.com/artifact/org.mindrot/jbcrypt
-    compile group: 'org.mindrot', name: 'jbcrypt', version: '0.4'
 
     compile 'org.mongodb:bson:4.1.1'
 
@@ -64,7 +62,7 @@ compileTestKotlin {
 
 apply plugin: 'application'
 
-mainClassName = 'com.sfinancial.TestKt'
+mainClassName = 'com.sfinancial.ApplicationKt'
 task stage {
     dependsOn installDist
 }

@@ -5,7 +5,6 @@ import com.sfinancial.auth.AuthInterface
 import com.sfinancial.config.nettyConfig.NettyConfigInterface
 import com.sfinancial.database.DBInterface
 import com.sfinancial.feature.authJwt.moduleJwt
-import com.sfinancial.feature.doubleReceive.moduleDoubleReceive
 import com.sfinancial.feature.gson.moduleGson
 import com.sfinancial.feature.statusPages.moduleStatusPages
 import com.sfinancial.route.routes
@@ -25,7 +24,6 @@ abstract class NettyEnv(
                     port = nettyConfigInterface.getPort()
                 }
                 module {
-                    moduleDoubleReceive()
                     moduleStatusPages()
                     moduleJwt(authInterface)
                     moduleGson()
