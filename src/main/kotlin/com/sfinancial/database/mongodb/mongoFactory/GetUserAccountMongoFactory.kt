@@ -2,6 +2,7 @@ package com.sfinancial.database.mongodb.mongoFactory
 
 import com.mongodb.client.MongoDatabase
 import com.sfinancial.account.UserAccount
+import com.sfinancial.group.User
 import com.sfinancial.login.LoginInterface
 import com.sfinancial.notification.exception.FailedFindException
 import com.sfinancial.notification.exception.InvalidCredentialException
@@ -59,4 +60,18 @@ class GetUserAccountMongoFactory(
             throw e
         }
     }
+    fun get(user: User): UserAccount {
+        try{
+            val coll = getCollUserAccount()
+            val userAccount = coll.findOne("{'user.username':'${user.getUsername()}'}")
+            if (userAccount != null){
+                return userAccount
+            }else{
+                throw FailedFindException("Failed to find Account!")
+            }
+        }catch (e: Exception){
+            throw e
+        }
+    }
+
 }

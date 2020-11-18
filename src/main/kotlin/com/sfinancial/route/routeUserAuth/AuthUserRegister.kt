@@ -17,7 +17,7 @@ import io.ktor.routing.*
 
 
 internal fun Route.userRegister(dbInterface: DBInterface, idAdminInterface: IdAdminInterface) {
-    post("/user-register") {
+    post("/register") {
         try {
             val user = call.receive<User>()
             UserPermission(dbInterface).createAccount(user,idAdminInterface)
