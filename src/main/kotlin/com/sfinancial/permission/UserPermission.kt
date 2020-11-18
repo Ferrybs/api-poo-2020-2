@@ -202,13 +202,13 @@ open class UserPermission(
             throw e
         }
     }
-    fun getCreditCard(loginInterface: LoginInterface, creditCard: CreditCard){
+    fun getCreditCard(loginInterface: LoginInterface, creditCard: CreditCard): CreditCard {
         try {
             if (LoginVerifier(loginInterface).verifier()&&CardVerifier(creditCard).verifierId()){
                 val user = dbInterface.getUserAccount(loginInterface)
                 val userCredit = dbInterface.getUserAccount(creditCard)
                 if (user.getIdAccount() == userCredit.getIdAccount()){
-                    GetCreditCardUserAdmin(dbInterface).get(creditCard)
+                    return GetCreditCardUserAdmin(dbInterface).get(creditCard)
                     //sql injection
                 }else{
                     throw InvalidCredentialException("Credit Card does not match!")

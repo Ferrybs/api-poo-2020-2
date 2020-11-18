@@ -11,6 +11,7 @@ internal fun Application.userAccountRoutes(
 ) {
     routing {
         myUserAccount(dbInterface)
+        myCreditCard(dbInterface)
 
         addCategory(dbInterface,idAdminInterface)
         addCreditCard(dbInterface)

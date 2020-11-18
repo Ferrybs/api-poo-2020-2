@@ -52,6 +52,14 @@ open class StrategyMongodb(
         }
     }
 
+    override fun getCreditCard(transaction: Transaction): CreditCard {
+        try {
+            return GetCreditCardMongoFactory(getDatabase()).get(transaction)
+        }catch (e: Exception){
+            throw e
+        }
+    }
+
     override fun getUserAccount(transaction: Transaction): UserAccount {
         try {
             return GetUserAccountMongoFactory(getDatabase()).get(transaction)
