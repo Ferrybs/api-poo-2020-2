@@ -16,8 +16,8 @@ import io.ktor.routing.*
 internal fun Route.updateCategory(dbInterface: DBInterface){
     authenticate {
         put("/my-user-account/update-category") {
-            val userLogin = call.principal<UserLogin>() ?: error("No principal")
             try {
+                val userLogin = call.principal<UserLogin>() ?: error("No principal")
                 val put = call.receive<Category>()
                 UserPermission(dbInterface).updateCategory(userLogin,put)
                 throw StatusPageUpdated("Category updated!")

@@ -15,8 +15,8 @@ import io.ktor.routing.*
 internal fun Route.deleteCategory(dbInterface: DBInterface){
     authenticate {
         delete ("/my-user-account/delete-category") {
-            val userLogin = call.principal<UserLogin>() ?: error("No principal")
             try {
+                val userLogin = call.principal<UserLogin>() ?: error("No principal")
                 val delete = call.receive<Category>()
                 UserPermission(dbInterface).deleteCategory(userLogin,delete)
                 throw StatusPageDeleted("Category deleted!")

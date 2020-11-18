@@ -8,6 +8,7 @@ import com.sfinancial.database.mongodb.StrategyMongodb
 import com.sfinancial.group.Admin
 import com.sfinancial.group.Classifier
 import com.sfinancial.group.User
+import com.sfinancial.login.AdminLogin
 import com.sfinancial.login.UserLogin
 import com.sfinancial.notification.exception.FailedVerifierException
 import com.sfinancial.notification.exception.InvalidFieldsException
@@ -25,9 +26,8 @@ import io.ktor.routing.*
 internal fun Route.adminRegister(dbInterface: DBInterface,idAdminInterface: IdAdminInterface) {
    authenticate {
        post("/admin/register") {
-           val adminLogin = call.principal<UserLogin>() ?: error("No principal")
-
            try {
+               val adminLogin = call.principal<UserLogin>() ?: error("No principal")
                val admin = call.receive<Admin>()
                AdminPermission(dbInterface).createAccount(adminLogin,admin,dbInterface,idAdminInterface)
                throw StatusPageCreated("Admin account successfully created!")

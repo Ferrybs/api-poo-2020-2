@@ -17,8 +17,8 @@ import io.ktor.routing.*
 internal fun Route.addTransaction(dbInterface: DBInterface,idAdminInterface: IdAdminInterface){
     authenticate {
         post("/my-userAccount/add-transaction") {
-            val userLogin = call.principal<UserLogin>() ?: error("No principal")
             try {
+                val userLogin = call.principal<UserLogin>() ?: error("No principal")
                 val post = call.receive<CallCreditCardTransaction>()
                 UserPermission(dbInterface).createTransaction(userLogin,post,idAdminInterface)
                 throw StatusPageCreated("Transaction created successfully!")

@@ -2,7 +2,7 @@ package com.sfinancial.verifier
 
 import com.sfinancial.address.AddressInterface
 
-class AddressVerifier (
+class AddressVerifier(
         private val addressInterface: AddressInterface
 ) {
     fun verifier(): Boolean {

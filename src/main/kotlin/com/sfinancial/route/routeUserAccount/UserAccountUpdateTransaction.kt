@@ -16,8 +16,8 @@ import io.ktor.routing.*
 internal fun Route.updateTransaction(dbInterface: DBInterface){
     authenticate {
         put("/my-user-account/update-transaction") {
-            val userLogin = call.principal<UserLogin>() ?: error("No principal")
             try {
+                val userLogin = call.principal<UserLogin>() ?: error("No principal")
                 val put = call.receive<Transaction>()
                UserPermission(dbInterface).updateTransaction(userLogin, put)
                 throw StatusPageUpdated("Transaction updated!")

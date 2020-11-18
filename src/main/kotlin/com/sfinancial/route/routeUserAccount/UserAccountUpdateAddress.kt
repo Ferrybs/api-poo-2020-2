@@ -17,8 +17,8 @@ import io.ktor.routing.*
 internal fun Route.updateAddress(dbInterface: DBInterface){
     authenticate {
         put ("/my-user-account/update-address") {
-            val userLogin = call.principal<UserLogin>() ?: error("No principal")
             try {
+                val userLogin = call.principal<UserLogin>() ?: error("No principal")
                 val put = call.receive<Address>()
                 UserPermission(dbInterface).updateAddress(userLogin,put)
                 throw StatusPageUpdated("Address updated!")

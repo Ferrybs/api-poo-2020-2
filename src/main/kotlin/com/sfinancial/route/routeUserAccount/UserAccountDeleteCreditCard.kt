@@ -15,8 +15,8 @@ import io.ktor.routing.*
 internal fun Route.deleteCreditCard(dbInterface: DBInterface){
     authenticate {
         delete ("/my-user-account/delete-credit-card") {
-            val userLogin = call.principal<UserLogin>() ?: error("No principal")
             try {
+                val userLogin = call.principal<UserLogin>() ?: error("No principal")
                 val delete = call.receive<CreditCard>()
                 UserPermission (dbInterface).deleteCreditCard(userLogin,delete)
                 throw StatusPageDeleted("Credit Card Deleted!")

@@ -15,8 +15,8 @@ import io.ktor.routing.*
 internal fun Route.myCreditCard(dbInterface: DBInterface){
     authenticate {
         get("/my-user-account/my-credit-card") {
-            val userLogin = call.principal<UserLogin>() ?: error("No principal")
             try {
+                val userLogin = call.principal<UserLogin>() ?: error("No principal")
                 val get = call.receive<CreditCard>()
                 val creditCard = UserPermission(dbInterface).getCreditCard(userLogin, get)
                 call.respond(HttpStatusCode.Found,creditCard)
@@ -27,8 +27,8 @@ internal fun Route.myCreditCard(dbInterface: DBInterface){
     }
     authenticate {
         get("/my-user-account/my-credit-card/{creditCard}") {
-            val userLogin = call.principal<UserLogin>() ?: error("No principal")
             try {
+                val userLogin = call.principal<UserLogin>() ?: error("No principal")
                 val parameter = call.parameters["creditCard"]
                 val get = CreditCard(number = parameter)
                 val creditCard = UserPermission(dbInterface).getCreditCard(userLogin, get)

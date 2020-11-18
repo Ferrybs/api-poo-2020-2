@@ -15,8 +15,8 @@ import io.ktor.routing.*
 internal fun Route.deleteAddress(dbInterface: DBInterface){
     authenticate {
         delete("/my-user-account/delete-address") {
-            val userLogin = call.principal<UserLogin>() ?: error("No principal")
             try {
+                val userLogin = call.principal<UserLogin>() ?: error("No principal")
                 UserPermission(dbInterface).deleteAddress(userLogin)
                 throw StatusPageDeleted("Address deleted")
             }catch (e: StatusPageDeleted){

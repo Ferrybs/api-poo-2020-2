@@ -14,8 +14,8 @@ import io.ktor.routing.*
 internal fun Route.updatePerson(dbInterface: DBInterface) {
     authenticate {
         put("/my-user-account/update-person") {
-            val userLogin = call.principal<UserLogin>() ?: error("No principal")
             try {
+                val userLogin = call.principal<UserLogin>() ?: error("No principal")
                 val put = call.receive<Person>()
                 UserPermission(dbInterface).updatePerson(userLogin, put)
                 throw StatusPageUpdated("Person updated!")

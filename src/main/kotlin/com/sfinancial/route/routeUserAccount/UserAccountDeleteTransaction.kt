@@ -15,8 +15,8 @@ import io.ktor.routing.*
 internal fun Route.deleteTransaction(dbInterface: DBInterface){
     authenticate {
         delete ("/my-user-account/delete-transaction") {
-            val userLogin = call.principal<UserLogin>() ?: error("No principal")
             try {
+                val userLogin = call.principal<UserLogin>() ?: error("No principal")
                 val delete = call.receive<Transaction>()
                 UserPermission(dbInterface).deleteTransaction(userLogin, delete)
                 throw StatusPageDeleted("Transaction deleted")

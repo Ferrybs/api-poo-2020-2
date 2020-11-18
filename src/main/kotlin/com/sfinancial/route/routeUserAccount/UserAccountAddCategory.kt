@@ -16,8 +16,8 @@ import io.ktor.routing.*
 fun Route.addCategory(dbInterface: DBInterface,idAdminInterface: IdAdminInterface) {
     authenticate {
         post("/my-user-account/add-category") {
-            val userLogin = call.principal<UserLogin>() ?: error("No principal")
             try {
+                val userLogin = call.principal<UserLogin>() ?: error("No principal")
                 val post = call.receive<Category>()
                 UserPermission(dbInterface).createCategory(userLogin,post,idAdminInterface)
                 throw StatusPageCreated("Category has been created successfully!")
