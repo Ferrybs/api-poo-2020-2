@@ -16,9 +16,9 @@ fun Route.addCategory(dbInterface: DBInterface,idAdminInterface: IdAdminInterfac
     authenticate {
         post("/my-user-account/add-category") {
             try {
-                val userLogin = call.principal<Login>() ?: error("No principal")
+                val principal = call.principal<Login>() ?: error("No principal")
                 val post = call.receive<Category>()
-                UserPermission(dbInterface).createCategory(userLogin,post,idAdminInterface)
+                UserPermission(dbInterface).createCategory(principal,post,idAdminInterface)
                 throw StatusPageCreated("Category has been created successfully!")
             }catch (e: StatusPageCreated) {
                 throw e

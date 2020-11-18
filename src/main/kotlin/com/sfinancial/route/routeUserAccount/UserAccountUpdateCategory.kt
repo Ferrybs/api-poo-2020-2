@@ -15,9 +15,9 @@ internal fun Route.updateCategory(dbInterface: DBInterface){
     authenticate {
         put("/my-user-account/update-category") {
             try {
-                val userLogin = call.principal<Login>() ?: error("No principal")
+                val principal = call.principal<Login>() ?: error("No principal")
                 val put = call.receive<Category>()
-                UserPermission(dbInterface).updateCategory(userLogin,put)
+                UserPermission(dbInterface).updateCategory(principal,put)
                 throw StatusPageUpdated("Category updated!")
             }catch (e :StatusPageUpdated){
                 throw e

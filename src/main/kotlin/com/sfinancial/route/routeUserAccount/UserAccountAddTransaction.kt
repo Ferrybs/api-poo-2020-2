@@ -16,9 +16,9 @@ internal fun Route.addTransaction(dbInterface: DBInterface,idAdminInterface: IdA
     authenticate {
         post("/my-userAccount/add-transaction") {
             try {
-                val userLogin = call.principal<Login>() ?: error("No principal")
+                val principal = call.principal<Login>() ?: error("No principal")
                 val post = call.receive<CallCreditCardTransaction>()
-                UserPermission(dbInterface).createTransaction(userLogin,post,idAdminInterface)
+                UserPermission(dbInterface).createTransaction(principal,post,idAdminInterface)
                 throw StatusPageCreated("Transaction created successfully!")
             }catch (e: StatusPageCreated){
                 throw e

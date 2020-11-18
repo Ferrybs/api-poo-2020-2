@@ -15,9 +15,9 @@ internal fun Route.addCreditCard(dbInterface: DBInterface) {
     authenticate {
         post("/my-user-account/add-credit-card") {
             try {
-                val userLogin = call.principal<Login>() ?: error("No principal")
+                val principal = call.principal<Login>() ?: error("No principal")
                 val post = call.receive<CreditCard>()
-                    UserPermission(dbInterface).createCreditCard(userLogin,post)
+                    UserPermission(dbInterface).createCreditCard(principal,post)
                     throw StatusPageCreated("Credit card successfully added!")
             }catch (e: StatusPageCreated){
                 throw e

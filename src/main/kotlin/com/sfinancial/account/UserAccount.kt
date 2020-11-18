@@ -51,4 +51,17 @@ data class UserAccount(
             throw e
         }
     }
+
+    fun getCategory(): MutableList<Category> {
+        try {
+            if (category != null){
+                return category
+            }else{
+                throw InvalidFieldsException("Category has no id!")
+            }
+        }catch (e : Exception){
+            throw e
+        }
+
+    }
 }

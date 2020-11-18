@@ -13,8 +13,17 @@ class CategoryVerifier(
                return true
            }
            return false
-       }catch (e: Exception){
+       }catch (e : Exception){
            throw e
        }
+    }
+
+    fun verifierId():Boolean{
+        try {
+            categoryInterface.getIdCategory()
+            return true
+        }catch (e : Exception){
+            throw e
+        }
     }
 }

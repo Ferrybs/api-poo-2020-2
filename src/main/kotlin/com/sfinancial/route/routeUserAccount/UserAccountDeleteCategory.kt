@@ -15,9 +15,9 @@ internal fun Route.deleteCategory(dbInterface: DBInterface){
     authenticate {
         delete ("/my-user-account/delete-category") {
             try {
-                val userLogin = call.principal<Login>() ?: error("No principal")
+                val principal = call.principal<Login>() ?: error("No principal")
                 val delete = call.receive<Category>()
-                UserPermission(dbInterface).deleteCategory(userLogin,delete)
+                UserPermission(dbInterface).deleteCategory(principal,delete)
                 throw StatusPageDeleted("Category deleted!")
             }catch (e: StatusPageDeleted){
                 throw e

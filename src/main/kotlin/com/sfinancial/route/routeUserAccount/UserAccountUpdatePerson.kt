@@ -15,9 +15,9 @@ internal fun Route.updatePerson(dbInterface: DBInterface) {
     authenticate {
         put("/my-user-account/update-person") {
             try {
-                val userLogin = call.principal<Login>() ?: error("No principal")
+                val principal = call.principal<Login>() ?: error("No principal")
                 val put = call.receive<Person>()
-                UserPermission(dbInterface).updatePerson(userLogin, put)
+                UserPermission(dbInterface).updatePerson(principal, put)
                 throw StatusPageUpdated("Person updated!")
             } catch (e: StatusPageUpdated) {
                 throw e

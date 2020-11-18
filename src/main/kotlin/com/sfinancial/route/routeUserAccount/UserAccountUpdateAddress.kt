@@ -15,9 +15,9 @@ internal fun Route.updateAddress(dbInterface: DBInterface){
     authenticate {
         put ("/my-user-account/update-address") {
             try {
-                val userLogin = call.principal<Login>() ?: error("No principal")
+                val principal = call.principal<Login>() ?: error("No principal")
                 val put = call.receive<Address>()
-                UserPermission(dbInterface).updateAddress(userLogin,put)
+                UserPermission(dbInterface).updateAddress(principal,put)
                 throw StatusPageUpdated("Address updated!")
             }catch (e: StatusPageUpdated){
                 throw e

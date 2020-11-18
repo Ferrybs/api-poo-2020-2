@@ -6,8 +6,11 @@ import com.sfinancial.admin.classifierAdmin.RegisterClassifierAdmin
 import com.sfinancial.admin.financialAdmin.LoginFinancialAdmin
 import com.sfinancial.admin.idAdmin.IdAdminInterface
 import com.sfinancial.admin.userAdmin.AddCategoryUserAdmin
+import com.sfinancial.admin.userAdmin.DeleteCategoryUserAdmin
+import com.sfinancial.admin.userAdmin.GetCategoryUserAccount
 import com.sfinancial.auth.AuthInterface
 import com.sfinancial.call.CallUserAccountCategory
+import com.sfinancial.category.Category
 import com.sfinancial.database.DBInterface
 import com.sfinancial.group.Classifier
 import com.sfinancial.login.LoginInterface
@@ -58,6 +61,38 @@ open class ClassifierPermission(
                 throw FailedVerifierException("Failed to verify category!")
             }
         }catch (e: Exception){
+            throw e
+        }
+    }
+
+    fun deleteCategory(loginInterface: LoginInterface,callUserAccountCategory: CallUserAccountCategory) {
+        try {
+            dbInterface.getClassifierAccount(loginInterface)
+            val userAccount = callUserAccountCategory.getUserAccount()
+            val category = callUserAccountCategory.getCategory()
+            if(CategoryVerifier(category).verifierId()){
+                DeleteCategoryUserAdmin(dbInterface).delete(userAccount, category)
+            }else{
+                throw FailedVerifierException("Failed to verify category!")
+            }
+        }catch (e:Exception){
+            throw e
+        }
+    }
+
+    fun getCategory(loginInterface: LoginInterface,
+                    callUserAccountCategory: CallUserAccountCategory
+    ): MutableList<Category>{
+        try {
+            dbInterface.getClassifierAccount(loginInterface)
+            val userAccount = callUserAccountCategory.getUserAccount()
+            val category = callUserAccountCategory.getCategory()
+            if (CategoryVerifier(category).verifierId()){
+                return GetCategoryUserAccount(dbInterface).get(userAccount, category)
+            }else{
+                throw FailedVerifierException("Failed to verify category!")
+            }
+        }catch (e : Exception){
             throw e
         }
     }

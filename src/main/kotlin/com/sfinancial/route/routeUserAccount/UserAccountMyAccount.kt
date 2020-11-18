@@ -14,8 +14,8 @@ internal fun Route.myUserAccount(dbInterface: DBInterface){
     authenticate {
         get("/my-user-account") {
             try {
-                val userLogin = call.principal<Login>() ?: error("No principal")
-                val user = UserPermission(dbInterface).getUserAccount(userLogin)
+                val principal = call.principal<Login>() ?: error("No principal")
+                val user = UserPermission(dbInterface).getUserAccount(principal)
                 call.respond(HttpStatusCode.Found,user)
             }catch (e: Exception) {
                 throw InvalidFieldsException("${e.message}")

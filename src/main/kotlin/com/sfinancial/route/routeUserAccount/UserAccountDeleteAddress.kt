@@ -14,8 +14,8 @@ internal fun Route.deleteAddress(dbInterface: DBInterface){
     authenticate {
         delete("/my-user-account/delete-address") {
             try {
-                val userLogin = call.principal<Login>() ?: error("No principal")
-                UserPermission(dbInterface).deleteAddress(userLogin)
+                val principal = call.principal<Login>() ?: error("No principal")
+                UserPermission(dbInterface).deleteAddress(principal)
                 throw StatusPageDeleted("Address deleted")
             }catch (e: StatusPageDeleted){
                 throw e

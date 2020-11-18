@@ -25,6 +25,7 @@ interface DBInterface {
     fun getCreditCard(creditCardInterface: CardInterface): CreditCard
     fun getUserAccount(person: Person) : UserAccount
     fun getUserAccount(user: User):UserAccount
+    fun getUserAccount(userAccount: UserAccount): UserAccount
 
     fun updateCategory(userAccount: UserAccount, category: Category)
     fun updateAddress(userAccount: UserAccount, address: Address)
@@ -46,4 +47,5 @@ interface DBInterface {
 
     fun insertNewAdminAccount(adminAccount: AdminAccount)
     fun getAdminAccount(loginInterface: LoginInterface): AdminAccount
+
 }
