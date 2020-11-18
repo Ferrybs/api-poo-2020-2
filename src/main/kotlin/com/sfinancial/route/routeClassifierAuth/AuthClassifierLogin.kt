@@ -13,7 +13,7 @@ import io.ktor.routing.*
 
 
 internal fun Route.classifierLogin(authInterface: AuthInterface, dbInterface: DBInterface) {
-    get("/classifier/userLogin") {
+    get("/classifier/login") {
         try {
             val get = call.receive<UserLogin>()
             val token = ClassifierPermission(dbInterface).login(get,authInterface)

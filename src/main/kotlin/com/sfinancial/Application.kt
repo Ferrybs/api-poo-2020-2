@@ -70,4 +70,5 @@ private fun setMongodb(){
     idx.setCreditCard()
     idx.setClassifier()
     idx.setAdmin()
+    idx.setFinancial()
 }

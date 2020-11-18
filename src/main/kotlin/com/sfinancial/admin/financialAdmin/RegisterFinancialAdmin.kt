@@ -12,7 +12,6 @@ class RegisterFinancialAdmin (
         try {
             financialAccount.cId(idAdminInterface)
             dbInterface.insertNewFinancialAccount(financialAccount)
-
         }catch (e:Exception){
             throw e
         }

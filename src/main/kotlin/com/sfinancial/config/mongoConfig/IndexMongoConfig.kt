@@ -4,6 +4,7 @@ import ClassifierAccount
 import com.mongodb.client.MongoDatabase
 import com.mongodb.client.model.IndexOptions
 import com.sfinancial.account.AdminAccount
+import com.sfinancial.account.FinancialAccount
 import com.sfinancial.account.UserAccount
 import com.sfinancial.database.mongodb.StrategyMongodb
 import com.sfinancial.payment.card.CreditCard
@@ -49,5 +50,11 @@ class IndexMongoConfig {
         coll.createIndex("{'idAccount':1}",indexUnique)
         coll.createIndex("{'admin.username':1}",indexUnique)
         coll.createIndex("{'admin.adminPerson.idEmployee':1}",indexUnique)
+    }
+    fun setFinancial(){
+        val coll = database.getCollection<FinancialAccount>()
+        coll.createIndex("{'idAccount':1}",indexUnique)
+        coll.createIndex("{'financial.username':1}",indexUnique)
+        coll.createIndex("{'financial.person.idEmployee':1}",indexUnique)
     }
 }

@@ -9,11 +9,11 @@ import io.ktor.auth.*
 class Financial (
         username:String,
         password:String,
-        private val adminPerson: AdminPerson? = null
+        private val person: AdminPerson? = null
 ):Group(username,password),GroupInterface{
 
     override fun verifier(): Boolean {
-        if(adminPerson!=null && adminPerson.verifier()){
+        if(person!=null && person.verifier()){
             return verifierGroup()
         }
         return false

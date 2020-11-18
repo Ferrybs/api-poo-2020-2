@@ -5,6 +5,7 @@ import com.mongodb.MongoException
 import com.mongodb.client.MongoCollection
 import com.mongodb.client.MongoDatabase
 import com.sfinancial.account.AdminAccount
+import com.sfinancial.account.FinancialAccount
 import com.sfinancial.account.UserAccount
 import com.sfinancial.notification.exception.FailedReturnCollectionException
 import com.sfinancial.payment.card.CreditCard
@@ -42,6 +43,15 @@ open class MongoFactory(
         }
     }
     internal fun getCollAdmin(): MongoCollection<AdminAccount> {
+        try {
+            return database.getCollection()
+        }catch (e: MongoException){
+            throw FailedReturnCollectionException(e.message)
+        }catch (e: Exception){
+            throw e
+        }
+    }
+    internal fun getCollFinancial(): MongoCollection<FinancialAccount> {
         try {
             return database.getCollection()
         }catch (e: MongoException){

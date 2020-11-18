@@ -10,9 +10,10 @@ import com.sfinancial.login.LoginInterface
 open class FinancialPermission(
         private val dbInterface: DBInterface
 ):ClassifierPermission(dbInterface) {
-    fun createAccount(financial: Financial, idAdminInterface: IdAdminInterface){
+    fun createAccount(loginInterface: LoginInterface,financial: Financial, idAdminInterface: IdAdminInterface){
         try {
-            val financialAccount = FinancialAccount()
+            dbInterface.getAdminAccount(loginInterface)
+            val financialAccount = FinancialAccount(financial)
             RegisterFinancialAdmin(dbInterface).register(financialAccount, idAdminInterface)
         }catch (e:Exception){
             throw e

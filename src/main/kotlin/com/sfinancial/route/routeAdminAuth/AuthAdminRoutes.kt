@@ -16,5 +16,6 @@ internal fun Application.authAdminRoutes(
         adminLogin(dbInterface,authInterface)
 
         classifierRegister(dbInterface,idAdminInterface)
+        financialRegister(dbInterface,idAdminInterface)
     }
 }

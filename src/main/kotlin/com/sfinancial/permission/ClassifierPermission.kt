@@ -3,6 +3,7 @@ package com.sfinancial.permission
 import ClassifierAccount
 import com.sfinancial.admin.classifierAdmin.LoginClassifierAdmin
 import com.sfinancial.admin.classifierAdmin.RegisterClassifierAdmin
+import com.sfinancial.admin.financialAdmin.LoginFinancialAdmin
 import com.sfinancial.admin.idAdmin.IdAdminInterface
 import com.sfinancial.auth.AuthInterface
 import com.sfinancial.database.DBInterface
@@ -19,7 +20,7 @@ open class ClassifierPermission(
     override fun login(loginInterface: LoginInterface, authInterface: AuthInterface): String {
         try {
             if (LoginVerifier(loginInterface).verifier()){
-                return LoginClassifierAdmin(dbInterface).login(loginInterface,authInterface)
+                return LoginFinancialAdmin(dbInterface).login(loginInterface,authInterface)
             }else{
                 throw FailedVerifierException("Failed to verify userLogin!")
             }

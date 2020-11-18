@@ -172,11 +172,19 @@ open class StrategyMongodb(
     }
 
     override fun insertNewFinancialAccount(financialAccount: FinancialAccount) {
-        TODO("Not yet implemented")
+        try {
+            NewFinancialAccountMongoFactory(getDatabase()).add(financialAccount)
+        }catch (e: Exception){
+            throw e
+        }
     }
 
-    override fun getFinancialAccount(): FinancialAccount {
-        TODO("Not yet implemented")
+    override fun getFinancialAccount(loginInterface: LoginInterface): FinancialAccount {
+        try {
+            return GetFinancialAccountMongoFactory(getDatabase()).get(loginInterface)
+        }catch (e: Exception){
+            throw e
+        }
     }
 
     override fun insertNewAdminAccount(adminAccount: AdminAccount) {

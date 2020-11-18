@@ -15,6 +15,7 @@ import com.sfinancial.database.mongodb.StrategyMongodb
 import com.sfinancial.database.mongodb.mongoFactory.*
 import com.sfinancial.group.Admin
 import com.sfinancial.group.Classifier
+import com.sfinancial.group.Financial
 import com.sfinancial.group.User
 import com.sfinancial.login.UserLogin
 import com.sfinancial.payment.card.CreditCard
@@ -29,7 +30,7 @@ fun main() {
     val database = StrategyMongodb(setting.getConnectionString(),setting.getDatabaseName()).getDatabase()
     val map = jacksonObjectMapper()
     val gson = Gson()
-    val classifier = Classifier(
+    val classifier = Financial(
             "admin",
             "admin",
             AdminPerson(
