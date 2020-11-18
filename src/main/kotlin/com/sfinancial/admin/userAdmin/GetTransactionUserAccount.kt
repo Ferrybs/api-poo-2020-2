@@ -7,9 +7,9 @@ import com.sfinancial.transaction.Transaction
 class GetTransactionUserAccount(
         private val dbInterface: DBInterface
 ) {
-    fun get(transaction: Transaction): CreditCard{
+    fun get(creditCard: CreditCard,transaction: Transaction): CreditCard{
         try {
-            return dbInterface.getCreditCard(transaction)
+            return dbInterface.getCreditCard(creditCard,transaction)
         }catch (e: Exception){
             throw e
         }

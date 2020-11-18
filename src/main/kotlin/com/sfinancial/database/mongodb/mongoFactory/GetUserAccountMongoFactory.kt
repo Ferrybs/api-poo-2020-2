@@ -29,11 +29,11 @@ class GetUserAccountMongoFactory(
             throw e
         }
     }
-    fun get(transaction: Transaction): UserAccount {
+    fun get(creditCard: CreditCard,transaction: Transaction): UserAccount {
         try {
             val coll = getCollPayment()
             val credit = coll.findOne(
-                    "{'transaction.idTransaction':'${transaction.getIdTransaction()}'}"
+                    "{'number': '${creditCard.getNumber()}','transaction.idTransaction':'${transaction.getIdTransaction()}'}"
             )
             if (credit != null){
                 val number = credit.getNumber()

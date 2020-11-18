@@ -1,6 +1,7 @@
 package com.sfinancial.route.routeFinancialAccount
 
 import com.sfinancial.admin.idAdmin.IdAdminInterface
+import com.sfinancial.call.CallCreditCardTransaction
 import com.sfinancial.call.CallUserAccountCategory
 import com.sfinancial.call.CallUserAccountTransaction
 import com.sfinancial.database.DBInterface
@@ -22,7 +23,7 @@ fun Route.financialGetTransaction(dbInterface: DBInterface) {
         get("/financial/get-transaction") {
             try {
                 val principal = call.principal<Login>() ?: error("No principal")
-                val get = call.receive<Transaction>()
+                val get = call.receive<CallCreditCardTransaction>()
                 val list = FinancialPermission(dbInterface).getTransaction(principal, get)
                 call.respond(HttpStatusCode.Found, list)
                 throw StatusPageCreated("Transaction  successfully!")

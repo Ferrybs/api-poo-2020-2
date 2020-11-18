@@ -21,9 +21,9 @@ interface DBInterface {
 
     fun getUserAccount(loginInterface: LoginInterface): UserAccount
     fun getUserAccount(creditCard: CreditCard): UserAccount
-    fun getUserAccount(transaction: Transaction) : UserAccount
+    fun getUserAccount(creditCard: CreditCard,transaction: Transaction) : UserAccount
     fun getCreditCard(creditCardInterface: CardInterface): CreditCard
-    fun getCreditCard(transaction: Transaction): CreditCard
+    fun getCreditCard(creditCard: CreditCard,transaction: Transaction): CreditCard
     fun getUserAccount(person: Person) : UserAccount
     fun getUserAccount(user: User):UserAccount
     fun getUserAccount(userAccount: UserAccount): UserAccount

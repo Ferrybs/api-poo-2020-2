@@ -26,11 +26,11 @@ class GetCreditCardMongoFactory(
             throw e
         }
     }
-    fun get(transaction: Transaction): CreditCard {
+    fun get(creditCard: CreditCard,transaction: Transaction): CreditCard {
         try {
             val coll = getCollPayment()
             val card = coll.findOne(
-                    "{'transaction.idTransaction': '${transaction.getIdTransaction()}'}"
+                    "{'number':'${creditCard.getNumber()}''transaction.idTransaction': '${transaction.getIdTransaction()}'}"
             )
             if (card != null){
                 return card

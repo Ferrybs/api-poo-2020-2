@@ -1,5 +1,6 @@
 package com.sfinancial.route.routeUserAccount
 
+import com.sfinancial.call.CallCreditCardTransaction
 import com.sfinancial.database.DBInterface
 import com.sfinancial.login.Login
 import com.sfinancial.notification.exception.InvalidFieldsException
@@ -18,7 +19,7 @@ internal fun Route.myTransaction(dbInterface: DBInterface) {
         get("/my-user-account/my-transaction") {
             try {
                 val principal = call.principal<Login>() ?: error("No principal")
-                val get = call.receive<Transaction>()
+                val get = call.receive<CallCreditCardTransaction>()
                 val transaction = UserPermission(dbInterface).getTransaction(principal, get)
                 call.respond(HttpStatusCode.Found, transaction)
             } catch (e: Exception) {

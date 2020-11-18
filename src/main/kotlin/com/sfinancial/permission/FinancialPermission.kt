@@ -101,12 +101,14 @@ open class FinancialPermission(
     }
     override fun getTransaction(
             loginInterface: LoginInterface,
-            transaction: Transaction
+            callCreditCardTransaction: CallCreditCardTransaction
     ): CreditCard {
         try {
+            val transaction = callCreditCardTransaction.getTransaction()
+            val creditCard = callCreditCardTransaction.getCreditCard()
             dbInterface.getFinancialAccount(loginInterface)
             if (TransactionVerifier(transaction).verifierId()){
-            return GetTransactionUserAccount(dbInterface).get(transaction)
+            return GetTransactionUserAccount(dbInterface).get(creditCard,transaction)
             }else{
                 throw FailedVerifierException("Failed to verify transaction!")
             }

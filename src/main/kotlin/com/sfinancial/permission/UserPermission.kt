@@ -118,7 +118,13 @@ open class UserPermission(
             val transaction = callCreditCardTransaction.getTransaction()
             val creditCard = callCreditCardTransaction.getCreditCard()
             if (TransactionVerifier(transaction).verifier()&& LoginVerifier(loginInterface).verifier()){
-                UpdateTransactionUserAdmin(dbInterface).update(creditCard,transaction)
+                val user = dbInterface.getUserAccount(loginInterface)
+                val userCredit = dbInterface.getUserAccount(creditCard)
+                if (user.getIdAccount() == userCredit.getIdAccount()){
+                    UpdateTransactionUserAdmin(dbInterface).update(creditCard,transaction)
+                }else{
+                    throw InvalidCredentialException("Invalid Credential")
+                }
             }else{
                 throw FailedVerifierException("Failed to update transaction!")
             }
@@ -205,7 +211,7 @@ open class UserPermission(
                     CardVerifier(creditCard).verifierId()
             ){
                 val user = dbInterface.getUserAccount(loginInterface)
-                val userCredit = dbInterface.getUserAccount(transaction)
+                val userCredit = dbInterface.getUserAccount(creditCard,transaction)
                 if (user.getIdAccount() == userCredit.getIdAccount()){
                     DeleteTransactionUserAdmin(dbInterface).delete(creditCard,transaction)
                 }else{
@@ -275,13 +281,15 @@ open class UserPermission(
             throw e
         }
     }
-    open fun getTransaction(loginInterface: LoginInterface, transaction: Transaction): CreditCard {
+    open fun getTransaction(loginInterface: LoginInterface, callCreditCardTransaction: CallCreditCardTransaction): CreditCard {
         try {
+            val transaction = callCreditCardTransaction.getTransaction()
+            val creditCard = callCreditCardTransaction.getCreditCard()
             if (LoginVerifier(loginInterface).verifier()&&TransactionVerifier(transaction).verifierId()){
                 val user = dbInterface.getUserAccount(loginInterface)
-                val userTransaction = dbInterface.getUserAccount(transaction)
+                val userTransaction = dbInterface.getUserAccount(creditCard,transaction)
                 if (user.getIdAccount() == userTransaction.getIdAccount()){
-                    return GetTransactionUserAccount(dbInterface).get(transaction)
+                    return GetTransactionUserAccount(dbInterface).get(creditCard,transaction)
                     //sql injection
                 }else{
                     throw InvalidCredentialException("Transaction does not match!")
