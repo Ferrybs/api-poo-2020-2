@@ -30,7 +30,7 @@ interface DBInterface {
     fun updateCategory(userAccount: UserAccount, category: Category)
     fun updateAddress(userAccount: UserAccount, address: Address)
     fun updateTransaction(transaction: Transaction)
-    fun updateUserPerson(userAccount: UserAccount, person: Person)
+    fun updateUserPerson(person: Person)
     fun updateUser(user: User)
 
     fun deleteCreditCard(creditCard: CreditCard)

@@ -192,7 +192,7 @@ open class UserPermission(
                 val user = dbInterface.getUserAccount(loginInterface)
                 val userCredit = dbInterface.getUserAccount(transaction)
                 if (user.getIdAccount() == userCredit.getIdAccount()){
-                    DeleteTransactionUserAdmin(dbInterface).delete(user, transaction)
+                    DeleteTransactionUserAdmin(dbInterface).delete(transaction)
                 }else{
                     throw InvalidCredentialException("Invalid credential")
                 }
@@ -228,7 +228,7 @@ open class UserPermission(
                 val user = dbInterface.getUserAccount(loginInterface)
                 val personAccount = dbInterface.getUserAccount(person)
                 if (user.getIdAccount() == personAccount.getIdAccount()){
-                    UpdatePersonUserAdmin(dbInterface).update(user,person)
+                    UpdatePersonUserAdmin(dbInterface).update(person)
                     //sql injection
                 }else{
                     throw InvalidCredentialException("Person does not match!")

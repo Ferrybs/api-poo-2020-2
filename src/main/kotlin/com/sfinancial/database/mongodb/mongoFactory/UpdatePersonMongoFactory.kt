@@ -20,8 +20,8 @@ class UpdatePersonMongoFactory(
             val coll = getCollUserAccount()
             val string = map.writeValueAsString(person)
             val status= coll.updateOne(
-                    "{'user.person.document':'${person}'}",
-                    "{${set}:{'person.$':$string}}"
+                    "{'user.person.document':'${person.getDocument()}'}",
+                    "{${set}:{'user.person':$string}}"
             )
             if(status.modifiedCount.toInt()==0) {
                 throw FailedUpdateException("Failed to update person! Matches: ${status.matchedCount} ")

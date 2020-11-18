@@ -61,7 +61,11 @@ open class StrategyMongodb(
     }
 
     override fun getUserAccount(person: Person): UserAccount {
-        TODO("Not yet implemented")
+        try {
+            return GetUserAccountMongoFactory(getDatabase()).get(person)
+        }catch (e: Exception){
+            throw e
+        }
     }
 
     override fun getUserAccount(user: User): UserAccount {
@@ -123,7 +127,7 @@ open class StrategyMongodb(
         }
     }
 
-    override fun updateUserPerson(userAccount: UserAccount, person: Person) {
+    override fun updateUserPerson(person: Person) {
         try {
             UpdatePersonMongoFactory(getDatabase()).update(person)
         }catch (e: Exception){
