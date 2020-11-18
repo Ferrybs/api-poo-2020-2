@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect
 import io.ktor.auth.*
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-class UserLogin(
+class Login(
         private val username: String? = null,
         private val password: String? = null
 ): Principal, LoginInterface{

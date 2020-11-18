@@ -2,7 +2,7 @@ package com.sfinancial.admin.classifierAdmin
 
 import com.sfinancial.auth.AuthInterface
 import com.sfinancial.database.DBInterface
-import com.sfinancial.login.ClassifierLogin
+import com.sfinancial.login.Login
 import com.sfinancial.login.LoginInterface
 
 class LoginClassifierAdmin(
@@ -12,7 +12,7 @@ class LoginClassifierAdmin(
         try {
             val classifierAccount = dbInterface.getClassifierAccount(loginInterface)
             val user = classifierAccount.getClassifier()
-            return authInterface.sign(ClassifierLogin(user.getUsername(),user.getPassword()))
+            return authInterface.sign(Login(user.getUsername(),user.getPassword()))
         }catch (e: Exception){
             throw e
         }

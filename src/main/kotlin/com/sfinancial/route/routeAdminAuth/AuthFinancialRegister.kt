@@ -5,18 +5,11 @@ import com.sfinancial.permission.FinancialPermission
 
 
 import com.sfinancial.admin.idAdmin.IdAdminInterface
-import com.sfinancial.config.mongoConfig.EnvMongoConfig
 import com.sfinancial.database.DBInterface
-import com.sfinancial.database.mongodb.StrategyMongodb
-import com.sfinancial.group.Classifier
-import com.sfinancial.group.User
-import com.sfinancial.login.UserLogin
+import com.sfinancial.login.Login
 import com.sfinancial.notification.exception.FailedVerifierException
 import com.sfinancial.notification.exception.InvalidFieldsException
-import com.sfinancial.notification.exception.InvalidRequestException
 import com.sfinancial.notification.statusPages.StatusPageCreated
-import com.sfinancial.permission.ClassifierPermission
-import com.sfinancial.permission.UserPermission
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.request.*
@@ -27,7 +20,7 @@ internal fun Route.financialRegister(dbInterface: DBInterface,idAdminInterface: 
     authenticate {
         post("/admin/register-financial") {
             try {
-                val financialLogin = call.principal<UserLogin>() ?: error("No principal")
+                val financialLogin = call.principal<Login>() ?: error("No principal")
                 val financial = call.receive<Financial>()
                 FinancialPermission(dbInterface).createAccount(financialLogin,financial, idAdminInterface)
                 throw StatusPageCreated("Financial account successfully created!")

@@ -1,7 +1,7 @@
 package com.sfinancial.route.routeUserAccount
 
 import com.sfinancial.database.DBInterface
-import com.sfinancial.login.UserLogin
+import com.sfinancial.login.Login
 import com.sfinancial.notification.exception.InvalidFieldsException
 import com.sfinancial.permission.UserPermission
 import io.ktor.application.*
@@ -14,7 +14,7 @@ internal fun Route.myUserAccount(dbInterface: DBInterface){
     authenticate {
         get("/my-user-account") {
             try {
-                val userLogin = call.principal<UserLogin>() ?: error("No principal")
+                val userLogin = call.principal<Login>() ?: error("No principal")
                 val user = UserPermission(dbInterface).getUserAccount(userLogin)
                 call.respond(HttpStatusCode.Found,user)
             }catch (e: Exception) {

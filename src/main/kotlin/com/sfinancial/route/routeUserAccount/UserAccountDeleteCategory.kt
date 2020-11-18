@@ -1,9 +1,8 @@
 package com.sfinancial.route.routeUserAccount
 
-import com.sfinancial.address.Address
 import com.sfinancial.category.Category
 import com.sfinancial.database.DBInterface
-import com.sfinancial.login.UserLogin
+import com.sfinancial.login.Login
 import com.sfinancial.notification.exception.InvalidFieldsException
 import com.sfinancial.notification.statusPages.StatusPageDeleted
 import com.sfinancial.permission.UserPermission
@@ -16,7 +15,7 @@ internal fun Route.deleteCategory(dbInterface: DBInterface){
     authenticate {
         delete ("/my-user-account/delete-category") {
             try {
-                val userLogin = call.principal<UserLogin>() ?: error("No principal")
+                val userLogin = call.principal<Login>() ?: error("No principal")
                 val delete = call.receive<Category>()
                 UserPermission(dbInterface).deleteCategory(userLogin,delete)
                 throw StatusPageDeleted("Category deleted!")

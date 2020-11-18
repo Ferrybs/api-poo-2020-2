@@ -1,8 +1,7 @@
 package com.sfinancial.route.routeUserAccount
 
-import com.sfinancial.address.Address
 import com.sfinancial.database.DBInterface
-import com.sfinancial.login.UserLogin
+import com.sfinancial.login.Login
 import com.sfinancial.notification.exception.InvalidFieldsException
 import com.sfinancial.notification.statusPages.StatusPageDeleted
 import com.sfinancial.payment.card.CreditCard
@@ -16,7 +15,7 @@ internal fun Route.deleteCreditCard(dbInterface: DBInterface){
     authenticate {
         delete ("/my-user-account/delete-credit-card") {
             try {
-                val userLogin = call.principal<UserLogin>() ?: error("No principal")
+                val userLogin = call.principal<Login>() ?: error("No principal")
                 val delete = call.receive<CreditCard>()
                 UserPermission (dbInterface).deleteCreditCard(userLogin,delete)
                 throw StatusPageDeleted("Credit Card Deleted!")

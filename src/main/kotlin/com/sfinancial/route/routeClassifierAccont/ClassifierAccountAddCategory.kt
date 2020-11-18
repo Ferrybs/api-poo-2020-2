@@ -2,9 +2,8 @@ package com.sfinancial.route.routeClassifierAccont
 
 import com.sfinancial.admin.idAdmin.IdAdminInterface
 import com.sfinancial.call.CallUserAccountCategory
-import com.sfinancial.category.Category
 import com.sfinancial.database.DBInterface
-import com.sfinancial.login.UserLogin
+import com.sfinancial.login.Login
 import com.sfinancial.notification.exception.InvalidFieldsException
 import com.sfinancial.notification.statusPages.StatusPageCreated
 import com.sfinancial.permission.ClassifierPermission
@@ -17,7 +16,7 @@ fun Route.classifierAddCategory(dbInterface: DBInterface,idAdminInterface: IdAdm
     authenticate {
         post("/classifier/add-category") {
             try {
-                val principal = call.principal<UserLogin>() ?: error("No principal")
+                val principal = call.principal<Login>() ?: error("No principal")
                 val post = call.receive<CallUserAccountCategory>()
                 ClassifierPermission(dbInterface).createCategory(principal,post,idAdminInterface)
                 throw StatusPageCreated("Category has been created successfully!")

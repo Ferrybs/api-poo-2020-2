@@ -2,9 +2,8 @@ package com.sfinancial.route.routeUserAccount
 
 import com.sfinancial.admin.idAdmin.IdAdminInterface
 import com.sfinancial.category.Category
-import com.sfinancial.config.hashidConfig.HashIdConfigInterface
 import com.sfinancial.database.DBInterface
-import com.sfinancial.login.UserLogin
+import com.sfinancial.login.Login
 import com.sfinancial.notification.exception.InvalidFieldsException
 import com.sfinancial.notification.statusPages.StatusPageCreated
 import com.sfinancial.permission.UserPermission
@@ -17,7 +16,7 @@ fun Route.addCategory(dbInterface: DBInterface,idAdminInterface: IdAdminInterfac
     authenticate {
         post("/my-user-account/add-category") {
             try {
-                val userLogin = call.principal<UserLogin>() ?: error("No principal")
+                val userLogin = call.principal<Login>() ?: error("No principal")
                 val post = call.receive<Category>()
                 UserPermission(dbInterface).createCategory(userLogin,post,idAdminInterface)
                 throw StatusPageCreated("Category has been created successfully!")

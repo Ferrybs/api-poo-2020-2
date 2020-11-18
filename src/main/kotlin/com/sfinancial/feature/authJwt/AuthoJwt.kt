@@ -2,8 +2,7 @@ package com.sfinancial.feature.authJwt
 
 import com.sfinancial.auth.AuthInterface
 import com.sfinancial.auth.AuthJwt
-import com.sfinancial.login.UserLogin
-import com.sfinancial.notification.exception.InvalidCredentialException
+import com.sfinancial.login.Login
 import io.ktor.auth.*
 import io.ktor.application.*
 import io.ktor.auth.jwt.*
@@ -17,7 +16,7 @@ fun Application.moduleJwt(authInterface: AuthInterface) {
                 val username = it.payload.getClaim("username").asString()
                 val password = it.payload.getClaim("password").asString()
                 if (username!= null && password !=null){
-                    UserLogin(username,password)
+                    Login(username,password)
                 }else{
                     null
                 }

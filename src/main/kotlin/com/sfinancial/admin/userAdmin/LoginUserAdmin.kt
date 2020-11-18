@@ -3,7 +3,7 @@ package com.sfinancial.admin.userAdmin
 import com.sfinancial.auth.AuthInterface
 import com.sfinancial.database.DBInterface
 import com.sfinancial.login.LoginInterface
-import com.sfinancial.login.UserLogin
+import com.sfinancial.login.Login
 
 class LoginUserAdmin(
         private val loginInterface: LoginInterface,
@@ -14,7 +14,7 @@ class LoginUserAdmin(
         try {
             val accountUser = dbInterface.getUserAccount(loginInterface)
             val user = accountUser.getUser()
-            val login = UserLogin(user.getUsername(),user.getPassword())
+            val login = Login(user.getUsername(),user.getPassword())
             return authInterface.sign(login)
         }catch (e: Exception){
             throw e

@@ -2,9 +2,8 @@ package com.sfinancial.admin
 
 import com.sfinancial.auth.AuthInterface
 import com.sfinancial.database.DBInterface
-import com.sfinancial.login.AdminLogin
+import com.sfinancial.login.Login
 import com.sfinancial.login.LoginInterface
-import com.sfinancial.verifier.LoginVerifier
 
 class GetAdminAccount(
         private val dbInterface: DBInterface
@@ -13,7 +12,7 @@ class GetAdminAccount(
         try {
             val adminAccount = dbInterface.getAdminAccount(loginInterface)
             val admin = adminAccount.getAdmin()
-            return authInterface.sign(AdminLogin(admin.getUsername(),admin.getPassword()))
+            return authInterface.sign(Login(admin.getUsername(),admin.getPassword()))
         }catch (e: Exception){
             throw e
         }
