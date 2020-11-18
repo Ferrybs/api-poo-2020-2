@@ -10,12 +10,12 @@ import org.litote.kmongo.findOne
 class GetClassifierAccountMongoFactory(
         database: MongoDatabase
 ) : MongoFactory(database) {
-    fun get(loginInterface: LoginInterface): ClassifierAccount? {
+    fun get(loginInterface: LoginInterface): ClassifierAccount {
         try {
             val coll = getCollClassifier()
             val login = coll.findOne(
-                    "{'user.username': '${loginInterface.getUsername()}'," +
-                            "'user.password': '${loginInterface.getPassword()}'}")
+                    "{'classifier.username': '${loginInterface.getUsername()}'," +
+                            "'classifier.password': '${loginInterface.getPassword()}'}")
             if (login!=null) return login
             throw InvalidCredentialException("Invalid Credential!")
         }catch (e: Exception){

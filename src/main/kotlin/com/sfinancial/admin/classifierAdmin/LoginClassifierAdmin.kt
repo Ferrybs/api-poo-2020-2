@@ -10,7 +10,7 @@ class LoginClassifierAdmin(
 ) {
     fun login(loginInterface: LoginInterface,authInterface: AuthInterface): String{
         try {
-            val classifierAccount = dbInterface.getClassifierAccount()
+            val classifierAccount = dbInterface.getClassifierAccount(loginInterface)
             val user = classifierAccount.getClassifier()
             return authInterface.sign(ClassifierLogin(user.getUsername(),user.getPassword()))
         }catch (e: Exception){

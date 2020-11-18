@@ -39,7 +39,7 @@ interface DBInterface {
 
     fun insertNewClassifierAccount(classifierAccount: ClassifierAccount)
 
-    fun getClassifierAccount(): ClassifierAccount
+    fun getClassifierAccount(loginInterface: LoginInterface): ClassifierAccount
 
     fun insertNewFinancialAccount(financialAccount: FinancialAccount)
     fun getFinancialAccount():FinancialAccount

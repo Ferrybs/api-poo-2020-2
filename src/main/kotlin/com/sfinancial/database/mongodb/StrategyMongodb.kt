@@ -163,8 +163,12 @@ open class StrategyMongodb(
         }
     }
 
-    override fun getClassifierAccount(): ClassifierAccount {
-        TODO("Not yet implemented")
+    override fun getClassifierAccount(loginInterface: LoginInterface): ClassifierAccount {
+        try {
+            return GetClassifierAccountMongoFactory(getDatabase()).get(loginInterface)
+        }catch (e: Exception){
+            throw e
+        }
     }
 
     override fun insertNewFinancialAccount(financialAccount: FinancialAccount) {
