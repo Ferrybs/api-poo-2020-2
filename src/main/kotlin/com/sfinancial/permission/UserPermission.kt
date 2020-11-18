@@ -81,7 +81,7 @@ open class UserPermission(
         }
     }
 
-    fun createTransaction(
+    open fun createTransaction(
             loginInterface: LoginInterface,
             callCreditCardTransaction: CallCreditCardTransaction,
             idAdminInterface: IdAdminInterface
@@ -110,7 +110,7 @@ open class UserPermission(
             throw e
         }
     }
-    fun updateTransaction(loginInterface: LoginInterface, transaction: Transaction){
+    open fun updateTransaction(loginInterface: LoginInterface, transaction: Transaction){
         try{
             if (TransactionVerifier(transaction).verifier()&& LoginVerifier(loginInterface).verifier()){
                 UpdateTransactionUserAdmin(dbInterface).update(transaction)
@@ -156,7 +156,7 @@ open class UserPermission(
             throw e
         }
     }
-    fun deleteCreditCard(loginInterface: LoginInterface,creditCard: CreditCard){
+    open fun deleteCreditCard(loginInterface: LoginInterface, creditCard: CreditCard){
         try {
             if(CardVerifier(creditCard).verifierId() && LoginVerifier(loginInterface).verifier()){
                 val user = dbInterface.getUserAccount(loginInterface)
@@ -186,7 +186,7 @@ open class UserPermission(
             throw e
         }
     }
-    fun deleteTransaction(loginInterface: LoginInterface, transaction: Transaction){
+    open fun deleteTransaction(loginInterface: LoginInterface, transaction: Transaction){
         try {
             if (LoginVerifier(loginInterface).verifier()&&TransactionVerifier().verifierId()){
                 val user = dbInterface.getUserAccount(loginInterface)
