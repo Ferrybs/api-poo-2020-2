@@ -124,7 +124,11 @@ open class StrategyMongodb(
     }
 
     override fun updateUserPerson(userAccount: UserAccount, person: Person) {
-        TODO("Not yet implemented")
+        try {
+            UpdatePersonMongoFactory(getDatabase()).update(person)
+        }catch (e: Exception){
+            throw e
+        }
     }
 
     override fun updateUser(user: User) {

@@ -6,6 +6,7 @@ import com.sfinancial.config.mongoConfig.ReadMongoConfig
 import com.sfinancial.database.mongodb.StrategyMongodb
 import com.sfinancial.group.Financial
 import com.sfinancial.person.AdminPerson
+import com.sfinancial.person.Person
 
 
 fun main() {
@@ -24,5 +25,10 @@ fun main() {
     //adminAccount.cId(HashIdAdmin(ReadHashidConfig()))
     //val coll = database.getCollection<AdminAccount>()
     //coll.insertOne(adminAccount)
-    println(gson.toJson(classifier))
+    println(gson.toJson(Person(
+            "Amanda",
+            "Borges",
+            "12-32-3211",
+            "22323"
+    )))
 }

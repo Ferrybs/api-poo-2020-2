@@ -20,6 +20,7 @@ internal fun Application.userAccountRoutes(
         updateCategory(dbInterface)
         updateTransaction(dbInterface)
         updateUser(dbInterface)
+        updatePerson(dbInterface)
 
         deleteAddress(dbInterface)
         deleteCategory(dbInterface)

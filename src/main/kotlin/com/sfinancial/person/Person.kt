@@ -2,6 +2,7 @@ package com.sfinancial.person
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect
 import com.sfinancial.address.Address
+import com.sfinancial.notification.exception.InvalidFieldsException
 
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
@@ -22,6 +23,18 @@ open class Person(
         ).any { it == null }
 
         return !hasNull
+    }
+
+    override fun getDocument(): String {
+        try {
+            if (document != null){
+                return document
+            }else{
+                throw InvalidFieldsException("Document is null!")
+            }
+        }catch (e: Exception){
+            throw e
+        }
     }
 
 }
