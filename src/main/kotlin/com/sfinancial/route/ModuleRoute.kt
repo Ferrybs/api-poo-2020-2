@@ -7,6 +7,7 @@ import com.sfinancial.route.routeUserAuth.authUserRoutes
 import com.sfinancial.route.routeHome.homeRoutes
 import com.sfinancial.route.routeUserAccount.userAccountRoutes
 import com.sfinancial.route.routeAdminAuth.authAdminRoutes
+import com.sfinancial.route.routeClassifierAccont.classifierAccountRotes
 import com.sfinancial.route.routeUserAuth.authClassifierRoutes
 import com.sfinancial.route.routeUserAuth.authFinancialRoutes
 import io.ktor.application.*
@@ -20,6 +21,7 @@ fun Application.routes(
     userAccountRoutes(dbInterface,idAdminInterface)
     authUserRoutes(authInterface,dbInterface,idAdminInterface)
 
+    classifierAccountRotes(dbInterface,idAdminInterface)
     authClassifierRoutes(authInterface,dbInterface,idAdminInterface)
 
     authFinancialRoutes(authInterface,dbInterface,idAdminInterface)

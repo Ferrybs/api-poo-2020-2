@@ -5,11 +5,14 @@ import com.sfinancial.admin.classifierAdmin.LoginClassifierAdmin
 import com.sfinancial.admin.classifierAdmin.RegisterClassifierAdmin
 import com.sfinancial.admin.financialAdmin.LoginFinancialAdmin
 import com.sfinancial.admin.idAdmin.IdAdminInterface
+import com.sfinancial.admin.userAdmin.AddCategoryUserAdmin
 import com.sfinancial.auth.AuthInterface
+import com.sfinancial.call.CallUserAccountCategory
 import com.sfinancial.database.DBInterface
 import com.sfinancial.group.Classifier
 import com.sfinancial.login.LoginInterface
 import com.sfinancial.notification.exception.FailedVerifierException
+import com.sfinancial.verifier.CategoryVerifier
 import com.sfinancial.verifier.GroupVerifier
 import com.sfinancial.verifier.LoginVerifier
 
@@ -40,6 +43,22 @@ open class ClassifierPermission(
         }catch (e: Exception){
             throw e
         }
-
+    }
+    fun createCategory(loginInterface: LoginInterface,
+                       callUserAccountCategory: CallUserAccountCategory,
+                       idAdminInterface: IdAdminInterface
+    ){
+        try {
+            dbInterface.getClassifierAccount(loginInterface)
+            val userAccount = callUserAccountCategory.getUserAccount()
+            val category = callUserAccountCategory.getCategory()
+            if (CategoryVerifier(category).verifier()){
+                AddCategoryUserAdmin(dbInterface).add(userAccount,category,idAdminInterface)
+            }else{
+                throw FailedVerifierException("Failed to verify category!")
+            }
+        }catch (e: Exception){
+            throw e
+        }
     }
 }
