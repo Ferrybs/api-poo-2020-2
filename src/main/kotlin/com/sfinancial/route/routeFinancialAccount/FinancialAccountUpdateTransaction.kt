@@ -1,5 +1,6 @@
 package com.sfinancial.route.routeFinancialAccount
 
+import com.sfinancial.call.CallCreditCardTransaction
 import com.sfinancial.call.CallUserAccountCategory
 import com.sfinancial.call.CallUserAccountTransaction
 import com.sfinancial.database.DBInterface
@@ -19,7 +20,7 @@ fun Route.financialAccountUpdateTransaction(dbInterface: DBInterface) {
         put("/financial/update-transaction") {
             try {
                 val principal = call.principal<Login>() ?: error("No principal")
-                val put = call.receive<Transaction>()
+                val put = call.receive<CallCreditCardTransaction>()
                 FinancialPermission(dbInterface).updateTransaction(principal,put)
                 throw StatusPageCreated("Transaction has been update successfully!")
             }catch (e: StatusPageCreated) {

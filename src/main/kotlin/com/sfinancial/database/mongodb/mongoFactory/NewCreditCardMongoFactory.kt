@@ -27,7 +27,11 @@ class NewCreditCardMongoFactory(
         }
     }
     private fun addCreditCard(creditCard: CreditCard){
-        val coll = getCollPayment()
-        coll.insertOne(creditCard)
+        try {
+            val coll = getCollPayment()
+            coll.insertOne(creditCard)
+        }catch (e: Exception){
+            throw e
+        }
     }
 }

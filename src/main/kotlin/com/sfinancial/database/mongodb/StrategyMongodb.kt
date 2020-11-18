@@ -85,7 +85,11 @@ open class StrategyMongodb(
     }
 
     override fun getUserAccount(userAccount: UserAccount): UserAccount {
-        TODO("Not yet implemented")
+        try {
+            return GetUserAccountMongoFactory(getDatabase()).get(userAccount)
+        }catch (e: Exception){
+            throw e
+        }
     }
 
     override fun getUserAccount(creditCard: CreditCard): UserAccount {
@@ -127,9 +131,9 @@ open class StrategyMongodb(
             throw e
         }
     }
-    override fun updateTransaction(transaction: Transaction) {
+    override fun updateTransaction(creditCard: CreditCard, transaction: Transaction) {
         try {
-            UpdateTransactionMongoFactory(getDatabase()).update(transaction)
+            UpdateTransactionMongoFactory(getDatabase()).update(creditCard,transaction)
         }catch (e: Exception){
             throw e
         }

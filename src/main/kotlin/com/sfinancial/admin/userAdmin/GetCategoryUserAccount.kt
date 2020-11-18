@@ -8,10 +8,10 @@ import com.sfinancial.login.LoginInterface
 class GetCategoryUserAccount(
         private val dbInterface: DBInterface
 ) {
-    fun get(userAccount: UserAccount, category: Category): MutableList<Category>{
+    fun get(userAccount: UserAccount): MutableList<Category>{
         try {
-            val userAccount = dbInterface.getUserAccount(userAccount)
-            return userAccount.getCategory()
+            val userAccountCategory = dbInterface.getUserAccount(userAccount)
+            return userAccountCategory.getCategory()
         }catch (e : Exception){
             throw e
         }

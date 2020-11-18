@@ -12,7 +12,7 @@ import io.ktor.auth.*
 import io.ktor.request.*
 import io.ktor.routing.*
 
-fun Route.classifierDeleteCategory(dbInterface: DBInterface, idAdminInterface: IdAdminInterface) {
+fun Route.classifierDeleteCategory(dbInterface: DBInterface) {
     authenticate {
         delete("/classifier/delete-category") {
             try {

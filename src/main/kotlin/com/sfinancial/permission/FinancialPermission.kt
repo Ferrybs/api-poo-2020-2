@@ -5,6 +5,7 @@ import com.sfinancial.account.UserAccount
 import com.sfinancial.admin.financialAdmin.RegisterFinancialAdmin
 import com.sfinancial.admin.idAdmin.IdAdminInterface
 import com.sfinancial.admin.userAdmin.*
+import com.sfinancial.call.CallCreditCardTransaction
 import com.sfinancial.call.CallUserAccountCategory
 import com.sfinancial.call.CallUserAccountCreditCard
 import com.sfinancial.call.CallUserAccountTransaction
@@ -32,8 +33,7 @@ open class FinancialPermission(
     }
     fun createCreditCard(
             loginInterface: LoginInterface,
-            callUserAccountCreditCard: CallUserAccountCreditCard,
-            idAdminInterface: IdAdminInterface
+            callUserAccountCreditCard: CallUserAccountCreditCard
     ){
         try {
             dbInterface.getFinancialAccount(loginInterface)
@@ -114,12 +114,14 @@ open class FinancialPermission(
     }
     override fun updateTransaction(
             loginInterface: LoginInterface,
-            transaction: Transaction
+            callCreditCardTransaction: CallCreditCardTransaction
     ){
         try {
+            val creditCard = callCreditCardTransaction.getCreditCard()
+            val transaction = callCreditCardTransaction.getTransaction()
             dbInterface.getFinancialAccount(loginInterface)
-            if (TransactionVerifier(transaction).verifierId()){
-                UpdateTransactionUserAdmin(dbInterface).update(transaction)
+            if (TransactionVerifier(transaction).verifier()&& CardVerifier(creditCard).verifierId()){
+                UpdateTransactionUserAdmin(dbInterface).update(creditCard,transaction)
             }else{
                 throw FailedVerifierException("Failed to verify transaction!")
             }

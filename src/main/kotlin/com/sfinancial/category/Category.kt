@@ -1,6 +1,7 @@
 package com.sfinancial.category
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect
+import com.fasterxml.jackson.annotation.JsonIgnore
 import com.sfinancial.admin.idAdmin.IdAdminInterface
 import com.sfinancial.notification.exception.FailedFindException
 import com.sfinancial.notification.exception.InvalidFieldsException
@@ -13,6 +14,7 @@ class Category(
 ) : CategoryInterface {
     private var idCategory: String? = null
 
+    @JsonIgnore()
     override fun cId(idAdminInterface: IdAdminInterface) {
         try {
             if (idCategory == null){
@@ -39,7 +41,7 @@ class Category(
         }
     }
 
-
+    @JsonIgnore()
     override fun verifier(): Boolean {
         return !listOf(
                 name,
@@ -47,6 +49,7 @@ class Category(
                 description
         ).any { it == null }
     }
+    @JsonIgnore()
     override fun getPriority(): Int {
         try {
             if (priority != null) {
@@ -57,7 +60,7 @@ class Category(
             throw e
         }
     }
-
+    @JsonIgnore()
     override fun getName(): String {
         try {
             if (name != null) {

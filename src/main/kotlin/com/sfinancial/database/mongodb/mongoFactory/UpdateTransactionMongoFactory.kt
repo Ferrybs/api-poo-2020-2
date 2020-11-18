@@ -4,6 +4,7 @@ import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.mongodb.client.MongoDatabase
 import com.sfinancial.database.DBInterface
 import com.sfinancial.notification.exception.FailedUpdateException
+import com.sfinancial.payment.card.CreditCard
 import com.sfinancial.transaction.Transaction
 import org.litote.kmongo.MongoOperator
 import org.litote.kmongo.updateOne
@@ -13,12 +14,12 @@ class UpdateTransactionMongoFactory(
         database: MongoDatabase
 ): MongoFactory(database){
     private val map = jacksonObjectMapper()
-    fun update(transaction: Transaction){
+    fun update(creditCard: CreditCard,transaction: Transaction){
         try {
             val coll = getCollPayment()
             val string = map.writeValueAsString(transaction)
             val status= coll.updateOne(
-                    "{'transaction.idTransaction':'${transaction.getIdTransaction()}'}",
+                    "{'number':'${creditCard.getNumber()}','transaction.idTransaction':'${transaction.getIdTransaction()}'}",
                     "{${set}:{'transaction.$':$string}}"
             )
             if(status.modifiedCount.toInt()==0) {

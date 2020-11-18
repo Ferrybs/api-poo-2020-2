@@ -13,7 +13,7 @@ import io.ktor.request.*
 import io.ktor.routing.*
 
 
-fun Route.classifierAccountUpdateCategory(dbInterface: DBInterface) {
+fun Route.classifierUpdateCategory(dbInterface: DBInterface) {
     authenticate {
         put("/classifier/update-category") {
             try {

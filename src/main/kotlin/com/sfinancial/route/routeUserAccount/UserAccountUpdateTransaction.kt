@@ -1,5 +1,6 @@
 package com.sfinancial.route.routeUserAccount
 
+import com.sfinancial.call.CallCreditCardTransaction
 import com.sfinancial.database.DBInterface
 import com.sfinancial.login.Login
 import com.sfinancial.notification.exception.InvalidFieldsException
@@ -16,7 +17,7 @@ internal fun Route.updateTransaction(dbInterface: DBInterface){
         put("/my-user-account/update-transaction") {
             try {
                 val principal = call.principal<Login>() ?: error("No principal")
-                val put = call.receive<Transaction>()
+                val put = call.receive<CallCreditCardTransaction>()
                UserPermission(dbInterface).updateTransaction(principal, put)
                 throw StatusPageUpdated("Transaction updated!")
             }catch (e: StatusPageUpdated){

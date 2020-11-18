@@ -1,6 +1,7 @@
 package com.sfinancial.permission
 
 import ClassifierAccount
+import com.sfinancial.account.UserAccount
 import com.sfinancial.admin.classifierAdmin.LoginClassifierAdmin
 import com.sfinancial.admin.classifierAdmin.RegisterClassifierAdmin
 import com.sfinancial.admin.financialAdmin.LoginFinancialAdmin
@@ -87,17 +88,11 @@ open class ClassifierPermission(
 
     fun getCategory(
             loginInterface: LoginInterface,
-            callUserAccountCategory: CallUserAccountCategory
+            userAccount: UserAccount
     ): MutableList<Category>{
         try {
             dbInterface.getClassifierAccount(loginInterface)
-            val userAccount = callUserAccountCategory.getUserAccount()
-            val category = callUserAccountCategory.getCategory()
-            if (CategoryVerifier(category).verifierId()){
-                return GetCategoryUserAccount(dbInterface).get(userAccount, category)
-            }else{
-                throw FailedVerifierException("Failed to verify category!")
-            }
+            return GetCategoryUserAccount(dbInterface).get(userAccount)
         }catch (e : Exception){
             throw e
         }

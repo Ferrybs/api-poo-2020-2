@@ -1,15 +1,33 @@
 package com.sfinancial.call
 
+import com.sfinancial.notification.exception.InvalidFieldsException
+import com.sfinancial.payment.card.CreditCard
 import com.sfinancial.transaction.Transaction
 
 class CallCreditCardTransaction(
-        private val number: String,
-        private val payment: Transaction,
+        private val creditCard: CreditCard? = null,
+        private val transaction: Transaction? = null,
 ){
-    fun getNumber(): String {
-        return number
+    fun getCreditCard(): CreditCard {
+        try {
+            if (creditCard!=null){
+                return creditCard
+            }else{
+                throw InvalidFieldsException("CreditCard is null")
+            }
+        }catch (e: Exception){
+            throw e
+        }
     }
-    fun getPayment(): Transaction {
-        return payment
+    fun getTransaction(): Transaction {
+        try {
+            if (transaction!=null){
+                return transaction
+            }else{
+                throw InvalidFieldsException("Transaction is null")
+            }
+        }catch (e: Exception){
+            throw e
+        }
     }
 }

@@ -87,8 +87,8 @@ open class UserPermission(
             idAdminInterface: IdAdminInterface
     ){
         try {
-            val creditCard = CreditCard(number = callCreditCardTransaction.getNumber())
-            val transaction = callCreditCardTransaction.getPayment()
+            val creditCard = callCreditCardTransaction.getCreditCard()
+            val transaction = callCreditCardTransaction.getTransaction()
             if (
                     CardVerifier(creditCard).verifierId() &&
                     TransactionVerifier(transaction).verifier()&&
@@ -110,10 +110,17 @@ open class UserPermission(
             throw e
         }
     }
-    open fun updateTransaction(loginInterface: LoginInterface, transaction: Transaction){
+    open fun updateTransaction(
+            loginInterface: LoginInterface,
+            callCreditCardTransaction: CallCreditCardTransaction
+    ){
         try{
+            val transaction = callCreditCardTransaction.getTransaction()
+            val creditCard = callCreditCardTransaction.getCreditCard()
             if (TransactionVerifier(transaction).verifier()&& LoginVerifier(loginInterface).verifier()){
-                UpdateTransactionUserAdmin(dbInterface).update(transaction)
+                UpdateTransactionUserAdmin(dbInterface).update(creditCard,transaction)
+            }else{
+                throw FailedVerifierException("Failed to update transaction!")
             }
 
         }catch (e: Exception){
@@ -126,7 +133,7 @@ open class UserPermission(
                 val user = dbInterface.getUserAccount(loginInterface)
                 UpdateCategoryUserAdmin(dbInterface).update(user,category)
             }else{
-                throw FailedVerifierException("Failed to update category!")
+                throw FailedVerifierException("Failed to verify category!")
             }
         }catch (e : Exception){
             throw e
@@ -139,6 +146,8 @@ open class UserPermission(
             {
                 val user = dbInterface.getUserAccount(loginInterface)
                 UpdateAddressUserAdmin(dbInterface).update(user,address)
+            }else{
+                throw FailedVerifierException("Failed to verify category!!")
             }
         }catch (e:Exception){
             throw e
@@ -180,7 +189,7 @@ open class UserPermission(
               val user = dbInterface.getUserAccount(loginInterface)
               DeleteCategoryUserAdmin(dbInterface).delete(user, category)
            }else{
-               throw InvalidFieldsException("Failed to delete category")
+               throw InvalidFieldsException("Failed to verify category!")
            }
         }catch(e: Exception){
             throw e

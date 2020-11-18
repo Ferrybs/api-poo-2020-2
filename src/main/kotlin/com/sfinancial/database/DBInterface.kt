@@ -12,7 +12,6 @@ import com.sfinancial.payment.card.CardInterface
 import com.sfinancial.payment.card.CreditCard
 import com.sfinancial.person.Person
 import com.sfinancial.transaction.Transaction
-import com.sfinancial.transaction.TransactionInterface
 
 interface DBInterface {
     fun insertNewAccountUser(userAccount: UserAccount)
@@ -32,7 +31,7 @@ interface DBInterface {
 
     fun updateCategory(userAccount: UserAccount, category: Category)
     fun updateAddress(userAccount: UserAccount, address: Address)
-    fun updateTransaction(transaction: Transaction)
+    fun updateTransaction(creditCard: CreditCard,transaction: Transaction)
     fun updateUserPerson(person: Person)
     fun updateUser(user: User)
 

@@ -87,5 +87,18 @@ class GetUserAccountMongoFactory(
             throw e
         }
     }
+    fun get(userAccount: UserAccount): UserAccount {
+        try{
+            val coll = getCollUserAccount()
+            val find = coll.findOne("{'idAccount':'${userAccount.getIdAccount()}'}")
+            if (find != null){
+                return find
+            }else{
+                throw FailedFindException("Failed to find Account!")
+            }
+        }catch (e: Exception){
+            throw e
+        }
+    }
 
 }
