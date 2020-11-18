@@ -13,13 +13,13 @@ import io.ktor.request.*
 import io.ktor.routing.*
 
 
-fun Route.classifierAccountUpdateCategory(dbInterface: DBInterface, idAdminInterface: IdAdminInterface) {
+fun Route.classifierAccountUpdateCategory(dbInterface: DBInterface) {
     authenticate {
-        post("/classifier/Update-category") {
+        put("/classifier/update-category") {
             try {
                 val principal = call.principal<Login>() ?: error("No principal")
-                val post = call.receive<CallUserAccountCategory>()
-                ClassifierPermission(dbInterface).createCategory(principal,post,idAdminInterface)
+                val put = call.receive<CallUserAccountCategory>()
+                ClassifierPermission(dbInterface).updateCategory(principal,put)
                 throw StatusPageCreated("Category has been update successfully!")
             }catch (e: StatusPageCreated) {
                 throw e

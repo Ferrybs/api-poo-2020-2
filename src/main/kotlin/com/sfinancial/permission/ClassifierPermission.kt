@@ -8,6 +8,7 @@ import com.sfinancial.admin.idAdmin.IdAdminInterface
 import com.sfinancial.admin.userAdmin.AddCategoryUserAdmin
 import com.sfinancial.admin.userAdmin.DeleteCategoryUserAdmin
 import com.sfinancial.admin.userAdmin.GetCategoryUserAccount
+import com.sfinancial.admin.userAdmin.UpdateCategoryUserAdmin
 import com.sfinancial.auth.AuthInterface
 import com.sfinancial.call.CallUserAccountCategory
 import com.sfinancial.category.Category
@@ -47,9 +48,10 @@ open class ClassifierPermission(
             throw e
         }
     }
-    fun createCategory(loginInterface: LoginInterface,
-                       callUserAccountCategory: CallUserAccountCategory,
-                       idAdminInterface: IdAdminInterface
+    fun createCategory(
+            loginInterface: LoginInterface,
+            callUserAccountCategory: CallUserAccountCategory,
+            idAdminInterface: IdAdminInterface
     ){
         try {
             dbInterface.getClassifierAccount(loginInterface)
@@ -65,7 +67,10 @@ open class ClassifierPermission(
         }
     }
 
-    fun deleteCategory(loginInterface: LoginInterface,callUserAccountCategory: CallUserAccountCategory) {
+    fun deleteCategory(
+            loginInterface: LoginInterface,
+            callUserAccountCategory: CallUserAccountCategory
+    ) {
         try {
             dbInterface.getClassifierAccount(loginInterface)
             val userAccount = callUserAccountCategory.getUserAccount()
@@ -80,8 +85,9 @@ open class ClassifierPermission(
         }
     }
 
-    fun getCategory(loginInterface: LoginInterface,
-                    callUserAccountCategory: CallUserAccountCategory
+    fun getCategory(
+            loginInterface: LoginInterface,
+            callUserAccountCategory: CallUserAccountCategory
     ): MutableList<Category>{
         try {
             dbInterface.getClassifierAccount(loginInterface)
@@ -89,6 +95,24 @@ open class ClassifierPermission(
             val category = callUserAccountCategory.getCategory()
             if (CategoryVerifier(category).verifierId()){
                 return GetCategoryUserAccount(dbInterface).get(userAccount, category)
+            }else{
+                throw FailedVerifierException("Failed to verify category!")
+            }
+        }catch (e : Exception){
+            throw e
+        }
+    }
+
+    fun updateCategory(
+            loginInterface: LoginInterface,
+            callUserAccountCategory: CallUserAccountCategory
+    ){
+        try {
+            dbInterface.getClassifierAccount(loginInterface)
+            val userAccount = callUserAccountCategory.getUserAccount()
+            val category = callUserAccountCategory.getCategory()
+            if (CategoryVerifier(category).verifierId()){
+                UpdateCategoryUserAdmin(dbInterface).update(userAccount, category)
             }else{
                 throw FailedVerifierException("Failed to verify category!")
             }
