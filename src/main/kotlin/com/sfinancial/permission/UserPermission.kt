@@ -260,4 +260,23 @@ open class UserPermission(
             throw e
         }
     }
+    fun getTransaction(loginInterface: LoginInterface, transaction: Transaction): CreditCard {
+        try {
+            if (LoginVerifier(loginInterface).verifier()&&TransactionVerifier(transaction).verifierId()){
+                val user = dbInterface.getUserAccount(loginInterface)
+                val userTransaction = dbInterface.getUserAccount(transaction)
+                if (user.getIdAccount() == userTransaction.getIdAccount()){
+                    return GetTransactionUserAccount(dbInterface).get(transaction)
+                    //sql injection
+                }else{
+                    throw InvalidCredentialException("Transaction does not match!")
+                }
+            }else{
+                throw InvalidCredentialException("Invalid credential")
+            }
+
+        }catch (e:Exception){
+            throw e
+        }
+    }
 }
