@@ -47,7 +47,7 @@ class IndexMongoConfig {
     fun setAdmin(){
         val coll = database.getCollection<AdminAccount>()
         coll.createIndex("{'idAccount':1}",indexUnique)
-        coll.createIndex("{'classifier.username':1}",indexUnique)
-        coll.createIndex("{'classifier.person.idEmployee':1}",indexUnique)
+        coll.createIndex("{'admin.username':1}",indexUnique)
+        coll.createIndex("{'admin.adminPerson.idEmployee':1}",indexUnique)
     }
 }

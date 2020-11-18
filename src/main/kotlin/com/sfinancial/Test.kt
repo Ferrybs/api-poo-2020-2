@@ -32,12 +32,15 @@ fun main() {
     val adminAccount = AdminAccount(
             Admin(
                     "admin",
-                    "admin"
+                    "admin",
+                    AdminPerson(
+                            "123"
+                    )
             )
     )
 
-    adminAccount.cId(HashIdAdmin(ReadHashidConfig()))
-    val coll = database.getCollection<AdminAccount>()
+    //adminAccount.cId(HashIdAdmin(ReadHashidConfig()))
+    //val coll = database.getCollection<AdminAccount>()
     //coll.insertOne(adminAccount)
-
+    println(gson.toJson(adminAccount))
 }
