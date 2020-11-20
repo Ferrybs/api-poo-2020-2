@@ -13,8 +13,9 @@ import kotlinx.html.title
 
 
 fun main(){
+    val porta = System.getenv("PORT").toInt()
 
-    embeddedServer(Netty,port = System.getenv("PORT").toInt()){
+    embeddedServer(Netty,port = porta){
 
         routing {
             get("/") {
