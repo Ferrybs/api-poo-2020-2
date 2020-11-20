@@ -11,15 +11,6 @@ import kotlinx.html.title
 
 internal fun Route.home(){
     get("/") {
-        call.respondHtml {
-            head {
-                title { +"sFinancial" }
-            }
-            body {
-                p {
-                    +"Hello from Ktor Google Appengine Standard sample application"
-                }
-            }
-        }
+        call.respond("ok")
     }
 }
