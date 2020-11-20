@@ -13,15 +13,8 @@ import kotlinx.html.title
 
 
 fun main(){
-    var porta = 8080
-    try {
-        porta = System.getenv("PORT").toInt()
-    }catch (e: Exception){
-        println("ABRINDO EM $porta")
-    }
 
-
-    embeddedServer(Netty,port = porta){
+    embeddedServer(Netty,port = System.getenv("PORT").toInt()){
 
         routing {
             get("/") {
