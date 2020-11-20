@@ -16,4 +16,4 @@ out
 *.ipr
 *.iws
 .DS_Store
-.env
+env
