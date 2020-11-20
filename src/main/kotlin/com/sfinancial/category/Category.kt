@@ -40,8 +40,6 @@ class Category(
             throw e
         }
     }
-
-    @JsonIgnore()
     override fun verifier(): Boolean {
         return !listOf(
                 name,
@@ -49,7 +47,6 @@ class Category(
                 description
         ).any { it == null }
     }
-    @JsonIgnore()
     override fun getPriority(): Int {
         try {
             if (priority != null) {
@@ -60,7 +57,6 @@ class Category(
             throw e
         }
     }
-    @JsonIgnore()
     override fun getName(): String {
         try {
             if (name != null) {
