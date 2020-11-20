@@ -22,6 +22,11 @@ jar {
     baseName = 'sfinancial'
     version = '1.0'
 }
+sourceCompatibility = 1.8
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
 
 task stage(dependsOn: ['installDist'])
 
